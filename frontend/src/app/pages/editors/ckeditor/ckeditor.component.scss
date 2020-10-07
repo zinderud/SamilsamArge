@@ -1,0 +1,12 @@
+
+
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  ::ng-deep .cke_editable {
+    * {
+      /* stylelint-disable-next-line */
+      color: initial;
+    }
+  }
+}
