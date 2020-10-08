@@ -1,0 +1,15 @@
+﻿using System;
+
+namespace ArgeBackend.Entities
+{
+    public class Notification : DeletableEntity
+    {
+        public DateTime DateTime { get; set; }
+        public string Description { get; set; }
+        public string RedirectUrl { get; set; }
+
+        public int UserId { get; set; }
+
+        public virtual User User { get; set; }
+    }
+}
