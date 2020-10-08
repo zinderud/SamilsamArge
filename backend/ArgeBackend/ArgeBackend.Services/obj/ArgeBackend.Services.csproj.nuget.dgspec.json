@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services/ArgeBackend.Services.csproj": {}
+    "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services/ArgeBackend.Services.csproj": {}
   },
   "projects": {
-    "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.DTO/ArgeBackend.DTO.csproj": {
+    "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.DTO/ArgeBackend.DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.DTO/ArgeBackend.DTO.csproj",
+        "projectUniqueName": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.DTO/ArgeBackend.DTO.csproj",
         "projectName": "ArgeBackend.DTO",
-        "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.DTO/ArgeBackend.DTO.csproj",
+        "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.DTO/ArgeBackend.DTO.csproj",
         "packagesPath": "/home/ism-ubuntu-onur/.nuget/packages/",
-        "outputPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.DTO/obj/",
+        "outputPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.DTO/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -28,8 +28,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj": {
-                "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj"
+              "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj": {
+                "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj"
               }
             }
           }
@@ -68,14 +68,14 @@
         }
       }
     },
-    "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj": {
+    "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj",
+        "projectUniqueName": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj",
         "projectName": "ArgeBackend.Entities",
-        "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj",
+        "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj",
         "packagesPath": "/home/ism-ubuntu-onur/.nuget/packages/",
-        "outputPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/obj/",
+        "outputPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -128,14 +128,14 @@
         }
       }
     },
-    "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj": {
+    "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj",
+        "projectUniqueName": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj",
         "projectName": "ArgeBackend.Services.Infrastructure",
-        "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj",
+        "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj",
         "packagesPath": "/home/ism-ubuntu-onur/.nuget/packages/",
-        "outputPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services.Infrastructure/obj/",
+        "outputPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services.Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -152,11 +152,11 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.DTO/ArgeBackend.DTO.csproj": {
-                "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.DTO/ArgeBackend.DTO.csproj"
+              "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.DTO/ArgeBackend.DTO.csproj": {
+                "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.DTO/ArgeBackend.DTO.csproj"
               },
-              "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj": {
-                "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj"
+              "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj": {
+                "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj"
               }
             }
           }
@@ -199,14 +199,14 @@
         }
       }
     },
-    "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services/ArgeBackend.Services.csproj": {
+    "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services/ArgeBackend.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services/ArgeBackend.Services.csproj",
+        "projectUniqueName": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services/ArgeBackend.Services.csproj",
         "projectName": "ArgeBackend.Services",
-        "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services/ArgeBackend.Services.csproj",
+        "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services/ArgeBackend.Services.csproj",
         "packagesPath": "/home/ism-ubuntu-onur/.nuget/packages/",
-        "outputPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services/obj/",
+        "outputPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -223,11 +223,11 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj": {
-                "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj"
+              "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj": {
+                "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj"
               },
-              "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Utils/ArgeBackend.Utils.csproj": {
-                "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Utils/ArgeBackend.Utils.csproj"
+              "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Utils/ArgeBackend.Utils.csproj": {
+                "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Utils/ArgeBackend.Utils.csproj"
               }
             }
           }
@@ -274,14 +274,14 @@
         }
       }
     },
-    "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Utils/ArgeBackend.Utils.csproj": {
+    "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Utils/ArgeBackend.Utils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Utils/ArgeBackend.Utils.csproj",
+        "projectUniqueName": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Utils/ArgeBackend.Utils.csproj",
         "projectName": "ArgeBackend.Utils",
-        "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Utils/ArgeBackend.Utils.csproj",
+        "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Utils/ArgeBackend.Utils.csproj",
         "packagesPath": "/home/ism-ubuntu-onur/.nuget/packages/",
-        "outputPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Utils/obj/",
+        "outputPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Utils/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -298,8 +298,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj": {
-                "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj"
+              "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj": {
+                "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj"
               }
             }
           }

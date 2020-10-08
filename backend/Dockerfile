@@ -6,9 +6,7 @@ LABEL author="zinderud"
 WORKDIR /app
 EXPOSE 80
 EXPOSE 3001
-EXPOSE 443
-EXPOSE 1433 
-EXPOSE 1401
+
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["ArgeBackend/ArgeBackend.WebApiCore/ArgeBackend.WebApiCore.csproj", "ArgeBackend/ArgeBackend.WebApiCore/"]

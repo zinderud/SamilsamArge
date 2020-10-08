@@ -7279,11 +7279,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.DataAccess.EFCore/ArgeBackend.DataAccess.EFCore.csproj",
+      "projectUniqueName": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.DataAccess.EFCore/ArgeBackend.DataAccess.EFCore.csproj",
       "projectName": "ArgeBackend.DataAccess.EFCore",
-      "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.DataAccess.EFCore/ArgeBackend.DataAccess.EFCore.csproj",
+      "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.DataAccess.EFCore/ArgeBackend.DataAccess.EFCore.csproj",
       "packagesPath": "/home/ism-ubuntu-onur/.nuget/packages/",
-      "outputPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.DataAccess.EFCore/obj/",
+      "outputPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.DataAccess.EFCore/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -7300,11 +7300,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj": {
-              "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj"
+            "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj": {
+              "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Entities/ArgeBackend.Entities.csproj"
             },
-            "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj": {
-              "projectPath": "/media/ism-ubuntu-onur/coden/den/Al-Darb-master/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj"
+            "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj": {
+              "projectPath": "/media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/backend/ArgeBackend/ArgeBackend.Services.Infrastructure/ArgeBackend.Services.Infrastructure.csproj"
             }
           }
         }
