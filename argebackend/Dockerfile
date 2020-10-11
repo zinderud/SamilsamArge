@@ -35,3 +35,6 @@ ENTRYPOINT ["dotnet", "ArgeBackend.WebApiCore.dll"]
 
 #docker build -t argebackend .
 #docker run -d -p 5000:5000 --link my-postgres:postgres backend
+
+
+#docker run -d -p 3001:3001   argebackend

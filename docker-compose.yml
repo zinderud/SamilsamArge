@@ -8,20 +8,18 @@ services:
     container_name: "argebackend"
     image: "argebackend"
     build:
-      context: ./backend
+      context: ./argebackend
       dockerfile: Dockerfile
     volumes:
       - ./argebackend:/var/www/argebackend
     ports:
       - "5000:5000"
+      - "3001:3001"
+
     depends_on:
       - db
     networks:
       - app-network
-  client:
-    build: frontend
-    ports:
-      - 4000:80
   db:
     image: "microsoft/mssql-server-linux"
     environment:
@@ -29,15 +27,22 @@ services:
       ACCEPT_EULA: "Y"
     networks:
       - app-network
+    volumes:
+      - local_data/var/opt/mssql/data
   nginx:
-    build: nginx
+    container_name: frontend
+    image: frontend
+    build:
+      context: ./frontend
+      dockerfile: nginx.dockerfile
     ports:
-      - 80:80
-    restart: always
+      - "80:80"
+      - "443:443"
+
     networks:
       - app-network
 networks:
   app-network:
     driver: bridge
 volumes:
-  local_postgres_data: {}
+  local_data: {}
