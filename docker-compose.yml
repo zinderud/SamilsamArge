@@ -1,48 +1,69 @@
 #   docker-compose build
 #   docker-compose up
 
-version: "3.7"
+version: '3.7'
 
 services:
+
   web:
-    container_name: "argebackend"
-    image: "argebackend"
+    container_name: 'backend'
+    image: 'backend'
     build:
-      context: ./argebackend
+      context: ./backend
       dockerfile: Dockerfile
     volumes:
-      - ./argebackend:/var/www/argebackend
-    ports:
-      - "5000:5000"
-      - "3001:3001"
-
-    depends_on:
-      - db
-    networks:
-      - app-network
-  db:
-    image: "microsoft/mssql-server-linux"
+      - ./backend:/var/www/backend
     environment:
-      SA_PASSWORD: "YourSTRONG!Passw0rd"
-      ACCEPT_EULA: "Y"
-    networks:
-      - app-network
-    volumes:
-      - local_data/var/opt/mssql/data
-  nginx:
-    container_name: frontend
-    image: frontend
-    build:
-      context: ./frontend
-      dockerfile: nginx.dockerfile
+      - ASPNETCORE_ENVIRONMENT=Development      
+      - ASPNETCORE_URLS=http://*:5000
     ports:
-      - "80:80"
-      - "443:443"
-
+     - "5000:5000"
+    depends_on:
+     - "postgres"
     networks:
       - app-network
+  postgres:
+    container_name: 'postgres'
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USERNAME: postgres
+    networks:
+      - app-network
+    ports:
+     - 5432:5432
+    volumes:
+     - local_postgres_data:/var/lib/postgresql/data
+  nginx:
+     container_name: frontend
+     image: frontend
+     build:
+       context: ./frontend
+       dockerfile: nginx.dockerfile
+     ports:
+       - "80:80"
+       - "443:443"
+       
+     networks:
+     - app-network
+  omnidb:
+     container_name: omnidb
+     image: omnidb
+     privileged: true
+     user: root
+     build:
+       context: ./omnidb
+       dockerfile: Dockerfile
+     volumes:
+      - $PWD/omnidb_data:/etc/omnidb:Z 
+     ports:
+       - "25482:25482" 
+       - "8080:8080"
+       
+     networks:
+     - app-network
 networks:
-  app-network:
-    driver: bridge
+   app-network:
+     driver: bridge
 volumes:
-  local_data: {}
+  local_postgres_data: {}
