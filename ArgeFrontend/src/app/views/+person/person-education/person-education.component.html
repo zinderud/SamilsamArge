@@ -1,0 +1,247 @@
+<div *ngIf="loading">
+  <mat-progress-bar color="warn"></mat-progress-bar>
+</div>
+<div class="row" *ngIf="!loading">
+
+  <div class="col-md-12">
+      <nb-card>
+          <nb-card-header>
+             Personel Bilgileri
+          </nb-card-header>
+          <nb-card-body>
+              <div class="row">
+                  <div class="col-md-4">
+
+                      <h6>İsim:</h6>
+
+                  </div>
+                  <div class="col-md-8">
+                      {{person.name}}
+                  </div>
+              </div>
+              <mat-divider></mat-divider>
+
+              <div class="row">
+                  <div class="col-md-4">
+                      <h6>Soyİsim:</h6>
+                  </div>
+                  <div class="col-md-8">
+                      {{person.surname}}
+                  </div>
+              </div>
+              <mat-divider></mat-divider>
+
+              <div class="row">
+                  <div class="col-md-4">
+                      <h6>Mail Adresi </h6>
+                  </div>
+                  <div class="col-md-8">
+                      {{person.email}}
+                  </div>
+              </div>
+              <mat-divider></mat-divider>
+
+
+              <div class="row">
+                  <div class="col-md-4">
+                      <h6>title</h6>
+                  </div>
+                  <div class="col-md-8">
+                      {{person.title }}
+                  </div>
+              </div>
+              <mat-divider></mat-divider>
+
+              <div class="row">
+                  <div class="col-md-4">
+                      <h6>telefon</h6>
+                  </div>
+                  <div class="col-md-8">
+                      {{person.phone  }}
+                  </div>
+              </div>
+              <mat-divider></mat-divider>
+
+              <div class="row">
+                  <div class="col-md-4">
+                      <h6>Birimi</h6>
+                  </div>
+                  <div class="col-md-8">
+                      {{person.unit  }}
+                  </div>
+              </div>
+              <mat-divider></mat-divider>
+              <div class="row"   >
+                <div class="col-md-4">
+                    <h6>Departman</h6>
+                </div>
+                <div class="col-md-8" >
+                    {{person.department.name  }}
+                </div>
+            </div>
+              <mat-divider></mat-divider>
+          </nb-card-body>
+      </nb-card>
+  </div>
+</div>
+
+<nb-card>
+    <nb-card-header>Eğitim Durumu</nb-card-header>
+    <nb-card-body>
+  
+      <div [hidden]="personEducationsSource.data.length === 0" class="table mat-elevation-z8">
+  
+  
+        <div class="table-container">
+  
+          <table mat-table #table [dataSource]="personEducationsSource" class="table" matSort matSortActive="name"
+            matSortDisableClear matSortDirection="asc">
+  
+                <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+              Id
+            </th>
+            <td mat-cell *matCellDef="let row">{{row.id}}</td>
+          </ng-container>
+  
+       <!-- subject Column -->
+       <ng-container matColumnDef="subject">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          Konu
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.education.subject}}</td>
+      </ng-container>
+
+      <!-- management Column -->
+      <ng-container matColumnDef="management">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          Başlanlık
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.education.management}}</td>
+      </ng-container>
+
+      <!-- Yenilenme Süresi -->
+      <ng-container matColumnDef="renewalPeriod">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          Y.Süresi
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.education.renewalPeriod}}</td>
+      </ng-container>
+
+      <!-- educationType Column -->
+      <ng-container matColumnDef="educationType"  >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          Eğitim Tipi
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.education.educationType}}</td>
+      </ng-container>
+
+      <!-- educationPlace Column -->
+      <ng-container matColumnDef="educationPlace">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          Eğitim Yeri
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.education.educationPlace}}</td>
+      </ng-container>
+
+      <!-- educationDate Column -->
+      <ng-container matColumnDef="educationDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          Eğtim Tarihi
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.education.educationDate | date:"dd:MM:yyyy" }}</td>
+      </ng-container>
+      <!-- educationTime Column -->
+      <ng-container matColumnDef="educationTime">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          Eğitim Süresi(saat)
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.education.educationTime}}</td>
+      </ng-container>
+
+          <!-- certification Column -->
+          <ng-container matColumnDef="certification">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+             Sertifika
+            </th>
+            <td mat-cell *matCellDef="let row">{{row.education.certification}}</td>
+          </ng-container>
+  
+            <!-- check Column -->
+         <!--    <ng-container matColumnDef="check">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                Eğitim Yapıldı
+              </th>
+              <td mat-cell *matCellDef="let row">{{row.check}}</td>
+            </ng-container>
+ -->
+
+ <ng-container matColumnDef="check">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+    Eğitim Yapıldı
+  </th>
+  <td mat-cell *matCellDef="let row">	
+    	<mat-select [(value)]="row.check"  >
+    <mat-option [value]=true>Evet</mat-option>
+    <mat-option [value]=false>Hayır</mat-option>
+  </mat-select>
+</td>
+</ng-container>
+
+            		<!-- Fav Column -->
+<!-- 		<ng-container matColumnDef="check">
+			<mat-header-cell *matHeaderCellDef> Eğitim Yapıldı </mat-header-cell>
+			<mat-cell *matCellDef="let element">
+				<mat-form-field floatLabel="never">
+					<mat-select [(value)]="element.check" placeholder="Eğitim Yapıldı">
+						<mat-option value="true">Evet</mat-option>
+						<mat-option value="false">Hayır</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</mat-cell>
+		</ng-container> -->
+
+  
+    <!-- Yenilenme Tarihi  Column -->
+    <ng-container matColumnDef="renewalDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        Yenilenme Tarihi
+      </th>
+      <td mat-cell *matCellDef="let row">{{row.renewalDate}}</td>
+    </ng-container>
+  
+      <!-- isArchived Column -->
+      <ng-container matColumnDef="isArchived">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          Arşivlendi
+        </th>
+        <td mat-cell *matCellDef="let row">{{row.isArchived}}</td>
+      </ng-container>
+
+              <!-- edit Column -->
+              <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef>
+                  düzenle
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  <a mat-button color="accent" [routerLink]="['/personeducation', 'edit', row.id]">
+                    <mat-icon>edit</mat-icon>
+                  </a>
+                </td>
+              </ng-container>
+      
+  
+            <tr mat-header-row *matHeaderRowDef="personEducationDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: personEducationDisplayedColumns;"></tr>
+          </table>
+        </div>
+  
+        <mat-paginator [length]="resultsLength" [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        [showFirstLastButtons]="true" (page)="onPersonEducationPageChanged($event)"
+        ></mat-paginator>
+      </div>
+    </nb-card-body>
+  </nb-card>
+  

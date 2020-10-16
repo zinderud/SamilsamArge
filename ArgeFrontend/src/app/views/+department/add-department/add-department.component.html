@@ -1,0 +1,60 @@
+<div class="loading">
+    <mat-progress-bar value="indeterminate" *ngIf="loading" color="warn"></mat-progress-bar>
+
+</div>
+<br />
+<div class="container">
+  <div class="item">
+
+    <div class="mat-elevation-z8">
+      <form [formGroup]="createForm" #f="ngForm" (ngSubmit)="onCreateDepartment()" class="form">
+        <mat-card class="mes-card">
+          <mat-toolbar>
+            <mat-card-header>
+              <h1 class="mat-h1">Department Ekle</h1>
+            </mat-card-header>
+          </mat-toolbar>
+
+          <br />
+
+          <mat-card-content>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>İsim</mat-label>
+              <input
+                matInput
+                required
+                type="text"
+                placeholder="İsim"
+                formControlName="name"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Code</mat-label>
+              <input
+                matInput
+                required
+                type="text"
+                placeholder="code"
+                formControlName="code"
+              />
+            </mat-form-field>
+
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!createForm.valid" aria-label="create">
+              <mat-icon>add</mat-icon>
+              <span>add</span>
+            </button>
+
+            <button mat-raised-button color="accent" routerLink="/admin/department" routerLinkActive type="button" aria-label="list">
+              <mat-icon>list</mat-icon>
+              <span>listele</span>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

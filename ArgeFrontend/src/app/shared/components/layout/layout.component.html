@@ -1,0 +1,18 @@
+ 
+
+ <ngx-one-column-layout >
+
+ 
+  
+   <nb-menu class="menu-1"   [items]="aMenu" [hidden]="!isAdmin$.value   "></nb-menu>
+
+   <br>
+
+   <nb-menu  class="menu-2"  [items]="mMenu" [hidden]="!(isManager$.value || isAdmin$.value )  "></nb-menu>
+
+  <router-outlet></router-outlet>
+</ngx-one-column-layout>
+
+ 
+ 
+ 

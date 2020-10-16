@@ -1,0 +1,16 @@
+<!-- https://material.angular.io/components/dialog/overview
+ -->
+ <h6 mat-dialog-title>Onaylama Ekranı</h6>
+ <br>
+ <mat-divider></mat-divider>
+ <br>
+<mat-dialog-content>
+    <p mat-dialog-title>{{data.message}} </p>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<br>
+<mat-dialog-actions align="end">
+   <button nbButton status="info" mat-dialog-close>Hayır</button>
+   <button nbButton status="danger"[mat-dialog-close]="true">Evet</button>
+</mat-dialog-actions>
+ 

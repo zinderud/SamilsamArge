@@ -1,4 +1,4 @@
-FROM node:v12.14.1 as node
+FROM node:13.6-alpine as node
 LABEL author="zinderud"
 WORKDIR /app
 COPY package.json package.json
