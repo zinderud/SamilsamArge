@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
@@ -48,7 +48,7 @@ export class AddUserComponent implements OnInit {
       }).subscribe((data: any) => {
 
         if (data.succeeded) {
-          this.snackBar.open(`Kullanıcı   ${this.createForm.value.firstname} oluşturuldu`, 'X', {duration: 3000});
+          this.snackBar.open(`Kullanıcı   ${this.createForm.value.firstname} oluşturuldu`, 'X', { duration: 3000 });
           this.router.navigate(['admin', 'user']);
         }
         this.loading = false;
@@ -56,7 +56,7 @@ export class AddUserComponent implements OnInit {
       }, (error: HttpErrorResponse) => {
         this.loading = false;
         this.createForm.enable();
-        this.snackBar.open(error.error, 'X', {duration: 3000});
+        this.snackBar.open(error.error, 'X', { duration: 3000 });
       });
 
     } else {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 
@@ -37,7 +37,7 @@ export class EditPersonComponent implements OnInit {
       phone: new FormControl('', Validators.required),
       unit: new FormControl('', Validators.required),
       title: new FormControl('', Validators.required),
-      departmentId: new FormControl('', [  Validators.required, Validators.pattern("^[0-9]*$"), ]),
+      departmentId: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"),]),
       isArchived: new FormControl(),
     });
 

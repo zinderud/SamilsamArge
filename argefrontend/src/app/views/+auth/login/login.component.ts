@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '@app/core/services/auth.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 
@@ -13,7 +13,8 @@ import { environment as env } from '@env/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']})
+  styleUrls: ['./login.component.css']
+})
 
 export class LoginComponent implements OnInit {
 
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.loginForm.disable();
 
-      this.httpClient.post(`${env.serverUrl}/Account/SignIn`, {email: this.loginForm.value.email, password: this.loginForm.value.pass})
+      this.httpClient.post(`${env.serverUrl}/Account/SignIn`, { email: this.loginForm.value.email, password: this.loginForm.value.pass })
         .subscribe((data: any) => {
 
           if (data) {
@@ -55,7 +56,7 @@ export class LoginComponent implements OnInit {
           this.loading = false;
           this.loginForm.enable();
           console.log(error);
-          this.snackBar.open(error.error, 'X', {duration: 3000});
+          this.snackBar.open(error.error, 'X', { duration: 3000 });
         });
 
     } else {

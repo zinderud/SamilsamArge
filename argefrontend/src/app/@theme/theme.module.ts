@@ -14,12 +14,12 @@ import {
   NbThemeModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
- 
+
 
 import {
   FooterComponent,
   HeaderComponent,
-  SearchInputComponent, 
+  SearchInputComponent,
 } from './components';
 import {
   CapitalizePipe,
@@ -45,7 +45,7 @@ const NB_MODULES = [
   NbActionsModule,
   NbSearchModule,
   NbSidebarModule,
-  NbContextMenuModule, 
+  NbContextMenuModule,
   NbButtonModule,
   NbSelectModule,
   NbIconModule,
@@ -54,7 +54,7 @@ const NB_MODULES = [
 const COMPONENTS = [
   HeaderComponent,
   FooterComponent,
-  SearchInputComponent, 
+  SearchInputComponent,
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
@@ -73,15 +73,15 @@ const PIPES = [
   declarations: [...COMPONENTS, ...PIPES],
 })
 export class ThemeModule {
-  static forRoot(): ModuleWithProviders {
-    return <ModuleWithProviders>{
+  static forRoot(): ModuleWithProviders<ThemeModule> {
+    return {
       ngModule: ThemeModule,
       providers: [
         ...NbThemeModule.forRoot(
           {
             name: 'default',
           },
-          [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
+          [DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME],
         ).providers,
       ],
     };

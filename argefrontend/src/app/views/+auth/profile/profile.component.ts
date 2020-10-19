@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import {environment as env} from '@env/environment';
+import { environment as env } from '@env/environment';
 import { User } from '@app/core/models/user.model';
 
 
@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
       }
 
     }, (error: HttpErrorResponse) => {
-      this.snackBar.open(error.error, 'X', {duration: 3000});
+      this.snackBar.open(error.error, 'X', { duration: 3000 });
     });
 
   }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Component, ViewChild, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
-import { MatPaginator, MatSort, MatSnackBar, MatDialog } from '@angular/material';
+
 import { merge, of as observableOf, Subject, Subscription } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
@@ -8,6 +8,10 @@ import { environment as env } from '@env/environment';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmComponent } from '@app/shared/components/confirm/confirm.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-list-person',
   templateUrl: './list-person.component.html',

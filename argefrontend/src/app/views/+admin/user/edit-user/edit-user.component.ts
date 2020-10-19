@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 
@@ -11,7 +11,7 @@ import { environment as env } from '@env/environment';
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.css']
 })
-export class EditUserComponent  implements OnInit {
+export class EditUserComponent implements OnInit {
 
   editForm: FormGroup;
   loading = false;
@@ -42,7 +42,7 @@ export class EditUserComponent  implements OnInit {
     const params = new HttpParams()
       .set('Id', this.itemId);
 
-    this.httpClient.get(`${env.serverUrl}/user/getById`, {params}).subscribe((data: any) => {
+    this.httpClient.get(`${env.serverUrl}/user/getById`, { params }).subscribe((data: any) => {
       this.loading = false;
 
       this.editForm.patchValue({
@@ -72,7 +72,7 @@ export class EditUserComponent  implements OnInit {
       this.httpClient.patch(`${env.serverUrl}/user/update`, editValues).subscribe((data: any) => {
 
         if (data.succeeded) {
-          this.snackBar.open(`Kullanıcı  İsim ${this.editForm.value.firstname} düzenlendi`, 'X', {duration: 3000});
+          this.snackBar.open(`Kullanıcı  İsim ${this.editForm.value.firstname} düzenlendi`, 'X', { duration: 3000 });
           this.router.navigate(['admin', 'user']);
         }
         this.loading = false;
@@ -80,7 +80,7 @@ export class EditUserComponent  implements OnInit {
       }, (error: HttpErrorResponse) => {
         this.loading = false;
         this.editForm.enable();
-        this.snackBar.open(error.error, 'X', {duration: 3000});
+        this.snackBar.open(error.error, 'X', { duration: 3000 });
       });
 
     } else {
