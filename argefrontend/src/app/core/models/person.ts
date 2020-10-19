@@ -2,9 +2,9 @@ import { Paginator } from './paginator.model';
 import { OrderBy } from './orderby.model';
 import { BaseFilter } from './base-filter';
 import { HttpParams } from '@angular/common/http';
-import { isNullOrUndefined } from 'util';
+import { TypeHelper } from '../../shared/lib/helpers/typeHelper';
 import { Title } from './title';
-import { Department } from './department.model';
+
 
 
 export class Person {
@@ -36,8 +36,7 @@ export class Person {
     /// <summary> departmentId  </summary>
     public departmentId?: number;
 
-    /// <summary> departman  </summary>
-    public department?: Department;
+
 
 
 
@@ -53,10 +52,10 @@ export class PersonFilter extends BaseFilter {
     public SetHttpParams(hp: HttpParams): HttpParams {
         hp = super.SetHttpParams(hp);
 
-        if (!isNullOrUndefined(this.searchString) && this.searchString !== '') {
+        if (!TypeHelper.isNullOrEmpty(this.searchString) && this.searchString !== '') {
             hp = hp.set('filter.searchString', this.searchString);
         }
-        if (!isNullOrUndefined(this.title.name) && this.title.name !== '') {
+        if (!TypeHelper.isNullOrEmpty(this.title.name) && this.title.name !== '') {
             hp = hp.set('filter.title', this.title.name);
         }
         return hp;

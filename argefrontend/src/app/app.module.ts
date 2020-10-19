@@ -44,21 +44,6 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
-    path: 'educations',
-    loadChildren: './views/+educations/educations.module#EducationsModule',
-    canLoad: [AuthGuard]
-  },
-  {
-    path: 'personeducation',
-    loadChildren: './views/+person-education/personEducation.module#PersonEducationModule',
-    canLoad: [AuthGuard]
-  },
-  {
-    path: 'department',
-    loadChildren: './views/+department/department.module#DepartmentModule',
-    canLoad: [AuthGuard]
-  },
-  {
     path: 'error',
     loadChildren: './views/+error/error.module#ErrorModule',
   },

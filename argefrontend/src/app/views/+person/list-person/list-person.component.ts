@@ -14,9 +14,9 @@ import { ConfirmComponent } from '@app/shared/components/confirm/confirm.compone
   styleUrls: ['./list-person.component.css']
 })
 export class ListPersonComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['id', 'name', 'surname', 'email', 
-  'title',
-   'phone', 'unit', 'edulink','edit', 'delete'];
+  displayedColumns: string[] = ['id', 'name', 'surname', 'email',
+    'title',
+    'phone', 'unit', 'edit', 'delete'];
 
   data: any[] = [];
 
@@ -106,8 +106,7 @@ export class ListPersonComponent implements OnInit, OnDestroy {
   onDelete(item: any): void {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       data: {
-        message: `"${
-          item.name
+        message: `"${item.name
           }" silinecektir. Onaylıyormusunuz?`
       }
     });

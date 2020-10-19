@@ -115,20 +115,16 @@ import { RouterModule } from '@angular/router';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { ConfirmComponent } from './components/confirm/confirm.component';
-import { GuestSelectorComponent } from './components/guest-selector/guest-selector.component';
 import { CustomMatPaginatorIntl } from './lib/mat-paginator-intl';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
- 
 import { MatTableLoadingComponent } from './components/mat-table-loading/mat-table-loading.component';
 import { MatTableNotFoundComponent } from './components/mat-table-not-found/mat-table-not-found.component';
 import { ThemeModule } from '../@theme/theme.module';
 import { CallActionCardComponent } from './components/call-action-card/call-action-card.component';
-import { DepartmentAutocompeteComponent } from './components/autocomplete/department-autocomplate/department-autocompete.component';
-
 
 @NgModule({
   imports: [
-    ThemeModule, 
+    ThemeModule,
     NB_MODULES,
     CommonModule,
     LayoutModule,
@@ -201,28 +197,23 @@ import { DepartmentAutocompeteComponent } from './components/autocomplete/depart
     MatTabsModule,
     MatRadioButton,
     MatRadioModule,
- 
     LayoutComponent,
     ConfirmComponent,
-    GuestSelectorComponent,
     CallActionCardComponent,
-    DepartmentAutocompeteComponent,
   ],
   declarations: [
     CallActionCardComponent,
     LayoutComponent,
     NavMenuComponent,
     ConfirmComponent,
-    GuestSelectorComponent,
     MatTableLoadingComponent,
     MatTableNotFoundComponent,
-    DepartmentAutocompeteComponent,
-    
+
   ],
   providers: [
-    {provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl},
-    {provide: MAT_DATE_LOCALE, useValue: 'tr-TR'},
-    {provide: LOCALE_ID, useValue: 'tr-TR'},
+    { provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl },
+    { provide: MAT_DATE_LOCALE, useValue: 'tr-TR' },
+    { provide: LOCALE_ID, useValue: 'tr-TR' },
     AsyncPipe,
     NbSidebarService
   ],

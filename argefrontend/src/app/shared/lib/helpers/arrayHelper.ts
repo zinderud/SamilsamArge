@@ -5,7 +5,7 @@
 /// </summary>
 export class ArrayHelper {
 
- 
+
 
     public static isNullOrEmpty(array: any[] | undefined | null): boolean {
         return array === undefined || array === null || array.length === 0;
@@ -143,7 +143,7 @@ export class ArrayHelper {
             }
         } else if (array2 === undefined || array2 === null) {
             return 1;
- } else {
+        } else {
             const len1 = array1.length;
             const len2 = array2.length;
 
@@ -151,7 +151,7 @@ export class ArrayHelper {
                 return -1;
             } else if (len2 < len1) {
                 return 1;
- } else {
+            } else {
                 for (let i = 0; i < len1; i++) {
                     const res = TypeHelper.compare(array1[i], array2[i], resultIfNonComparable, caseInsensitiveStringComparison);
 
@@ -253,11 +253,11 @@ export class ArrayHelper {
             return [item];
         } else if (index >= array.length) {
             return array.concat([item]);
- } else if (index <= 0) {
+        } else if (index <= 0) {
             return [item].concat(array);
- } else {
+        } else {
             return array.slice(0, index - 1).concat([item]).concat(array.slice(index, array.length - 1));
- }
+        }
     }
 
     public static remove<T>(array: T[], predicate: (item: T) => boolean): T[] {
@@ -289,9 +289,9 @@ export class ArrayHelper {
             return ArrayHelper.isNullOrEmpty(arr2);
         } else if (ArrayHelper.isNullOrEmpty(arr2)) {
             return false;
- } else if (arr1.length !== arr2.length) {
+        } else if (arr1.length !== arr2.length) {
             return false;
- } else {
+        } else {
             const length = arr1.length;
 
             if (TypeHelper.isNullOrEmpty(predicate)) {
@@ -316,9 +316,9 @@ export class ArrayHelper {
             return new Array(newSize);
         } else if (newSize <= array.length) {
             return array.slice(0, newSize);
- } else {
+        } else {
             return ArrayHelper.clone(array).concat(new Array(newSize - array.length));
- }
+        }
     }
 
     /// <summary>
@@ -336,9 +336,9 @@ export class ArrayHelper {
                 result = new Array(destPos + length);
             } else if (endPos > destArray.length) {
                 result = ArrayHelper.resize(destArray, endPos);
- } else {
+            } else {
                 result = ArrayHelper.clone(destArray);
- }
+            }
 
             while (destPos < endPos) {
                 result[destPos++] = srcArray[srcPos++];
@@ -529,7 +529,7 @@ export class ArrayHelper {
         return max;
     }
 
-    public static whereMin<T, T2>(array: T[], select: (item: T) => T2, caseInsensitiveStringComparison ?: boolean | undefined | null): T[] {
+    public static whereMin<T, T2>(array: T[], select: (item: T) => T2, caseInsensitiveStringComparison?: boolean | undefined | null): T[] {
         if (ArrayHelper.isNullOrEmpty(array)) {
             return [];
         }
@@ -545,4 +545,5 @@ export class ArrayHelper {
 
         const max = ArrayHelper.maxSelect(array, select);
         return array.filter(t => TypeHelper.compare(select(t), max, -1, caseInsensitiveStringComparison) === 0);
-    }}
+    }
+}
