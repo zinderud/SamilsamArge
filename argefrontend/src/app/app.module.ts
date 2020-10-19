@@ -26,26 +26,26 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: './views/+auth/auth.module#AuthModule',
+    loadChildren: () => import('./views/+auth/auth.module').then(m => m.AuthModule),
   },
   {
     path: 'dashboard',
-    loadChildren: './views/+dashboard/dashboard.module#DashboardModule',
+    loadChildren: () => import('./views/+dashboard/dashboard.module').then(m => m.DashboardModule),
     canLoad: [AuthGuard]
   },
   {
     path: 'admin',
-    loadChildren: './views/+admin/admin.module#AdminModule',
+    loadChildren: () => import('./views/+admin/admin.module').then(m => m.AdminModule),
     canLoad: [AuthGuard]
   },
   {
     path: 'persons',
-    loadChildren: './views/+person/person.module#PersonModule',
+    loadChildren: () => import('./views/+person/person.module').then(m => m.PersonModule),
     canLoad: [AuthGuard]
   },
   {
     path: 'error',
-    loadChildren: './views/+error/error.module#ErrorModule',
+    loadChildren: () => import('./views/+error/error.module').then(m => m.ErrorModule),
   },
   { path: '**', redirectTo: 'error/unauthorized' }
 ];

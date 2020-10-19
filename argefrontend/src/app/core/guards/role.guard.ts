@@ -3,8 +3,8 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs';
 
 import { AuthService } from '@app/core/services/auth.service';
-import { MatSnackBar } from '@angular/material';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +14,7 @@ export class RoleGuard implements CanActivate {
     private authService: AuthService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
     // this will be passed from the route config
@@ -25,14 +25,14 @@ export class RoleGuard implements CanActivate {
     if (!roles) {
       this.authService.logout();
       this.router.navigate(['auth/login']);
-      this.snackBar.open('Rol bulunamadı', 'X', {duration: 3000});
+      this.snackBar.open('Rol bulunamadı', 'X', { duration: 3000 });
       return false;
     }
 
     if (!this.authService.authenticated() || (!expectedRole.some(role => roles.some(p => p === role)))) {
       this.authService.logout();
       this.router.navigate(['auth/login']);
-      this.snackBar.open('İznin yok', 'X', {duration: 3000});
+      this.snackBar.open('İznin yok', 'X', { duration: 3000 });
       return false;
     }
     return true;
