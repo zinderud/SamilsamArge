@@ -7,4 +7,4 @@
 docker run -it --rm -p 127.0.0.1:8080:8080 -p 127.0.0.1:25482:25482  --link postgres:postgres  taivokasper/omnidb 
 
 
-postgresql		postgres	5432	backend	postgres		false		22			
+postgresql		postgres	5432	argebackend	postgres		false		22			
