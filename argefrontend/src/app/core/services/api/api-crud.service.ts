@@ -1,12 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { isNullOrUndefined } from 'util';
+
 import { map, catchError } from 'rxjs/operators';
 import { IApiListService, ListAndCount, IFilter, ApiListService } from './api-list.service';
 import { ApiBaseService } from './api-base.service';
+import { TypeHelper } from '@app/shared/lib/helpers/typeHelper';
 
 export class ApiCrudService<T extends ObjectWithID, TF extends IFilter>
-                extends ApiBaseService implements IApiListService<T, TF> {
+  extends ApiBaseService implements IApiListService<T, TF> {
   private apiList: ApiListService<T, TF>;
 
   constructor(http: HttpClient) {
@@ -37,17 +38,17 @@ export class ApiCrudService<T extends ObjectWithID, TF extends IFilter>
 
   public Count(f: TF): Observable<number> {
     let hp = new HttpParams();
-    if (!isNullOrUndefined(f)) {
+    if (!TypeHelper.isNullOrEmpty(f)) {
       hp = f.SetHttpParams(hp);
     }
-    return this.http.get<any>(`${this.url}/count`, {params: hp})
-    .pipe(
-      map( res => {
-        this.he(res);
-        return Number(res.value);
-      }),
-      catchError( (e) => this.he(e) ),
-    );
+    return this.http.get<any>(`${this.url}/count`, { params: hp })
+      .pipe(
+        map(res => {
+          this.he(res);
+          return Number(res.value);
+        }),
+        catchError((e) => this.he(e)),
+      );
   }
 }
 

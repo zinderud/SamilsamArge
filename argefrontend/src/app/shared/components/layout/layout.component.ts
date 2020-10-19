@@ -4,11 +4,12 @@ import { Menu } from '@app/core/models/menu.model';
 import { environment as env } from '@env/environment';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AuthService } from '@app/core/services/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
 import { aMenu, mMenu } from './menu';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
