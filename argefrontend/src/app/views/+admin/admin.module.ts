@@ -21,12 +21,10 @@ import { NgxExcelTemplateModule } from 'ngx-excel-template';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from '@app/core/interceptors/api.interceptor';
-
-import { QueryBuilderModule } from 'src/app/lib/query-builder/query-builder.module';
 import { UserResolver } from './resolvers/user.resolver';
 import { CoreModule } from '@app/core/core.module';
 import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
- 
+
 import { EducationResolver } from './resolvers/educations.resolver';
 
 
@@ -35,7 +33,7 @@ const routes: Routes = [
   {
     path: 'user',
     component: ListUserComponent,
-    data: { title: 'Kullanıcı Listele', expectedRole: ['Admin'] },
+    data: { title: 'Kullanıcı Listele', expectedRole: ['Admin', 'Manager'] },
     canActivate: [RoleGuard],
     resolve: {
       data: UserResolver
@@ -58,19 +56,18 @@ const routes: Routes = [
     component: EditUserComponent,
     data: { title: 'Kullanıcı Düzenle', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
-  } 
+  }
 
 ];
 
 @NgModule({
   imports: [
-   
+
     CommonModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    QueryBuilderModule,
     NgxExcelTemplateModule.forRoot(),
     RouterModule.forChild(routes),
     SharedDirectivesModule
@@ -81,7 +78,7 @@ const routes: Routes = [
     AddUserComponent,
     EditUserComponent,
     UserAddRoleComponent,
- 
+
 
   ],
   providers: [
@@ -89,7 +86,7 @@ const routes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
       multi: true
-    }, 
+    },
     UserResolver
 
   ]

@@ -139,7 +139,7 @@ namespace argebackend.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(List<RoleViewModel>), 200)]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> List(RoleFilterViewModel model)
 
         {

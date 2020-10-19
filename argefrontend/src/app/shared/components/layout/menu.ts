@@ -18,16 +18,6 @@ export const aMenu: NbMenuItem[] = [
         title: 'Personel Yönetimi',
         link: '/persons/',
         icon: 'eye-outline'
-    },
-    {
-        title: 'Eğitim Yönetimi',
-        link: '/educations/',
-        icon: 'eye-outline'
-    },
-    {
-        title: 'Departman Yönetimi',
-        link: '/department/',
-        icon: 'eye-outline'
     }
 
 
