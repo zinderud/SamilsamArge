@@ -17,7 +17,7 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./list-user.component.css']
 })
 export class ListUserComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['id', 'firstname', 'lastname', 'email', 'role', 'edit', 'delete'];
+  displayedColumns: string[] = ['id', 'firstname', 'lastname', 'Tc', 'email', 'role', 'edit', 'delete'];
 
   data: any[] = [];
 

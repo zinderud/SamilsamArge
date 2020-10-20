@@ -31,6 +31,7 @@ export class EditUserComponent implements OnInit {
     this.editForm = this.formBuilder.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
+      Tc: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
       email: ['', [Validators.required, Validators.email]],
       password: [''],
       repeat_password: ['']
@@ -48,6 +49,7 @@ export class EditUserComponent implements OnInit {
       this.editForm.patchValue({
         firstname: data.firstname,
         lastname: data.lastname,
+        Tc: data.tc,
         email: data.email
       });
 
@@ -65,6 +67,7 @@ export class EditUserComponent implements OnInit {
         Id: this.itemId,
         firstname: this.editForm.value.firstname,
         lastname: this.editForm.value.lastname,
+        Tc: this.editForm.value.Tc,
         email: this.editForm.value.email,
         password: this.editForm.value.password
       };

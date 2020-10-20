@@ -12,6 +12,8 @@ namespace argebackend.ViewModels
         [EmailAddress]
         public string Email { get; set; }
         [Required]
+        public string Tc { get; set; }
+        [Required]
         public string Password { get; set; }
 
     }

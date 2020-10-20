@@ -28,6 +28,7 @@ export class AddUserComponent implements OnInit {
     this.createForm = this.formBuilder.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
+      Tc: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeat_password: ['', [Validators.required, Validators.minLength(6)]]
@@ -43,6 +44,7 @@ export class AddUserComponent implements OnInit {
       this.httpClient.post(`${env.serverUrl}/user/create`, {
         firstname: this.createForm.value.firstname,
         lastname: this.createForm.value.lastname,
+        Tc: this.createForm.value.Tc,
         email: this.createForm.value.email,
         password: this.createForm.value.password,
       }).subscribe((data: any) => {

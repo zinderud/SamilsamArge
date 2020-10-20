@@ -47,7 +47,8 @@ namespace argebackend.Controllers
                 Email = model.Email,
                 UserName = model.Email,
                 Firstname = model.Firstname,
-                Lastname = model.Lastname
+                Lastname = model.Lastname,
+                Tc = model.Tc
             };
 
             var result = await _userManager.CreateAsync(newUser, model.Password);
@@ -77,6 +78,7 @@ namespace argebackend.Controllers
             user.Email = model.Email;
             user.Firstname = model.Firstname;
             user.Lastname = model.Lastname;
+            user.Tc = model.Tc;
 
             if (model.Password != "")
             {
