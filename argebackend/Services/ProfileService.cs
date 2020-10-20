@@ -33,6 +33,7 @@ namespace argebackend.Services
                     UserName = user.UserName,
                     Firstname = user.Firstname,
                     Lastname = user.Lastname,
+                    Tc = user.Tc,
                     Roles = roles.ToList()
                 };
 

@@ -29,7 +29,8 @@ namespace argebackend.Services
             {
                 userIQ = userIQ.Where(s => s.Firstname.Contains(searchString) ||
                          s.Lastname.Contains(searchString) ||
-                         s.Email.Contains(searchString)
+                         s.Email.Contains(searchString) ||
+                         s.Tc.Contains(searchString)
                 );
             }
 
@@ -52,6 +53,9 @@ namespace argebackend.Services
                     break;
                 case "email_asc":
                     userIQ = userIQ.OrderBy(s => s.Email);
+                    break;
+                case "Tc":
+                    userIQ = userIQ.OrderBy(s => s.Tc);
                     break;
                 case "id_desc":
                     userIQ = userIQ.OrderByDescending(s => s.Id);
@@ -78,6 +82,7 @@ namespace argebackend.Services
                     Id = x.Id,
                     Firstname = x.Firstname,
                     Lastname = x.Lastname,
+                    Tc = x.Tc,
                     Email = x.Email
                 }).ToListAsync();
 

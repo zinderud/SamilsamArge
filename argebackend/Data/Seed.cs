@@ -39,7 +39,8 @@ namespace argebackend.Data
                 UserName = Configuration["SuperUser:username"],
                 Email = Configuration["SuperUser:email"],
                 Firstname = Configuration["SuperUser:firstname"],
-                Lastname = Configuration["SuperUser:lastname"]
+                Lastname = Configuration["SuperUser:lastname"],
+                Tc = Configuration["SuperUser:lastname"]
             };
 
             string userPassword = Configuration["SuperUser:password"];
