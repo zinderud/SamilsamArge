@@ -148,3 +148,103 @@ ORDER BY t."Id"
 [10/19/2020 10:29:49] INFO [OmniDB_app.Init:253] Starting OmniDB server...
 [10/19/2020 10:29:49] INFO [OmniDB_app.Init:255] Checking port availability...
 [10/19/2020 10:29:49] INFO [OmniDB_app.Init:289] Starting server OmniDB 2.17.0 at 0.0.0.0:8080.
+[10/20/2020 07:43:41] INFO [OmniDB_app.Init:318] Starting OmniDB websocket...
+[10/20/2020 07:43:41] INFO [OmniDB_app.Init:320] Checking port availability...
+[10/20/2020 07:43:41] INFO [OmniDB_app.Init:342] Starting websocket server at port 25482.
+[10/20/2020 07:43:41] INFO [OmniDB_app.QueryServer:656] *** Starting OmniDB ***
+[10/20/2020 07:43:41] INFO [OmniDB_app.Init:253] Starting OmniDB server...
+[10/20/2020 07:43:41] INFO [OmniDB_app.Init:255] Checking port availability...
+[10/20/2020 07:43:41] INFO [OmniDB_app.Init:289] Starting server OmniDB 2.17.0 at 0.0.0.0:8080.
+[10/20/2020 07:44:02] INFO [OmniDB_app.views.login:204] User "admin" logged in.
+[10/20/2020 07:45:10] INFO [OmniDB_app.QueryServer:719] *** SQL Command ***
+USER: admin,
+START: 2020-10-20 07:45:10.174864,
+END: 2020-10-20 07:45:10.273752,
+DURATION: 98.888 ms,
+STATUS: success,
+COMMAND: SELECT t."Id"
+     , t."CreatorId"
+     , t."ModifierId"
+     , t."CreateDate"
+     , t."ModifyDate"
+     , t."HVersion"
+     , t."KpsId"
+     , t."KpsUserName"
+     , t."KpsPassword"
+     , t."QueristTc"
+     , t."stsUrl"
+     , t."kurumKodu"
+     , t."uygulamaKodu"
+     , t."kpsUrl"
+     , t."UserId"
+FROM public."KpsSettings" t
+ORDER BY t."Id"
+[10/20/2020 07:45:13] INFO [OmniDB_app.QueryServer:719] *** SQL Command ***
+USER: admin,
+START: 2020-10-20 07:45:13.647658,
+END: 2020-10-20 07:45:13.667944,
+DURATION: 20.286 ms,
+STATUS: success,
+COMMAND: SELECT t."Id"
+     , t."CreatorId"
+     , t."ModifierId"
+     , t."CreateDate"
+     , t."ModifyDate"
+     , t."HVersion"
+     , t."KpsId"
+     , t."KpsUserName"
+     , t."KpsPassword"
+     , t."QueristTc"
+     , t."stsUrl"
+     , t."kurumKodu"
+     , t."uygulamaKodu"
+     , t."kpsUrl"
+     , t."UserId"
+FROM public."KpsSettings" t
+ORDER BY t."Id"
+[10/20/2020 07:45:25] INFO [OmniDB_app.QueryServer:719] *** SQL Command ***
+USER: admin,
+START: 2020-10-20 07:45:25.689363,
+END: 2020-10-20 07:45:25.783926,
+DURATION: 94.563 ms,
+STATUS: success,
+COMMAND: SELECT t."Id"
+     , t."CreatorId"
+     , t."ModifierId"
+     , t."CreateDate"
+     , t."ModifyDate"
+     , t."HVersion"
+     , t."KpsId"
+     , t."KpsUserName"
+     , t."KpsPassword"
+     , t."QueristTc"
+     , t."stsUrl"
+     , t."kurumKodu"
+     , t."uygulamaKodu"
+     , t."kpsUrl"
+     , t."UserId"
+FROM public."KpsSettings" t
+ORDER BY t."Id"
+[10/20/2020 07:45:35] INFO [OmniDB_app.QueryServer:719] *** SQL Command ***
+USER: admin,
+START: 2020-10-20 07:45:35.641316,
+END: 2020-10-20 07:45:35.672940,
+DURATION: 31.624 ms,
+STATUS: success,
+COMMAND: SELECT t."Id"
+     , t."CreatorId"
+     , t."ModifierId"
+     , t."CreateDate"
+     , t."ModifyDate"
+     , t."HVersion"
+     , t."KpsId"
+     , t."KpsUserName"
+     , t."KpsPassword"
+     , t."QueristTc"
+     , t."stsUrl"
+     , t."kurumKodu"
+     , t."uygulamaKodu"
+     , t."kpsUrl"
+     , t."UserId"
+FROM public."KpsSettings" t
+ORDER BY t."Id"
