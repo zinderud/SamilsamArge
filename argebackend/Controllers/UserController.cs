@@ -15,6 +15,7 @@ namespace argebackend.Controllers
     [ProducesResponseType(typeof(List<string>), 400)]
     public class UserController : BaseController
     {
+
         private readonly IUserService _userService;
         private readonly ILogger<UserController> _logger;
 
@@ -32,16 +33,19 @@ namespace argebackend.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(string), 200)]
-        [Authorize(Roles = "Admin")]
+        /*   [Authorize(Roles = "Admin")] */
         public async Task<IActionResult> Create([FromBody] UserViewModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var user = await _userManager.FindByEmailAsync(model.Email);
+            var userTC = await _userManager.FindByEmailAsync(model.Tc);
 
             if (user != null)
                 return BadRequest("Hata zaten bu e-postaya sahip bir kullanıcı var.");
+            if (userTC != null)
+                return BadRequest("Hata zaten bu Kimlik noya  sahip bir kullanıcı var.");
 
             var newUser = new ApplicationUser
             {
@@ -55,6 +59,13 @@ namespace argebackend.Controllers
 
             var result = await _userManager.CreateAsync(newUser, model.Password);
 
+            if (result.Succeeded)
+            {
+                var resultrole = await _userManager.AddToRolesAsync(newUser, new List<string>() { "User" });
+                if (!resultrole.Succeeded)
+                    return BadRequest(result.Errors);
+            }
+
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
 
@@ -63,16 +74,19 @@ namespace argebackend.Controllers
 
         [HttpPatch]
         [ProducesResponseType(typeof(string), 200)]
-        [Authorize(Roles = "Admin")]
+        /*  [Authorize(Roles = "Admin")] */
         public async Task<IActionResult> Update([FromBody] UserUpdateViewModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var user = await _userManager.FindByIdAsync(model.Id.ToString());
+            var userTC = await _userManager.FindByEmailAsync(model.Tc);
 
             if (user != null && user.Id != model.Id)
                 return BadRequest("Bu kimlige ait bir kullanıcı mevcut");
+            if (userTC != null)
+                return BadRequest("Hata zaten bu Kimlik noya  sahip bir kullanıcı var.");
 
             if (user == null)
                 return BadRequest("Rol bulunamadı");
@@ -90,8 +104,11 @@ namespace argebackend.Controllers
 
             var result = await _userManager.UpdateAsync(user);
 
+
+
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
+
 
             return Ok(result);
         }

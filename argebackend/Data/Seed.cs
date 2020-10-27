@@ -33,6 +33,8 @@ namespace argebackend.Data
                 }
             }
 
+            #region admin   
+
             // Creating a super user who could maintain the web app
             var poweruser = new ApplicationUser
             {
@@ -40,7 +42,7 @@ namespace argebackend.Data
                 Email = Configuration["SuperUser:email"],
                 Firstname = Configuration["SuperUser:firstname"],
                 Lastname = Configuration["SuperUser:lastname"],
-                Tc = Configuration["SuperUser:lastname"]
+                Tc = Configuration["SuperUser:TC"]
             };
 
             string userPassword = Configuration["SuperUser:password"];
@@ -57,6 +59,62 @@ namespace argebackend.Data
                 }
             }
 
+            #endregion
+            #region manager   
+
+            // Creating a manager who could maintain the web app
+            var poweruser1 = new ApplicationUser
+            {
+                UserName = Configuration["Manager:username"],
+                Email = Configuration["Manager:email"],
+                Firstname = Configuration["Manager:firstname"],
+                Lastname = Configuration["Manager:lastname"],
+                Tc = Configuration["Manager:TC"]
+            };
+
+            string userPassword1 = Configuration["Manager:password"];
+
+            var user1 = await UserManager.FindByEmailAsync(Configuration["Manager:email"]);
+
+            if (user1 == null)
+            {
+                var createPowerUser = await UserManager.CreateAsync(poweruser1, userPassword1);
+                if (createPowerUser.Succeeded)
+                {
+                    // Here we assign the new user the "Manager" role 
+                    await UserManager.AddToRoleAsync(poweruser1, "Manager");
+                }
+            }
+
+            #endregion
+
+            #region User   
+
+            // Creating a   user who could maintain the web app
+            var poweruser2 = new ApplicationUser
+            {
+                UserName = Configuration["User:username"],
+                Email = Configuration["User:email"],
+                Firstname = Configuration["User:firstname"],
+                Lastname = Configuration["User:lastname"],
+                Tc = Configuration["User:TC"]
+            };
+
+            string userPassword2 = Configuration["User:password"];
+
+            var user2 = await UserManager.FindByEmailAsync(Configuration["User:email"]);
+
+            if (user2 == null)
+            {
+                var createPowerUser = await UserManager.CreateAsync(poweruser2, userPassword2);
+                if (createPowerUser.Succeeded)
+                {
+                    // Here we assign the new user the "User" role 
+                    await UserManager.AddToRoleAsync(poweruser2, "User");
+                }
+            }
+
+            #endregion
 
         }
 
