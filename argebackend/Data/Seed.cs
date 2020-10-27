@@ -18,7 +18,7 @@ namespace argebackend.Data
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-            string[] roleNames = { "Admin", "Manager" };
+            string[] roleNames = { "Admin", "Manager", "User" };
             IdentityResult roleResult;
 
             foreach (var roleName in roleNames)

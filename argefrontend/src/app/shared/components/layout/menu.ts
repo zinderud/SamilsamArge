@@ -35,4 +35,14 @@ export const mMenu: NbMenuItem[] = [
 
 ];
 
+export const uMenu: NbMenuItem[] = [
+
+    {
+        title: 'user gör',
+        link: '/admin/user/',
+        icon: 'eye-outline'
+    }
+
+];
+
 

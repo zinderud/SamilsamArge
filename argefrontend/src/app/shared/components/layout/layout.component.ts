@@ -8,7 +8,7 @@ import { AuthService } from '@app/core/services/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
-import { aMenu, mMenu } from './menu';
+import { aMenu, mMenu, uMenu } from './menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-layout',
@@ -20,8 +20,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
   username$: Observable<string>;
   public isAdmin$ = new BehaviorSubject(false);
   public isManager$ = new BehaviorSubject(false);
+  public isUser$ = new BehaviorSubject(false);
   aMenu = aMenu;
   mMenu = mMenu;
+  umenu = uMenu;
   subscription: Subscription;
 
 
@@ -30,6 +32,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   dashboard: Menu;
   adminMenu: Menu;
   managerMenu: Menu;
+  userMenu: Menu;
 
 
   envName = env.envName;
@@ -66,6 +69,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
           this.isManager$.next(true);
 
         }
+        if (data.some(x => x === 'User')) {
+          this.isUser$.next(true);
+
+        }
       } else {
         if (data === 'Admin') {
           this.isAdmin$.next(true);
@@ -73,6 +80,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
         }
         if (data === 'Manager') {
           this.isManager$.next(true);
+
+        }
+        if (data === 'User') {
+          this.isUser$.next(true);
 
         }
       }

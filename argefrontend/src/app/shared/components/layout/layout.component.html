@@ -7,6 +7,7 @@
   <br>
 
   <nb-menu class="menu-2" [items]="mMenu" [hidden]="!(isManager$.value  )  "></nb-menu>
+  <nb-menu class="menu-2" [items]="umenu" [hidden]="!(isUser$.value  )  "></nb-menu>
 
   <router-outlet></router-outlet>
 </ngx-one-column-layout>
