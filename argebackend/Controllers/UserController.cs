@@ -39,6 +39,7 @@ namespace argebackend.Controllers
                 return BadRequest(ModelState);
 
             var user = await _userManager.FindByEmailAsync(model.Email);
+
             if (user != null)
                 return BadRequest("Hata zaten bu e-postaya sahip bir kullanıcı var.");
 
@@ -49,6 +50,7 @@ namespace argebackend.Controllers
                 Firstname = model.Firstname,
                 Lastname = model.Lastname,
                 Tc = model.Tc
+
             };
 
             var result = await _userManager.CreateAsync(newUser, model.Password);

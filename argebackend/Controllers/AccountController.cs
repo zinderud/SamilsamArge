@@ -68,7 +68,8 @@ namespace argebackend.Controllers
                 Email = model.Email,
                 Firstname = model.Firstname,
                 Lastname = model.Lastname,
-                Tc = model.Tc
+                Tc = model.Tc,
+
             };
 
             var result = await _userManager.CreateAsync(newUser, model.Password);
