@@ -96,8 +96,8 @@ namespace argebackend
                     };
                 });
 
-            services.AddHangfire(config =>
-                        config.UsePostgreSqlStorage(Configuration["Data:DbContext:ConnectionString"]));
+            /*        services.AddHangfire(config =>
+                               config.UsePostgreSqlStorage(Configuration["Data:DbContext:ConnectionString"])); */
 
             /*            services.AddSwaggerGen(c =>
                        {
@@ -143,8 +143,8 @@ namespace argebackend
                endpoints.MapControllers();
 
            });
-            app.UseHangfireServer();
-            app.UseHangfireDashboard();
+            /*      app.UseHangfireServer();
+                 app.UseHangfireDashboard(); */
 
         }
 

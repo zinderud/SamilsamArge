@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@app/shared/shared.module';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
     component: RegisterComponent,
     data: { title: 'Kayıt' }
   },
+  {
+    path: 'forgot',
+    component: ForgotPasswordComponent,
+    data: { title: 'Sifirlama' }
+  },
 ];
 
 @NgModule({
@@ -41,6 +47,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LoginComponent, ProfileComponent, RegisterComponent]
+  declarations: [LoginComponent, ProfileComponent, RegisterComponent, ForgotPasswordComponent]
 })
 export class AuthModule { }

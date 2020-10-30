@@ -232,31 +232,33 @@ namespace argebackend.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        [ProducesResponseType(typeof(string), 200)]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
 
-                if (user != null && await _userManager.IsEmailConfirmedAsync(user))
+                if (user != null)
                 {
                     var token = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-                    var passwordResetLink = Url.Action("ResetPassword", "Account", new { email = model.Email, token = token }, Request.Scheme);
+                    // var passwordResetLink = Url.Action("ResetPassword", "Account", new { email = model.Email, token = token }, Request.Scheme);
+                    string passwordResetLink = Url.Action("ConfirmEmail", "Account", new { userid = user.Id, token = token });
 
-                    _logger.Log(LogLevel.Warning, passwordResetLink);
+                    /*   _logger.Log(LogLevel.Warning, passwordResetLink); */
+                    /* 
+                                        BackgroundJob.Enqueue<IEmailService>(x => x.SendEmailAsync(user.UserName, user.Email, "Şifre Sıfırlama",
+                                           $"<a href=\"{passwordResetLink}\">Şifreyi sıfırlamak için linke tıklayın.</a>")); */
 
-                    BackgroundJob.Enqueue<IEmailService>(x => x.SendEmailAsync(user.UserName, user.Email, "Şifre Sıfırlama",
-                       $"<a href=\"{passwordResetLink}\">Şifreyi sıfırlamak için linke tıklayın.</a>"));
-
-
-                    return View("ForgotPasswordConfirmation");
+                    Console.WriteLine("token" + token + "passwordResetLink" + passwordResetLink);
+                    return Ok(passwordResetLink + " res" + "token=" + token); ;
                 }
 
-                return View("ForgotPasswordConfirmation");
+                return Ok("Şifre Sıfırlama");
             }
 
-            return View(model);
+            return Ok("Şifre Sıfırlama 1");
         }
 
 
