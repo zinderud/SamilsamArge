@@ -8,6 +8,7 @@ using argebackend.Models;
 using argebackend.Services.Interfaces;
 using argebackend.ViewModels;
 using Hangfire;
+using System;
 
 namespace argebackend.Controllers
 {
@@ -21,14 +22,16 @@ namespace argebackend.Controllers
         private readonly ILogger<UserController> _logger;
 
         private readonly UserManager<ApplicationUser> _userManager;
-
+        private readonly SignInManager<ApplicationUser> _signInManager;
         public UserController(UserManager<ApplicationUser> userManager,
                               IUserService userService,
+                               SignInManager<ApplicationUser> signInManager,
                               ILogger<UserController> logger)
             : base(userManager)
         {
             this._userService = userService;
             this._userManager = userManager;
+            this._signInManager = signInManager;
             this._logger = logger;
         }
 
@@ -243,8 +246,9 @@ namespace argebackend.Controllers
 
                     _logger.Log(LogLevel.Warning, passwordResetLink);
 
-                    BackgroundJob.Enqueue<IEmailService>(x => x.SendEmailAsync(user.UserName, user.Email, "Resetting password",
-                        $"<a href=\"{passwordResetLink}\">Click this text and reset your password.</a>"));
+                    BackgroundJob.Enqueue<IEmailService>(x => x.SendEmailAsync(user.UserName, user.Email, "Şifre Sıfırlama",
+                       $"<a href=\"{passwordResetLink}\">Şifreyi sıfırlamak için linke tıklayın.</a>"));
+
 
                     return View("ForgotPasswordConfirmation");
                 }
@@ -255,6 +259,75 @@ namespace argebackend.Controllers
             return View(model);
         }
 
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (user != null)
+                {
+                    var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+
+                    if (result.Succeeded)
+                    {
+                        if (await _userManager.IsLockedOutAsync(user))
+                        {
+                            await _userManager.SetLockoutEndDateAsync(user, DateTimeOffset.UtcNow);
+                        }
+
+                        return View("ResetPasswordConfirmation");
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+
+                    return View(model);
+                }
+
+                return View("ResetPasswordConfirmation");
+            }
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+
+                if (user == null)
+                {
+                    return RedirectToAction("Login");
+                }
+
+                var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+
+                if (result.Succeeded)
+                {
+                    await _signInManager.RefreshSignInAsync(user);
+                    return View("ChangePasswordConfirmation");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View();
+            }
+
+            return View(model);
+        }
 
     }
 
