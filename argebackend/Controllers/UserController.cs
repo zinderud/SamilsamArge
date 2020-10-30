@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using argebackend.Models;
 using argebackend.Services.Interfaces;
 using argebackend.ViewModels;
+using Hangfire;
 
 namespace argebackend.Controllers
 {
@@ -140,6 +141,8 @@ namespace argebackend.Controllers
 
             var result = await _userManager.FindByIdAsync(model.Id.ToString());
 
+
+
             return Ok(result);
         }
 
@@ -216,11 +219,43 @@ namespace argebackend.Controllers
 
             var result = await _userManager.AddToRolesAsync(user, model.roles);
 
+
             if (!result.Succeeded)
                 return BadRequest("Rol ekleme hatası");
 
             return Ok(result);
 
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (user != null && await _userManager.IsEmailConfirmedAsync(user))
+                {
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                    var passwordResetLink = Url.Action("ResetPassword", "Account", new { email = model.Email, token = token }, Request.Scheme);
+
+                    _logger.Log(LogLevel.Warning, passwordResetLink);
+
+                    BackgroundJob.Enqueue<IEmailService>(x => x.SendEmailAsync(user.UserName, user.Email, "Resetting password",
+                        $"<a href=\"{passwordResetLink}\">Click this text and reset your password.</a>"));
+
+                    return View("ForgotPasswordConfirmation");
+                }
+
+                return View("ForgotPasswordConfirmation");
+            }
+
+            return View(model);
+        }
+
+
     }
+
 }

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Hangfire;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Text;
 using Microsoft.AspNetCore.Http;
@@ -19,6 +19,7 @@ using Microsoft.OpenApi.Models;
 using NLog;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using Hangfire.PostgreSql;
 
 namespace argebackend
 {
@@ -95,7 +96,8 @@ namespace argebackend
                     };
                 });
 
-
+            services.AddHangfire(config =>
+                        config.UsePostgreSqlStorage(Configuration["Data:DbContext:ConnectionString"]));
 
             /*            services.AddSwaggerGen(c =>
                        {
@@ -141,13 +143,16 @@ namespace argebackend
                endpoints.MapControllers();
 
            });
+            app.UseHangfireServer();
+            app.UseHangfireDashboard();
 
         }
 
 
         private void ConfigureCustomServices(IServiceCollection services)
         {
-
+            services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+            services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IProfileService, ProfileService>();
             services.AddTransient<IFileService, FileService>();
 
