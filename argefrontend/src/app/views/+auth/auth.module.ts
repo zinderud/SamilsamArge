@@ -7,23 +7,29 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@app/shared/shared.module';
 import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
-    data: {title: 'Giriş Ekranı'}
+    data: { title: 'Giriş Ekranı' }
   },
   {
     path: 'login',
     component: LoginComponent,
-    data: {title: 'Giriş Ekranı'}
+    data: { title: 'Giriş Ekranı' }
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    data: {title: 'Profil'},
+    data: { title: 'Profil' },
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    data: { title: 'Kayıt' }
   },
 ];
 
@@ -35,6 +41,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LoginComponent, ProfileComponent]
+  declarations: [LoginComponent, ProfileComponent, RegisterComponent]
 })
 export class AuthModule { }
