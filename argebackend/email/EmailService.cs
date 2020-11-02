@@ -1,6 +1,7 @@
 ﻿
 using MailKit.Net.Smtp;
 using MimeKit;
+using System;
 using System.Threading.Tasks;
 
 namespace argebackend
@@ -29,7 +30,8 @@ namespace argebackend
 
             email.Body = body.ToMessageBody();
 
-
+            /*    var yaz = _emailConfiguration.SenderName + " " + _emailConfiguration.SenderEmail + email.Subject + email.Body.ToString();
+               Console.WriteLine(yaz); */
             using (var client = new SmtpClient())
             {
                 client.ServerCertificateValidationCallback =
@@ -37,7 +39,7 @@ namespace argebackend
 
                 // Enabling access for less secure apps, 
                 // which means the client/app doesn’t use OAuth 2.0
-                client.AuthenticationMechanisms.Remove("XOAUTH2");
+                /*      client.AuthenticationMechanisms.Remove("XOAUTH2"); */
 
                 await client.ConnectAsync(_emailConfiguration.Host, _emailConfiguration.Port, false);
 

@@ -23,8 +23,10 @@ namespace argebackend.Controllers
 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IEmailService _emailService;
         public UserController(UserManager<ApplicationUser> userManager,
                               IUserService userService,
+                              IEmailService emailService,
                                SignInManager<ApplicationUser> signInManager,
                               ILogger<UserController> logger)
             : base(userManager)
@@ -33,6 +35,7 @@ namespace argebackend.Controllers
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._logger = logger;
+            this._emailService = emailService;
         }
 
         [HttpPost]
@@ -247,10 +250,13 @@ namespace argebackend.Controllers
                     string passwordResetLink = Url.Action("ConfirmEmail", "Account", new { userid = user.Id, token = token });
 
                     /*   _logger.Log(LogLevel.Warning, passwordResetLink); */
-                    /* 
-                                        BackgroundJob.Enqueue<IEmailService>(x => x.SendEmailAsync(user.UserName, user.Email, "Şifre Sıfırlama",
-                                           $"<a href=\"{passwordResetLink}\">Şifreyi sıfırlamak için linke tıklayın.</a>")); */
 
+                    /*    BackgroundJob.Enqueue<IEmailService>(x => x.SendEmailAsync(user.UserName, user.Email, "Şifre Sıfırlama",
+                          $"<a href=\"{passwordResetLink}\">Şifreyi sıfırlamak için linke tıklayın.</a>"));
+    */
+
+                    await this._emailService.SendEmailAsync(user.UserName, user.Email, "Şifre Sıfırlama",
+                                         $"<a href=\"{passwordResetLink}\">Şifreyi sıfırlamak için linke tıklayın.</a>");
                     Console.WriteLine("token" + token + "passwordResetLink" + passwordResetLink);
                     return Ok(passwordResetLink + " res" + "token=" + token); ;
                 }

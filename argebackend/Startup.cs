@@ -95,9 +95,9 @@ namespace argebackend
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:SecretKey"])),
                     };
                 });
-
-            /*        services.AddHangfire(config =>
-                               config.UsePostgreSqlStorage(Configuration["Data:DbContext:ConnectionString"])); */
+            /* 
+                        services.AddHangfire(config =>
+                                    config.UsePostgreSqlStorage(Configuration["Data:DbContext:ConnectionString"])); */
 
             /*            services.AddSwaggerGen(c =>
                        {
