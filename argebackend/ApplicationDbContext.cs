@@ -22,6 +22,11 @@ namespace argebackend
 
 
         public DbSet<Person> Persons { get; set; }
+        public DbSet<Arastirma> Arastirmas { get; set; }
+        public DbSet<Deneyim> Deneyims { get; set; }
+        public DbSet<Egitim> Egitims { get; set; }
+        public DbSet<Ozgecmis> ozgecmisis { get; set; }
+        public DbSet<Unvan> Unvans { get; set; }
 
 
 
