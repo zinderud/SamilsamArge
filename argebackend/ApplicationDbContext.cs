@@ -27,6 +27,8 @@ namespace argebackend
         public DbSet<Egitim> Egitims { get; set; }
         public DbSet<Ozgecmis> ozgecmisis { get; set; }
         public DbSet<Unvan> Unvans { get; set; }
+        public DbSet<BasvuruForm> BasvuruForms { get; set; }
+        public DbSet<Basvuru> Basvurus { get; set; }
 
 
 
