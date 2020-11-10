@@ -20,6 +20,8 @@ using NLog;
 using NLog.Extensions.Logging;
 using NLog.Web;
 using Hangfire.PostgreSql;
+using AutoMapperConfiguration = AutoMapper.Configuration;
+using argebackend.Profiles;
 
 namespace argebackend
 {
@@ -34,10 +36,14 @@ namespace argebackend
 
         private readonly string EnabledCORS = "_EnabledCORS";
 
+        protected void ConfigureMapping(AutoMapperConfiguration.MapperConfigurationExpression config)
+        {
+            AutoMapperConfig.Configure(config);
+        }
         public void ConfigureServices(IServiceCollection services)
         {
 
-
+            RegisterMapping();
             services.AddControllers().AddNewtonsoftJson();
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
@@ -150,7 +156,9 @@ namespace argebackend
 
 
         private void ConfigureCustomServices(IServiceCollection services)
+
         {
+
             services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IProfileService, ProfileService>();
@@ -168,6 +176,15 @@ namespace argebackend
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddLogging(builder => builder.AddNLog());
 
+        }
+
+
+        private void RegisterMapping()
+        {
+            var config = new AutoMapperConfiguration.MapperConfigurationExpression();
+            AutoMapperConfig.Configure(config);
+            ConfigureMapping(config);
+            AutoMapper.Mapper.Initialize(config);
         }
     }
 }
