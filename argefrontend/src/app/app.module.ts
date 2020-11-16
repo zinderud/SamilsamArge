@@ -44,6 +44,11 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'ozgecmis',
+    loadChildren: () => import('./views/+ozgecmis/ozgecmis.module').then(m => m.OzgecmisModule),
+    canLoad: [AuthGuard]
+  },
+  {
     path: 'error',
     loadChildren: () => import('./views/+error/error.module').then(m => m.ErrorModule),
   },

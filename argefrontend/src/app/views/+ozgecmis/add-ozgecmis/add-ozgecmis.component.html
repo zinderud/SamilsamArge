@@ -1,0 +1,96 @@
+<div class="loading">
+  <mat-progress-bar value="indeterminate" *ngIf="loading" color="warn"></mat-progress-bar>
+
+</div>
+<br />
+
+<nb-card accent="danger">
+  <nb-card-header>Ozgecmisel Ekle</nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="createForm" #f="ngForm" class="form">
+      <!-- Ozgecmisel adı -->
+      <div class="row">
+        <div class="col-sm-12">
+
+          <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Ozgecmisel adı</mat-label>
+            <input matInput required type="text" placeholder="Ozgecmisel adı" formControlName="name" />
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- Ozgecmisel adı -->
+
+      <!-- Ozgecmisel Soyadı -->
+      <div class="row">
+        <div class="col-sm-12">
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ozgecmisel Soyadı</mat-label>
+            <input matInput required type="text" placeholder="Ozgecmisel Soyadı" formControlName="surname" />
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- Ozgecmisel Soyadı -->
+
+      <!-- email -->
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>email</mat-label>
+            <input matInput required type="text" placeholder="email" formControlName="email" />
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- email -->
+      <!-- Telefon -->
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Telefon</mat-label>
+            <input matInput required type="text" placeholder="phone" formControlName="phone" />
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- Telefon -->
+
+      <!-- Birim -->
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Birim</mat-label>
+            <input matInput required type="text" placeholder="Birim" formControlName="unit" />
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- Birim -->
+
+      <!-- Ünvan -->
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field style="width:190px" appearance="outline">
+            <mat-label>Ünvan</mat-label>
+            <select matNativeControl formControlName="title">
+
+              <option value="ATT">ATT</option>
+              <option value="Hekim">Hekim</option>
+              <option value="Hemşire">Hemşire</option>
+              <option value="Sağlık Memuru">Sağlık Memuru</option>
+              <option value="Ebe">Ebe</option>
+            </select>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- Ünvan -->
+      <div class="row">
+        <button type="submit" nbButton status="primary" [disabled]="!createForm.valid"
+          (click)="onCreate()">Ekle</button>
+      </div>
+
+    </form>
+
+  </nb-card-body>
+</nb-card>
+
+
+
+<div *ngIf="!prod" class="row"> {{this.createForm.value| json}}</div>

@@ -1,0 +1,19 @@
+.full-width {
+    width: 100%;
+  }
+ /*  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+   */
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+  .radio-button {
+    margin: 5px;
+  }
+  .border{
+    border: 1px;
+  }
