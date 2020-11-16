@@ -10,7 +10,7 @@ namespace argebackend.Models
         public long FormNo { get; set; }
         public DateTime Tarih { get; set; }
         public string Detay { get; set; }
-        public int BasvuruId { get; set; }
+        public long BasvuruId { get; set; }
         public Basvuru Basvuru { get; set; }
 
 

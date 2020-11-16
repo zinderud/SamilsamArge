@@ -5,8 +5,16 @@ namespace argebackend.Models
 {
     public class Ozgecmis : BaseModel
     {
+        public Ozgecmis()
+        {
+            Unvans = new List<Unvan>();
+            Arastirmas = new List<Arastirma>();
+            Deneyims = new List<Deneyim>();
+            Egitims = new List<Egitim>();
+        }
 
         public bool Sorumlu { get; set; }
+        public string Tc { get; set; }
         public string Ad { get; set; }
         public string Soyad { get; set; }
         public string DogumYeri { get; set; }

@@ -17,11 +17,14 @@ export class ModelUtil {
   public IntToString(x: number, d?: number) {
     let s = x.toString();
     // console.log('x =', x, '   d =', d, 's =', s);
-    if ( d ) {
-      for ( let i = s.length; i < d; i++ ) {
+    if (d) {
+      for (let i = s.length; i < d; i++) {
         s = '0' + s;
       }
     }
     return s;
+  }
+  public isNullOrUndefinedUtils<T>(obj: T | null | undefined): obj is null | undefined {
+    return typeof obj === 'undefined' || obj === null;
   }
 }
