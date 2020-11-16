@@ -5,9 +5,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { environment as env } from '@env/environment';
 
-import { MatDialog, MatSnackBar } from '@angular/material';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { TypeHelper } from '@app/shared/lib/helpers/typeHelper';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 /* import { Unvan } from '@app/core/models/ozgecmis/unvan'; */
 
 @Injectable()

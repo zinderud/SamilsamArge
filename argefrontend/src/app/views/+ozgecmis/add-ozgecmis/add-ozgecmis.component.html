@@ -8,77 +8,123 @@
   <nb-card-header>Ozgecmisel Ekle</nb-card-header>
   <nb-card-body>
     <form [formGroup]="createForm" #f="ngForm" class="form">
-      <!-- Ozgecmisel adı -->
+      <!--  sorumlu -->
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field style="width:100px" appearance="outline">
+            <mat-label>sorumlu</mat-label>
+            <select matNativeControl formControlName="sex">
+
+              <option value="true">Evet</option>
+              <option value="false">Hayır</option>
+            </select>
+          </mat-form-field>
+
+          <!--   <mat-form-field class="full-width" appearance="outline">
+            <mat-label> sorumlu</mat-label>
+            <input matInput required type="text" placeholder="sorumlu" formControlName="sorumlu" />
+          </mat-form-field> -->
+        </div>
+      </div>
+      <!--  sorumlu -->
+      <!--  tc -->
+      <div class="row">
+        <div class="col-sm-12">
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label> tc</mat-label>
+            <input matInput required type="text" placeholder=" tc" formControlName="tc" />
+          </mat-form-field>
+        </div>
+      </div>
+      <!--  tc -->
+      <!--  adı -->
       <div class="row">
         <div class="col-sm-12">
 
           <mat-form-field class="full-width " appearance="outline">
-            <mat-label>Ozgecmisel adı</mat-label>
-            <input matInput required type="text" placeholder="Ozgecmisel adı" formControlName="name" />
+            <mat-label> adı</mat-label>
+            <input matInput required type="text" placeholder=" adı" formControlName="ad" />
           </mat-form-field>
         </div>
       </div>
-      <!-- Ozgecmisel adı -->
+      <!--  adı -->
 
-      <!-- Ozgecmisel Soyadı -->
+      <!--  Soyadı -->
       <div class="row">
         <div class="col-sm-12">
 
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Ozgecmisel Soyadı</mat-label>
-            <input matInput required type="text" placeholder="Ozgecmisel Soyadı" formControlName="surname" />
+            <mat-label> Soyadı</mat-label>
+            <input matInput required type="text" placeholder=" Soyadı" formControlName="soyad" />
           </mat-form-field>
         </div>
       </div>
-      <!-- Ozgecmisel Soyadı -->
+      <!--  Soyadı -->
 
-      <!-- email -->
+      <div class="row">
+        <div class="col-sm-6">
+          <!--  Dogum Yeri -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Dogum Yeri</mat-label>
+            <input matInput type="text" placeholder="Dogum Yeri" formControlName="dogumYeri" />
+          </mat-form-field>
+          <!--  Dogum Yeri -->
+
+
+
+        </div>
+        <div class="col-sm-6">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Dogum Tarihi</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Dogum Tarihi" required formControlName="dogumTarihi">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+
+        </div>
+      </div>
+
+
+
+      <!-- yabanciDil -->
       <div class="row">
         <div class="col-sm-12">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>email</mat-label>
-            <input matInput required type="text" placeholder="email" formControlName="email" />
+            <input matInput required type="text" placeholder="yabanciDil" formControlName="yabanciDil" />
           </mat-form-field>
         </div>
       </div>
-      <!-- email -->
-      <!-- Telefon -->
-      <div class="row">
-        <div class="col-sm-12">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Telefon</mat-label>
-            <input matInput required type="text" placeholder="phone" formControlName="phone" />
-          </mat-form-field>
-        </div>
-      </div>
-      <!-- Telefon -->
+      <!-- yabanciDil -->
 
-      <!-- Birim -->
+
+
+      <!-- eposta -->
       <div class="row">
         <div class="col-sm-12">
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Birim</mat-label>
-            <input matInput required type="text" placeholder="Birim" formControlName="unit" />
+            <mat-label>email</mat-label>
+            <input matInput required type="text" placeholder="eposta" formControlName="eposta" />
           </mat-form-field>
         </div>
       </div>
-      <!-- Birim -->
+      <!-- eposta -->
+
+
+
 
       <!-- Ünvan -->
       <div class="row">
-        <div class="col-sm-12">
-          <mat-form-field style="width:190px" appearance="outline">
-            <mat-label>Ünvan</mat-label>
-            <select matNativeControl formControlName="title">
+        <nb-tabset>
+          <!--    <nb-tab tabTitle="Form {{ill.value.kknId}}" *ngFor="let ill of getIlLnessControls(); let i = index">
+              <app-illness [index]="i" (deleteIllness)="deleteIlness($event)" [group]="ill"></app-illness>
+              <button nbButton status="danger" (click)="deleteIlness(i)"> Form {{ill.value.kknId}} sil</button>
+            </nb-tab> -->
 
-              <option value="ATT">ATT</option>
-              <option value="Hekim">Hekim</option>
-              <option value="Hemşire">Hemşire</option>
-              <option value="Sağlık Memuru">Sağlık Memuru</option>
-              <option value="Ebe">Ebe</option>
-            </select>
-          </mat-form-field>
-        </div>
+        </nb-tabset>
+
       </div>
       <!-- Ünvan -->
       <div class="row">
