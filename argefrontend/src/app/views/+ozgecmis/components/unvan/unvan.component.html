@@ -1,0 +1,35 @@
+<div [formGroup]="unvanGrup">
+
+    <nb-card accent="primary" status="info">
+        <nb-card-header> UNVAN</nb-card-header>
+        <nb-card-body>
+
+
+            <!-- Ünvan Açıklaması -->
+            <div class="row">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Ünvan Açıklaması</mat-label>
+                    <textarea matInput matAutosizeMaxRows=5 matTextareaAutosize matAutosizeMinRows="1"
+                        formControlName="diagnosticProcess"></textarea>
+                </mat-form-field>
+            </div>
+            <!-- Ünvan Açıklaması -->
+            <!-- tarih -->
+            <div class="col-12 col-sm-6 col-md-4  col-lg-3">
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label> Tarih</mat-label>
+                    <input matInput [matDatepicker]="pickerq" placeholder="Tarih" formControlName="tarih">
+                    <mat-datepicker-toggle matSuffix [for]="pickerq"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerq></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <!-- tarih -->
+
+
+
+
+
+        </nb-card-body>
+    </nb-card>
+</div>

@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 /* import { Unvan } from '@app/core/models/ozgecmis/unvan'; */
 
 @Injectable()
-export class PatientFormService {
+export class OzgecmisFormService {
 
     private ozgecmisForm: BehaviorSubject<FormGroup | null> = new BehaviorSubject(this.createOzgecmisForm());
     ozgecmisForm$: Observable<FormGroup> = this.ozgecmisForm.asObservable();

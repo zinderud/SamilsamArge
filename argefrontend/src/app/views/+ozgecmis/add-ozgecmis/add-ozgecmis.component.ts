@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { environment as env } from '@env/environment';
+import { OzgecmisFormService } from '../services/ozgecmis-form.service';
+import { Ozgecmis } from '@app/core/models/ozgecmis/ozgecmis';
 
 
 @Component({
@@ -16,26 +18,20 @@ export class AddOzgecmisComponent implements OnInit {
 
   createForm: FormGroup;
   loading = false;
+  ozgecmis: Ozgecmis;
   prod: boolean = env.production;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private ozgecmisFormService: OzgecmisFormService
   ) { }
 
   ngOnInit() {
 
-    this.createForm = this.formBuilder.group({
-
-
-      name: new FormControl('', Validators.required),
-      surname: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      phone: new FormControl('', Validators.required),
-      unit: new FormControl('', Validators.required),
-      title: new FormControl('', Validators.required),
-      departmentId: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"),])
+    this.ozgecmisFormService.ozgecmisForm$.subscribe(x => {
+      this.createForm = x;
     });
   }
 
@@ -44,20 +40,14 @@ export class AddOzgecmisComponent implements OnInit {
 
     if (this.createForm.valid) {
       this.createForm.disable();
+      const p = { ...this.ozgecmis, ...this.createForm.value };
 
-      this.httpClient.post(`${env.serverUrl}/ozgecmiss`, {
-        name: this.createForm.value.name,
-        surname: this.createForm.value.surname,
-        email: this.createForm.value.email,
-        phone: this.createForm.value.phone,
-        unit: this.createForm.value.unit,
-        title: this.createForm.value.title,
-        departmentId: this.createForm.value.departmentId
-      }).subscribe((data: any) => {
+      this.httpClient.post(`${env.serverUrl}/ozgecmiss`, p).subscribe((data: any) => {
 
         if (data.succeeded) {
-          this.snackBar.open(`Kişi ${this.createForm.value.name} oluşturuldu`, 'X', { duration: 3000 });
-          this.router.navigate(['ozgecmiss']);
+          // tslint:disable-next-line:max-line-length
+          this.snackBar.open(`Ozgeçmis ${this.createForm.value.aciklama}   oluşturuldu`, 'X', { duration: 3000 });
+          this.router.navigate(['admin', 'ozgecmis']);
         }
         this.loading = false;
 
@@ -70,5 +60,15 @@ export class AddOzgecmisComponent implements OnInit {
     } else {
       console.log('Form not valid');
     }
+  }
+
+  getUnvanControls() {
+    return (this.createForm.get('unvan') as FormArray).controls;
+  }
+  addUnvan() {
+    this.ozgecmisFormService.addUnvan();
+  }
+  deleteUnvan(index: number) {
+    this.ozgecmisFormService.deleteUnvan(index);
   }
 }

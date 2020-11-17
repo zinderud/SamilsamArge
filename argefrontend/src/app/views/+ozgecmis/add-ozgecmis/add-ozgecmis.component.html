@@ -118,12 +118,13 @@
       <!-- Ünvan -->
       <div class="row">
         <nb-tabset>
-          <!--    <nb-tab tabTitle="Form {{ill.value.kknId}}" *ngFor="let ill of getIlLnessControls(); let i = index">
-              <app-illness [index]="i" (deleteIllness)="deleteIlness($event)" [group]="ill"></app-illness>
-              <button nbButton status="danger" (click)="deleteIlness(i)"> Form {{ill.value.kknId}} sil</button>
-            </nb-tab> -->
+          <nb-tab tabTitle="Form {{ill.value.kknId}}" *ngFor="let ill of getUnvanControls(); let i = index">
+            <app-unvan [index]="i" (deleteIllness)="deleteUnvan($event)" [unvanGrup]="ill"></app-unvan>
+            <button nbButton status="danger" (click)="deleteUnvan(i)"> Unvan sil</button>
+          </nb-tab>
 
         </nb-tabset>
+        <button type="button" nbButton status="primary" (click)="addUnvan()"> Unvan Ekle</button>
 
       </div>
       <!-- Ünvan -->
