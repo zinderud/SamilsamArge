@@ -78,8 +78,8 @@ export class OzgecmisFormService {
     }
     setUnvan(el) {
         const k = this.fb.array([]);
-        if (el.unvans !== TypeHelper.isNullOrEmpty) {
-            el.unvans.array.forEach(data => {
+        if (el.unvans !== TypeHelper.isArrayNullOrAllItemsAreEmpty) {
+            el.unvans.forEach(data => {
                 k.push(
                     this.fb.group({
                         UnvanId: new FormControl(data.UnvanId),

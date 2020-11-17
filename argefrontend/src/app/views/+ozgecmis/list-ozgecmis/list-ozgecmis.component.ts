@@ -18,9 +18,17 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./list-ozgecmis.component.css']
 })
 export class ListOzgecmisComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['id', 'name', 'surname', 'email',
-    'title',
-    'phone', 'unit', 'edit', 'delete'];
+  displayedColumns: string[] = [
+    'tc',
+    'ad',
+    'soyad',
+    'dogumYeri',
+    'dogumTarihi',
+    'yabanciDil',
+    'eposta',
+    'edit',
+    'delete'
+  ];
 
   data: any[] = [];
 
@@ -73,7 +81,7 @@ export class ListOzgecmisComponent implements OnInit, OnDestroy {
               .set('orderBy.by', this.sort.active)
               .set('orderBy.desc', (this.sort.direction === 'desc').toString());
 
-            return this.httpClient.get<any>(`${env.serverUrl}/ozgecmiss`, { params });
+            return this.httpClient.get<any>(`${env.serverUrl}/ozgecmis`, { params });
           }
         }),
         map(data => {
@@ -118,7 +126,7 @@ export class ListOzgecmisComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loading = true;
-        this.httpClient.delete(`${env.serverUrl}/ozgecmiss/${item.id}`).subscribe(data => {
+        this.httpClient.delete(`${env.serverUrl}/ozgecmis/${item.id}`).subscribe(data => {
 
           this.load$.next('');
 

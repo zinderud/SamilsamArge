@@ -42,7 +42,7 @@ export class AddOzgecmisComponent implements OnInit {
       this.createForm.disable();
       const p = { ...this.ozgecmis, ...this.createForm.value };
 
-      this.httpClient.post(`${env.serverUrl}/ozgecmiss`, p).subscribe((data: any) => {
+      this.httpClient.post(`${env.serverUrl}/ozgecmis`, p).subscribe((data: any) => {
 
         if (data.succeeded) {
           // tslint:disable-next-line:max-line-length
@@ -63,7 +63,7 @@ export class AddOzgecmisComponent implements OnInit {
   }
 
   getUnvanControls() {
-    return (this.createForm.get('unvan') as FormArray).controls;
+    return (this.createForm.get('unvans') as FormArray).controls;
   }
   addUnvan() {
     this.ozgecmisFormService.addUnvan();

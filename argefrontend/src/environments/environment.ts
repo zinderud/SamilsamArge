@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   serverUrl: 'http://localhost:5000/api',
   envName: 'Development',
-  appName: 'Eğitim Dev',
+  appName: 'Arge Dev',
   snackBarDuration: 3700,
 };
 

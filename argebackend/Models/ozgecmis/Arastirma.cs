@@ -6,9 +6,9 @@ namespace argebackend.Models
     public class Arastirma : BaseModel
     {
 
-
-        public DateTime Tarih { get; set; }
-        public string Acıklama { get; set; }
+        public string icerik { get; set; }
+        public DateTime tarih { get; set; }
+        public string acıklama { get; set; }
 
 
 

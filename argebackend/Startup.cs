@@ -169,7 +169,7 @@ namespace argebackend
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IPersonService, PersonService>();
 
-
+            services.AddTransient<IOzgecmisService, OzgecmisService>();
 
             services.AddSingleton<ITokenService, TokenService>();
 

@@ -10,7 +10,7 @@ using argebackend.ViewModels;
 
 namespace argebackend.Controllers
 {
-    [Route("api/Ozgecmiss")]
+    [Route("api/ozgecmis")]
     [Produces("application/json")]
     [ProducesResponseType(typeof(List<string>), 400)]
     public class OzgecmisController : BaseController

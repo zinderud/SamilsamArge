@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: '',
     component: ListOzgecmisComponent,
-    data: { title: 'Kullanıcı Listele', expectedRole: ['Admin'] },
+    data: { title: 'Ozgecmis Listele', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
     resolve: {
       data: OzgecmisResolver
@@ -44,14 +44,14 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddOzgecmisComponent,
-    data: { title: 'Kullanıcı ekle', expectedRole: ['Admin'] },
+    data: { title: 'Ozgecmis ekle', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
   },
 
   {
     path: 'edit/:id',
     component: EditOzgecmisComponent,
-    data: { title: 'Kullanıcı Düzenle', expectedRole: ['Admin'] },
+    data: { title: 'Ozgecmis Düzenle', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
   }
 

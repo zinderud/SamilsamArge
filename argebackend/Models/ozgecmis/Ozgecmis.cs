@@ -7,24 +7,24 @@ namespace argebackend.Models
     {
         public Ozgecmis()
         {
-            Unvans = new List<Unvan>();
-            Arastirmas = new List<Arastirma>();
-            Deneyims = new List<Deneyim>();
-            Egitims = new List<Egitim>();
+            unvans = new List<Unvan>();
+            arastirmas = new List<Arastirma>();
+            deneyims = new List<Deneyim>();
+            egitims = new List<Egitim>();
         }
 
-        public bool Sorumlu { get; set; }
-        public string Tc { get; set; }
-        public string Ad { get; set; }
-        public string Soyad { get; set; }
-        public string DogumYeri { get; set; }
-        public DateTime DogumTarihi { get; set; }
-        public string YabanciDil { get; set; }
-        public string Eposta { get; set; }
-        public List<Unvan> Unvans { get; set; }
-        public List<Arastirma> Arastirmas { get; set; }
-        public List<Deneyim> Deneyims { get; set; }
-        public List<Egitim> Egitims { get; set; }
+        public bool sorumlu { get; set; }
+        public string tc { get; set; }
+        public string ad { get; set; }
+        public string soyad { get; set; }
+        public string dogumYeri { get; set; }
+        public DateTime dogumTarihi { get; set; }
+        public string yabanciDil { get; set; }
+        public string eposta { get; set; }
+        public List<Unvan> unvans { get; set; }
+        public List<Arastirma> arastirmas { get; set; }
+        public List<Deneyim> deneyims { get; set; }
+        public List<Egitim> egitims { get; set; }
 
 
 

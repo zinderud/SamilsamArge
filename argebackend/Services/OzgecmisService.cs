@@ -37,19 +37,17 @@ namespace argebackend.Services
                 var OzgecmisEntity = await GetOrCreateEntityAsync(context.ozgecmisis, x => x.Id == model.Id);
                 var Ozgecmis = OzgecmisEntity.result;
 
-                Ozgecmis.Sorumlu = model.Sorumlu;
-
-                Ozgecmis.Tc = model.Tc;
-                Ozgecmis.Ad = model.Ad;
-                Ozgecmis.Soyad = model.Soyad;
-                Ozgecmis.DogumYeri = model.DogumYeri;
-                Ozgecmis.YabanciDil = model.YabanciDil;
-                Ozgecmis.Eposta = model.Eposta;
-
-                Ozgecmis.Unvans = model.Unvans;
-                Ozgecmis.Arastirmas = model.Arastirmas;
-                Ozgecmis.Deneyims = model.Deneyims;
-                Ozgecmis.Egitims = model.Egitims;
+                Ozgecmis.sorumlu = model.sorumlu;
+                Ozgecmis.tc = model.tc;
+                Ozgecmis.ad = model.ad;
+                Ozgecmis.soyad = model.soyad;
+                Ozgecmis.dogumYeri = model.dogumYeri;
+                Ozgecmis.yabanciDil = model.yabanciDil;
+                Ozgecmis.eposta = model.eposta;
+                Ozgecmis.unvans = model.unvans;
+                Ozgecmis.arastirmas = model.arastirmas;
+                Ozgecmis.deneyims = model.deneyims;
+                Ozgecmis.egitims = model.egitims;
                 // oluştururken otomatik olarak false yaptık */
 
                 await context.SaveChangesAsync();
@@ -61,7 +59,7 @@ namespace argebackend.Services
         {
             Func<Task<Ozgecmis>> action = async () =>
             {
-                var result = await context.ozgecmisis.Where(x => x.Id == id).FirstAsync();
+                var result = await context.ozgecmisis.Where(x => x.Id == id).Include(x => x.unvans).Include(z => z.arastirmas).Include(y => y.deneyims).Include(e => e.egitims).FirstAsync();
                 return result;
             };
 
@@ -85,19 +83,17 @@ namespace argebackend.Services
                 var Ozgecmis = OzgecmisEntity.result;
 
 
-                Ozgecmis.Sorumlu = model.Sorumlu;
-
-                Ozgecmis.Tc = model.Tc;
-                Ozgecmis.Ad = model.Ad;
-                Ozgecmis.Soyad = model.Soyad;
-                Ozgecmis.DogumYeri = model.DogumYeri;
-                Ozgecmis.YabanciDil = model.YabanciDil;
-                Ozgecmis.Eposta = model.Eposta;
-
-                Ozgecmis.Unvans = model.Unvans;
-                Ozgecmis.Arastirmas = model.Arastirmas;
-                Ozgecmis.Deneyims = model.Deneyims;
-                Ozgecmis.Egitims = model.Egitims;
+                Ozgecmis.sorumlu = model.sorumlu;
+                Ozgecmis.tc = model.tc;
+                Ozgecmis.ad = model.ad;
+                Ozgecmis.soyad = model.soyad;
+                Ozgecmis.dogumYeri = model.dogumYeri;
+                Ozgecmis.yabanciDil = model.yabanciDil;
+                Ozgecmis.eposta = model.eposta;
+                Ozgecmis.unvans = model.unvans;
+                Ozgecmis.arastirmas = model.arastirmas;
+                Ozgecmis.deneyims = model.deneyims;
+                Ozgecmis.egitims = model.egitims;
                 await context.SaveChangesAsync();
             };
 
@@ -119,7 +115,7 @@ namespace argebackend.Services
 
         public async Task<ProcessResult<List<Ozgecmis>>> ListAsync(GetListViewModel<BaseFilter> getListModel)
         {
-            IQueryable<Ozgecmis> q = context.ozgecmisis.Include(x => x.Unvans).Include(z => z.Arastirmas).Include(y => y.Deneyims).Include(e => e.Egitims);
+            IQueryable<Ozgecmis> q = context.ozgecmisis.Include(x => x.unvans).Include(z => z.arastirmas).Include(y => y.deneyims).Include(e => e.egitims);
             q = SetIncludes(q);
             q = SetFilter(q, getListModel.filter);
 
@@ -165,9 +161,9 @@ namespace argebackend.Services
 
             if (!ob.desc)
             {
-                if (ob.by == "Tc")
+                if (ob.by == "tc")
                 {
-                    q = q.OrderBy(s => s.Tc);
+                    q = q.OrderBy(s => s.tc);
                 }
                 else
                 {
@@ -176,9 +172,9 @@ namespace argebackend.Services
             }
             else
             {
-                if (ob.by == "Tc")
+                if (ob.by == "tc")
                 {
-                    q = q.OrderBy(s => s.Tc);
+                    q = q.OrderBy(s => s.tc);
                 }
                 else
                 {
@@ -196,7 +192,7 @@ namespace argebackend.Services
             }
             if (!String.IsNullOrEmpty(f.searchString))
             {
-                q = q.Where(s => s.Tc.Contains(f.searchString));
+                q = q.Where(s => s.tc.Contains(f.searchString));
             }
             return q;
         }

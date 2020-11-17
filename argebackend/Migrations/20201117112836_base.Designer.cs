@@ -10,8 +10,8 @@ using argebackend;
 namespace argebackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201116062216_sa")]
-    partial class sa
+    [Migration("20201117112836_base")]
+    partial class @base
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -232,9 +232,6 @@ namespace argebackend.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Acıklama")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("timestamp without time zone");
 
@@ -253,7 +250,13 @@ namespace argebackend.Migrations
                     b.Property<long?>("OzgecmisId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("Tarih")
+                    b.Property<string>("acıklama")
+                        .HasColumnType("text");
+
+                    b.Property<string>("icerik")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("tarih")
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
@@ -357,9 +360,6 @@ namespace argebackend.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Acıklama")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("timestamp without time zone");
 
@@ -378,7 +378,13 @@ namespace argebackend.Migrations
                     b.Property<long?>("OzgecmisId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("Tarih")
+                    b.Property<string>("acıklama")
+                        .HasColumnType("text");
+
+                    b.Property<string>("icerik")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("tarih")
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
@@ -395,9 +401,6 @@ namespace argebackend.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Acıklama")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("timestamp without time zone");
 
@@ -416,7 +419,13 @@ namespace argebackend.Migrations
                     b.Property<long?>("OzgecmisId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("Tarih")
+                    b.Property<string>("acıklama")
+                        .HasColumnType("text");
+
+                    b.Property<string>("icerik")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("tarih")
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
@@ -433,23 +442,11 @@ namespace argebackend.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Ad")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<long>("CreatorId")
                         .HasColumnType("bigint");
-
-                    b.Property<DateTime>("DogumTarihi")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("DogumYeri")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Eposta")
-                        .HasColumnType("text");
 
                     b.Property<int>("HVersion")
                         .HasColumnType("integer");
@@ -460,13 +457,28 @@ namespace argebackend.Migrations
                     b.Property<DateTime>("ModifyDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<bool>("Sorumlu")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Soyad")
+                    b.Property<string>("ad")
                         .HasColumnType("text");
 
-                    b.Property<string>("YabanciDil")
+                    b.Property<DateTime>("dogumTarihi")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("dogumYeri")
+                        .HasColumnType("text");
+
+                    b.Property<string>("eposta")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("sorumlu")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("soyad")
+                        .HasColumnType("text");
+
+                    b.Property<string>("tc")
+                        .HasColumnType("text");
+
+                    b.Property<string>("yabanciDil")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -532,9 +544,6 @@ namespace argebackend.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Acıklama")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("timestamp without time zone");
 
@@ -553,7 +562,13 @@ namespace argebackend.Migrations
                     b.Property<long?>("OzgecmisId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("Tarih")
+                    b.Property<string>("acıklama")
+                        .HasColumnType("text");
+
+                    b.Property<string>("icerik")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("tarih")
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
@@ -617,7 +632,7 @@ namespace argebackend.Migrations
             modelBuilder.Entity("argebackend.Models.Arastirma", b =>
                 {
                     b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("Arastirmas")
+                        .WithMany("arastirmas")
                         .HasForeignKey("OzgecmisId");
                 });
 
@@ -633,21 +648,21 @@ namespace argebackend.Migrations
             modelBuilder.Entity("argebackend.Models.Deneyim", b =>
                 {
                     b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("Deneyims")
+                        .WithMany("deneyims")
                         .HasForeignKey("OzgecmisId");
                 });
 
             modelBuilder.Entity("argebackend.Models.Egitim", b =>
                 {
                     b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("Egitims")
+                        .WithMany("egitims")
                         .HasForeignKey("OzgecmisId");
                 });
 
             modelBuilder.Entity("argebackend.Models.Unvan", b =>
                 {
                     b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("Unvans")
+                        .WithMany("unvans")
                         .HasForeignKey("OzgecmisId");
                 });
 #pragma warning restore 612, 618

@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { NbThemeModule, NbLayoutModule, NbMenuModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ThemeModule } from './@theme/theme.module';
+import { OzgecmisFormService } from './views/+ozgecmis/services/ozgecmis-form.service';
 
 
 const routes: Routes = [
@@ -78,7 +79,8 @@ const routes: Routes = [
   ],
   providers: [
 
-    ServerTimeResolver
+    ServerTimeResolver,
+    OzgecmisFormService
   ],
   bootstrap: [AppComponent]
 })
