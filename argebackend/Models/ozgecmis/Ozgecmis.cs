@@ -7,10 +7,10 @@ namespace argebackend.Models
     {
         public Ozgecmis()
         {
-            unvans = new List<Unvan>();
-            arastirmas = new List<Arastirma>();
-            deneyims = new List<Deneyim>();
-            egitims = new List<Egitim>();
+            /*  unvans = new List<Unvan>();
+             arastirmas = new List<Arastirma>();
+             deneyims = new List<Deneyim>();
+             egitims = new List<Egitim>(); */
         }
 
         public bool sorumlu { get; set; }
@@ -21,10 +21,10 @@ namespace argebackend.Models
         public DateTime dogumTarihi { get; set; }
         public string yabanciDil { get; set; }
         public string eposta { get; set; }
-        public List<Unvan> unvans { get; set; }
-        public List<Arastirma> arastirmas { get; set; }
-        public List<Deneyim> deneyims { get; set; }
-        public List<Egitim> egitims { get; set; }
+        public virtual IList<Unvan> unvans { get; set; }
+        public virtual IList<Arastirma> arastirmas { get; set; }
+        public virtual IList<Deneyim> deneyims { get; set; }
+        public virtual IList<Egitim> egitims { get; set; }
 
 
 

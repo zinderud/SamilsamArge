@@ -5,6 +5,8 @@ namespace argebackend.Models
 {
     public class Deneyim : BaseModel
     {
+
+        public long OzgecmisID { get; set; }
         public string icerik { get; set; }
 
         public DateTime tarih { get; set; }

@@ -5,6 +5,7 @@ namespace argebackend.Models
 {
     public class Egitim : BaseModel
     {
+        public long OzgecmisID { get; set; }
 
         public string icerik { get; set; }
 
