@@ -9,7 +9,8 @@ namespace argebackend.Models
         public long OzgecmisID { get; set; }
         public string icerik { get; set; }
         public DateTime tarih { get; set; }
-        public string acıklama { get; set; }
+        public string aciklama { get; set; }
+
 
 
 
