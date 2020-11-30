@@ -259,8 +259,6 @@ namespace argebackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OzgecmisID");
-
                     b.ToTable("Arastirmas");
                 });
 
@@ -387,8 +385,6 @@ namespace argebackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OzgecmisID");
-
                     b.ToTable("Deneyims");
                 });
 
@@ -428,8 +424,6 @@ namespace argebackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OzgecmisID");
-
                     b.ToTable("Egitims");
                 });
 
@@ -458,10 +452,19 @@ namespace argebackend.Migrations
                     b.Property<string>("ad")
                         .HasColumnType("text");
 
+                    b.Property<string>("arastirmas")
+                        .HasColumnType("text");
+
+                    b.Property<string>("deneyims")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("dogumTarihi")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("dogumYeri")
+                        .HasColumnType("text");
+
+                    b.Property<string>("egitims")
                         .HasColumnType("text");
 
                     b.Property<string>("eposta")
@@ -474,6 +477,9 @@ namespace argebackend.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("tc")
+                        .HasColumnType("text");
+
+                    b.Property<string>("unvans")
                         .HasColumnType("text");
 
                     b.Property<string>("yabanciDil")
@@ -571,8 +577,6 @@ namespace argebackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OzgecmisID");
-
                     b.ToTable("Unvans");
                 });
 
@@ -627,47 +631,11 @@ namespace argebackend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("argebackend.Models.Arastirma", b =>
-                {
-                    b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("arastirmas")
-                        .HasForeignKey("OzgecmisID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("argebackend.Models.BasvuruForm", b =>
                 {
                     b.HasOne("argebackend.Models.Basvuru", "Basvuru")
                         .WithOne("BasvuruForm")
                         .HasForeignKey("argebackend.Models.BasvuruForm", "BasvuruId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("argebackend.Models.Deneyim", b =>
-                {
-                    b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("deneyims")
-                        .HasForeignKey("OzgecmisID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("argebackend.Models.Egitim", b =>
-                {
-                    b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("egitims")
-                        .HasForeignKey("OzgecmisID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("argebackend.Models.Unvan", b =>
-                {
-                    b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("unvans")
-                        .HasForeignKey("OzgecmisID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

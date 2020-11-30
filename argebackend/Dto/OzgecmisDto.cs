@@ -15,10 +15,10 @@ namespace argebackend.Dto
         public DateTime DogumTarihi { get; set; }
         public string YabanciDil { get; set; }
         public string Eposta { get; set; }
-        public List<Unvan> Unvans { get; set; }
-        public List<Arastirma> Arastirmas { get; set; }
-        public List<Deneyim> Deneyims { get; set; }
-        public List<Egitim> Egitims { get; set; }
+        public string Unvans { get; set; }
+        public string Arastirmas { get; set; }
+        public string Deneyims { get; set; }
+        public string Egitims { get; set; }
 
 
 

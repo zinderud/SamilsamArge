@@ -21,10 +21,10 @@ namespace argebackend.Models
         public DateTime dogumTarihi { get; set; }
         public string yabanciDil { get; set; }
         public string eposta { get; set; }
-        public virtual IList<Unvan> unvans { get; set; }
-        public virtual IList<Arastirma> arastirmas { get; set; }
-        public virtual IList<Deneyim> deneyims { get; set; }
-        public virtual IList<Egitim> egitims { get; set; }
+        public string unvans { get; set; }
+        public string arastirmas { get; set; }
+        public string deneyims { get; set; }
+        public string egitims { get; set; }
 
 
 

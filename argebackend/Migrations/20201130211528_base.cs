@@ -9,6 +9,27 @@ namespace argebackend.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Arastirmas",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CreatorId = table.Column<long>(nullable: false),
+                    ModifierId = table.Column<long>(nullable: false),
+                    CreateDate = table.Column<DateTime>(nullable: false),
+                    ModifyDate = table.Column<DateTime>(nullable: false),
+                    HVersion = table.Column<int>(nullable: false),
+                    OzgecmisID = table.Column<long>(nullable: false),
+                    icerik = table.Column<string>(nullable: true),
+                    tarih = table.Column<DateTime>(nullable: false),
+                    aciklama = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Arastirmas", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -76,6 +97,48 @@ namespace argebackend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Deneyims",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CreatorId = table.Column<long>(nullable: false),
+                    ModifierId = table.Column<long>(nullable: false),
+                    CreateDate = table.Column<DateTime>(nullable: false),
+                    ModifyDate = table.Column<DateTime>(nullable: false),
+                    HVersion = table.Column<int>(nullable: false),
+                    OzgecmisID = table.Column<long>(nullable: false),
+                    icerik = table.Column<string>(nullable: true),
+                    tarih = table.Column<DateTime>(nullable: false),
+                    aciklama = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Deneyims", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Egitims",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CreatorId = table.Column<long>(nullable: false),
+                    ModifierId = table.Column<long>(nullable: false),
+                    CreateDate = table.Column<DateTime>(nullable: false),
+                    ModifyDate = table.Column<DateTime>(nullable: false),
+                    HVersion = table.Column<int>(nullable: false),
+                    OzgecmisID = table.Column<long>(nullable: false),
+                    icerik = table.Column<string>(nullable: true),
+                    tarih = table.Column<DateTime>(nullable: false),
+                    aciklama = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Egitims", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ozgecmisis",
                 columns: table => new
                 {
@@ -93,7 +156,11 @@ namespace argebackend.Migrations
                     dogumYeri = table.Column<string>(nullable: true),
                     dogumTarihi = table.Column<DateTime>(nullable: false),
                     yabanciDil = table.Column<string>(nullable: true),
-                    eposta = table.Column<string>(nullable: true)
+                    eposta = table.Column<string>(nullable: true),
+                    unvans = table.Column<string>(nullable: true),
+                    arastirmas = table.Column<string>(nullable: true),
+                    deneyims = table.Column<string>(nullable: true),
+                    egitims = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -123,6 +190,27 @@ namespace argebackend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Persons", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Unvans",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CreatorId = table.Column<long>(nullable: false),
+                    ModifierId = table.Column<long>(nullable: false),
+                    CreateDate = table.Column<DateTime>(nullable: false),
+                    ModifyDate = table.Column<DateTime>(nullable: false),
+                    HVersion = table.Column<int>(nullable: false),
+                    OzgecmisID = table.Column<long>(nullable: false),
+                    icerik = table.Column<string>(nullable: true),
+                    tarih = table.Column<DateTime>(nullable: false),
+                    aciklama = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Unvans", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -258,119 +346,6 @@ namespace argebackend.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Arastirmas",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CreatorId = table.Column<long>(nullable: false),
-                    ModifierId = table.Column<long>(nullable: false),
-                    CreateDate = table.Column<DateTime>(nullable: false),
-                    ModifyDate = table.Column<DateTime>(nullable: false),
-                    HVersion = table.Column<int>(nullable: false),
-                    icerik = table.Column<string>(nullable: true),
-                    tarih = table.Column<DateTime>(nullable: false),
-                    acıklama = table.Column<string>(nullable: true),
-                    OzgecmisId = table.Column<long>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Arastirmas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Arastirmas_ozgecmisis_OzgecmisId",
-                        column: x => x.OzgecmisId,
-                        principalTable: "ozgecmisis",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Deneyims",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CreatorId = table.Column<long>(nullable: false),
-                    ModifierId = table.Column<long>(nullable: false),
-                    CreateDate = table.Column<DateTime>(nullable: false),
-                    ModifyDate = table.Column<DateTime>(nullable: false),
-                    HVersion = table.Column<int>(nullable: false),
-                    icerik = table.Column<string>(nullable: true),
-                    tarih = table.Column<DateTime>(nullable: false),
-                    acıklama = table.Column<string>(nullable: true),
-                    OzgecmisId = table.Column<long>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Deneyims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Deneyims_ozgecmisis_OzgecmisId",
-                        column: x => x.OzgecmisId,
-                        principalTable: "ozgecmisis",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Egitims",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CreatorId = table.Column<long>(nullable: false),
-                    ModifierId = table.Column<long>(nullable: false),
-                    CreateDate = table.Column<DateTime>(nullable: false),
-                    ModifyDate = table.Column<DateTime>(nullable: false),
-                    HVersion = table.Column<int>(nullable: false),
-                    icerik = table.Column<string>(nullable: true),
-                    tarih = table.Column<DateTime>(nullable: false),
-                    acıklama = table.Column<string>(nullable: true),
-                    OzgecmisId = table.Column<long>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Egitims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Egitims_ozgecmisis_OzgecmisId",
-                        column: x => x.OzgecmisId,
-                        principalTable: "ozgecmisis",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Unvans",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CreatorId = table.Column<long>(nullable: false),
-                    ModifierId = table.Column<long>(nullable: false),
-                    CreateDate = table.Column<DateTime>(nullable: false),
-                    ModifyDate = table.Column<DateTime>(nullable: false),
-                    HVersion = table.Column<int>(nullable: false),
-                    icerik = table.Column<string>(nullable: true),
-                    tarih = table.Column<DateTime>(nullable: false),
-                    acıklama = table.Column<string>(nullable: true),
-                    OzgecmisId = table.Column<long>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Unvans", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Unvans_ozgecmisis_OzgecmisId",
-                        column: x => x.OzgecmisId,
-                        principalTable: "ozgecmisis",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Arastirmas_OzgecmisId",
-                table: "Arastirmas",
-                column: "OzgecmisId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -413,21 +388,6 @@ namespace argebackend.Migrations
                 table: "BasvuruForms",
                 column: "BasvuruId",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Deneyims_OzgecmisId",
-                table: "Deneyims",
-                column: "OzgecmisId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Egitims_OzgecmisId",
-                table: "Egitims",
-                column: "OzgecmisId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Unvans_OzgecmisId",
-                table: "Unvans",
-                column: "OzgecmisId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -460,6 +420,9 @@ namespace argebackend.Migrations
                 name: "Egitims");
 
             migrationBuilder.DropTable(
+                name: "ozgecmisis");
+
+            migrationBuilder.DropTable(
                 name: "Persons");
 
             migrationBuilder.DropTable(
@@ -473,9 +436,6 @@ namespace argebackend.Migrations
 
             migrationBuilder.DropTable(
                 name: "Basvurus");
-
-            migrationBuilder.DropTable(
-                name: "ozgecmisis");
         }
     }
 }

@@ -65,10 +65,5 @@ export class AddOzgecmisComponent implements OnInit {
   getUnvanControls() {
     return (this.createForm.get('unvans') as FormArray).controls;
   }
-  addUnvan() {
-    this.ozgecmisFormService.addUnvan();
-  }
-  deleteUnvan(index: number) {
-    this.ozgecmisFormService.deleteUnvan(index);
-  }
+
 }

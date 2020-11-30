@@ -10,7 +10,7 @@ import { Unvan } from './unvan';
 
 
 export class Ozgecmis {
-    public OzgecmisId?: number;
+    // public OzgecmisId?: number;
     public sorumlu?: boolean;
     public tc?: string;
     public ad?: string;
@@ -19,10 +19,10 @@ export class Ozgecmis {
     public dogumTarihi?: string;
     public yabanciDil?: string;
     public eposta?: string;
-    public unvans?: Unvan[];
-    public arastirmas?: Arastirma[];
-    public deneyims?: Deneyim[];
-    public egitims?: Egitim[];
+    public unvans?: string;
+    public arastirmas?: string;
+    public deneyims?: string;
+    public egitims?: string;
 }
 
 export class OzgecmisFilter extends BaseFilter {

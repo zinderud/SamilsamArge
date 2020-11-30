@@ -27,13 +27,13 @@ namespace argebackend.Services
             {
 
 
-                var OzgecmisExist = await context.ozgecmisis.Where(x => x.Id != model.Id).CountAsync();
+                //   var OzgecmisExist = await context.ozgecmisis.Where(x => x.tc != model.tc).CountAsync();
 
 
-                if (OzgecmisExist > 0)
-                {
-                    throw new InvalidOperationException("Bu email mevcut");
-                }
+                // if (OzgecmisExist > 0)
+                //{
+                //   throw new InvalidOperationException("Bu tc mevcut");
+                //}
 
                 var OzgecmisEntity = await GetOrCreateEntityAsync(context.ozgecmisis, x => x.Id == model.Id);
                 var Ozgecmis = OzgecmisEntity.result;
@@ -60,7 +60,7 @@ namespace argebackend.Services
         {
             Func<Task<Ozgecmis>> action = async () =>
             {
-                var result = await context.ozgecmisis.Where(x => x.Id == id).Include(x => x.unvans).Include(z => z.arastirmas).Include(y => y.deneyims).Include(e => e.egitims).FirstAsync();
+                var result = await context.ozgecmisis.Where(x => x.Id == id).FirstAsync();
                 return result;
             };
 
@@ -76,60 +76,30 @@ namespace argebackend.Services
 
 
 
-                /*   var k = await ozgecmisUnvansUpdate(model); */
-                var z = await ozgecmisSelfUpdate(model);
+                var OzgecmisEntity = await GetOrCreateEntityAsync(context.ozgecmisis, x => x.Id == model.Id);
+                var Ozgecmis = OzgecmisEntity.result;
+
+                Ozgecmis.sorumlu = model.sorumlu;
+                Ozgecmis.tc = model.tc;
+                Ozgecmis.ad = model.ad;
+                Ozgecmis.soyad = model.soyad;
+                Ozgecmis.dogumYeri = model.dogumYeri;
+                Ozgecmis.yabanciDil = model.yabanciDil;
+                Ozgecmis.eposta = model.eposta;
+                Ozgecmis.unvans = model.unvans;
+                Ozgecmis.arastirmas = model.arastirmas;
+                Ozgecmis.deneyims = model.deneyims;
+                Ozgecmis.egitims = model.egitims;
+                var p = context.Update(Ozgecmis);
 
                 await context.SaveChangesAsync();
             };
 
             return await Process.RunAsync(action);
         }
-        public async Task<ProcessResult> ozgecmisUnvansUpdate(Ozgecmis model)
-        {
-            Func<Task> action = async () =>
-      {
-
-          foreach (var item in model.unvans)
-          {
-
-              var sEntity = await GetOrCreateEntityAsync(context.Unvans, x => x.Id == item.Id);
-
-              var s = sEntity.result;
-
-              s.aciklama = item.aciklama;
-              s.icerik = item.icerik;
-              s.tarih = item.tarih;
-              // var il = context.Update(iln);
-              var il = context.Update(s);
-
-          }
-      };
-            return await Process.RunAsync(action);
-        }
 
 
-        public async Task<EntityEntry<Ozgecmis>> ozgecmisSelfUpdate(Ozgecmis model)
-        {
 
-            var OzgecmisEntity = await GetOrCreateEntityAsync(context.ozgecmisis, x => x.Id == model.Id);
-            var Ozgecmis = OzgecmisEntity.result;
-
-            Ozgecmis.sorumlu = model.sorumlu;
-            Ozgecmis.tc = model.tc;
-            Ozgecmis.ad = model.ad;
-            Ozgecmis.soyad = model.soyad;
-            Ozgecmis.dogumYeri = model.dogumYeri;
-            Ozgecmis.yabanciDil = model.yabanciDil;
-            Ozgecmis.eposta = model.eposta;
-            Ozgecmis.unvans = model.unvans;
-            Ozgecmis.arastirmas = model.arastirmas;
-            Ozgecmis.deneyims = model.deneyims;
-            Ozgecmis.egitims = model.egitims;
-            var p = context.Update(Ozgecmis);
-
-            return p;
-
-        }
         public async Task<ProcessResult> DeleteAsync(long id)
         {
             Func<Task> action = async () =>
@@ -145,7 +115,7 @@ namespace argebackend.Services
 
         public async Task<ProcessResult<List<Ozgecmis>>> ListAsync(GetListViewModel<BaseFilter> getListModel)
         {
-            IQueryable<Ozgecmis> q = context.ozgecmisis.Include(x => x.unvans).Include(z => z.arastirmas).Include(y => y.deneyims).Include(e => e.egitims);
+            IQueryable<Ozgecmis> q = context.ozgecmisis;
             q = SetIncludes(q);
             q = SetFilter(q, getListModel.filter);
 

@@ -11,3 +11,4 @@ docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=password -v post
 
 
 docker run -it --rm -p 127.0.0.1:8080:8080 -p 127.0.0.1:25482:25482  --link postgres:postgres  taivokasper/omnidb 
+docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=password   postgres

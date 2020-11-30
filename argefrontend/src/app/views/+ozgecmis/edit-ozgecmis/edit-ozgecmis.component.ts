@@ -31,17 +31,7 @@ export class EditOzgecmisComponent implements OnInit {
 
   ngOnInit() {
 
-    /*     this.editForm = this.formBuilder.group({
-    
-          name: new FormControl('', Validators.required),
-          surname: new FormControl('', Validators.required),
-          email: new FormControl('', Validators.required),
-          phone: new FormControl('', Validators.required),
-          unit: new FormControl('', Validators.required),
-          title: new FormControl('', Validators.required),
-          departmentId: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"),]),
-          isArchived: new FormControl(),
-        }); */
+
     this.ozgecmisFormService.ozgecmisForm$.subscribe(x => {
       this.editForm = x;
     });
@@ -87,13 +77,6 @@ export class EditOzgecmisComponent implements OnInit {
 
   }
 
-  getUnvanControls() {
-    return (this.editForm.get('unvans') as FormArray).controls;
-  }
-  addUnvan() {
-    this.ozgecmisFormService.addUnvan();
-  }
-  deleteUnvan(index: number) {
-    this.ozgecmisFormService.deleteUnvan(index);
-  }
+
+
 }

@@ -10,7 +10,7 @@ using argebackend;
 namespace argebackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201117112836_base")]
+    [Migration("20201130211528_base")]
     partial class @base
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -247,10 +247,10 @@ namespace argebackend.Migrations
                     b.Property<DateTime>("ModifyDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<long?>("OzgecmisId")
+                    b.Property<long>("OzgecmisID")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("acıklama")
+                    b.Property<string>("aciklama")
                         .HasColumnType("text");
 
                     b.Property<string>("icerik")
@@ -260,8 +260,6 @@ namespace argebackend.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OzgecmisId");
 
                     b.ToTable("Arastirmas");
                 });
@@ -375,10 +373,10 @@ namespace argebackend.Migrations
                     b.Property<DateTime>("ModifyDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<long?>("OzgecmisId")
+                    b.Property<long>("OzgecmisID")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("acıklama")
+                    b.Property<string>("aciklama")
                         .HasColumnType("text");
 
                     b.Property<string>("icerik")
@@ -388,8 +386,6 @@ namespace argebackend.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OzgecmisId");
 
                     b.ToTable("Deneyims");
                 });
@@ -416,10 +412,10 @@ namespace argebackend.Migrations
                     b.Property<DateTime>("ModifyDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<long?>("OzgecmisId")
+                    b.Property<long>("OzgecmisID")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("acıklama")
+                    b.Property<string>("aciklama")
                         .HasColumnType("text");
 
                     b.Property<string>("icerik")
@@ -429,8 +425,6 @@ namespace argebackend.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OzgecmisId");
 
                     b.ToTable("Egitims");
                 });
@@ -460,10 +454,19 @@ namespace argebackend.Migrations
                     b.Property<string>("ad")
                         .HasColumnType("text");
 
+                    b.Property<string>("arastirmas")
+                        .HasColumnType("text");
+
+                    b.Property<string>("deneyims")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("dogumTarihi")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("dogumYeri")
+                        .HasColumnType("text");
+
+                    b.Property<string>("egitims")
                         .HasColumnType("text");
 
                     b.Property<string>("eposta")
@@ -476,6 +479,9 @@ namespace argebackend.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("tc")
+                        .HasColumnType("text");
+
+                    b.Property<string>("unvans")
                         .HasColumnType("text");
 
                     b.Property<string>("yabanciDil")
@@ -559,10 +565,10 @@ namespace argebackend.Migrations
                     b.Property<DateTime>("ModifyDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<long?>("OzgecmisId")
+                    b.Property<long>("OzgecmisID")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("acıklama")
+                    b.Property<string>("aciklama")
                         .HasColumnType("text");
 
                     b.Property<string>("icerik")
@@ -572,8 +578,6 @@ namespace argebackend.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OzgecmisId");
 
                     b.ToTable("Unvans");
                 });
@@ -629,13 +633,6 @@ namespace argebackend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("argebackend.Models.Arastirma", b =>
-                {
-                    b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("arastirmas")
-                        .HasForeignKey("OzgecmisId");
-                });
-
             modelBuilder.Entity("argebackend.Models.BasvuruForm", b =>
                 {
                     b.HasOne("argebackend.Models.Basvuru", "Basvuru")
@@ -643,27 +640,6 @@ namespace argebackend.Migrations
                         .HasForeignKey("argebackend.Models.BasvuruForm", "BasvuruId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("argebackend.Models.Deneyim", b =>
-                {
-                    b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("deneyims")
-                        .HasForeignKey("OzgecmisId");
-                });
-
-            modelBuilder.Entity("argebackend.Models.Egitim", b =>
-                {
-                    b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("egitims")
-                        .HasForeignKey("OzgecmisId");
-                });
-
-            modelBuilder.Entity("argebackend.Models.Unvan", b =>
-                {
-                    b.HasOne("argebackend.Models.Ozgecmis", null)
-                        .WithMany("unvans")
-                        .HasForeignKey("OzgecmisId");
                 });
 #pragma warning restore 612, 618
         }

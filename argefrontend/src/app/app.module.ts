@@ -19,6 +19,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { OzgecmisFormService } from './views/+ozgecmis/services/ozgecmis-form.service';
 
 
+
 const routes: Routes = [
   {
     path: '',
@@ -65,6 +66,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     CoreModule,
+
     ThemeModule.forRoot(),
     SharedModule.forRoot(),
     RouterModule.forRoot(routes,

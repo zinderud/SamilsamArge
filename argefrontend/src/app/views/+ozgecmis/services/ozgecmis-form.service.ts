@@ -20,28 +20,7 @@ export class OzgecmisFormService {
     constructor(private fb: FormBuilder, private httpClient: HttpClient, private dialog: MatDialog, private snackBar: MatSnackBar,) {
     }
 
-    get unvan(): FormGroup {
-        return this.fb.group({
-            UnvanId: new FormControl(''),
-            tarih: new FormControl(''),
-            acıklama: new FormControl(''),
 
-        });
-    }
-    addUnvan() {
-        const currentUnvan = this.ozgecmisForm.getValue();
-        const currentOzgecmis = currentUnvan.get('unvan') as FormArray;
-        currentOzgecmis.push(this.unvan);
-        this.ozgecmisForm.next(currentUnvan);
-
-    }
-    deleteUnvan(index: number) {
-        const currentUnvan = this.ozgecmisForm.getValue();
-        const currentOzgecmis = currentUnvan.get('unvan') as FormArray;
-        currentOzgecmis.removeAt(index);
-        this.ozgecmisForm.next(currentUnvan);
-
-    }
     createOzgecmisForm() {
         const ret = this.fb.group({
             OzgecmisId: new FormControl(''),
@@ -53,7 +32,7 @@ export class OzgecmisFormService {
             dogumTarihi: new FormControl(''),
             yabanciDil: new FormControl(''),
             eposta: new FormControl(''),
-            unvans: this.fb.array([this.unvan])
+            unvans: new FormControl('')
 
         });
         return ret;
@@ -71,30 +50,12 @@ export class OzgecmisFormService {
                 dogumTarihi: new FormControl(data.value.dogumTarihi),
                 yabanciDil: new FormControl(data.value.yabanciDil),
                 eposta: new FormControl(data.value.eposta),
-                unvans: this.setUnvan(data.value)
+                unvans: new FormControl(data.value.unvans),
 
             })
         );
     }
-    setUnvan(el) {
-        const k = this.fb.array([]);
-        if (el.unvans !== TypeHelper.isArrayNullOrAllItemsAreEmpty) {
-            el.unvans.forEach(data => {
-                k.push(
-                    this.fb.group({
-                        UnvanId: new FormControl(data.UnvanId),
-                        tarih: new FormControl(data.tarih),
-                        acıklama: new FormControl(data.acıklama),
-                    })
-                );
 
-            });
-
-        }
-        return k;
-
-
-    }
 
 
 }

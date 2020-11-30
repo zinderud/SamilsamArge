@@ -92,7 +92,7 @@
       <div class="row">
         <div class="col-sm-12">
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>email</mat-label>
+            <mat-label>yabanciDil</mat-label>
             <input matInput required type="text" placeholder="yabanciDil" formControlName="yabanciDil" />
           </mat-form-field>
         </div>
@@ -115,19 +115,18 @@
 
 
 
+
       <!-- Ünvan -->
       <div class="row">
-        <nb-tabset>
-          <nb-tab tabTitle="Form {{ill.value.kknId}}" *ngFor="let ill of getUnvanControls(); let i = index">
-            <app-unvan [index]="i" (deleteIllness)="deleteUnvan($event)" [unvanGrup]="ill"></app-unvan>
-            <button nbButton status="danger" (click)="deleteUnvan(i)"> Unvan sil</button>
-          </nb-tab>
-
-        </nb-tabset>
-        <button type="button" nbButton status="primary" (click)="addUnvan()"> Unvan Ekle</button>
-
+        <div class="col-sm-12">
+          <!-- <mat-form-field class="full-width" appearance="outline">
+            <mat-label>unvans</mat-label>
+            <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
+          </mat-form-field>-->
+          <p-editor formControlName="unvans" [style]="{'height':'320px'}"></p-editor>
+        </div>
       </div>
-      <!-- arşiv -->
+      <!-- Ünvan -->
       <div class="row">
         <button type="submit" nbButton status="primary" [disabled]="!editForm.valid" (click)="onEdit()">Düzenle</button>
       </div>

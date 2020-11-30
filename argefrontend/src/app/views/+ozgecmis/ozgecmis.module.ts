@@ -24,10 +24,9 @@ import { AddOzgecmisComponent } from './add-ozgecmis/add-ozgecmis.component';
 import { EditOzgecmisComponent } from './edit-ozgecmis/edit-ozgecmis.component';
 import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 import { OzgecmisResolver } from './resolver/ozgecmis.resolver';
-import { UnvanComponent } from './components/unvan/unvan.component';
 
 
-
+import { EditorModule } from 'primeng/editor';
 
 const routes: Routes = [
 
@@ -67,6 +66,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     SharedModule,
     NgxExcelTemplateModule.forRoot(),
+    EditorModule,
     RouterModule.forChild(routes),
     SharedDirectivesModule
 
@@ -76,7 +76,7 @@ const routes: Routes = [
     ListOzgecmisComponent,
     AddOzgecmisComponent,
     EditOzgecmisComponent,
-    UnvanComponent,
+
 
 
   ],
