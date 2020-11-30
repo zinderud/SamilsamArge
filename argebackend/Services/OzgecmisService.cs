@@ -76,7 +76,7 @@ namespace argebackend.Services
 
 
 
-                var k = await ozgecmisUnvansUpdate(model);
+                /*   var k = await ozgecmisUnvansUpdate(model); */
                 var z = await ozgecmisSelfUpdate(model);
 
                 await context.SaveChangesAsync();
@@ -96,10 +96,9 @@ namespace argebackend.Services
 
               var s = sEntity.result;
 
-
+              s.aciklama = item.aciklama;
               s.icerik = item.icerik;
               s.tarih = item.tarih;
-              s.acıklama = item.acıklama;
               // var il = context.Update(iln);
               var il = context.Update(s);
 
