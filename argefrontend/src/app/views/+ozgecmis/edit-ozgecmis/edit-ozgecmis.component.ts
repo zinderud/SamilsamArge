@@ -60,7 +60,7 @@ export class EditOzgecmisComponent implements OnInit {
 
         if (data.succeeded) {
           this.snackBar.open(`ozgecmis  ${this.editForm.value.tc} düzenlendi`, 'X', { duration: 3000 });
-          this.router.navigate(['admin', 'ozgecmis']);
+          this.router.navigate(['ozgecmis']);
         }
         this.loading = false;
 

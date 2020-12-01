@@ -46,8 +46,8 @@ export class AddOzgecmisComponent implements OnInit {
 
         if (data.succeeded) {
           // tslint:disable-next-line:max-line-length
-          this.snackBar.open(`Ozgeçmis ${this.createForm.value.aciklama}   oluşturuldu`, 'X', { duration: 3000 });
-          this.router.navigate(['admin', 'ozgecmis']);
+          this.snackBar.open(`Ozgeçmis ${this.createForm.value.tc}   oluşturuldu`, 'X', { duration: 3000 });
+          this.router.navigate([ 'ozgecmis']);
         }
         this.loading = false;
 

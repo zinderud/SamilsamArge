@@ -116,17 +116,58 @@
 
 
 
-      <!-- Ünvan -->
-      <div class="row">
-        <div class="col-sm-12">
-          <!-- <mat-form-field class="full-width" appearance="outline">
-            <mat-label>unvans</mat-label>
-            <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
-          </mat-form-field>-->
-          <p-editor formControlName="unvans" [style]="{'height':'320px'}"></p-editor>
-        </div>
+ <!-- Ünvan -->
+ <div class="row">
+  <div class="col-sm-12">
+    <!-- <mat-form-field class="full-width" appearance="outline">
+      <mat-label>unvans</mat-label>
+      <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
+    </mat-form-field>-->
+<!--        <h3>Unvanlar</h3> -->
+      <mat-label>Ünvanlar</mat-label>
+    <p-editor formControlName="unvans" [style]="{'height':'100px'}"></p-editor>
+  </div>
+</div>
+<!-- Ünvan -->
+ <!-- Arastirma -->
+     <div class="row">
+      <div class="col-sm-12">
+        <!-- <mat-form-field class="full-width" appearance="outline">
+          <mat-label>unvans</mat-label>
+          <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
+        </mat-form-field>-->
+   <!--        <h3>Unvanlar</h3> -->
+          <mat-label>Arastirma</mat-label>
+        <p-editor formControlName="arastirmas" [style]="{'height':'100px'}"></p-editor>
       </div>
-      <!-- Ünvan -->
+    </div>
+<!-- Arastirma -->
+ <!-- deneyims -->
+           <div class="row">
+            <div class="col-sm-12">
+              <!-- <mat-form-field class="full-width" appearance="outline">
+                <mat-label>unvans</mat-label>
+                <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
+              </mat-form-field>-->
+         <!--        <h3>Unvanlar</h3> -->
+                <mat-label>Deneyim</mat-label>
+              <p-editor formControlName="deneyims" [style]="{'height':'100px'}"></p-editor>
+            </div>
+          </div>
+  <!-- deneyims -->
+  <!-- egitims -->
+               <div class="row">
+                <div class="col-sm-12">
+                  <!-- <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>unvans</mat-label>
+                    <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
+                  </mat-form-field>-->
+             <!--        <h3>Unvanlar</h3> -->
+                    <mat-label>Egitim</mat-label>
+                  <p-editor formControlName="egitims" [style]="{'height':'100px'}"></p-editor>
+                </div>
+              </div>
+     <!-- egitims -->
       <div class="row">
         <button type="submit" nbButton status="primary" [disabled]="!editForm.valid" (click)="onEdit()">Düzenle</button>
       </div>

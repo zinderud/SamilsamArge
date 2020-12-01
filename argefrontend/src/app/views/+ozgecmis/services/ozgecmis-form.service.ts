@@ -32,7 +32,10 @@ export class OzgecmisFormService {
             dogumTarihi: new FormControl(''),
             yabanciDil: new FormControl(''),
             eposta: new FormControl(''),
-            unvans: new FormControl('')
+            unvans: new FormControl(''),
+            arastirmas: new FormControl(''),
+            deneyims: new FormControl(''),
+            egitims: new FormControl(''),
 
         });
         return ret;
@@ -51,6 +54,10 @@ export class OzgecmisFormService {
                 yabanciDil: new FormControl(data.value.yabanciDil),
                 eposta: new FormControl(data.value.eposta),
                 unvans: new FormControl(data.value.unvans),
+                arastirmas: new FormControl(data.value.arastirmas),
+                deneyims: new FormControl(data.value.deneyims),
+                egitims: new FormControl(data.value.egitims),
+
 
             })
         );
