@@ -9,7 +9,7 @@ namespace argebackend.Profiles
     {
         public ArastirmaProfile()
         {
-            CreateMap<Arastirma, ArastirmaDto>().ReverseMap();
+            // CreateMap<Arastirma, ArastirmaDto>().ReverseMap();
         }
     }
 

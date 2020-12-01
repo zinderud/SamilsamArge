@@ -11,7 +11,7 @@ namespace argebackend.Profiles
         {
             config.AllowNullCollections = false;
 
-            config.AddProfile<ArastirmaProfile>();
+            //   config.AddProfile<ArastirmaProfile>();
 
         }
     }

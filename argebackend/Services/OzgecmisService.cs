@@ -34,10 +34,11 @@ namespace argebackend.Services
                 //{
                 //   throw new InvalidOperationException("Bu tc mevcut");
                 //}
-
+                var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
                 var OzgecmisEntity = await GetOrCreateEntityAsync(context.ozgecmisis, x => x.Id == model.Id);
                 var Ozgecmis = OzgecmisEntity.result;
-
+                Ozgecmis.UserId = user.Id;
+                Ozgecmis.User = user;
                 Ozgecmis.sorumlu = model.sorumlu;
                 Ozgecmis.tc = model.tc;
                 Ozgecmis.ad = model.ad;
@@ -74,10 +75,13 @@ namespace argebackend.Services
             Func<Task> action = async () =>
             {
 
+                var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
 
 
                 var OzgecmisEntity = await GetOrCreateEntityAsync(context.ozgecmisis, x => x.Id == model.Id);
                 var Ozgecmis = OzgecmisEntity.result;
+                Ozgecmis.UserId = user.Id;
+                Ozgecmis.User = user;
 
                 Ozgecmis.sorumlu = model.sorumlu;
                 Ozgecmis.tc = model.tc;

@@ -223,51 +223,15 @@ namespace argebackend.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("argebackend.Models.Arastirma", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long>("CreatorId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("HVersion")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("ModifierId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long>("OzgecmisID")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("aciklama")
-                        .HasColumnType("text");
-
-                    b.Property<string>("icerik")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("tarih")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Arastirmas");
-                });
-
             modelBuilder.Entity("argebackend.Models.Basvuru", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("BasvuruForm")
+                        .HasColumnType("text");
 
                     b.Property<long>("BasvuruNo")
                         .HasColumnType("bigint");
@@ -307,126 +271,6 @@ namespace argebackend.Migrations
                     b.ToTable("Basvurus");
                 });
 
-            modelBuilder.Entity("argebackend.Models.BasvuruForm", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<long>("BasvuruId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long>("CreatorId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Detay")
-                        .HasColumnType("text");
-
-                    b.Property<long>("FormNo")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("HVersion")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("ModifierId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<DateTime>("Tarih")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BasvuruId")
-                        .IsUnique();
-
-                    b.ToTable("BasvuruForms");
-                });
-
-            modelBuilder.Entity("argebackend.Models.Deneyim", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long>("CreatorId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("HVersion")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("ModifierId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long>("OzgecmisID")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("aciklama")
-                        .HasColumnType("text");
-
-                    b.Property<string>("icerik")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("tarih")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Deneyims");
-                });
-
-            modelBuilder.Entity("argebackend.Models.Egitim", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long>("CreatorId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("HVersion")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("ModifierId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long>("OzgecmisID")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("aciklama")
-                        .HasColumnType("text");
-
-                    b.Property<string>("icerik")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("tarih")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Egitims");
-                });
-
             modelBuilder.Entity("argebackend.Models.Ozgecmis", b =>
                 {
                     b.Property<long>("Id")
@@ -448,6 +292,9 @@ namespace argebackend.Migrations
 
                     b.Property<DateTime>("ModifyDate")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("ad")
                         .HasColumnType("text");
@@ -486,6 +333,8 @@ namespace argebackend.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("ozgecmisis");
                 });
@@ -541,45 +390,6 @@ namespace argebackend.Migrations
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("argebackend.Models.Unvan", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long>("CreatorId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("HVersion")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("ModifierId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long>("OzgecmisID")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("aciklama")
-                        .HasColumnType("text");
-
-                    b.Property<string>("icerik")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("tarih")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Unvans");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
                 {
                     b.HasOne("argebackend.Models.ApplicationRole", null)
@@ -631,11 +441,11 @@ namespace argebackend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("argebackend.Models.BasvuruForm", b =>
+            modelBuilder.Entity("argebackend.Models.Ozgecmis", b =>
                 {
-                    b.HasOne("argebackend.Models.Basvuru", "Basvuru")
-                        .WithOne("BasvuruForm")
-                        .HasForeignKey("argebackend.Models.BasvuruForm", "BasvuruId")
+                    b.HasOne("argebackend.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

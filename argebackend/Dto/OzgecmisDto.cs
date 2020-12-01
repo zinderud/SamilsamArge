@@ -7,7 +7,8 @@ namespace argebackend.Dto
 {
     public class OzgecmisDto : BaseModel
     {
-
+        public long UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public bool Sorumlu { get; set; }
         public string Ad { get; set; }
         public string Soyad { get; set; }

@@ -13,7 +13,8 @@ namespace argebackend.Models
         public int DurumId { get; set; }
         public int BasvuruTuruId { get; set; }
         public string BasvuruTuru { get; set; }
-        public BasvuruForm BasvuruForm { get; set; }
+        public string BasvuruForm { get; set; }
+
 
 
 

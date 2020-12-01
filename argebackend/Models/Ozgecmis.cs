@@ -12,8 +12,10 @@ namespace argebackend.Models
              deneyims = new List<Deneyim>();
              egitims = new List<Egitim>(); */
         }
-
+        public long UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public bool sorumlu { get; set; }
+
         public string tc { get; set; }
         public string ad { get; set; }
         public string soyad { get; set; }
