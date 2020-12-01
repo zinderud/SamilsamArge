@@ -8,7 +8,8 @@ namespace argebackend.Dto
     public class BasvuruDto : BaseModel
     {
 
-
+        public long UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public long BasvuruNo { get; set; }
         public DateTime Tarih { get; set; }
         public string Durum { get; set; }
