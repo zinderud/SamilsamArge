@@ -19,41 +19,50 @@ import { ApiInterceptor } from '@app/core/interceptors/api.interceptor';
 
 
 import { CoreModule } from '@app/core/core.module';
-import { ListOzgecmisComponent } from './list-ozgecmis/list-ozgecmis.component';
-import { AddOzgecmisComponent } from './add-ozgecmis/add-ozgecmis.component';
-import { EditOzgecmisComponent } from './edit-ozgecmis/edit-ozgecmis.component';
+import { ListBasvuruComponent } from './list-basvuru/list-basvuru.component';
+import { AddBasvuruComponent } from './add-basvuru/add-basvuru.component';
+import { EditBasvuruComponent } from './edit-basvuru/edit-basvuru.component';
 import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
-import { OzgecmisResolver } from './resolver/ozgecmis.resolver';
+import { BasvuruResolver } from './resolver/basvuru.resolver';
 
 
 import { EditorModule } from 'primeng/editor';
-
+import { ArastirmaBirComponent } from './component/arastirma-bir/arastirma-bir.component';
+import { ArgeBirFormComponent } from './argeForms/argeBirForm/argeBirForm.component';
+import { BasvuruFormService } from './services/basvuru-form.service';
+import { ArgeBirFormService } from './services/arge-form.service';
+ 
 const routes: Routes = [
 
 
   {
     path: '',
-    component: ListOzgecmisComponent,
-    data: { title: 'Ozgecmis Listele', expectedRole: ['Admin'] },
+    component: ListBasvuruComponent,
+    data: { title: 'Basvuru Listele', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
     resolve: {
-      data: OzgecmisResolver
+      data: BasvuruResolver
     }
   },
   {
     path: 'add',
-    component: AddOzgecmisComponent,
-    data: { title: 'Ozgecmis ekle', expectedRole: ['Admin'] },
+    component: AddBasvuruComponent,
+    data: { title: 'Basvuru ekle', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
   },
 
   {
     path: 'edit/:id',
-    component: EditOzgecmisComponent,
-    data: { title: 'Ozgecmis Düzenle', expectedRole: ['Admin'] },
+    component: EditBasvuruComponent,
+    data: { title: 'Basvuru Düzenle', expectedRole: ['Admin'] },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'argeform',
+    component: ArgeBirFormComponent,
+    data: { title: 'Arge Form Düzenle', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
   }
-
 
 ];
 
@@ -73,9 +82,11 @@ const routes: Routes = [
   ],
   declarations: [
 
-    ListOzgecmisComponent,
-    AddOzgecmisComponent,
-    EditOzgecmisComponent,
+    ListBasvuruComponent,
+    AddBasvuruComponent,
+    EditBasvuruComponent,
+    ArastirmaBirComponent,
+    ArgeBirFormComponent,
 
 
 
@@ -86,8 +97,10 @@ const routes: Routes = [
       useClass: ApiInterceptor,
       multi: true
     },
-    OzgecmisResolver,
+    BasvuruResolver,
+    BasvuruFormService,
+    ArgeBirFormService,
 
   ]
 })
-export class OzgecmisModule { }
+export class BasvuruModule { }

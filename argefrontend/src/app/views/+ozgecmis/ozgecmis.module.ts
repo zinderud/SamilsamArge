@@ -27,6 +27,7 @@ import { OzgecmisResolver } from './resolver/ozgecmis.resolver';
 
 
 import { EditorModule } from 'primeng/editor';
+import { OzgecmisFormService } from './services/ozgecmis-form.service';
 
 const routes: Routes = [
 
@@ -87,6 +88,7 @@ const routes: Routes = [
       multi: true
     },
     OzgecmisResolver,
+    OzgecmisFormService,
 
   ]
 })

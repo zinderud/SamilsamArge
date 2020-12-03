@@ -30,7 +30,7 @@ export class AddBasvuruComponent implements OnInit {
 
   ngOnInit() {
 
-    this.basvuruFormService.basvuruForm$.subscribe(x => {
+    this.basvuruFormService.addBasvuruForm$.subscribe(x => {
       this.createForm = x;
     });
   }

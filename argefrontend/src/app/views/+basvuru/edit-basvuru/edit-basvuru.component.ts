@@ -32,7 +32,7 @@ export class EditBasvuruComponent implements OnInit {
   ngOnInit() {
 
 
-    this.basvuruFormService.basvuruForm$.subscribe(x => {
+    this.basvuruFormService.addBasvuruForm$.subscribe(x => {
       this.editForm = x;
     });
 
@@ -43,7 +43,7 @@ export class EditBasvuruComponent implements OnInit {
     this.httpClient.get(`${env.serverUrl}/basvuru/${this.itemId}`).subscribe((data: any) => {
       this.loading = false;
       console.log("dsa" + data.value.tc);
-      this.basvuruFormService.loaderBasvuruForm(data);
+      this.basvuruFormService.loaderBasvuru(data);
 
 
     });

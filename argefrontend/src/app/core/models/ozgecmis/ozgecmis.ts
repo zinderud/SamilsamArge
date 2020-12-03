@@ -2,11 +2,6 @@ import { HttpParams } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { TypeHelper } from '@app/shared/lib/helpers/typeHelper';
 import { BaseFilter, Paginator, OrderBy } from '../core';
-import { Arastirma } from './arastirma';
-import { Deneyim } from './deneyim';
-import { Egitim } from './egitim';
-import { Unvan } from './unvan';
-
 
 
 export class Ozgecmis {

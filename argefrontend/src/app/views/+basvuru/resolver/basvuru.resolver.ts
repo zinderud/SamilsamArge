@@ -7,11 +7,11 @@ import { environment as env } from '@env/environment';
 
 
 @Injectable()
-export class OzgecmisResolver implements Resolve<any[]> {
+export class BasvuruResolver implements Resolve<any[]> {
   constructor(private httpClient: HttpClient) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<any[]> {
     return this.httpClient.get<any>(
-      `${env.serverUrl}/ozgecmis?filter.SearchString=&paginator.offset=0&paginator.limit=20&orderBy.by=name&orderBy.desc=false`);
+      `${env.serverUrl}/basvuru?filter.SearchString=&paginator.offset=0&paginator.limit=20&orderBy.by=name&orderBy.desc=false`);
   }
 }

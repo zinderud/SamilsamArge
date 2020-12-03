@@ -9,19 +9,33 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { TypeHelper } from '@app/shared/lib/helpers/typeHelper';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ArgeBirFormService } from './arge-form.service';
+import { AttachSession } from 'protractor/built/driverProviders';
 /* import { Unvan } from '@app/core/models/basvuru/unvan'; */
 
 @Injectable()
 export class BasvuruFormService {
+    argebirForm : FormGroup = this.fb.group({})
 
-    private basvuruForm: BehaviorSubject<FormGroup | null> = new BehaviorSubject(this.createBasvuruForm());
-    basvuruForm$: Observable<FormGroup> = this.basvuruForm.asObservable();
+    private addBasvuruForm: BehaviorSubject<FormGroup | null> = new BehaviorSubject(this.addBasvuru());
+    addBasvuruForm$: Observable<FormGroup> = this.addBasvuruForm.asObservable();
 
-    constructor(private fb: FormBuilder, private httpClient: HttpClient, private dialog: MatDialog, private snackBar: MatSnackBar,) {
+    constructor(private fb: FormBuilder, 
+        private httpClient: HttpClient, 
+        private dialog: MatDialog, 
+        private snackBar: MatSnackBar,
+         private argeBirFormFormService: ArgeBirFormService) {
+            this.argeBirFormFormService.addArgeBirFormForm$.subscribe(x => {
+                this.argebirForm= x;
+               });
     }
+  get ArgebirForm(){
+      return this.argebirForm;
+ 
+}
 
+    addBasvuru() {
 
-    createBasvuruForm() {
         const ret = this.fb.group({
             basvuruNo: new FormControl(''),
             tarih: new FormControl(new Date()),
@@ -29,15 +43,14 @@ export class BasvuruFormService {
             durumId: new FormControl(''),
             basvuruTuruId: new FormControl(''),
             basvuruTuru: new FormControl(''),
-            basvuruForm: new FormControl(''),
-         
+            basvuruForm: new FormGroup(this.argeBirFormFormService.addArgeBirForm().controls )  
 
         });
         return ret;
 
     }
-    loaderBasvuruForm(data) {
-        this.basvuruForm.next(
+    loaderBasvuru(data) {
+        this.addBasvuruForm.next(
             this.fb.group({
                 basvuruNo: new FormControl(data.value.basvuruNo),
                 tarih: new FormControl(data.value.tarih),
@@ -45,13 +58,15 @@ export class BasvuruFormService {
                 durumId: new FormControl(data.value.durumId),
                 basvuruTuruId: new FormControl(data.value.basvuruTuruId),
                 basvuruTuru: new FormControl(data.value.basvuruTuru),
-                basvuruForm: new FormControl(data.value.basvuruForm),
+                addBasvuruForm: new FormControl(data.value.addBasvuruForm),
               
 
             })
         );
     }
 
+
+    
 
 
 }

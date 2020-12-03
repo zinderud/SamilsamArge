@@ -16,8 +16,7 @@ import { CommonModule } from '@angular/common';
 import { NbThemeModule, NbLayoutModule, NbMenuModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ThemeModule } from './@theme/theme.module';
-import { OzgecmisFormService } from './views/+ozgecmis/services/ozgecmis-form.service';
-
+ 
 
 
 const routes: Routes = [
@@ -48,6 +47,11 @@ const routes: Routes = [
   {
     path: 'ozgecmis',
     loadChildren: () => import('./views/+ozgecmis/ozgecmis.module').then(m => m.OzgecmisModule),
+    canLoad: [AuthGuard]
+  },
+  {
+    path: 'basvuru',
+    loadChildren: () => import('./views/+basvuru/basvuru.module').then(m => m.BasvuruModule),
     canLoad: [AuthGuard]
   },
   {
@@ -82,7 +86,7 @@ const routes: Routes = [
   providers: [
 
     ServerTimeResolver,
-    OzgecmisFormService
+    
   ],
   bootstrap: [AppComponent]
 })
