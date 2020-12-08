@@ -1,0 +1,54 @@
+<nb-card accent="danger">
+    <nb-card-header>Arastirma</nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="aform" #f="ngForm" class="form">
+            <!-- baslik -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>baslik</mat-label>
+                        <input matInput required type="text" placeholder="baslik" formControlName="baslik" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- baslik -->
+            <!-- statu -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <mat-form-field style="width:390px" appearance="outline">
+                        <mat-label>statu</mat-label>
+                        <select matNativeControl formControlName="statu">
+
+                            <option value="Yüksek lisans tezi">Yüksek lisans tezi</option>
+                            <option value="Doktora tezi">Doktora tezi</option>
+                            <option value="Uzmanlık tezi">Uzmanlık tezi</option>
+                            <option value="Bireysel araştırma projesi">Bireysel araştırma projesi</option>
+                            <option value="Sağlık Taraması">Sağlık Taraması</option>
+                            <option value="Kurumsal Araştırma Projesi">Kurumsal Araştırma Projesi</option>
+                            <option value="Ödev Niteliğinde Çalışma ">Ödev Niteliğinde Çalışma </option>
+                        </select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- statu -->
+            <!-- Diğer ise, lütfen belirtiniz.  -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Diğer ise, lütfen belirtiniz. </mat-label>
+                        <input matInput required type="text" placeholder="Diğer ise, lütfen belirtiniz. "
+                            formControlName="diger" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- Diğer ise, lütfen belirtiniz.  -->
+
+
+
+
+        </form>
+
+    </nb-card-body>
+</nb-card>

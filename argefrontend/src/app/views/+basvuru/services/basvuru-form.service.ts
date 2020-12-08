@@ -15,24 +15,24 @@ import { AttachSession } from 'protractor/built/driverProviders';
 
 @Injectable()
 export class BasvuruFormService {
-    argebirForm : FormGroup = this.fb.group({})
+    argebirForm: FormGroup = this.fb.group({})
 
     private addBasvuruForm: BehaviorSubject<FormGroup | null> = new BehaviorSubject(this.addBasvuru());
     addBasvuruForm$: Observable<FormGroup> = this.addBasvuruForm.asObservable();
 
-    constructor(private fb: FormBuilder, 
-        private httpClient: HttpClient, 
-        private dialog: MatDialog, 
+    constructor(private fb: FormBuilder,
+        private httpClient: HttpClient,
+        private dialog: MatDialog,
         private snackBar: MatSnackBar,
-         private argeBirFormFormService: ArgeBirFormService) {
-            this.argeBirFormFormService.addArgeBirFormForm$.subscribe(x => {
-                this.argebirForm= x;
-               });
+        private argeBirFormFormService: ArgeBirFormService) {
+        this.argeBirFormFormService.addArgeBirFormForm$.subscribe(x => {
+            this.argebirForm = x;
+        });
     }
-  get ArgebirForm(){
-      return this.argebirForm;
- 
-}
+    get ArgebirForm() {
+        return this.argebirForm;
+
+    }
 
     addBasvuru() {
 
@@ -43,7 +43,7 @@ export class BasvuruFormService {
             durumId: new FormControl(''),
             basvuruTuruId: new FormControl(''),
             basvuruTuru: new FormControl(''),
-            basvuruForm: new FormGroup(this.argeBirFormFormService.addArgeBirForm().controls )  
+            basvuruForm: new FormGroup(this.argeBirFormFormService.addArgeBirForm().controls)
 
         });
         return ret;
@@ -59,14 +59,14 @@ export class BasvuruFormService {
                 basvuruTuruId: new FormControl(data.value.basvuruTuruId),
                 basvuruTuru: new FormControl(data.value.basvuruTuru),
                 addBasvuruForm: new FormControl(data.value.addBasvuruForm),
-              
+
 
             })
         );
     }
 
 
-    
+
 
 
 }

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArastirmaBirComponent } from './arastirma-bir.component';
+import { ArastirmacilarFormComponent } from './arastirmacilar-form.component';
 
-describe('ArastirmaBirComponent', () => {
-  let component: ArastirmaBirComponent;
-  let fixture: ComponentFixture<ArastirmaBirComponent>;
+describe('ArastirmacilarFormComponent', () => {
+  let component: ArastirmacilarFormComponent;
+  let fixture: ComponentFixture<ArastirmacilarFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArastirmaBirComponent ]
+      declarations: [ ArastirmacilarFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArastirmaBirComponent);
+    fixture = TestBed.createComponent(ArastirmacilarFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

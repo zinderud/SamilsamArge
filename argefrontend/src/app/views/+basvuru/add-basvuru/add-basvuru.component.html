@@ -8,7 +8,7 @@
   <nb-card-header>Basvuru Ekle</nb-card-header>
   <nb-card-body>
     <form [formGroup]="createForm" #f="ngForm" class="form">
-    
+
       <!--  basvuruNo -->
       <div class="row">
         <div class="col-sm-12">
@@ -33,7 +33,7 @@
       </div>
       <!-- tarih -->
 
-      
+
 
 
       <!-- durum -->
@@ -72,12 +72,12 @@
         </div>
       </div>
 
-      <app-arge-bir  [form]="createForm.get('arastirmaBir')"></app-arge-bir>
+      <!--   <app-arge-bir  [form]="createForm.get('arastirmaBir')"></app-arge-bir> -->
       <!-- basvuruForm -->
 
 
-    
- 
+
+
       <div class="row">
         <button type="submit" nbButton status="primary" [disabled]="!createForm.valid"
           (click)="onCreate()">Ekle</button>

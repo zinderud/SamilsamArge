@@ -27,11 +27,15 @@ import { BasvuruResolver } from './resolver/basvuru.resolver';
 
 
 import { EditorModule } from 'primeng/editor';
-import { ArastirmaBirComponent } from './component/arastirma-bir/arastirma-bir.component';
-import { ArgeBirFormComponent } from './argeForms/argeBirForm/argeBirForm.component';
+
 import { BasvuruFormService } from './services/basvuru-form.service';
 import { ArgeBirFormService } from './services/arge-form.service';
- 
+import { ArastirmaFormComponent } from './forms/arastirma-form/arastirma-form.component';
+import { ArastirmacilarFormComponent } from './forms/arastirmacilar-form/arastirmacilar-form.component';
+import { ArastirmaKapsamFormComponent } from './forms/arastirma-kapsam-form/arastirma-kapsam-form.component';
+import { ArastirmaBelgelerFormComponent } from './forms/arastirma-belgeler-form/arastirma-belgeler-form.component';
+import { ArgeBirFormComponent } from './forms/arge-bir-form/arge-bir-form.component';
+
 const routes: Routes = [
 
 
@@ -85,8 +89,12 @@ const routes: Routes = [
     ListBasvuruComponent,
     AddBasvuruComponent,
     EditBasvuruComponent,
-    ArastirmaBirComponent,
+    ArastirmaFormComponent,
+    ArastirmacilarFormComponent,
+    ArastirmaKapsamFormComponent,
+    ArastirmaBelgelerFormComponent,
     ArgeBirFormComponent,
+
 
 
 

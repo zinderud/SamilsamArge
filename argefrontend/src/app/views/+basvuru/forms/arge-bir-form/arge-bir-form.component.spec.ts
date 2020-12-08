@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BasvuruFormComponent } from './basvuru-form.component';
+import { ArgeBirFormComponent } from './arge-bir-form.component';
 
-describe('BasvuruFormComponent', () => {
-  let component: BasvuruFormComponent;
-  let fixture: ComponentFixture<BasvuruFormComponent>;
+describe('ArgeBirFormComponent', () => {
+  let component: ArgeBirFormComponent;
+  let fixture: ComponentFixture<ArgeBirFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BasvuruFormComponent ]
+      declarations: [ ArgeBirFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BasvuruFormComponent);
+    fixture = TestBed.createComponent(ArgeBirFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
