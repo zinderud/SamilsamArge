@@ -135,4 +135,7 @@ export class ArastirmaKapsamFormComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
+  get invazivmi(): string {
+    return this.aform.get('invazivmi').value;
+  }
 }
