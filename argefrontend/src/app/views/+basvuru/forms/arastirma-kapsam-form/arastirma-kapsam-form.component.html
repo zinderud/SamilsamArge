@@ -1,1 +1,301 @@
-<p>arastirma-kapsam-form works!</p>
+<nb-card accent="danger">
+    <nb-card-header>C. ARAŞTIRMA KAPSAMI</nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="aform" #f="ngForm" class="form">
+            <!-- amac -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Amaç/Kapsam: </mat-label>
+                        <input matInput required type="text" placeholder="Amaç/Kapsam: " formControlName="amac" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- amac -->
+
+            <!-- genelBilgi -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Genel bilgiler:</mat-label>
+                        <input matInput required type="text" placeholder="Genel bilgiler:"
+                            formControlName="genelBilgi" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- genelBilgi -->
+            <!-- arastirmaTuru -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Araştırmanın türü:
+                        </mat-label>
+                        <input matInput required type="text" placeholder="Araştırmanın türü:
+                        " formControlName="arastirmaTuru" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- arastirmaTuru -->
+            <!-- arYapilacagiYer -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <mat-label>(Araştırmaya dahil edilecek popülasyonun; kimlerden oluştuğu, yaş aralıkları, cinsiyet ve
+                        sayısı gibi tanımlayıcı özellikleri yazılacaktır). </mat-label>
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Araştırmanın yapılacağı yer / yerler: </mat-label>
+                        <input matInput required type="text" placeholder="Araştırmanın yapılacağı yer / yerler: "
+                            formControlName="arYapilacagiYer" />
+                    </mat-form-field>
+
+                </div>
+            </div>
+            <!-- arYapilacagiYer -->
+            <!-- arEvrenOrneklem -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Araştırmanın Evreni / Örneklemi </mat-label>
+                        <input matInput required type="text" placeholder="Araştırmanın Evreni / Örneklemi "
+                            formControlName="arEvrenOrneklem" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- arEvrenOrneklem -->
+
+            <!-- hipotez -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Hipotez(ler):</mat-label>
+                        <input matInput required type="text" placeholder="Hipotez(ler)" formControlName="hipotez" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- hipotez -->
+            <!-- veriToplamaYontemi -->
+            <div class="row">
+                <div class="col-sm-12">
+                    (Verilerin kimler tarafından, hangi yöntemlerle (ölçek, anket, numune alma, kayıtlı bilgilerden
+                    yararlanma vb.), nerede ve nasıl elde edilmesinin planlandığına ilişkin bilgiler yazılmalıdır.)
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Veri toplama yöntemi:</mat-label>
+                        <input matInput required type="text" placeholder="Veri toplama yöntemi:"
+                            formControlName="veriToplamaYontemi" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- veriToplamaYontemi -->
+            <!-- arastirmaKisitlari -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Araştırmanın kısıtlılıkları (Sınırlılıkları):
+                        </mat-label>
+                        <input matInput required type="text" placeholder="Araştırmanın kısıtlılıkları (Sınırlılıkları):
+                        " formControlName="arastirmaKisitlari" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- arastirmaKisitlari -->
+
+            <!-- arastirmaTarihAraligi -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Araştırmanın yapılacağı tarih aralığı:
+                        </mat-label>
+                        <input matInput required type="text" placeholder="Araştırmanın yapılacağı tarih aralığı:
+                        " formControlName="arastirmaTarihAraligi" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- arastirmaTarihAraligi -->
+            <!-- invazivmi -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Araştırmada invaziv girişim yapılacak mı?
+                        </mat-label>
+                        <!--           <input matInput required type="text" placeholder="Araştırmanın yapılacağı tarih aralığı:
+                        " formControlName="invazivmi" />  -->
+                        <select matNativeControl formControlName="invazivmi">
+
+                            <option value="Evet">Evet</option>
+                            <option value="Hayır">Hayır</option>
+
+                        </select>
+
+
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- invazivmi -->
+            <!-- invazAcikla -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>invazAcikla</mat-label>
+                        <input matInput required type="text" placeholder="invazAcikla" formControlName="invazAcikla" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- invazAcikla -->
+            <!-- tibbiDurumVarmi -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>tibbiDurumVarmi</mat-label>
+                        <input matInput required type="text" placeholder="tibbiDurumVarmi"
+                            formControlName="tibbiDurumVarmi" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- tibbiDurumVarmi -->
+
+            <!-- tibbiDurumAcikla -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>tibbiDurumAcikla</mat-label>
+                        <input matInput required type="text" placeholder="tibbiDurumAcikla"
+                            formControlName="tibbiDurumAcikla" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- tibbiDurumAcikla -->
+            <!-- arastirmaRuhsalSoru -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>arastirmaRuhsalSoru</mat-label>
+                        <input matInput required type="text" placeholder="arastirmaRuhsalSoru"
+                            formControlName="arastirmaRuhsalSoru" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- arastirmaRuhsalSoru -->
+            <!-- arastirmaRuhsalSoruAcikla -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>arastirmaRuhsalSoruAcikla</mat-label>
+                        <input matInput required type="text" placeholder="arastirmaRuhsalSoruAcikla"
+                            formControlName="arastirmaRuhsalSoruAcikla" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- arastirmaRuhsalSoruAcikla -->
+            <!-- gonulluKatilimSoruAcikla -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>gonulluKatilimSoruAcikla</mat-label>
+                        <input matInput required type="text" placeholder="gonulluKatilimSoruAcikla"
+                            formControlName="gonulluKatilimSoruAcikla" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- gonulluKatilimSoruAcikla -->
+            <!-- bireyselYarar -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>bireyselYarar</mat-label>
+                        <input matInput required type="text" placeholder="bireyselYarar"
+                            formControlName="bireyselYarar" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- bireyselYarar -->
+            <!-- kurumsalYarar -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>kurumsalYarar</mat-label>
+                        <input matInput required type="text" placeholder="kurumsalYarar"
+                            formControlName="kurumsalYarar" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- kurumsalYarar -->
+            <!-- toplumsalYarar -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>toplumsalYarar</mat-label>
+                        <input matInput required type="text" placeholder="toplumsalYarar"
+                            formControlName="toplumsalYarar" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- toplumsalYarar -->
+            <!-- bilimselYarar -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>bilimselYarar</mat-label>
+                        <input matInput required type="text" placeholder="bilimselYarar"
+                            formControlName="bilimselYarar" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- bilimselYarar -->
+            <!-- destekleyicisiVarmi -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>destekleyicisiVarmi</mat-label>
+                        <input matInput required type="text" placeholder="destekleyicisiVarmi"
+                            formControlName="destekleyicisiVarmi" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- destekleyicisiVarmi -->
+            <!-- destekleyicisiAcikla -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>destekleyicisiAcikla</mat-label>
+                        <input matInput required type="text" placeholder="destekleyicisiAcikla"
+                            formControlName="destekleyicisiAcikla" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- destekleyicisiAcikla -->
+            <!-- bizdenTalepVarmi -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>bizdenTalepVarmi</mat-label>
+                        <input matInput required type="text" placeholder="bizdenTalepVarmi"
+                            formControlName="bizdenTalepVarmi" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- bizdenTalepVarmi -->
+
+        </form>
+
+    </nb-card-body>
+</nb-card>

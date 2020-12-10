@@ -121,6 +121,7 @@ import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginato
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioButton } from '@angular/material/radio';
+
 @NgModule({
   imports: [
     ThemeModule,
@@ -129,6 +130,7 @@ import { MatRadioButton } from '@angular/material/radio';
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatFormFieldModule,
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
@@ -163,6 +165,7 @@ import { MatRadioButton } from '@angular/material/radio';
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatFormFieldModule,
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
