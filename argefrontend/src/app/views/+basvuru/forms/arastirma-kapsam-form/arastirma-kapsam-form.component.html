@@ -42,12 +42,14 @@
             <!-- arYapilacagiYer -->
             <div class="row">
                 <div class="col-sm-12">
-                    <mat-label>(Araştırmaya dahil edilecek popülasyonun; kimlerden oluştuğu, yaş aralıkları, cinsiyet ve
-                        sayısı gibi tanımlayıcı özellikleri yazılacaktır). </mat-label>
+
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmanın yapılacağı yer / yerler: </mat-label>
                         <input matInput required type="text" placeholder="Araştırmanın yapılacağı yer / yerler: "
                             formControlName="arYapilacagiYer" />
+                        <mat-hint> (Araştırmaya dahil edilecek popülasyonun; kimlerden oluştuğu, yaş aralıkları,
+                            cinsiyet ve
+                            sayısı gibi tanımlayıcı özellikleri yazılacaktır).</mat-hint>
                     </mat-form-field>
 
                 </div>
@@ -80,12 +82,15 @@
             <!-- veriToplamaYontemi -->
             <div class="row">
                 <div class="col-sm-12">
-                    (Verilerin kimler tarafından, hangi yöntemlerle (ölçek, anket, numune alma, kayıtlı bilgilerden
-                    yararlanma vb.), nerede ve nasıl elde edilmesinin planlandığına ilişkin bilgiler yazılmalıdır.)
+
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Veri toplama yöntemi:</mat-label>
                         <input matInput required type="text" placeholder="Veri toplama yöntemi:"
                             formControlName="veriToplamaYontemi" />
+                        <mat-hint> (Verilerin kimler tarafından, hangi yöntemlerle (ölçek, anket, numune alma, kayıtlı
+                            bilgilerden
+                            yararlanma vb.), nerede ve nasıl elde edilmesinin planlandığına ilişkin bilgiler
+                            yazılmalıdır.)</mat-hint>
                     </mat-form-field>
                 </div>
             </div>
@@ -143,8 +148,12 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>invazAcikla</mat-label>
-                        <input matInput required type="text" placeholder="invazAcikla" formControlName="invazAcikla" />
+                        <mat-label>Yanıtınız evet ise, yapılacak olan invaziv girişim hakkında bilgi veriniz?
+                        </mat-label>
+                        <!--      <input matInput required type="text"
+                            placeholder="Yanıtınız evet ise, yapılacak olan invaziv girişim hakkında bilgi veriniz?"
+                            formControlName="invazAcikla" /> -->
+                        <textarea matInput formControlName="invazAcikla"></textarea>
                     </mat-form-field>
                 </div>
             </div>
@@ -154,9 +163,17 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>tibbiDurumVarmi</mat-label>
-                        <input matInput required type="text" placeholder="tibbiDurumVarmi"
-                            formControlName="tibbiDurumVarmi" />
+                        <mat-label>Araştırmada tıbbi bir durum veya hastalık araştırılacak mı?
+                        </mat-label>
+                        <!--   <input matInput required type="text" placeholder="Araştırmada tıbbi bir durum veya hastalık araştırılacak mı?
+                        " formControlName="tibbiDurumVarmi" /> -->
+                        <select matNativeControl formControlName="tibbiDurumVarmi">
+
+                            <option value="Evet">Evet</option>
+                            <option value="Hayır">Hayır</option>
+
+                        </select>
+
                     </mat-form-field>
                 </div>
             </div>
@@ -167,9 +184,12 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>tibbiDurumAcikla</mat-label>
-                        <input matInput required type="text" placeholder="tibbiDurumAcikla"
-                            formControlName="tibbiDurumAcikla" />
+                        <mat-label>Yanıtınız evet ise, araştırılan tıbbi durum/durumlar veya hastalık/hastalıklar
+                            hakkında kısa bilgi veriniz.</mat-label>
+                        <!--    <input matInput required type="text"
+                            placeholder="Yanıtınız evet ise, araştırılan tıbbi durum/durumlar veya hastalık/hastalıklar hakkında kısa bilgi veriniz."
+                            formControlName="tibbiDurumAcikla" /> -->
+                        <textarea matInput formControlName="tibbiDurumAcikla"></textarea>
                     </mat-form-field>
                 </div>
             </div>
@@ -179,9 +199,17 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>arastirmaRuhsalSoru</mat-label>
-                        <input matInput required type="text" placeholder="arastirmaRuhsalSoru"
-                            formControlName="arastirmaRuhsalSoru" />
+                        <mat-label>Araştırma katılımcıların fiziksel ve ruhsal sağlıklarını herhangi bir şekilde
+                            sıkıntıya sokacak sorular içeriyor mu?</mat-label>
+                        <!--       <input matInput required type="text"
+                            placeholder="Araştırma katılımcıların fiziksel ve ruhsal sağlıklarını herhangi bir şekilde sıkıntıya sokacak sorular içeriyor mu?"
+                            formControlName="arastirmaRuhsalSoru" /> -->
+                        <select matNativeControl formControlName="arastirmaRuhsalSoru">
+
+                            <option value="Evet">Evet</option>
+                            <option value="Hayır">Hayır</option>
+
+                        </select>
                     </mat-form-field>
                 </div>
             </div>
@@ -191,21 +219,44 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>arastirmaRuhsalSoruAcikla</mat-label>
-                        <input matInput required type="text" placeholder="arastirmaRuhsalSoruAcikla"
-                            formControlName="arastirmaRuhsalSoruAcikla" />
+                        <mat-label>Yanıtınız evet ise, lütfen açıklayınız.
+                        </mat-label>
+                        <!--    <input matInput required type="text" placeholder="Yanıtınız evet ise, lütfen açıklayınız. 
+                        " formControlName="arastirmaRuhsalSoruAcikla" /> -->
+                        <textarea matInput formControlName="arastirmaRuhsalSoruAcikla"></textarea>
                     </mat-form-field>
                 </div>
             </div>
             <!-- arastirmaRuhsalSoruAcikla -->
+            <!-- gonulluKatilimSoru -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Gönüllü katılımını olumsuz yönde etkileyecek herhangi bir durum var mı?</mat-label>
+                        <!--   <input matInput required type="text"
+                            placeholder="Gönüllü katılımını olumsuz yönde etkileyecek herhangi bir durum var mı?"
+                            formControlName="gonulluKatilimSoru" /> -->
+                        <select matNativeControl formControlName="arastirmaRuhsalSoru">
+
+                            <option value="Evet">Evet</option>
+                            <option value="Hayır">Hayır</option>
+
+                        </select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- gonulluKatilimSoru -->
             <!-- gonulluKatilimSoruAcikla -->
             <div class="row">
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>gonulluKatilimSoruAcikla</mat-label>
-                        <input matInput required type="text" placeholder="gonulluKatilimSoruAcikla"
-                            formControlName="gonulluKatilimSoruAcikla" />
+                        <mat-label>Yanıtınız evet ise, lütfen açıklayınız.
+                        </mat-label>
+                        <!--     <input matInput required type="text" placeholder="Yanıtınız evet ise, lütfen açıklayınız."
+                            formControlName="gonulluKatilimSoruAcikla" /> -->
+                        <textarea matInput formControlName="gonulluKatilimSoruAcikla"></textarea>
                     </mat-form-field>
                 </div>
             </div>
@@ -215,9 +266,10 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>bireyselYarar</mat-label>
-                        <input matInput required type="text" placeholder="bireyselYarar"
-                            formControlName="bireyselYarar" />
+                        <mat-label>Araştırmanın bireysel yararı: </mat-label>
+                        <!--              <input matInput required type="text" placeholder="Araştırmanın bireysel  yararı:  "
+                            formControlName="bireyselYarar" /> -->
+                        <textarea matInput formControlName="bireyselYarar"></textarea>
                     </mat-form-field>
                 </div>
             </div>
@@ -227,9 +279,11 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>kurumsalYarar</mat-label>
-                        <input matInput required type="text" placeholder="kurumsalYarar"
-                            formControlName="kurumsalYarar" />
+                        <mat-label>Araştırmanın kurumsal yararı: (Araştırmanın yapıldığı kuruma yararı)
+                        </mat-label>
+                        <!--     <input matInput required type="text" placeholder="Araştırmanın kurumsal yararı: (Araştırmanın yapıldığı kuruma yararı)
+                        " formControlName="kurumsalYarar" /> -->
+                        <textarea matInput formControlName="kurumsalYarar"></textarea>
                     </mat-form-field>
                 </div>
             </div>
@@ -239,9 +293,11 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>toplumsalYarar</mat-label>
-                        <input matInput required type="text" placeholder="toplumsalYarar"
-                            formControlName="toplumsalYarar" />
+                        <mat-label>Araştırmanın toplumsal yararı:(Lütfen açıklayınız )</mat-label>
+                        <!--   <input matInput required type="text"
+                            placeholder="Araştırmanın toplumsal yararı:(Lütfen açıklayınız )"
+                            formControlName="toplumsalYarar" /> -->
+                        <textarea matInput formControlName="toplumsalYarar"></textarea>
                     </mat-form-field>
                 </div>
             </div>
@@ -251,9 +307,11 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>bilimselYarar</mat-label>
-                        <input matInput required type="text" placeholder="bilimselYarar"
-                            formControlName="bilimselYarar" />
+                        <mat-label>Araştırmanın bilimsel yararı: (Lütfen açıklayınız )</mat-label>
+                        <!--         <input matInput required type="text"
+                            placeholder="Araştırmanın bilimsel yararı: (Lütfen açıklayınız )"
+                            formControlName="bilimselYarar" /> -->
+                        <textarea matInput formControlName="bilimselYarar"></textarea>
                     </mat-form-field>
                 </div>
             </div>
@@ -263,9 +321,15 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>destekleyicisiVarmi</mat-label>
-                        <input matInput required type="text" placeholder="destekleyicisiVarmi"
-                            formControlName="destekleyicisiVarmi" />
+                        <mat-label>Araştırmanın destekleyicisi var mı?</mat-label>
+                        <!--   <input matInput required type="text" placeholder="Araştırmanın destekleyicisi var mı?"
+                            formControlName="destekleyicisiVarmi" /> -->
+                        <select matNativeControl formControlName="destekleyicisiVarmi">
+
+                            <option value="Evet">Evet</option>
+                            <option value="Hayır">Hayır</option>
+
+                        </select>
                     </mat-form-field>
                 </div>
             </div>
@@ -275,9 +339,12 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>destekleyicisiAcikla</mat-label>
-                        <input matInput required type="text" placeholder="destekleyicisiAcikla"
-                            formControlName="destekleyicisiAcikla" />
+                        <mat-label>Yanıtınız evet ise lütfen destekleyici kişi / kurum / kuruluşları belirtiniz.
+                        </mat-label>
+                        <!--    <input matInput required type="text"
+                            placeholder="Yanıtınız evet ise lütfen destekleyici kişi / kurum / kuruluşları belirtiniz."
+                            formControlName="destekleyicisiAcikla" /> -->
+                        <textarea matInput formControlName="destekleyicisiAcikla"></textarea>
                     </mat-form-field>
                 </div>
             </div>
@@ -287,13 +354,43 @@
                 <div class="col-sm-12">
 
                     <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>bizdenTalepVarmi</mat-label>
-                        <input matInput required type="text" placeholder="bizdenTalepVarmi"
-                            formControlName="bizdenTalepVarmi" />
+                        <mat-label>Araştırma kapsamında Genel Müdürlüğümüzden talebiniz var mı? </mat-label>
+                        <!--     <input matInput required type="text"
+                            placeholder="Araştırma kapsamında Genel Müdürlüğümüzden talebiniz var mı? "
+                            formControlName="bizdenTalepVarmi" /> -->
+                        <select matNativeControl formControlName="bizdenTalepVarmi">
+
+                            <option value="Evet">Evet</option>
+                            <option value="Hayır">Hayır</option>
+
+                        </select>
+                        <mat-hint>(Bu alanda, araştırma kapsamında personel desteği, ASM / TSM binalarını kullanma
+                            isteği, hasta dosyası veya bilgisi talebi, araç veya ekipman desteği, ASM’ lerde gelen
+                            hastalara anket uygulama ve duyuru-reklam gibi medya desteği vb. talep edilip edilmediği
+                            belirtilecektir). </mat-hint>
                     </mat-form-field>
                 </div>
             </div>
+            <br>
             <!-- bizdenTalepVarmi -->
+            <!-- bizdenTalepAcikla -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Yanıtınız evet ise lütfen talebinizi ayrıntılı olarak belirtiniz.</mat-label>
+                        <!--   <input matInput required type="text"
+                            placeholder="Yanıtınız evet ise lütfen talebinizi ayrıntılı olarak belirtiniz."
+                            formControlName="bizdenTalepAcikla" /> -->
+                        <textarea matInput formControlName="bizdenTalepAcikla"></textarea>
+                    </mat-form-field>
+                    <!--  <mat-label>Yanıtınız evet ise lütfen talebinizi ayrıntılı olarak belirtiniz.</mat-label>
+                    <p-editor formControlName="bizdenTalepAcikla" [style]="{'height':'100px'}">
+                        Yanıtınız evet ise lütfen talebinizi ayrıntılı olarak belirtiniz.
+                    </p-editor> -->
+                </div>
+            </div>
+            <!-- bizdenTalepAcikla -->
 
         </form>
 
