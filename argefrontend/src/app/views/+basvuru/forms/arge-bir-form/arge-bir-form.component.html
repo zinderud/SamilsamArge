@@ -117,7 +117,42 @@
                 </div>
             </div>
             <!-- baslik -->
+            <div class="row">
 
+                <button type="submit" nbButton status="primary" (click)="addArastirmacilarforms()">Arastirmaci
+                    Ekle</button>
+            </div>
+            <br>
+            <div formArrayName="arastirmacilarforms">
+
+
+
+
+
+                <nb-tabset>
+                    <nb-tab tabTitle="Arastirmaci {{i}}"
+                        *ngFor="let arastirmacilar of arastirmacilarforms.controls; let i=index">
+                        <app-arastirmacilar-form [index]="i" [aform]="arastirmacilar"></app-arastirmacilar-form>
+                        <!--               <button nbButton status="danger" (click)="deleteIlness(i)"> Form {{ill.value.kknId}} sil</button> -->
+                    </nb-tab>
+
+                </nb-tabset>
+            </div>
+
+            <!--       <div formArrayName="arastirmacilarforms">
+
+                <div *ngFor="let arastirmacilar of arastirmacilarforms.controls; let i=index">
+
+ 
+                    <app-arastirmacilar-form [aform]="arastirmacilar"></app-arastirmacilar-form>
+
+                </div>
+
+
+            </div> -->
+
+
+            <!--     <app-arastirmacilar-form></app-arastirmacilar-form> -->
             <app-arastirma-form></app-arastirma-form>
             <app-arastirma-kapsam-form></app-arastirma-kapsam-form>
 

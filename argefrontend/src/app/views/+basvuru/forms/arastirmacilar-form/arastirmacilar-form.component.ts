@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { AbstractControlOptions, ValidatorFn, NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ArastirmacilarForm } from '../model/arastirmacilar';
@@ -26,12 +26,16 @@ type FormGroupConfig<T> = {
   ]
 })
 export class ArastirmacilarFormComponent implements ControlValueAccessor {
-  aform: FormGroup;
+
+  @Input() aform: FormGroup;
+  @Input() index: number;
+  cform: FormGroup;
   subscriptions: Subscription[] = [];
   onChange: any = () => { };
   onTouched: any = () => { };
   constructor(private fb: FormBuilder) {
     const config: FormGroupConfig<ArastirmacilarForm> = {
+      arastirmaciTuru: [''],
       ad: [''],
       soyad: [''],
       unvan: [''],
@@ -55,6 +59,7 @@ export class ArastirmacilarFormComponent implements ControlValueAccessor {
 
   createGroup() {
     const config: FormGroupConfig<ArastirmacilarForm> = {
+      arastirmaciTuru: [''],
       ad: [''],
       soyad: [''],
       unvan: [''],

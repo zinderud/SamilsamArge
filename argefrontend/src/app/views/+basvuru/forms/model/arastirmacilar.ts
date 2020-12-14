@@ -1,4 +1,5 @@
 export class ArastirmacilarForm {
+    arastirmaciTuru?: string;
     ad?: string;
     soyad?: string;
     unvan?: string;
