@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, AbstractControlOptions, ValidatorFn } from '@angular/forms';
+import { ArastirmaBelgelerFormComponent } from '../arastirma-belgeler-form/arastirma-belgeler-form.component';
 import { ArastirmaFormComponent } from '../arastirma-form/arastirma-form.component';
 import { ArastirmaKapsamFormComponent } from '../arastirma-kapsam-form/arastirma-kapsam-form.component';
 import { ArastirmacilarFormComponent } from '../arastirmacilar-form/arastirmacilar-form.component';
@@ -22,6 +23,7 @@ export class ArgeBirFormComponent implements OnInit {
   @ViewChild(ArastirmaFormComponent, { static: true }) arastirmaform: ArastirmaFormComponent;
   @ViewChild(ArastirmaKapsamFormComponent, { static: true }) arastirmaKapsamForm: ArastirmaKapsamFormComponent;
   @ViewChild(ArastirmacilarFormComponent, { static: true }) arastirmacilarform: ArastirmacilarFormComponent;
+  @ViewChild(ArastirmaBelgelerFormComponent, { static: true }) arastirmaBelgelerFormComponent: ArastirmaBelgelerFormComponent;
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -29,7 +31,8 @@ export class ArgeBirFormComponent implements OnInit {
       baslik: [''],
       arastirmaform: this.arastirmaform.createGroup(),
       arastirmaKapsam: this.arastirmaKapsamForm.createGroup(),
-      arastirmacilarforms: this.fb.array([this.createArastirmacilarformGroupForm()])
+      arastirmacilarforms: this.fb.array([this.createArastirmacilarformGroupForm()]),
+      arastirmaBelgelerForm: this.arastirmaBelgelerFormComponent.createGroup()
 
     });
   }

@@ -1,1 +1,81 @@
-<p>arastirma-belgeler-form works!</p>
+<nb-card accent="danger">
+    <nb-card-header>İLGİLİ BELGELER</nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="aform" #f="ngForm" class="form">
+            <!-- ozGecmisBelgesi -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>ozGecmisBelgesi</mat-label>
+                        <!-- <input matInput required type="text" placeholder="ozGecmisBelgesi" formControlName="ozGecmisBelgesi" /> -->
+                        <mat-file-input formControlName="ozGecmisBelgesi" placeholder="dosya yükle" [accept]="'.pdf'">
+                        </mat-file-input>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- ozGecmisBelgesi -->
+            <!-- etikKurulOnayBelgesi -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>etikKurulOnayBelgesi</mat-label>
+                        <!-- <input matInput required type="text" placeholder="etikKurulOnayBelgesi" formControlName="etikKurulOnayBelgesi" /> -->
+                        <mat-file-input formControlName="etikKurulOnayBelgesi" placeholder="dosya yükle" required
+                            [accept]="'.pdf'">
+                        </mat-file-input>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- etikKurulOnayBelgesi -->
+            <!-- anketOlcekFormu -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>anketOlcekFormu</mat-label>
+                        <!-- <input matInput required type="text" placeholder="anketOlcekFormu" formControlName="anketOlcekFormu" /> -->
+                        <mat-file-input formControlName="anketOlcekFormu" placeholder="dosya yükle" required
+                            [accept]="'.pdf'">
+                        </mat-file-input>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- anketOlcekFormu -->
+            <!-- uzmanlikvbTeziBelge -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>uzmanlikvbTeziBelge</mat-label>
+                        <!-- <input matInput required type="text" placeholder="uzmanlikvbTeziBelge" formControlName="uzmanlikvbTeziBelge" /> -->
+                        <mat-file-input formControlName="uzmanlikvbTeziBelge" placeholder="dosya yükle" required
+                            [accept]="'.pdf'">
+                        </mat-file-input>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- uzmanlikvbTeziBelge -->
+            <!-- ekBelge -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>ekBelge</mat-label>
+                        <!-- <input matInput required type="text" placeholder="ekBelge" formControlName="ekBelge" /> -->
+                        <mat-file-input formControlName="ekBelge" placeholder="dosya yükle" required [accept]="'.pdf'">
+                        </mat-file-input>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- ekBelge -->
+
+            <div class="row">
+                <button type="submit" nbButton status="primary" (click)="dene()">dene</button>
+            </div>
+
+        </form>
+
+    </nb-card-body>
+</nb-card>

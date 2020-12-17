@@ -155,6 +155,7 @@
             <!--     <app-arastirmacilar-form></app-arastirmacilar-form> -->
             <app-arastirma-form></app-arastirma-form>
             <app-arastirma-kapsam-form></app-arastirma-kapsam-form>
+            <app-arastirma-belgeler-form></app-arastirma-belgeler-form>
 
 
         </form>
@@ -163,3 +164,7 @@
 </nb-card>
 
 <div class="row"> {{this.aform.value| json}}</div>
+
+<div class="row">
+    <button type="submit" nbButton status="primary" (click)="arastirmaBelgelerFormComponent.dene()">dene</button>
+</div>

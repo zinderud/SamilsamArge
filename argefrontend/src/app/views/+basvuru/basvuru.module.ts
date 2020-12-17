@@ -35,6 +35,7 @@ import { ArastirmacilarFormComponent } from './forms/arastirmacilar-form/arastir
 import { ArastirmaKapsamFormComponent } from './forms/arastirma-kapsam-form/arastirma-kapsam-form.component';
 import { ArastirmaBelgelerFormComponent } from './forms/arastirma-belgeler-form/arastirma-belgeler-form.component';
 import { ArgeBirFormComponent } from './forms/arge-bir-form/arge-bir-form.component';
+import { UploadDownloadService } from '@app/core/services/upload-download.service';
 
 const routes: Routes = [
 
@@ -108,6 +109,7 @@ const routes: Routes = [
     BasvuruResolver,
     BasvuruFormService,
     ArgeBirFormService,
+    UploadDownloadService
 
   ]
 })
