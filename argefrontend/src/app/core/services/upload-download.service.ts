@@ -23,7 +23,7 @@ export class UploadDownloadService {
         Array.from(files).map((file, index) => {
             return formData.append('file' + index, file, file.name);
         });
-        return this.http.post<FileResponse[]>("${env.serverUrl}/UploadDownload", formData, {
+        return this.http.post<FileResponse[]>(`${env.serverUrl}/UploadDownload`, formData, {
             reportProgress: true,
             observe: 'events'
         });

@@ -1,0 +1,8 @@
+<input
+  #input
+  type="file"
+  [attr.multiple]="multiple ? '' : null"
+  [attr.accept]="accept"
+  [disabled]="disabled"
+/>
+<span class="filename" [title]="fileNames">{{ fileNames }}</span>

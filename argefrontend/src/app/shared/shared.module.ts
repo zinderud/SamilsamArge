@@ -121,7 +121,7 @@ import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginato
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioButton } from '@angular/material/radio';
-import { MatFileInputModule } from 'mat-file-input';
+import { MatFileInputModule } from './components/mat-file-input/mat-file-input.module';
 
 @NgModule({
   imports: [
