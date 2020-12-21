@@ -115,6 +115,7 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
       uzmanlikvbTeziBelge: fileNames[0].fileName,
       ekBelge: fileNames[0].fileName,
     });
+    this.uploading = true;
     /* return {
       ...this.aform.value,
       ozGecmisBelgesi: fileNames[0].fileName,
@@ -139,11 +140,10 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
       anketOlcekFormu,
       uzmanlikvbTeziBelge,
       ekBelge];
-    this.uploading = true;
 
     return this.uploadDownloadService.uploadFiles(files);
   }
-  dene() {
+  Yukle() {
     this.uploadDocuments().subscribe((result) => {
 
       if (result.type === HttpEventType.UploadProgress) {
@@ -152,7 +152,7 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
 
         const fileNames = result.body;
 
-        this.uploading = false;
+
         const product = this.mapProduct(fileNames);
 
 

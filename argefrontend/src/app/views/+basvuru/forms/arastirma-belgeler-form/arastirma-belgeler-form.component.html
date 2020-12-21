@@ -16,6 +16,9 @@
                         <mat-file-input formControlName="ozGecmisBelgesi" placeholder="dosya yükle" [accept]="'.pdf'">
                             <!--                        <input nbInput fullWidth id="file" type="file" (change)="fileUploadExcel($event)" multiple="false"> -->
                         </mat-file-input>
+                        <mat-hint [hidden]="!uploading"> {{this.aform_controls['ozGecmisBelgesi'].value + " Belgesi
+                            Olarak Yüklendi"}}
+                        </mat-hint>
                     </mat-form-field>
                 </div>
             </div>
@@ -31,7 +34,9 @@
                             [accept]="'.pdf'">
 
                         </mat-file-input>
-                        <mat-hint> {{uploading}}</mat-hint>
+                        <mat-hint [hidden]="!uploading"> {{this.aform_controls['etikKurulOnayBelgesi'].value+ " Belgesi
+                            Olarak Yüklendi"}}
+                        </mat-hint>
                     </mat-form-field>
                 </div>
             </div>
@@ -46,6 +51,8 @@
                         <mat-file-input formControlName="anketOlcekFormu" placeholder="dosya yükle" required
                             [accept]="'.pdf'">
                         </mat-file-input>
+                        <mat-hint [hidden]="!uploading"> {{this.aform_controls['anketOlcekFormu'].value+ " Belgesi
+                            Olarak Yüklendi"}}</mat-hint>
                     </mat-form-field>
                 </div>
             </div>
@@ -60,6 +67,8 @@
                         <mat-file-input formControlName="uzmanlikvbTeziBelge" placeholder="dosya yükle" required
                             [accept]="'.pdf'">
                         </mat-file-input>
+                        <mat-hint [hidden]="!uploading"> {{this.aform_controls['uzmanlikvbTeziBelge'].value+ " Belgesi
+                            Olarak Yüklendi"}}</mat-hint>
                     </mat-form-field>
                 </div>
             </div>
@@ -73,13 +82,17 @@
                         <!-- <input matInput required type="text" placeholder="ekBelge" formControlName="ekBelge" /> -->
                         <mat-file-input formControlName="ekBelge" placeholder="dosya yükle" required [accept]="'.pdf'">
                         </mat-file-input>
+                        <mat-hint [hidden]="!uploading"> {{this.aform_controls['ekBelge'].value+ " Belgesi Olarak
+                            Yüklendi"}}</mat-hint>
+
                     </mat-form-field>
                 </div>
             </div>
             <!-- ekBelge -->
 
             <div class="row">
-                <button type="submit" nbButton status="primary" (click)="dene()">dene</button>
+                <button type="submit" nbButton status="primary" [disabled]="uploading || !aform.valid"
+                    (click)="Yukle()">Yükle</button>
             </div>
 
         </form>
