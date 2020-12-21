@@ -16,9 +16,10 @@ input {
   z-index: -1;
 }
 
-.filename {
+/* .filename {
   display: inline-block;
   text-overflow: ellipsis;
   overflow: hidden;
   width: 100%;
 }
+ */

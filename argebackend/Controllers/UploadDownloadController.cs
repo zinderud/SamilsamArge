@@ -15,10 +15,8 @@ using Microsoft.AspNetCore.StaticFiles;
 
 namespace argebackend.Controllers
 {
-    [Authorize]
-    [Route("api/[controller]/[action]")]
-    [Produces("application/json")]
-    [ProducesResponseType(typeof(List<string>), 400)]
+    [Route("api/[controller]")]
+    [ApiController]
     public class UploadDownloadController : ControllerBase
     {
         private const string UPLOADS_FOLDER = "Uploads";
@@ -27,18 +25,21 @@ namespace argebackend.Controllers
 
         public UploadDownloadController(IHostEnvironment hostEnvironment)
         {
+            Console.WriteLine("dsdd");
             _hostEnvironment = hostEnvironment;
         }
 
         [HttpPost]
         public async Task<ActionResult<IEnumerable<FileResponseModel>>> Upload()
         {
+            Console.WriteLine("dsdd");
             var files = Request.Form.Files;
             string upload = Path.Combine(_hostEnvironment.ContentRootPath, UPLOADS_FOLDER);
             if (!Directory.Exists(upload))
                 Directory.CreateDirectory(upload);
 
             var fileNames = new List<FileResponseModel>();
+            Console.WriteLine("de", fileNames);
             foreach (var file in files)
             {
                 if (file.Length > 0)

@@ -22,6 +22,9 @@ using NLog.Web;
 using Hangfire.PostgreSql;
 using AutoMapperConfiguration = AutoMapper.Configuration;
 using argebackend.Profiles;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace argebackend
 {
@@ -124,6 +127,17 @@ namespace argebackend
 
                        }); */
 
+            services.Configure<KestrelServerOptions>(options =>
+{
+    options.Limits.MaxRequestBodySize = int.MaxValue; // if don't set default value is: 30 MB
+});
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.MaxRequestBodySize = int.MaxValue;
+            });
+
+
+
 
         }
 
@@ -133,6 +147,15 @@ namespace argebackend
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+           Path.Combine(Directory.GetCurrentDirectory(), @"Uploads")),
+                RequestPath = new PathString("/Uploads")
+            });
+
 
             app.UseCors(EnabledCORS);
             /*       app.UseSwagger();

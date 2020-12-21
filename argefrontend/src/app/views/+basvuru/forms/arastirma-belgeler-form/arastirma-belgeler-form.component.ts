@@ -33,6 +33,7 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
   @Input() aform: FormGroup;
   @Input() index: number;
   uploading = false;
+  loading = false;
   uploadP: number;
   cform: FormGroup;
   subscriptions: Subscription[] = [];
@@ -106,24 +107,31 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
     return this.aform.controls;
   }
 
-  private mapProduct(fileNames: FileResponse[]): ArastirmaBelgelerForm {
-    return {
+  private mapProduct(fileNames: FileResponse[]) {
+    this.aform.setValue({
+      ozGecmisBelgesi: fileNames[0].fileName,
+      etikKurulOnayBelgesi: fileNames[0].fileName,
+      anketOlcekFormu: fileNames[0].fileName,
+      uzmanlikvbTeziBelge: fileNames[0].fileName,
+      ekBelge: fileNames[0].fileName,
+    });
+    /* return {
       ...this.aform.value,
       ozGecmisBelgesi: fileNames[0].fileName,
       etikKurulOnayBelgesi: fileNames[1].fileName,
       anketOlcekFormu: fileNames[2].fileName,
       uzmanlikvbTeziBelge: fileNames[3].fileName,
       ekBelge: fileNames[3].fileName,
-    };
+    }; */
   }
   private uploadDocuments() {
-    console.log(this.aform);
+
     const ozGecmisBelgesi = <File>this.aform_controls['ozGecmisBelgesi'].value.files[0];
     const etikKurulOnayBelgesi = <File>this.aform_controls['etikKurulOnayBelgesi'].value.files[0];
     const anketOlcekFormu = <File>this.aform_controls['anketOlcekFormu'].value.files[0];
     const uzmanlikvbTeziBelge = <File>this.aform_controls['uzmanlikvbTeziBelge'].value.files[0];
     const ekBelge = <File>this.aform_controls['ekBelge'].value.files[0];
-    console.log(this.aform);
+
 
     const files = [
       ozGecmisBelgesi,
@@ -137,13 +145,16 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
   }
   dene() {
     this.uploadDocuments().subscribe((result) => {
+
       if (result.type === HttpEventType.UploadProgress) {
         this.uploadP = Math.round(100 * (result.loaded / result.total));
       } else if (result.type === HttpEventType.Response) {
+
         const fileNames = result.body;
+
         this.uploading = false;
         const product = this.mapProduct(fileNames);
-        console.log(product);
+
 
       }
     });
