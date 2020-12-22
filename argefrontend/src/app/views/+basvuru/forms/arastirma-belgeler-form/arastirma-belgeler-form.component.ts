@@ -2,6 +2,7 @@ import { HttpEventType } from '@angular/common/http';
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { AbstractControlOptions, ValidatorFn, NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { FileResponse, UploadDownloadService } from '@app/core/services/upload-download.service';
+import { ArrayHelper } from '@app/shared/lib/helpers/arrayHelper';
 import { Subscription } from 'rxjs';
 import { ArastirmaBelgelerForm } from '../model/arastirma-belgeler-model';
 
@@ -39,6 +40,7 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
   subscriptions: Subscription[] = [];
   onChange: any = () => { };
   onTouched: any = () => { };
+  upfiles = []
   constructor(private fb: FormBuilder, private uploadDownloadService: UploadDownloadService,) {
     const config: FormGroupConfig<ArastirmaBelgelerForm> = {
       ozGecmisBelgesi: [''],
@@ -126,22 +128,36 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
     }; */
   }
   private uploadDocuments() {
+    this.upfiles = [];
+    console.log("s" + "ssdassss")
+    const ozGecmisBelgesi = ArrayHelper.isNullOrEmpty(this.aform.controls['ozGecmisBelgesi'].value) ? "" : <File>this.aform_controls['ozGecmisBelgesi'].value?.files[0];
+    const etikKurulOnayBelgesi = ArrayHelper.isNullOrEmpty(this.aform.controls['etikKurulOnayBelgesi'].value) ? "" : <File>this.aform_controls['etikKurulOnayBelgesi'].value?.files[0];
+    const anketOlcekFormu = ArrayHelper.isNullOrEmpty(this.aform.controls['anketOlcekFormu'].value) ? "" : <File>this.aform_controls['anketOlcekFormu'].value?.files[0];
+    const uzmanlikvbTeziBelge = ArrayHelper.isNullOrEmpty(this.aform.controls['uzmanlikvbTeziBelge'].value) ? "" : <File>this.aform_controls['uzmanlikvbTeziBelge'].value?.files[0];
 
-    const ozGecmisBelgesi = <File>this.aform_controls['ozGecmisBelgesi'].value?.files[0] || "";
-    const etikKurulOnayBelgesi = <File>this.aform_controls['etikKurulOnayBelgesi'].value?.files[0] || "";
-    const anketOlcekFormu = <File>this.aform_controls['anketOlcekFormu'].value?.files[0] || [];
-    const uzmanlikvbTeziBelge = <File>this.aform_controls['uzmanlikvbTeziBelge'].value?.files[0] || "";
-    const ekBelge = <File>this.aform_controls['ekBelge'].value?.files[0] || "";
+    const ekBelge = ArrayHelper.isNullOrEmpty(this.aform.controls['ekBelge'].value) ? "" : <File>this.aform_controls['ekBelge'].value?.files[0];
+    /*
+       const ozGecmisBelgesi = <File>this.aform_controls['ozGecmisBelgesi'].value?.files[0] ?? "1";
+      const etikKurulOnayBelgesi = <File>this.aform_controls['etikKurulOnayBelgesi'].value?.files[0] ?? "1";
+      const anketOlcekFormu = <File>this.aform_controls['anketOlcekFormu'].value?.files[0] ?? "1";
+      const uzmanlikvbTeziBelge = <File>this.aform_controls['uzmanlikvbTeziBelge'].value?.files[0] ?? "1";
+      const ekBelge = <File>this.aform_controls['ekBelge'].value?.files[0] ?? "1"; 
+      */
+    const files = [];
+    console.log("123121s" + ozGecmisBelgesi)
+    this.addArray(ozGecmisBelgesi);
+    this.addArray(etikKurulOnayBelgesi);
+    this.addArray(anketOlcekFormu);
+    this.addArray(uzmanlikvbTeziBelge);
+    this.addArray(ekBelge);
+    /*  const files = [
+       ozGecmisBelgesi,
+       etikKurulOnayBelgesi,
+       anketOlcekFormu,
+       uzmanlikvbTeziBelge,
+       ekBelge]; */
 
-
-    const files = [
-      ozGecmisBelgesi,
-      etikKurulOnayBelgesi,
-      anketOlcekFormu,
-      uzmanlikvbTeziBelge,
-      ekBelge];
-
-    return this.uploadDownloadService.uploadFiles(files);
+    return this.uploadDownloadService.uploadFiles(this.upfiles);
   }
   Yukle() {
     this.uploadDocuments().subscribe((result) => {
@@ -151,12 +167,24 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
       } else if (result.type === HttpEventType.Response) {
 
         const fileNames = result.body;
-
+        console.log("sade", fileNames)
 
         const product = this.mapProduct(fileNames);
 
 
       }
     });
+  }
+
+  addArray(ek: any) {
+
+    if (ek === "") {
+
+    }
+    else {
+      this.upfiles.push(ek);
+    }
+
+
   }
 }
