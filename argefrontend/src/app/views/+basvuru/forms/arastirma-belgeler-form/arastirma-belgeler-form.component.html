@@ -9,27 +9,41 @@
 
         <form [formGroup]="aform" #f="ngForm" class="form">
             <div class="row">
-                <div class=" col-8 col-sm-6  col-md-8">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
                     <!-- ozGecmisBelgesi -->
                     <div class="row">
-                        <div class="col-sm-12">
 
-                            <mat-form-field class="full-width " appearance="outline">
-                                <mat-label>ozGecmisBelgesi</mat-label>
 
-                                <mat-file-input formControlName="ozGecmisBelgesi" placeholder="dosya yükle"
-                                    [accept]="'.pdf'">
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>ozGecmisBelgesi</mat-label>
 
-                                </mat-file-input>
-                                <mat-hint [hidden]="!uploading"> {{this.aform_controls['ozGecmisBelgesi'].value + "
-                                    Belgesi
-                                    Olarak Yüklendi"}}
-                                </mat-hint>
-                            </mat-form-field>
-                        </div>
+                            <mat-file-input formControlName="ozGecmisBelgesi" placeholder="dosya yükle"
+                                [accept]="'.pdf'">
+
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadingozGecmisBelgesi">
+                                {{this.aform_controls['ozGecmisBelgesi'].value + " Belgesi
+                                Olarak Yüklendi"}}
+                            </mat-hint>
+                        </mat-form-field>
+
                     </div>
                     <!-- ozGecmisBelgesi -->
-                    <!-- etikKurulOnayBelgesi -->
+
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+                    <div class="row">
+                        <button type="submit" [disabled]="uploadingozGecmisBelgesi" nbButton status="primary"
+                            (click)="ozGecmisBelgesiYukle()">Yükle</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- etikKurulOnayBelgesi -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
                     <div class="row">
                         <div class="col-sm-12">
 
@@ -39,15 +53,32 @@
                                     [accept]="'.pdf'">
 
                                 </mat-file-input>
-                                <mat-hint [hidden]="!uploading"> {{this.aform_controls['etikKurulOnayBelgesi'].value+ "
+                                <mat-hint [hidden]="!uploadingetikKurulOnayBelgesi">
+                                    {{this.aform_controls['etikKurulOnayBelgesi'].value+ "
                                     Belgesi
                                     Olarak Yüklendi"}}
                                 </mat-hint>
                             </mat-form-field>
                         </div>
                     </div>
-                    <!-- etikKurulOnayBelgesi -->
-                    <!-- anketOlcekFormu -->
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+                    <div class="row">
+                        <button type="submit" [disabled]="uploadingetikKurulOnayBelgesi" nbButton status="primary"
+                            (click)="etikKurulOnayBelgesiYukle()">Yükle</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- etikKurulOnayBelgesi -->
+
+
+            <!-- anketOlcekFormu -->
+
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
                     <div class="row">
                         <div class="col-sm-12">
 
@@ -56,14 +87,27 @@
                                 <mat-file-input formControlName="anketOlcekFormu" placeholder="dosya yükle"
                                     [accept]="'.pdf'">
                                 </mat-file-input>
-                                <mat-hint [hidden]="!uploading"> {{this.aform_controls['anketOlcekFormu'].value+ "
+                                <mat-hint [hidden]="!uploadinganketOlcekFormu">
+                                    {{this.aform_controls['anketOlcekFormu'].value+ "
                                     Belgesi
                                     Olarak Yüklendi"}}</mat-hint>
                             </mat-form-field>
                         </div>
                     </div>
-                    <!-- anketOlcekFormu -->
-                    <!-- uzmanlikvbTeziBelge -->
+
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+                    <div class="row">
+                        <button type="submit" [disabled]="uploadinganketOlcekFormu" nbButton status="primary"
+                            (click)="anketOlcekFormuYukle()">Yükle</button>
+                    </div>
+                </div>
+            </div>
+            <!-- anketOlcekFormu -->
+            <!-- uzmanlikvbTeziBelge -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
                     <div class="row">
                         <div class="col-sm-12">
 
@@ -72,14 +116,26 @@
                                 <mat-file-input formControlName="uzmanlikvbTeziBelge" placeholder="dosya yükle"
                                     [accept]="'.pdf'">
                                 </mat-file-input>
-                                <mat-hint [hidden]="!uploading"> {{this.aform_controls['uzmanlikvbTeziBelge'].value+ "
+                                <mat-hint [hidden]="!uploadinguzmanlikvbTeziBelge">
+                                    {{this.aform_controls['uzmanlikvbTeziBelge'].value+ "
                                     Belgesi
                                     Olarak Yüklendi"}}</mat-hint>
                             </mat-form-field>
                         </div>
                     </div>
-                    <!-- uzmanlikvbTeziBelge -->
-                    <!-- ekBelge -->
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+                    <div class="row">
+                        <button type="submit" [disabled]="uploadinguzmanlikvbTeziBelge" nbButton status="primary"
+                            (click)="uzmanlikvbTeziBelgeYukle()">Yükle</button>
+                    </div>
+                </div>
+            </div>
+            <!-- uzmanlikvbTeziBelge -->
+            <!-- ekBelge -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
                     <div class="row">
                         <div class="col-sm-12">
 
@@ -88,7 +144,7 @@
 
                                 <mat-file-input formControlName="ekBelge" placeholder="dosya yükle" [accept]="'.pdf'">
                                 </mat-file-input>
-                                <mat-hint [hidden]="!uploading" [style]="{'text-color':'red'}">
+                                <mat-hint [hidden]="!uploadingekBelge" [style]="{'text-color':'red'}">
                                     {{this.aform_controls['ekBelge'].value+
                                     " Belgesi Olarak Yüklendi"}}
 
@@ -97,16 +153,17 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    <!-- ekBelge -->
                 </div>
 
                 <div class=" col-4   col-sm-6 col-md-4   center">
                     <div class="row">
-                        <button type="submit" [disabled]="uploading" nbButton status="primary"
-                            (click)="Yukle()">Yükle</button>
+                        <button type="submit" [disabled]="uploadingekBelge" nbButton status="primary"
+                            (click)="ekBelgeYukle()">Yükle</button>
                     </div>
                 </div>
             </div>
+            <!-- ekBelge -->
+
         </form>
 
     </nb-card-body>

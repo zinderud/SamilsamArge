@@ -34,6 +34,11 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
   @Input() aform: FormGroup;
   @Input() index: number;
   uploading = false;
+  uploadingozGecmisBelgesi = false;
+  uploadingetikKurulOnayBelgesi = false;
+  uploadinganketOlcekFormu = false;
+  uploadinguzmanlikvbTeziBelge = false;
+  uploadingekBelge = false;
   loading = false;
   uploadP: number;
   cform: FormGroup;
@@ -109,82 +114,110 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
     return this.aform.controls;
   }
 
-  private mapProduct(fileNames: FileResponse[]) {
-    this.aform.setValue({
-      ozGecmisBelgesi: fileNames[0]?.fileName || "",
-      etikKurulOnayBelgesi: fileNames[1]?.fileName || "",
-      anketOlcekFormu: fileNames[2]?.fileName || "",
-      uzmanlikvbTeziBelge: fileNames[3]?.fileName || "",
-      ekBelge: fileNames[4]?.fileName || "",
-    });
-    this.uploading = true;
-    /* return {
-      ...this.aform.value,
-      ozGecmisBelgesi: fileNames[0].fileName,
-      etikKurulOnayBelgesi: fileNames[1].fileName,
-      anketOlcekFormu: fileNames[2].fileName,
-      uzmanlikvbTeziBelge: fileNames[3].fileName,
-      ekBelge: fileNames[3].fileName,
-    }; */
-  }
-  private uploadDocuments() {
-    this.upfiles = [];
-    console.log("s" + "ssdassss")
-    const ozGecmisBelgesi = ArrayHelper.isNullOrEmpty(this.aform.controls['ozGecmisBelgesi'].value) ? "" : <File>this.aform_controls['ozGecmisBelgesi'].value?.files[0];
-    const etikKurulOnayBelgesi = ArrayHelper.isNullOrEmpty(this.aform.controls['etikKurulOnayBelgesi'].value) ? "" : <File>this.aform_controls['etikKurulOnayBelgesi'].value?.files[0];
-    const anketOlcekFormu = ArrayHelper.isNullOrEmpty(this.aform.controls['anketOlcekFormu'].value) ? "" : <File>this.aform_controls['anketOlcekFormu'].value?.files[0];
-    const uzmanlikvbTeziBelge = ArrayHelper.isNullOrEmpty(this.aform.controls['uzmanlikvbTeziBelge'].value) ? "" : <File>this.aform_controls['uzmanlikvbTeziBelge'].value?.files[0];
 
-    const ekBelge = ArrayHelper.isNullOrEmpty(this.aform.controls['ekBelge'].value) ? "" : <File>this.aform_controls['ekBelge'].value?.files[0];
-    /*
-       const ozGecmisBelgesi = <File>this.aform_controls['ozGecmisBelgesi'].value?.files[0] ?? "1";
-      const etikKurulOnayBelgesi = <File>this.aform_controls['etikKurulOnayBelgesi'].value?.files[0] ?? "1";
-      const anketOlcekFormu = <File>this.aform_controls['anketOlcekFormu'].value?.files[0] ?? "1";
-      const uzmanlikvbTeziBelge = <File>this.aform_controls['uzmanlikvbTeziBelge'].value?.files[0] ?? "1";
-      const ekBelge = <File>this.aform_controls['ekBelge'].value?.files[0] ?? "1"; 
-      */
-    const files = [];
-    console.log("123121s" + ozGecmisBelgesi)
-    this.addArray(ozGecmisBelgesi);
-    this.addArray(etikKurulOnayBelgesi);
-    this.addArray(anketOlcekFormu);
-    this.addArray(uzmanlikvbTeziBelge);
-    this.addArray(ekBelge);
-    /*  const files = [
-       ozGecmisBelgesi,
-       etikKurulOnayBelgesi,
-       anketOlcekFormu,
-       uzmanlikvbTeziBelge,
-       ekBelge]; */
 
-    return this.uploadDownloadService.uploadFiles(this.upfiles);
-  }
-  Yukle() {
-    this.uploadDocuments().subscribe((result) => {
+  ozGecmisBelgesiYukle() {
+    const ozGecmisBelgesi = <File>this.aform_controls['ozGecmisBelgesi'].value.files[0];
+    const files = [
+      ozGecmisBelgesi,
+    ];
+    this.uploadDownloadService.uploadFiles(files).subscribe((result) => {
 
       if (result.type === HttpEventType.UploadProgress) {
         this.uploadP = Math.round(100 * (result.loaded / result.total));
       } else if (result.type === HttpEventType.Response) {
 
         const fileNames = result.body;
-        console.log("sade", fileNames)
-
-        const product = this.mapProduct(fileNames);
+        this.aform.controls["ozGecmisBelgesi"].setValue(fileNames[0]?.fileName || "",)
 
 
+        this.uploadingozGecmisBelgesi = true;
       }
     });
-  }
-
-  addArray(ek: any) {
-
-    if (ek === "") {
-
-    }
-    else {
-      this.upfiles.push(ek);
-    }
-
 
   }
+
+  etikKurulOnayBelgesiYukle() {
+    const file = <File>this.aform_controls['etikKurulOnayBelgesi'].value.files[0];
+    const files = [
+      file,
+    ];
+    this.uploadDownloadService.uploadFiles(files).subscribe((result) => {
+
+      if (result.type === HttpEventType.UploadProgress) {
+        this.uploadP = Math.round(100 * (result.loaded / result.total));
+      } else if (result.type === HttpEventType.Response) {
+
+        const fileNames = result.body;
+        this.aform.controls["etikKurulOnayBelgesi"].setValue(fileNames[0]?.fileName || "",)
+
+
+        this.uploadingetikKurulOnayBelgesi = true;
+      }
+    });
+
+  }
+
+
+  anketOlcekFormuYukle() {
+    const file = <File>this.aform_controls['anketOlcekFormu'].value.files[0];
+    const files = [
+      file,
+    ];
+    this.uploadDownloadService.uploadFiles(files).subscribe((result) => {
+
+      if (result.type === HttpEventType.UploadProgress) {
+        this.uploadP = Math.round(100 * (result.loaded / result.total));
+      } else if (result.type === HttpEventType.Response) {
+
+        const fileNames = result.body;
+        this.aform.controls["anketOlcekFormu"].setValue(fileNames[0]?.fileName || "",)
+
+
+        this.uploadinganketOlcekFormu = true;
+      }
+    });
+
+  }
+  uzmanlikvbTeziBelgeYukle() {
+    const file = <File>this.aform_controls['uzmanlikvbTeziBelge'].value.files[0];
+    const files = [
+      file,
+    ];
+    this.uploadDownloadService.uploadFiles(files).subscribe((result) => {
+
+      if (result.type === HttpEventType.UploadProgress) {
+        this.uploadP = Math.round(100 * (result.loaded / result.total));
+      } else if (result.type === HttpEventType.Response) {
+
+        const fileNames = result.body;
+        this.aform.controls["uzmanlikvbTeziBelge"].setValue(fileNames[0]?.fileName || "",)
+
+
+        this.uploadinguzmanlikvbTeziBelge = true;
+      }
+    });
+
+  }
+  ekBelgeYukle() {
+    const file = <File>this.aform_controls['ekBelge'].value.files[0];
+    const files = [
+      file,
+    ];
+    this.uploadDownloadService.uploadFiles(files).subscribe((result) => {
+
+      if (result.type === HttpEventType.UploadProgress) {
+        this.uploadP = Math.round(100 * (result.loaded / result.total));
+      } else if (result.type === HttpEventType.Response) {
+
+        const fileNames = result.body;
+        this.aform.controls["ekBelge"].setValue(fileNames[0]?.fileName || "",)
+
+
+        this.uploadingekBelge = true;
+      }
+    });
+
+  }
+
 }
