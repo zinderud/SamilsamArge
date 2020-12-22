@@ -30,6 +30,19 @@ export class UploadDownloadService {
             observe: 'events'
         });
     }
+    uploadFile(file: File) {
+        const formData: FormData = new FormData();
+
+        formData.append('file', file, file.name);
+
+
+        console.log("formData=", formData)
+        return this.http.post<FileResponse[]>(`${env.serverUrl}/UploadDownload`, formData, {
+            reportProgress: true,
+            observe: 'events'
+        });
+    }
+
 
     downloadFile(fileName: string, downloadName?: string): Observable<Blob> {
         return this.http.get<Blob>(
