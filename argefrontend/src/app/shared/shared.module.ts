@@ -122,6 +122,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioButton } from '@angular/material/radio';
 import { MatFileInputModule } from './components/mat-file-input/mat-file-input.module';
+import { MatFileUploadComponent } from './components/mat-file-upload/mat-file-upload.component';
 
 @NgModule({
   imports: [
@@ -160,7 +161,8 @@ import { MatFileInputModule } from './components/mat-file-input/mat-file-input.m
     MatRadioModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFileInputModule
   ],
   exports: [NB_MODULES,
     LayoutModule,
@@ -203,7 +205,8 @@ import { MatFileInputModule } from './components/mat-file-input/mat-file-input.m
     LayoutComponent,
     ConfirmComponent,
     CallActionCardComponent,
-    MatFileInputModule
+    MatFileInputModule,
+    MatFileUploadComponent
   ],
   declarations: [
     CallActionCardComponent,
@@ -212,6 +215,7 @@ import { MatFileInputModule } from './components/mat-file-input/mat-file-input.m
     ConfirmComponent,
     MatTableLoadingComponent,
     MatTableNotFoundComponent,
+    MatFileUploadComponent,
 
   ],
   providers: [
@@ -222,7 +226,9 @@ import { MatFileInputModule } from './components/mat-file-input/mat-file-input.m
     NbSidebarService
   ],
   entryComponents: [
-    ConfirmComponent
+    ConfirmComponent,
+
+
   ],
 })
 export class SharedModule {
