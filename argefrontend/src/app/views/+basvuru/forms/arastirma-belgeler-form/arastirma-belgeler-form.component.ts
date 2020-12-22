@@ -109,11 +109,11 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
 
   private mapProduct(fileNames: FileResponse[]) {
     this.aform.setValue({
-      ozGecmisBelgesi: fileNames[0].fileName,
-      etikKurulOnayBelgesi: fileNames[0].fileName,
-      anketOlcekFormu: fileNames[0].fileName,
-      uzmanlikvbTeziBelge: fileNames[0].fileName,
-      ekBelge: fileNames[0].fileName,
+      ozGecmisBelgesi: fileNames[0]?.fileName || "",
+      etikKurulOnayBelgesi: fileNames[1]?.fileName || "",
+      anketOlcekFormu: fileNames[2]?.fileName || "",
+      uzmanlikvbTeziBelge: fileNames[3]?.fileName || "",
+      ekBelge: fileNames[4]?.fileName || "",
     });
     this.uploading = true;
     /* return {
@@ -127,11 +127,11 @@ export class ArastirmaBelgelerFormComponent implements ControlValueAccessor {
   }
   private uploadDocuments() {
 
-    const ozGecmisBelgesi = <File>this.aform_controls['ozGecmisBelgesi'].value.files[0];
-    const etikKurulOnayBelgesi = <File>this.aform_controls['etikKurulOnayBelgesi'].value.files[0];
-    const anketOlcekFormu = <File>this.aform_controls['anketOlcekFormu'].value.files[0];
-    const uzmanlikvbTeziBelge = <File>this.aform_controls['uzmanlikvbTeziBelge'].value.files[0];
-    const ekBelge = <File>this.aform_controls['ekBelge'].value.files[0];
+    const ozGecmisBelgesi = <File>this.aform_controls['ozGecmisBelgesi'].value?.files[0] || "";
+    const etikKurulOnayBelgesi = <File>this.aform_controls['etikKurulOnayBelgesi'].value?.files[0] || "";
+    const anketOlcekFormu = <File>this.aform_controls['anketOlcekFormu'].value?.files[0] || [];
+    const uzmanlikvbTeziBelge = <File>this.aform_controls['uzmanlikvbTeziBelge'].value?.files[0] || "";
+    const ekBelge = <File>this.aform_controls['ekBelge'].value?.files[0] || "";
 
 
     const files = [

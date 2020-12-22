@@ -18,7 +18,7 @@ export interface FileResponse {
 export class UploadDownloadService {
     constructor(private http: HttpClient) { }
 
-    uploadFiles(files: File[]) {
+    uploadFiles(files: any[]) {
         const formData: FormData = new FormData();
         Array.from(files).map((file, index) => {
             return formData.append('file' + index, file, file.name);
