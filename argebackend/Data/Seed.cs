@@ -14,6 +14,9 @@ namespace argebackend.Data
     {
         public static async Task CreateRoles(IServiceProvider serviceProvider, IConfiguration Configuration)
         {
+
+
+
             // Adding customs roles
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
@@ -88,6 +91,7 @@ namespace argebackend.Data
 
             #endregion
 
+
             #region User   
 
             // Creating a   user who could maintain the web app
@@ -116,10 +120,27 @@ namespace argebackend.Data
 
             #endregion
 
+
+
+
+
         }
 
         public async static void Initialize(ApplicationDbContext context)
         {
+
+
+            #region  BsvNo
+            if (!context.BsvNos.Any())
+            {
+                var personset = await context.BsvNos.AddAsync(new BsvNo
+                {
+                    BasvuruNo = 1
+                });
+                context.SaveChanges();
+
+            }
+            #region
 
             #region person
             List<Person> personList = new List<Person>();

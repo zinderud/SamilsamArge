@@ -25,6 +25,7 @@ namespace argebackend
 
         public DbSet<Ozgecmis> ozgecmisis { get; set; }
         public DbSet<Basvuru> Basvurus { get; set; }
+        public DbSet<BsvNo> BsvNos { get; set; }
 
 
 
