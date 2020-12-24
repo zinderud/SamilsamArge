@@ -12,7 +12,7 @@ namespace argebackend.Models
         public DateTime Tarih { get; set; }
         public string Durum { get; set; }
         public int DurumId { get; set; }
-        public int BasvuruTuruId { get; set; }
+        // public int BasvuruTuruId { get; set; }
         public string BasvuruTuru { get; set; }
         public string BasvuruForm { get; set; }
 

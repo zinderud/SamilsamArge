@@ -43,7 +43,7 @@ namespace argebackend.Services
                 Basvuru.Tarih = model.Tarih;
                 Basvuru.Durum = model.Durum;
                 Basvuru.DurumId = model.DurumId;
-                Basvuru.BasvuruTuruId = model.BasvuruTuruId;
+                //  Basvuru.BasvuruTuruId = model.BasvuruTuruId;
                 Basvuru.BasvuruTuru = model.BasvuruTuru;
                 Basvuru.BasvuruForm = model.BasvuruForm;
 
@@ -87,7 +87,7 @@ namespace argebackend.Services
                 Basvuru.Tarih = model.Tarih;
                 Basvuru.Durum = model.Durum;
                 Basvuru.DurumId = model.DurumId;
-                Basvuru.BasvuruTuruId = model.BasvuruTuruId;
+                // Basvuru.BasvuruTuruId = model.BasvuruTuruId;
                 Basvuru.BasvuruTuru = model.BasvuruTuru;
                 Basvuru.BasvuruForm = model.BasvuruForm;
                 var p = context.Update(Basvuru);
