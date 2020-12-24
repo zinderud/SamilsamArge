@@ -27,21 +27,21 @@ namespace argebackend.Controllers
             this._logger = logger;
         }
 
-        [HttpPost]
-        [ProducesResponseType(typeof(string), 200)]
-        /*    [Authorize(Roles = "Admin")] */
-        [AllowAnonymous]
-        public async Task<IActionResult> Create([FromBody] BsvNo model)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        /*      [HttpPost]
+             [ProducesResponseType(typeof(string), 200)]
 
-            var result = await _BsvNoService.CreateAsync(model);
-            if (!result.Succeeded)
-                return BadRequest(result.Errors);
+             [AllowAnonymous]
+             public async Task<IActionResult> Create([FromBody] BsvNo model)
+             {
+                 if (!ModelState.IsValid)
+                     return BadRequest(ModelState);
 
-            return Ok(result);
-        }
+                 var result = await _BsvNoService.CreateAsync(model);
+                 if (!result.Succeeded)
+                     return BadRequest(result.Errors);
+
+                 return Ok(result);
+             } */
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(BsvNo), 200)]
@@ -74,57 +74,57 @@ namespace argebackend.Controllers
 
             return Ok(result);
         }
+        /* 
+                [HttpDelete("{id}")]
+                [ProducesResponseType(typeof(string), 200)]
 
-        [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(string), 200)]
-        /*   [Authorize(Roles = "Admin")] */
-        [AllowAnonymous]
-        public async Task<IActionResult> Delete([FromRoute] long id)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+                [AllowAnonymous]
+                public async Task<IActionResult> Delete([FromRoute] long id)
+                {
+                    if (!ModelState.IsValid)
+                        return BadRequest(ModelState);
 
-            var result = await _BsvNoService.DeleteAsync(id);
-            if (!result.Succeeded)
-                return BadRequest(result.Errors);
+                    var result = await _BsvNoService.DeleteAsync(id);
+                    if (!result.Succeeded)
+                        return BadRequest(result.Errors);
 
-            return Ok(result);
-        }
+                    return Ok(result);
+                }
 
 
-        [HttpGet]
-        [ProducesResponseType(typeof(List<BsvNo>), 200)]
-        /*  [Authorize(Roles = "Admin")] */
-        [AllowAnonymous]
-        public async Task<IActionResult> List([FromQuery] GetListViewModel<BaseFilter> listModel)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+                [HttpGet]
+                [ProducesResponseType(typeof(List<BsvNo>), 200)]
 
-            var result = await _BsvNoService.ListAsync(listModel);
-            if (!result.Succeeded)
-                return BadRequest(result.Errors);
+                [AllowAnonymous]
+                public async Task<IActionResult> List([FromQuery] GetListViewModel<BaseFilter> listModel)
+                {
+                    if (!ModelState.IsValid)
+                        return BadRequest(ModelState);
 
-            return Ok(result);
+                    var result = await _BsvNoService.ListAsync(listModel);
+                    if (!result.Succeeded)
+                        return BadRequest(result.Errors);
 
-        }
+                    return Ok(result);
 
-        [HttpGet("count")]
-        [ProducesResponseType(typeof(int), 200)]
-        [Authorize(Roles = "Admin")]
-        [AllowAnonymous]
-        public async Task<IActionResult> Count(BaseFilter filter)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+                }
 
-            var result = await _BsvNoService.CountAsync(filter);
-            if (!result.Succeeded)
-                return BadRequest(result.Errors);
+                [HttpGet("count")]
+                [ProducesResponseType(typeof(int), 200)]
+                [Authorize(Roles = "Admin")]
+                [AllowAnonymous]
+                public async Task<IActionResult> Count(BaseFilter filter)
+                {
+                    if (!ModelState.IsValid)
+                        return BadRequest(ModelState);
 
-            return Ok(result);
+                    var result = await _BsvNoService.CountAsync(filter);
+                    if (!result.Succeeded)
+                        return BadRequest(result.Errors);
 
-        }
+                    return Ok(result);
+
+                } */
 
 
 

@@ -16,13 +16,16 @@ namespace argebackend.Services
     public class BasvuruService : BaseService, IBasvuruService
     {
 
-        public BasvuruService(UserManager<ApplicationUser> userManager, IHttpContextAccessor contextAccessor, ApplicationDbContext context, ILogger<BaseService> logger) : base(userManager, contextAccessor, context, logger)
+        private readonly IBsvNoService _bsvNoService;
+        public BasvuruService(UserManager<ApplicationUser> userManager, IBsvNoService bsvNoService, IHttpContextAccessor contextAccessor, ApplicationDbContext context, ILogger<BaseService> logger) : base(userManager, contextAccessor, context, logger)
         {
-
+            this._bsvNoService = bsvNoService;
         }
 
         public async Task<ProcessResult> CreateAsync(Basvuru model)
         {
+
+
             Func<Task> action = async () =>
             {
 
@@ -34,12 +37,14 @@ namespace argebackend.Services
                 //{
                 //   throw new InvalidOperationException("Bu tc mevcut");
                 //}
+                var bsvno = await _bsvNoService.lastAsync();
+
                 var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
                 var BasvuruEntity = await GetOrCreateEntityAsync(context.Basvurus, x => x.Id == model.Id);
                 var Basvuru = BasvuruEntity.result;
                 Basvuru.UserId = user.Id;
                 Basvuru.User = user;
-                Basvuru.BasvuruNo = model.BasvuruNo;
+                Basvuru.BasvuruNo = bsvno.Value.BasvuruNo + 1;
                 Basvuru.Tarih = model.Tarih;
                 Basvuru.Durum = model.Durum;
                 Basvuru.DurumId = model.DurumId;
@@ -75,7 +80,7 @@ namespace argebackend.Services
 
                 var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
 
-
+                var bsvno = await _bsvNoService.lastAsync();
                 var BasvuruEntity = await GetOrCreateEntityAsync(context.Basvurus, x => x.Id == model.Id);
                 var Basvuru = BasvuruEntity.result;
                 Basvuru.UserId = user.Id;
@@ -83,7 +88,8 @@ namespace argebackend.Services
 
                 Basvuru.UserId = user.Id;
                 Basvuru.User = user;
-                Basvuru.BasvuruNo = model.BasvuruNo;
+                Basvuru.BasvuruNo = bsvno.Value.BasvuruNo + 1;
+                /*  Basvuru.BasvuruNo = model.BasvuruNo; */
                 Basvuru.Tarih = model.Tarih;
                 Basvuru.Durum = model.Durum;
                 Basvuru.DurumId = model.DurumId;

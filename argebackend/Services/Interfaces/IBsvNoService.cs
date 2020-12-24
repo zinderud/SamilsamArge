@@ -7,6 +7,6 @@ namespace argebackend.Services.Interfaces
 {
     public interface IBsvNoService : ICrudService<BsvNo, BaseFilter>
     {
-
+        Task<ProcessResult<BsvNo>> lastAsync();
     }
 }
