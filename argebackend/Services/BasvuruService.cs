@@ -25,6 +25,7 @@ namespace argebackend.Services
         public async Task<ProcessResult> CreateBasvuruTuruneAsync(BasvuruTuru model)
         {
 
+            var bsvno = context.BsvNos.AsEnumerable().LastOrDefault();
 
             Func<Task> action = async () =>
             {
@@ -37,7 +38,7 @@ namespace argebackend.Services
                 //{
                 //   throw new InvalidOperationException("Bu tc mevcut");
                 //}
-                var bsvno = context.BsvNos.LastAsync();
+
 
                 var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
                 var BasvuruEntity = await GetOrCreateEntityAsync(context.Basvurus, x => x.Id == model.Id);
@@ -46,7 +47,7 @@ namespace argebackend.Services
                 Basvuru.UserId = user.Id;
                 Basvuru.User = user;
 
-                Basvuru.BasvuruNo = bsvno.Result.BasvuruNo + 1;
+                Basvuru.BasvuruNo = bsvno.BasvuruNo + 1;
                 Basvuru.Tarih = DateTime.Now;
                 Basvuru.Durum = "Başvuru yapıldı";
                 Basvuru.DurumId = 1;

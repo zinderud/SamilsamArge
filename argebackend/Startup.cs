@@ -196,8 +196,6 @@ namespace argebackend
             services.AddTransient<IBasvuruService, BasvuruService>();
             services.AddTransient<IBsvNoService, BsvNoService>();
             services.AddSingleton<ITokenService, TokenService>();
-
-
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddLogging(builder => builder.AddNLog());
 

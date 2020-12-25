@@ -124,20 +124,7 @@ namespace argebackend.Services
             return await Process.RunAsync(action);
         }
 
-        public async Task<ProcessResult<BsvNo>> LastAsync()
-        {
-            IQueryable<BsvNo> q = context.BsvNos;
 
-
-            Func<Task<BsvNo>> action = async () =>
-            {
-                // var last = await q.LastAsync().Result.BasvuruNo;
-                var last = await context.BsvNos.LastAsync();
-                return last;
-            };
-
-            return await Process.RunAsync(action);
-        }
 
 
         private IQueryable<BsvNo> SetIncludes(IQueryable<BsvNo> q)
@@ -204,7 +191,7 @@ namespace argebackend.Services
             Func<Task<BsvNo>> action = async () =>
             {
 
-                var result = await context.BsvNos.LastOrDefaultAsync();
+                var result = await context.BsvNos.LastAsync();
 
                 return result;
             };

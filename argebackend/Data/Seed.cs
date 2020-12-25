@@ -131,15 +131,18 @@ namespace argebackend.Data
 
 
             #region  BsvNo
+
+            var kkn = new BsvNo
+            {
+                BasvuruNo = 0
+            };
             if (!context.BsvNos.Any())
             {
-                var personset = await context.BsvNos.AddAsync(new BsvNo
-                {
-                    BasvuruNo = 1
-                });
+                var kpsSet = await context.BsvNos.AddAsync(kkn);
                 context.SaveChanges();
 
             }
+
             #endregion
 
             #region person

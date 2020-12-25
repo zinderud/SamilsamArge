@@ -6,7 +6,7 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 import { environment as env } from '@env/environment';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmComponent } from '@app/shared/components/confirm/confirm.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -19,15 +19,13 @@ import { MatSort } from '@angular/material/sort';
 })
 export class ListBasvuruComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [
-    'tc',
-    'ad',
-    'soyad',
-    'dogumYeri',
-    'dogumTarihi',
-    'yabanciDil',
-    'eposta',
-    'edit',
-    'delete'
+    'userId',
+    'basvuruNo',
+    'tarih',
+    'durum',
+    'basvuruTuru',
+    /* "düzenle", */
+    'oluştur'
   ];
 
   data: any[] = [];
@@ -50,7 +48,8 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router,
   ) {
     this.searchForm = this.formBuilder.group({
       name: ['', Validators.required]
@@ -115,24 +114,17 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
     this.load$.next('');
   }
 
-  onDelete(item: any): void {
-    const dialogRef = this.dialog.open(ConfirmComponent, {
-      data: {
-        message: `"${item.name
-          }" silinecektir. Onaylıyormusunuz?`
-      }
-    });
+  onOlustur(item: any): void {
+    if (item.basvuruTuru === "ArastirmaCalis") {
+      this.router.navigate(['basvuru', 'argebirform']);
+    }
+    if (item.basvuruTuru === "ArastirmaCalisKovid") {
+      this.router.navigate(['basvuru', 'argeikiform']);
+    }
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.loading = true;
-        this.httpClient.delete(`${env.serverUrl}/basvuru/${item.id}`).subscribe(data => {
+    console.log("sayfaya git");
 
-          this.load$.next('');
 
-        });
-      }
-    });
   }
 
   ngOnDestroy(): void {

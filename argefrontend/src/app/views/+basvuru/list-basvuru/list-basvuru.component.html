@@ -59,71 +59,49 @@
       matSortDirection="asc">
 
       <!-- Id Column -->
-      <ng-container matColumnDef="id">
+      <ng-container matColumnDef="userId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          Id
+          Kullancı Id
         </th>
-        <td mat-cell *matCellDef="let row">{{row.id}}</td>
+        <td mat-cell *matCellDef="let row">{{row.userId}}</td>
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="tc">
+      <ng-container matColumnDef="basvuruNo">
         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          tc
+          Basvuru No
         </th>
-        <td mat-cell *matCellDef="let row">{{row.tc}}</td>
+        <td mat-cell *matCellDef="let row">{{row.basvuruNo}}</td>
       </ng-container>
 
-      <!-- surname Column -->
-      <ng-container matColumnDef="ad">
+      <!-- tarih Column -->
+      <ng-container matColumnDef="tarih">
         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          ad
+          tarih
         </th>
-        <td mat-cell *matCellDef="let row">{{row.ad}}</td>
+        <td mat-cell *matCellDef="let row">{{row.tarih}}</td>
       </ng-container>
 
-      <!-- email Column -->
-      <ng-container matColumnDef="soyad">
+      <!-- durum Column -->
+      <ng-container matColumnDef="durum">
         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          soyad
+          durum
         </th>
-        <td mat-cell *matCellDef="let row">{{row.soyad}}</td>
+        <td mat-cell *matCellDef="let row">{{row.durum}}</td>
       </ng-container>
 
-      <!-- title Column -->
-      <ng-container matColumnDef="dogumYeri">
+      <!-- BasvuruTuru Column -->
+      <ng-container matColumnDef="basvuruTuru">
         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          dogumYeri
+          basvuruTuru
         </th>
-        <td mat-cell *matCellDef="let row">{{row.dogumYeri}}</td>
-      </ng-container>
-      <!-- phone Column -->
-      <ng-container matColumnDef="dogumTarihi">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          dogumTarihi
-        </th>
-        <td mat-cell *matCellDef="let row">{{row.dogumTarihi}}</td>
+        <td mat-cell *matCellDef="let row">{{row.basvuruTuru}}</td>
       </ng-container>
 
-      <!-- unit Column -->
-      <ng-container matColumnDef="eposta">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          eposta
-        </th>
-        <td mat-cell *matCellDef="let row">{{row.eposta}}</td>
-      </ng-container>
-
-      <!-- unit Column -->
-      <ng-container matColumnDef="yabanciDil">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          yabanciDil
-        </th>
-        <td mat-cell *matCellDef="let row">{{row.yabanciDil}}</td>
-      </ng-container>
 
 
       <!-- edit Column -->
-      <ng-container matColumnDef="edit">
+      <!--       <ng-container matColumnDef="düzenle">
         <th mat-header-cell *matHeaderCellDef>
           düzenle
         </th>
@@ -133,15 +111,15 @@
           </a>
         </td>
       </ng-container>
-
+ -->
       <!-- delete Column -->
-      <ng-container matColumnDef="delete">
+      <ng-container matColumnDef="oluştur">
         <th mat-header-cell *matHeaderCellDef>
-          Kaldır
+          oluştur
         </th>
         <td mat-cell *matCellDef="let row">
-          <a mat-button (click)="onDelete(row)" color="warn">
-            <mat-icon>delete_forever</mat-icon>
+          <a mat-button (click)="onOlustur(row)" color="warn">
+            <mat-icon>link</mat-icon>
           </a>
         </td>
       </ng-container>
