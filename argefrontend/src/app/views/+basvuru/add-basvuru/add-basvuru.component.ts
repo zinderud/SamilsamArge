@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { environment as env } from '@env/environment';
-import {BasvuruFormService } from '../services/basvuru-form.service';
+import { BasvuruFormService } from '../services/basvuru-form.service';
 import { Basvuru } from '@app/core/models/basvuru/basvuru';
 
 
@@ -25,14 +25,16 @@ export class AddBasvuruComponent implements OnInit {
     private router: Router,
     private snackBar: MatSnackBar,
     private httpClient: HttpClient,
-    private basvuruFormService: BasvuruFormService
+
   ) { }
 
   ngOnInit() {
+    this.createForm = this.formBuilder.group({
 
-    this.basvuruFormService.addBasvuruForm$.subscribe(x => {
-      this.createForm = x;
+
+      basvuruTuru: new FormControl(''),
     });
+
   }
 
   onCreate(): void {
@@ -40,14 +42,14 @@ export class AddBasvuruComponent implements OnInit {
 
     if (this.createForm.valid) {
       this.createForm.disable();
-      const p = { ...this.basvuru, ...this.createForm.value };
+      // const p = { ...this.basvuru, ...this.createForm.value };
 
-      this.httpClient.post(`${env.serverUrl}/basvuru`, p).subscribe((data: any) => {
+      this.httpClient.post(`${env.serverUrl}/basvuru`, this.createForm.value).subscribe((data: any) => {
 
         if (data.succeeded) {
           // tslint:disable-next-line:max-line-length
-          this.snackBar.open(`Ozgeçmis ${this.createForm.value.tc}   oluşturuldu`, 'X', { duration: 3000 });
-          this.router.navigate([ 'basvuru']);
+          this.snackBar.open(`başvuru ${this.createForm.value.basvuruTuru}   oluşturuldu`, 'X', { duration: 3000 });
+          this.router.navigate(['basvuru']);
         }
         this.loading = false;
 

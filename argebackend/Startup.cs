@@ -193,9 +193,10 @@ namespace argebackend
             services.AddTransient<IPersonService, PersonService>();
 
             services.AddTransient<IOzgecmisService, OzgecmisService>();
-
+            services.AddTransient<IBasvuruService, BasvuruService>();
+            services.AddTransient<IBsvNoService, BsvNoService>();
             services.AddSingleton<ITokenService, TokenService>();
-            services.AddSingleton<IBsvNoService, BsvNoService>();
+
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddLogging(builder => builder.AddNLog());

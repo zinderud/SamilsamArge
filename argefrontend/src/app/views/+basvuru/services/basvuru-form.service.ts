@@ -37,13 +37,13 @@ export class BasvuruFormService {
     addBasvuru() {
 
         const ret = this.fb.group({
-            basvuruNo: new FormControl(''),
-            tarih: new FormControl(new Date()),
-            durum: new FormControl(''),
-            durumId: new FormControl(''),
-            basvuruTuruId: new FormControl(''),
+            /*    basvuruNo: new FormControl(''),
+               tarih: new FormControl(new Date()),
+               durum: new FormControl(''),
+               durumId: new FormControl(''),
+               basvuruTuruId: new FormControl(''), */
             basvuruTuru: new FormControl(''),
-            basvuruForm: new FormGroup(this.argeBirFormFormService.addArgeBirForm().controls)
+            /*    basvuruForm: new FormGroup(this.argeBirFormFormService.addArgeBirForm().controls) */
 
         });
         return ret;

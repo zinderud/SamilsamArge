@@ -7,6 +7,6 @@ namespace argebackend.Services.Interfaces
 {
     public interface IBasvuruService : ICrudService<Basvuru, BaseFilter>
     {
-
+        Task<ProcessResult> CreateBasvuruTuruneAsync(BasvuruTuru model);
     }
 }

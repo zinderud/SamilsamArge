@@ -22,6 +22,49 @@ namespace argebackend.Services
             this._bsvNoService = bsvNoService;
         }
 
+        public async Task<ProcessResult> CreateBasvuruTuruneAsync(BasvuruTuru model)
+        {
+
+
+            Func<Task> action = async () =>
+            {
+
+                Console.WriteLine("55555555555555" + model.basvuruTuru);
+                //   var BasvuruExist = await context.Basvurus.Where(x => x.tc != model.tc).CountAsync();
+
+
+                // if (BasvuruExist > 0)
+                //{
+                //   throw new InvalidOperationException("Bu tc mevcut");
+                //}
+                var bsvno = context.BsvNos.LastAsync();
+
+                var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
+                var BasvuruEntity = await GetOrCreateEntityAsync(context.Basvurus, x => x.Id == model.Id);
+                var Basvuru = BasvuruEntity.result;
+
+                Basvuru.UserId = user.Id;
+                Basvuru.User = user;
+
+                Basvuru.BasvuruNo = bsvno.Result.BasvuruNo + 1;
+                Basvuru.Tarih = DateTime.Now;
+                Basvuru.Durum = "Başvuru yapıldı";
+                Basvuru.DurumId = 1;
+                Console.WriteLine("9999999999999999999999999999999" + model.basvuruTuru);
+                //  Basvuru.BasvuruTuruId = model.BasvuruTuruId;
+                Console.WriteLine("9999999999999999999999999999999" + model.basvuruTuru);
+                Basvuru.BasvuruTuru = model.basvuruTuru;
+                Basvuru.BasvuruForm = "";
+
+
+                BsvNo bsvNo = new BsvNo();
+                bsvNo.BasvuruNo = Basvuru.BasvuruNo;
+                var bsvNoresult = await _bsvNoService.CreateAsync(bsvNo);
+
+                await context.SaveChangesAsync();
+            };
+            return await Process.RunAsync(action);
+        }
         public async Task<ProcessResult> CreateAsync(Basvuru model)
         {
 
@@ -45,12 +88,12 @@ namespace argebackend.Services
                 Basvuru.UserId = user.Id;
                 Basvuru.User = user;
                 Basvuru.BasvuruNo = bsvno.Value.BasvuruNo + 1;
-                Basvuru.Tarih = model.Tarih;
-                Basvuru.Durum = model.Durum;
-                Basvuru.DurumId = model.DurumId;
+                Basvuru.Tarih = DateTime.Now;
+                Basvuru.Durum = "Başvuru yapıldı";
+                Basvuru.DurumId = 1;
                 //  Basvuru.BasvuruTuruId = model.BasvuruTuruId;
                 Basvuru.BasvuruTuru = model.BasvuruTuru;
-                Basvuru.BasvuruForm = model.BasvuruForm;
+                Basvuru.BasvuruForm = "";
 
 
                 // oluştururken otomatik olarak false yaptık */
