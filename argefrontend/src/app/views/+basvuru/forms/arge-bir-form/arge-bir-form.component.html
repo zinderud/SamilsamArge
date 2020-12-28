@@ -112,7 +112,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>baslik</mat-label>
-                        <input matInput required type="text" placeholder="baslik" formControlName="baslik" />
+                        <input matInput type="text" placeholder="baslik" formControlName="baslik" />
                     </mat-form-field>
                 </div>
             </div>
@@ -156,6 +156,11 @@
             <app-arastirma-form></app-arastirma-form>
             <app-arastirma-kapsam-form></app-arastirma-kapsam-form>
             <app-arastirma-belgeler-form></app-arastirma-belgeler-form>
+
+            <div class="row">
+                <button type="submit" nbButton status="primary" [disabled]="!aform.valid"
+                    (click)="onCreate()">Düzenle</button>
+            </div>
 
 
         </form>

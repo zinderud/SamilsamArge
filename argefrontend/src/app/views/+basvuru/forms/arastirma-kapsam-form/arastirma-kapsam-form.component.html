@@ -8,7 +8,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Amaç/Kapsam: </mat-label>
-                        <input matInput required type="text" placeholder="Amaç/Kapsam: " formControlName="amac" />
+                        <input matInput type="text" placeholder="Amaç/Kapsam: " formControlName="amac" />
                     </mat-form-field>
                 </div>
             </div>
@@ -20,8 +20,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Genel bilgiler:</mat-label>
-                        <input matInput required type="text" placeholder="Genel bilgiler:"
-                            formControlName="genelBilgi" />
+                        <input matInput type="text" placeholder="Genel bilgiler:" formControlName="genelBilgi" />
                     </mat-form-field>
                 </div>
             </div>
@@ -33,7 +32,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmanın türü:
                         </mat-label>
-                        <input matInput required type="text" placeholder="Araştırmanın türü:
+                        <input matInput type="text" placeholder="Araştırmanın türü:
                         " formControlName="arastirmaTuru" />
                     </mat-form-field>
                 </div>
@@ -45,7 +44,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmanın yapılacağı yer / yerler: </mat-label>
-                        <input matInput required type="text" placeholder="Araştırmanın yapılacağı yer / yerler: "
+                        <input matInput type="text" placeholder="Araştırmanın yapılacağı yer / yerler: "
                             formControlName="arYapilacagiYer" />
                         <mat-hint> (Araştırmaya dahil edilecek popülasyonun; kimlerden oluştuğu, yaş aralıkları,
                             cinsiyet ve
@@ -61,7 +60,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmanın Evreni / Örneklemi </mat-label>
-                        <input matInput required type="text" placeholder="Araştırmanın Evreni / Örneklemi "
+                        <input matInput type="text" placeholder="Araştırmanın Evreni / Örneklemi "
                             formControlName="arEvrenOrneklem" />
                     </mat-form-field>
                 </div>
@@ -74,7 +73,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Hipotez(ler):</mat-label>
-                        <input matInput required type="text" placeholder="Hipotez(ler)" formControlName="hipotez" />
+                        <input matInput type="text" placeholder="Hipotez(ler)" formControlName="hipotez" />
                     </mat-form-field>
                 </div>
             </div>
@@ -85,7 +84,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Veri toplama yöntemi:</mat-label>
-                        <input matInput required type="text" placeholder="Veri toplama yöntemi:"
+                        <input matInput type="text" placeholder="Veri toplama yöntemi:"
                             formControlName="veriToplamaYontemi" />
                         <mat-hint> (Verilerin kimler tarafından, hangi yöntemlerle (ölçek, anket, numune alma, kayıtlı
                             bilgilerden
@@ -102,7 +101,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmanın kısıtlılıkları (Sınırlılıkları):
                         </mat-label>
-                        <input matInput required type="text" placeholder="Araştırmanın kısıtlılıkları (Sınırlılıkları):
+                        <input matInput type="text" placeholder="Araştırmanın kısıtlılıkları (Sınırlılıkları):
                         " formControlName="arastirmaKisitlari" />
                     </mat-form-field>
                 </div>
@@ -116,7 +115,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmanın yapılacağı tarih aralığı:
                         </mat-label>
-                        <input matInput required type="text" placeholder="Araştırmanın yapılacağı tarih aralığı:
+                        <input matInput type="text" placeholder="Araştırmanın yapılacağı tarih aralığı:
                         " formControlName="arastirmaTarihAraligi" />
                     </mat-form-field>
                 </div>
@@ -129,7 +128,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmada invaziv girişim yapılacak mı?
                         </mat-label>
-                        <!--           <input matInput required type="text" placeholder="Araştırmanın yapılacağı tarih aralığı:
+                        <!--           <input matInput  type="text" placeholder="Araştırmanın yapılacağı tarih aralığı:
                         " formControlName="invazivmi" />  -->
                         <select matNativeControl formControlName="invazivmi">
 
@@ -150,7 +149,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Yanıtınız evet ise, yapılacak olan invaziv girişim hakkında bilgi veriniz?
                         </mat-label>
-                        <!--      <input matInput required type="text"
+                        <!--      <input matInput  type="text"
                             placeholder="Yanıtınız evet ise, yapılacak olan invaziv girişim hakkında bilgi veriniz?"
                             formControlName="invazAcikla" /> -->
                         <textarea matInput formControlName="invazAcikla"></textarea>
@@ -165,7 +164,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmada tıbbi bir durum veya hastalık araştırılacak mı?
                         </mat-label>
-                        <!--   <input matInput required type="text" placeholder="Araştırmada tıbbi bir durum veya hastalık araştırılacak mı?
+                        <!--   <input matInput  type="text" placeholder="Araştırmada tıbbi bir durum veya hastalık araştırılacak mı?
                         " formControlName="tibbiDurumVarmi" /> -->
                         <select matNativeControl formControlName="tibbiDurumVarmi">
 
@@ -186,7 +185,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Yanıtınız evet ise, araştırılan tıbbi durum/durumlar veya hastalık/hastalıklar
                             hakkında kısa bilgi veriniz.</mat-label>
-                        <!--    <input matInput required type="text"
+                        <!--    <input matInput  type="text"
                             placeholder="Yanıtınız evet ise, araştırılan tıbbi durum/durumlar veya hastalık/hastalıklar hakkında kısa bilgi veriniz."
                             formControlName="tibbiDurumAcikla" /> -->
                         <textarea matInput formControlName="tibbiDurumAcikla"></textarea>
@@ -201,7 +200,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırma katılımcıların fiziksel ve ruhsal sağlıklarını herhangi bir şekilde
                             sıkıntıya sokacak sorular içeriyor mu?</mat-label>
-                        <!--       <input matInput required type="text"
+                        <!--       <input matInput  type="text"
                             placeholder="Araştırma katılımcıların fiziksel ve ruhsal sağlıklarını herhangi bir şekilde sıkıntıya sokacak sorular içeriyor mu?"
                             formControlName="arastirmaRuhsalSoru" /> -->
                         <select matNativeControl formControlName="arastirmaRuhsalSoru">
@@ -221,7 +220,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Yanıtınız evet ise, lütfen açıklayınız.
                         </mat-label>
-                        <!--    <input matInput required type="text" placeholder="Yanıtınız evet ise, lütfen açıklayınız. 
+                        <!--    <input matInput  type="text" placeholder="Yanıtınız evet ise, lütfen açıklayınız. 
                         " formControlName="arastirmaRuhsalSoruAcikla" /> -->
                         <textarea matInput formControlName="arastirmaRuhsalSoruAcikla"></textarea>
                     </mat-form-field>
@@ -234,7 +233,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Gönüllü katılımını olumsuz yönde etkileyecek herhangi bir durum var mı?</mat-label>
-                        <!--   <input matInput required type="text"
+                        <!--   <input matInput  type="text"
                             placeholder="Gönüllü katılımını olumsuz yönde etkileyecek herhangi bir durum var mı?"
                             formControlName="gonulluKatilimSoru" /> -->
                         <select matNativeControl formControlName="gonulluKatilimSoru">
@@ -254,7 +253,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Yanıtınız evet ise, lütfen açıklayınız.
                         </mat-label>
-                        <!--     <input matInput required type="text" placeholder="Yanıtınız evet ise, lütfen açıklayınız."
+                        <!--     <input matInput  type="text" placeholder="Yanıtınız evet ise, lütfen açıklayınız."
                             formControlName="gonulluKatilimSoruAcikla" /> -->
                         <textarea matInput formControlName="gonulluKatilimSoruAcikla"></textarea>
                     </mat-form-field>
@@ -267,7 +266,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmanın bireysel yararı: </mat-label>
-                        <!--              <input matInput required type="text" placeholder="Araştırmanın bireysel  yararı:  "
+                        <!--              <input matInput  type="text" placeholder="Araştırmanın bireysel  yararı:  "
                             formControlName="bireyselYarar" /> -->
                         <textarea matInput formControlName="bireyselYarar"></textarea>
                     </mat-form-field>
@@ -281,7 +280,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmanın kurumsal yararı: (Araştırmanın yapıldığı kuruma yararı)
                         </mat-label>
-                        <!--     <input matInput required type="text" placeholder="Araştırmanın kurumsal yararı: (Araştırmanın yapıldığı kuruma yararı)
+                        <!--     <input matInput  type="text" placeholder="Araştırmanın kurumsal yararı: (Araştırmanın yapıldığı kuruma yararı)
                         " formControlName="kurumsalYarar" /> -->
                         <textarea matInput formControlName="kurumsalYarar"></textarea>
                     </mat-form-field>
@@ -294,7 +293,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmanın toplumsal yararı:(Lütfen açıklayınız )</mat-label>
-                        <!--   <input matInput required type="text"
+                        <!--   <input matInput  type="text"
                             placeholder="Araştırmanın toplumsal yararı:(Lütfen açıklayınız )"
                             formControlName="toplumsalYarar" /> -->
                         <textarea matInput formControlName="toplumsalYarar"></textarea>
@@ -308,7 +307,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmanın bilimsel yararı: (Lütfen açıklayınız )</mat-label>
-                        <!--         <input matInput required type="text"
+                        <!--         <input matInput  type="text"
                             placeholder="Araştırmanın bilimsel yararı: (Lütfen açıklayınız )"
                             formControlName="bilimselYarar" /> -->
                         <textarea matInput formControlName="bilimselYarar"></textarea>
@@ -322,7 +321,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırmanın destekleyicisi var mı?</mat-label>
-                        <!--   <input matInput required type="text" placeholder="Araştırmanın destekleyicisi var mı?"
+                        <!--   <input matInput  type="text" placeholder="Araştırmanın destekleyicisi var mı?"
                             formControlName="destekleyicisiVarmi" /> -->
                         <select matNativeControl formControlName="destekleyicisiVarmi">
 
@@ -341,7 +340,7 @@
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Yanıtınız evet ise lütfen destekleyici kişi / kurum / kuruluşları belirtiniz.
                         </mat-label>
-                        <!--    <input matInput required type="text"
+                        <!--    <input matInput  type="text"
                             placeholder="Yanıtınız evet ise lütfen destekleyici kişi / kurum / kuruluşları belirtiniz."
                             formControlName="destekleyicisiAcikla" /> -->
                         <textarea matInput formControlName="destekleyicisiAcikla"></textarea>
@@ -355,7 +354,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Araştırma kapsamında Genel Müdürlüğümüzden talebiniz var mı? </mat-label>
-                        <!--     <input matInput required type="text"
+                        <!--     <input matInput  type="text"
                             placeholder="Araştırma kapsamında Genel Müdürlüğümüzden talebiniz var mı? "
                             formControlName="bizdenTalepVarmi" /> -->
                         <select matNativeControl formControlName="bizdenTalepVarmi">
@@ -379,7 +378,7 @@
 
                     <mat-form-field class="full-width " appearance="outline">
                         <mat-label>Yanıtınız evet ise lütfen talebinizi ayrıntılı olarak belirtiniz.</mat-label>
-                        <!--   <input matInput required type="text"
+                        <!--   <input matInput  type="text"
                             placeholder="Yanıtınız evet ise lütfen talebinizi ayrıntılı olarak belirtiniz."
                             formControlName="bizdenTalepAcikla" /> -->
                         <textarea matInput formControlName="bizdenTalepAcikla"></textarea>

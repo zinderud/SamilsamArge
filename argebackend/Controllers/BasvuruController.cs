@@ -68,10 +68,14 @@ namespace argebackend.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Update([FromRoute] long id, [FromBody] Basvuru model)
         {
+
+
             if (!ModelState.IsValid)
+
                 return BadRequest(ModelState);
 
             var result = await _BasvuruService.UpdateAsync(id, model);
+
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
 

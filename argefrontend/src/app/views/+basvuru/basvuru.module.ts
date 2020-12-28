@@ -64,14 +64,14 @@ const routes: Routes = [
     canActivate: [RoleGuard],
   },
   {
-    path: 'argebirform',
+    path: 'argebirform/:id',
     component: ArgeBirFormComponent,
     data: { title: 'Arge Form Düzenle', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
   }
   ,
   {
-    path: 'argeikiform',
+    path: 'argeikiform/:id',
     component: ArgeIkiFormComponent,
     data: { title: 'Arge Form Düzenle', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],

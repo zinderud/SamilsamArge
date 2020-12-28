@@ -116,10 +116,10 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
 
   onOlustur(item: any): void {
     if (item.basvuruTuru === "ArastirmaCalis") {
-      this.router.navigate(['basvuru', 'argebirform']);
+      this.router.navigate(['basvuru', 'argebirform', item.id]);
     }
     if (item.basvuruTuru === "ArastirmaCalisKovid") {
-      this.router.navigate(['basvuru', 'argeikiform']);
+      this.router.navigate(['basvuru', 'argeikiform', item.id]);
     }
 
     console.log("sayfaya git");

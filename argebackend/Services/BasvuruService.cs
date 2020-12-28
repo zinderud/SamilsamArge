@@ -124,7 +124,7 @@ namespace argebackend.Services
 
                 var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
 
-                var bsvno = await _bsvNoService.lastAsync();
+
                 var BasvuruEntity = await GetOrCreateEntityAsync(context.Basvurus, x => x.Id == model.Id);
                 var Basvuru = BasvuruEntity.result;
                 Basvuru.UserId = user.Id;
@@ -132,7 +132,7 @@ namespace argebackend.Services
 
                 Basvuru.UserId = user.Id;
                 Basvuru.User = user;
-                Basvuru.BasvuruNo = bsvno.Value.BasvuruNo + 1;
+                Basvuru.BasvuruNo = model.BasvuruNo;
                 /*  Basvuru.BasvuruNo = model.BasvuruNo; */
                 Basvuru.Tarih = model.Tarih;
                 Basvuru.Durum = model.Durum;
