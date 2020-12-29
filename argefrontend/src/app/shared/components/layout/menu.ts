@@ -23,8 +23,12 @@ export const aMenu: NbMenuItem[] = [
         title: 'Özgeçmiş Yönetimi',
         link: '/ozgecmis/',
         icon: 'eye-outline'
+    },
+    {
+        title: 'Başvuru Yönetimi',
+        link: '/basvuru/',
+        icon: 'eye-outline'
     }
-
 
 
 

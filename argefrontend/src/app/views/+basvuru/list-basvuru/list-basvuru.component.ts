@@ -52,7 +52,7 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
     private router: Router,
   ) {
     this.searchForm = this.formBuilder.group({
-      name: ['', Validators.required]
+      durum: ['', Validators.required]
     });
   }
 
@@ -74,7 +74,7 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
 
           } else {
             const params = new HttpParams()
-              .set('filter.searchString', this.searchForm.value.name || '')
+              .set('filter.searchString', this.searchForm.value.durum || '')
               .set('paginator.offset', (this.paginator.pageIndex * this.paginator.pageSize).toString())
               .set('paginator.limit', this.paginator.pageSize.toString())
               .set('orderBy.by', this.sort.active)
