@@ -19,11 +19,11 @@ type FormGroupConfig<T> = {
 };
 
 @Component({
-  selector: 'app-arge-iki-form',
-  templateUrl: './arge-iki-form.component.html',
-  styleUrls: ['./arge-iki-form.component.scss']
+  selector: 'app-arge-uc-form',
+  templateUrl: './arge-uc-form.component.html',
+  styleUrls: ['./arge-uc-form.component.scss']
 })
-export class ArgeIkiFormComponent implements OnInit {
+export class ArgeUcFormComponent implements OnInit {
   itemId: string;
   arastirmacilarformGroup: FormGroup;
   aform: FormGroup;

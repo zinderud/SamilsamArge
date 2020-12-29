@@ -37,6 +37,7 @@ import { ArastirmaBelgelerFormComponent } from './forms/arastirma-belgeler-form/
 import { ArgeBirFormComponent } from './forms/arge-bir-form/arge-bir-form.component';
 import { UploadDownloadService } from '@app/core/services/upload-download.service';
 import { ArgeIkiFormComponent } from './forms/arge-iki-form/arge-iki-form.component';
+import { ArgeUcFormComponent } from './forms/arge-uc-form/arge-uc-form.component';
 
 const routes: Routes = [
 
@@ -75,6 +76,12 @@ const routes: Routes = [
     component: ArgeIkiFormComponent,
     data: { title: 'Arge Form Düzenle', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
+  },
+  {
+    path: 'argeucform/:id',
+    component: ArgeUcFormComponent,
+    data: { title: 'Donersermaye Arge Form Düzenle', expectedRole: ['Admin'] },
+    canActivate: [RoleGuard],
   }
 
 ];
@@ -103,7 +110,8 @@ const routes: Routes = [
     ArastirmaKapsamFormComponent,
     ArastirmaBelgelerFormComponent,
     ArgeBirFormComponent,
-    ArgeIkiFormComponent
+    ArgeIkiFormComponent,
+    ArgeUcFormComponent
 
 
 
