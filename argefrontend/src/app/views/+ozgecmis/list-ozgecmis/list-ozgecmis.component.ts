@@ -53,7 +53,7 @@ export class ListOzgecmisComponent implements OnInit, OnDestroy {
     private dialog: MatDialog
   ) {
     this.searchForm = this.formBuilder.group({
-      name: ['', Validators.required]
+      tc: ['', Validators.required]
     });
   }
 
@@ -75,7 +75,7 @@ export class ListOzgecmisComponent implements OnInit, OnDestroy {
 
           } else {
             const params = new HttpParams()
-              .set('filter.searchString', this.searchForm.value.name || '')
+              .set('filter.searchString', this.searchForm.value.tc || '')
               .set('paginator.offset', (this.paginator.pageIndex * this.paginator.pageSize).toString())
               .set('paginator.limit', this.paginator.pageSize.toString())
               .set('orderBy.by', this.sort.active)

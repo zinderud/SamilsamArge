@@ -14,11 +14,11 @@ export const aMenu: NbMenuItem[] = [
         link: '/admin/user/',
         icon: 'eye-outline'
     },
-    {
-        title: 'Personel Yönetimi',
-        link: '/persons/',
-        icon: 'eye-outline'
-    },
+    /*    {
+           title: 'Personel Yönetimi',
+           link: '/persons/',
+           icon: 'eye-outline'
+       }, */
     {
         title: 'Özgeçmiş Yönetimi',
         link: '/ozgecmis/',

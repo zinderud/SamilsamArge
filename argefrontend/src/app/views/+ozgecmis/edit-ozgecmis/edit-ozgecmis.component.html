@@ -5,7 +5,7 @@
 <br />
 
 <nb-card accent="danger">
-  <nb-card-header>Ozgecmisel Ekle</nb-card-header>
+  <nb-card-header>Ozgecmis Düzenle</nb-card-header>
   <nb-card-body>
     <form [formGroup]="editForm" #f="ngForm" class="form">
       <!--  sorumlu -->
@@ -116,58 +116,58 @@
 
 
 
- <!-- Ünvan -->
- <div class="row">
-  <div class="col-sm-12">
-    <!-- <mat-form-field class="full-width" appearance="outline">
+      <!-- Ünvan -->
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- <mat-form-field class="full-width" appearance="outline">
       <mat-label>unvans</mat-label>
       <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
     </mat-form-field>-->
-<!--        <h3>Unvanlar</h3> -->
-      <mat-label>Ünvanlar</mat-label>
-    <p-editor formControlName="unvans" [style]="{'height':'100px'}"></p-editor>
-  </div>
-</div>
-<!-- Ünvan -->
- <!-- Arastirma -->
-     <div class="row">
-      <div class="col-sm-12">
-        <!-- <mat-form-field class="full-width" appearance="outline">
+          <!--        <h3>Unvanlar</h3> -->
+          <mat-label>Ünvanlar</mat-label>
+          <p-editor formControlName="unvans" [style]="{'height':'100px'}"></p-editor>
+        </div>
+      </div>
+      <!-- Ünvan -->
+      <!-- Arastirma -->
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- <mat-form-field class="full-width" appearance="outline">
           <mat-label>unvans</mat-label>
           <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
         </mat-form-field>-->
-   <!--        <h3>Unvanlar</h3> -->
+          <!--        <h3>Unvanlar</h3> -->
           <mat-label>Arastirma</mat-label>
-        <p-editor formControlName="arastirmas" [style]="{'height':'100px'}"></p-editor>
+          <p-editor formControlName="arastirmas" [style]="{'height':'100px'}"></p-editor>
+        </div>
       </div>
-    </div>
-<!-- Arastirma -->
- <!-- deneyims -->
-           <div class="row">
-            <div class="col-sm-12">
-              <!-- <mat-form-field class="full-width" appearance="outline">
+      <!-- Arastirma -->
+      <!-- deneyims -->
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- <mat-form-field class="full-width" appearance="outline">
                 <mat-label>unvans</mat-label>
                 <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
               </mat-form-field>-->
-         <!--        <h3>Unvanlar</h3> -->
-                <mat-label>Deneyim</mat-label>
-              <p-editor formControlName="deneyims" [style]="{'height':'100px'}"></p-editor>
-            </div>
-          </div>
-  <!-- deneyims -->
-  <!-- egitims -->
-               <div class="row">
-                <div class="col-sm-12">
-                  <!-- <mat-form-field class="full-width" appearance="outline">
+          <!--        <h3>Unvanlar</h3> -->
+          <mat-label>Deneyim</mat-label>
+          <p-editor formControlName="deneyims" [style]="{'height':'100px'}"></p-editor>
+        </div>
+      </div>
+      <!-- deneyims -->
+      <!-- egitims -->
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- <mat-form-field class="full-width" appearance="outline">
                     <mat-label>unvans</mat-label>
                     <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
                   </mat-form-field>-->
-             <!--        <h3>Unvanlar</h3> -->
-                    <mat-label>Egitim</mat-label>
-                  <p-editor formControlName="egitims" [style]="{'height':'100px'}"></p-editor>
-                </div>
-              </div>
-     <!-- egitims -->
+          <!--        <h3>Unvanlar</h3> -->
+          <mat-label>Egitim</mat-label>
+          <p-editor formControlName="egitims" [style]="{'height':'100px'}"></p-editor>
+        </div>
+      </div>
+      <!-- egitims -->
       <div class="row">
         <button type="submit" nbButton status="primary" [disabled]="!editForm.valid" (click)="onEdit()">Düzenle</button>
       </div>

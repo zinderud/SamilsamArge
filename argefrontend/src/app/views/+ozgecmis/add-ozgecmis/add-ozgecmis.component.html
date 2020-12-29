@@ -5,7 +5,7 @@
 <br />
 
 <nb-card accent="danger">
-  <nb-card-header>Ozgecmisel Ekle</nb-card-header>
+  <nb-card-header>Ozgecmiş Ekle</nb-card-header>
   <nb-card-body>
     <form [formGroup]="createForm" #f="ngForm" class="form">
       <!--  sorumlu -->
@@ -122,52 +122,52 @@
             <mat-label>unvans</mat-label>
             <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
           </mat-form-field>-->
-     <!--        <h3>Unvanlar</h3> -->
-            <mat-label>Ünvanlar</mat-label>
+          <!--        <h3>Unvanlar</h3> -->
+          <mat-label>Ünvanlar</mat-label>
           <p-editor formControlName="unvans" [style]="{'height':'100px'}"></p-editor>
         </div>
       </div>
       <!-- Ünvan -->
-       <!-- Arastirma -->
-           <div class="row">
-            <div class="col-sm-12">
-              <!-- <mat-form-field class="full-width" appearance="outline">
+      <!-- Arastirma -->
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- <mat-form-field class="full-width" appearance="outline">
                 <mat-label>unvans</mat-label>
                 <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
               </mat-form-field>-->
-         <!--        <h3>Unvanlar</h3> -->
-                <mat-label>Arastirma</mat-label>
-              <p-editor formControlName="arastirmas" [style]="{'height':'100px'}"></p-editor>
-            </div>
-          </div>
+          <!--        <h3>Unvanlar</h3> -->
+          <mat-label>Arastirma</mat-label>
+          <p-editor formControlName="arastirmas" [style]="{'height':'100px'}"></p-editor>
+        </div>
+      </div>
       <!-- Arastirma -->
-       <!-- deneyims -->
-                 <div class="row">
-                  <div class="col-sm-12">
-                    <!-- <mat-form-field class="full-width" appearance="outline">
+      <!-- deneyims -->
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- <mat-form-field class="full-width" appearance="outline">
                       <mat-label>unvans</mat-label>
                       <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
                     </mat-form-field>-->
-               <!--        <h3>Unvanlar</h3> -->
-                      <mat-label>Deneyim</mat-label>
-                    <p-editor formControlName="deneyims" [style]="{'height':'100px'}"></p-editor>
-                  </div>
-                </div>
-        <!-- deneyims -->
-        <!-- egitims -->
-                     <div class="row">
-                      <div class="col-sm-12">
-                        <!-- <mat-form-field class="full-width" appearance="outline">
+          <!--        <h3>Unvanlar</h3> -->
+          <mat-label>Deneyim</mat-label>
+          <p-editor formControlName="deneyims" [style]="{'height':'100px'}"></p-editor>
+        </div>
+      </div>
+      <!-- deneyims -->
+      <!-- egitims -->
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- <mat-form-field class="full-width" appearance="outline">
                           <mat-label>unvans</mat-label>
                           <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
                         </mat-form-field>-->
-                   <!--        <h3>Unvanlar</h3> -->
-                          <mat-label>Egitim</mat-label>
-                        <p-editor formControlName="egitims" [style]="{'height':'100px'}"></p-editor>
-                      </div>
-                    </div>
-           <!-- egitims -->
- 
+          <!--        <h3>Unvanlar</h3> -->
+          <mat-label>Egitim</mat-label>
+          <p-editor formControlName="egitims" [style]="{'height':'100px'}"></p-editor>
+        </div>
+      </div>
+      <!-- egitims -->
+
       <div class="row">
         <button type="submit" nbButton status="primary" [disabled]="!createForm.valid"
           (click)="onCreate()">Ekle</button>

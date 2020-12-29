@@ -10,7 +10,7 @@
 
       <div class="item-40">
         <mat-form-field class="full-width">
-          <input matInput type="text" placeholder="Ozgecmis Filtrele" formControlName="name" />
+          <input matInput type="text" placeholder="Ozgecmis Filtrele" formControlName="tc" />
         </mat-form-field>
       </div>
 
@@ -18,11 +18,11 @@
 
         <button mat-raised-button color="primary" type="submit" [disabled]="!searchForm.valid" aria-label="search">
           <mat-icon>search</mat-icon>
-          <span>filtre</span>
+          <span>filtre tc</span>
         </button>
 
         <button mat-raised-button color="accent" type="button" (click)="onClear()" aria-label="clear"
-          [disabled]="searchForm.valid || searchForm.value.name === ''">
+          [disabled]="searchForm.valid || searchForm.value.tc === ''">
           <mat-icon>clear</mat-icon>
           <span>temizle</span>
         </button>
