@@ -62,6 +62,22 @@ namespace argebackend.Controllers
             return Ok(result);
         }
 
+        [HttpGet("selected/{id}")]
+        [ProducesResponseType(typeof(Basvuru), 200)]
+        /*  [Authorize(Roles = "Admin")] */
+        [AllowAnonymous]
+        public async Task<IActionResult> selected([FromRoute] long id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _BasvuruService.SelectedBasvuruAsnc(id);
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            return Ok(result);
+        }
+
         [HttpPatch("{id}")]
         [ProducesResponseType(typeof(string), 200)]
         /*   [Authorize(Roles = "Admin")] */
@@ -109,6 +125,23 @@ namespace argebackend.Controllers
                 return BadRequest(ModelState);
 
             var result = await _BasvuruService.ListAsync(listModel);
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            return Ok(result);
+
+        }
+
+        [HttpGet("useraddbasvuru")]
+        [ProducesResponseType(typeof(List<Basvuru>), 200)]
+        /*  [Authorize(Roles = "Admin")] */
+        [AllowAnonymous]
+        public async Task<IActionResult> UseraddBasvuruList([FromQuery] GetListViewModel<BaseFilter> listModel)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _BasvuruService.UseraddBassvuruListAsync(listModel);
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
 

@@ -81,7 +81,7 @@ export class ListIncelemeComponent implements OnInit, OnDestroy {
               .set('orderBy.by', this.sort.active)
               .set('orderBy.desc', (this.sort.direction === 'desc').toString());
 
-            return this.httpClient.get<any>(`${env.serverUrl}/basvuru`, { params });
+            return this.httpClient.get<any>(`${env.serverUrl}/basvuru/useraddbasvuru`, { params });
           }
         }),
         map(data => {

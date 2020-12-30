@@ -24,7 +24,7 @@ export class BasvuruInceleComponent implements OnInit {
 
   ngOnInit(): void {
     this.itemId = this.activatedRoute.snapshot.params.id;
-    this.httpClient.get(`${env.serverUrl}/basvuru/${this.itemId}`).subscribe((data: any) => {
+    this.httpClient.get(`${env.serverUrl}/basvuru/selected/${this.itemId}`).subscribe((data: any) => {
       this.loading = false;
 
       this.basvuru = { ...data.value }

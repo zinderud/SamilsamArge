@@ -126,6 +126,31 @@ namespace argebackend.Services
                                             p.ProductSubcategoryName, p.StandardCost)
                                     })
                 .ToArray(); */
+        public async Task<ProcessResult<SelectedBasvuru>> SelectedBasvuruAsnc(long id)
+        {
+            Func<Task<SelectedBasvuru>> action = async () =>
+            {
+                var result = await context.Basvurus.Where(x => x.Id == id).Include(x => x.User)
+                .Select(p => new SelectedBasvuru
+                {
+                    Firstname = p.User.Firstname,
+                    Lastname = p.User.Lastname,
+                    Tc = p.User.Tc,
+                    BasvuruNo = p.BasvuruNo,
+                    Tarih = p.Tarih,
+                    Durum = p.Durum,
+                    DurumId = p.DurumId,
+                    BasvuruTuru = p.BasvuruTuru,
+                    BasvuruForm = p.BasvuruForm,
+                }
+
+                )
+                .FirstAsync();
+                return result;
+            };
+
+            return await Process.RunAsync(action);
+        }
         public async Task<ProcessResult<Basvuru>> RetrieveAsync(long id)
         {
             Func<Task<Basvuru>> action = async () =>
@@ -204,6 +229,39 @@ namespace argebackend.Services
 
             return await Process.RunAsync(action, countItems);
         }
+        public async Task<ProcessResult<List<SelectedBasvuru>>> UseraddBassvuruListAsync(GetListViewModel<BaseFilter> getListModel)
+        {
+            IQueryable<SelectedBasvuru> q = context.Basvurus.AsQueryable().Include(x => x.User)
+            .Select(p => new SelectedBasvuru
+            {
+                Firstname = p.User.Firstname,
+                Lastname = p.User.Lastname,
+                Tc = p.User.Tc,
+                BasvuruNo = p.BasvuruNo,
+                Tarih = p.Tarih,
+                Durum = p.Durum,
+                DurumId = p.DurumId,
+                BasvuruTuru = p.BasvuruTuru,
+                BasvuruForm = p.BasvuruForm,
+            }
+
+                );
+
+            q = SetaddUserFilter(q, getListModel.filter);
+
+            var countItems = await q.CountAsync();
+
+            q = SetaddUserPaginator(q, getListModel.paginator);
+            q = SetaddUserOrderBy(q, getListModel.orderBy);
+
+            Func<Task<List<SelectedBasvuru>>> action = async () =>
+            {
+                var result = await q.ToListAsync();
+                return result;
+            };
+
+            return await Process.RunAsync(action, countItems);
+        }
 
         public async Task<ProcessResult<int>> CountAsync(BaseFilter filter)
         {
@@ -270,7 +328,65 @@ namespace argebackend.Services
             return q;
         }
 
+
+
+
+        private IQueryable<SelectedBasvuru> SetaddUserOrderBy(IQueryable<SelectedBasvuru> q, OrderBy ob)
+        {
+            if (ob == null)
+            {
+                return q;
+            }
+
+            if (!ob.desc)
+            {
+                if (ob.by == "BasvuruNo")
+                {
+                    q = q.OrderBy(s => s.BasvuruNo);
+                }
+                else
+                {
+                    q = q.OrderBy(s => s.Id);
+                }
+            }
+            else
+            {
+                if (ob.by == "BasvuruNo")
+                {
+                    q = q.OrderBy(s => s.BasvuruNo);
+                }
+                else
+                {
+                    q = q.OrderByDescending(s => s.Id);
+                }
+            }
+            return q;
+        }
         private IQueryable<Basvuru> SetPaginator(IQueryable<Basvuru> q, Paginator p)
+        {
+            if (p == null)
+            {
+                return q;
+            }
+            return q.Skip(p.offset).Take(p.limit);
+        }
+
+        private IQueryable<SelectedBasvuru> SetaddUserFilter(IQueryable<SelectedBasvuru> q, BaseFilter f)
+        {
+            if (f == null)
+            {
+                return q;
+            }
+            if (!String.IsNullOrEmpty(f.searchString))
+            {
+
+                q = q.Where(x => x.BasvuruNo == (Convert.ToInt64(f.searchString)));
+            }
+            return q;
+        }
+
+
+        private IQueryable<SelectedBasvuru> SetaddUserPaginator(IQueryable<SelectedBasvuru> q, Paginator p)
         {
             if (p == null)
             {

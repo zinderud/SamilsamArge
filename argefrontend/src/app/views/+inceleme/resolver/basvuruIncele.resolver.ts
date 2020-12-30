@@ -15,3 +15,13 @@ export class BasvuruInceleResolver implements Resolve<any[]> {
       `${env.serverUrl}/basvuru?filter.SearchString=&paginator.offset=0&paginator.limit=20&orderBy.by=name&orderBy.desc=false`);
   }
 }
+
+@Injectable()
+export class BasvuruaddUserInceleResolver implements Resolve<any[]> {
+  constructor(private httpClient: HttpClient) { }
+
+  resolve(route: ActivatedRouteSnapshot): Observable<any[]> {
+    return this.httpClient.get<any>(
+      `${env.serverUrl}/basvuru/useraddbasvuru?filter.SearchString=&paginator.offset=0&paginator.limit=20&orderBy.by=name&orderBy.desc=false`);
+  }
+}

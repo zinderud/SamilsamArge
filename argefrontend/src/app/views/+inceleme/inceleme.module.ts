@@ -9,7 +9,7 @@ import { SharedModule } from '@app/shared/shared.module';
 import { NgxExcelTemplateModule } from 'ngx-excel-template';
 import { EditorModule } from 'primeng/editor';
 import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
-import { BasvuruInceleResolver } from './resolver/basvuruIncele.resolver';
+import { BasvuruaddUserInceleResolver, BasvuruInceleResolver } from './resolver/basvuruIncele.resolver';
 import { ApiInterceptor } from '@app/core/interceptors/api.interceptor';
 import { BasvuruInceleComponent } from './basvuru-incele/basvuru-incele.component';
 
@@ -21,7 +21,7 @@ const routes: Routes = [
     data: { title: 'Basvuru İnceleme Listesi', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
     resolve: {
-      data: BasvuruInceleResolver
+      data: BasvuruaddUserInceleResolver
     }
   },
   {
@@ -55,6 +55,7 @@ const routes: Routes = [
       multi: true
     },
     BasvuruInceleResolver,
+    BasvuruaddUserInceleResolver
 
   ]
 })
