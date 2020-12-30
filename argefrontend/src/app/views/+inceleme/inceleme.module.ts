@@ -11,6 +11,7 @@ import { EditorModule } from 'primeng/editor';
 import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 import { BasvuruInceleResolver } from './resolver/basvuruIncele.resolver';
 import { ApiInterceptor } from '@app/core/interceptors/api.interceptor';
+import { BasvuruInceleComponent } from './basvuru-incele/basvuru-incele.component';
 
 
 const routes: Routes = [
@@ -22,12 +23,19 @@ const routes: Routes = [
     resolve: {
       data: BasvuruInceleResolver
     }
+  },
+  {
+    path: 'incele/:id',
+    component: BasvuruInceleComponent,
+    data: { title: 'Basvuru Düzenle', expectedRole: ['Admin'] },
+    canActivate: [RoleGuard],
+
   }
 
 ];
 
 @NgModule({
-  declarations: [ListIncelemeComponent],
+  declarations: [ListIncelemeComponent, BasvuruInceleComponent],
   imports: [
     CommonModule,
     HttpClientModule,

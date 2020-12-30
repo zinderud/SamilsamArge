@@ -55,7 +55,7 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
-    path: 'incele',
+    path: 'inceleme',
     loadChildren: () => import('./views/+inceleme/inceleme.module').then(m => m.IncelemeModule),
     canLoad: [AuthGuard]
   },

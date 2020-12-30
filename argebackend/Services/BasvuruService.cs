@@ -104,11 +104,33 @@ namespace argebackend.Services
             return await Process.RunAsync(action);
         }
 
+
+
+
+        /* TODO var results = context.Products
+                .Include("ProductSubcategory")
+                .Where(p => p.Name.Contains(searchTerm)
+                            && p.DiscontinuedDate == null)
+                .Select(p => new
+                                {
+                                    p.ProductID,
+                                    ProductSubcategoryName = p.ProductSubcategory.Name,
+                                    p.Name,
+                                    p.StandardCost
+                                })
+                .AsEnumerable()
+                .Select(p => new AutoCompleteData
+                                    {
+                                        Id = p.ProductID,
+                                        Text = BuildAutoCompleteText(p.Name,
+                                            p.ProductSubcategoryName, p.StandardCost)
+                                    })
+                .ToArray(); */
         public async Task<ProcessResult<Basvuru>> RetrieveAsync(long id)
         {
             Func<Task<Basvuru>> action = async () =>
             {
-                var result = await context.Basvurus.Where(x => x.Id == id).FirstAsync();
+                var result = await context.Basvurus.Where(x => x.Id == id).Include(x => x.User).FirstAsync();
                 return result;
             };
 

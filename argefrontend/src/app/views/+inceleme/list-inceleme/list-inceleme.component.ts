@@ -116,15 +116,16 @@ export class ListIncelemeComponent implements OnInit, OnDestroy {
   }
 
   onOlustur(item: any): void {
-    if (item.basvuruTuru === "ArastirmaCalis") {
-      this.router.navigate(['basvuru', 'argebirform', item.id]);
-    }
-    if (item.basvuruTuru === "ArastirmaCalisKovid") {
-      this.router.navigate(['basvuru', 'argeikiform', item.id]);
-    }
-    if (item.basvuruTuru === "DonerDestek") {
-      this.router.navigate(['basvuru', 'argeucform', item.id]);
-    }
+    /*     if (item.basvuruTuru === "ArastirmaCalis") {
+          this.router.navigate(['inceleme', 'argebirform', item.id]);
+        }
+        if (item.basvuruTuru === "ArastirmaCalisKovid") {
+          this.router.navigate(['basvuru', 'argeikiform', item.id]);
+        }
+        if (item.basvuruTuru === "DonerDestek") {
+          this.router.navigate(['basvuru', 'argeucform', item.id]);
+        } */
+    this.router.navigate(['inceleme', 'incele', item.id]);
 
     console.log("sayfaya git");
 
