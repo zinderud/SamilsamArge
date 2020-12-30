@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 import { NbThemeModule, NbLayoutModule, NbMenuModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ThemeModule } from './@theme/theme.module';
- 
+
 
 
 const routes: Routes = [
@@ -55,6 +55,11 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'incele',
+    loadChildren: () => import('./views/+inceleme/inceleme.module').then(m => m.IncelemeModule),
+    canLoad: [AuthGuard]
+  },
+  {
     path: 'error',
     loadChildren: () => import('./views/+error/error.module').then(m => m.ErrorModule),
   },
@@ -86,7 +91,7 @@ const routes: Routes = [
   providers: [
 
     ServerTimeResolver,
-    
+
   ],
   bootstrap: [AppComponent]
 })

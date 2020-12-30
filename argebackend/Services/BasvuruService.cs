@@ -165,7 +165,7 @@ namespace argebackend.Services
 
         public async Task<ProcessResult<List<Basvuru>>> ListAsync(GetListViewModel<BaseFilter> getListModel)
         {
-            IQueryable<Basvuru> q = context.Basvurus;
+            IQueryable<Basvuru> q = context.Basvurus.Include(x => x.User);
             q = SetIncludes(q);
             q = SetFilter(q, getListModel.filter);
 
