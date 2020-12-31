@@ -15,7 +15,7 @@ import { Basvuru } from '@app/core/models/basvuru/basvuru';
 export class BasvuruInceleComponent implements OnInit {
   itemId: string;
   loading = false;
-  basvuru: Basvuru;
+  basvuru: any = {};
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -26,9 +26,9 @@ export class BasvuruInceleComponent implements OnInit {
     this.itemId = this.activatedRoute.snapshot.params.id;
     this.httpClient.get(`${env.serverUrl}/basvuru/selected/${this.itemId}`).subscribe((data: any) => {
       this.loading = false;
-
+      const basform = JSON.parse(data.value.basvuruForm);
       this.basvuru = { ...data.value }
-
+      this.basvuru.basvuruForm = basform;
 
     });
   }

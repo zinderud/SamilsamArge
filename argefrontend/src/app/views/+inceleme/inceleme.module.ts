@@ -21,7 +21,7 @@ const routes: Routes = [
     data: { title: 'Basvuru İnceleme Listesi', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
     resolve: {
-      data: BasvuruaddUserInceleResolver
+      data: BasvuruInceleResolver
     }
   },
   {

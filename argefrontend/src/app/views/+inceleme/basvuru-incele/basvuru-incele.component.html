@@ -1,2 +1,158 @@
 <p>basvuru-incele works!</p>
 <div class="row"> {{this.basvuru| json}}</div>
+
+
+<!-- { "firstname": "Admin", "lastname": "Admin lastname", "tc": "00000000000", "basvuruNo": 3, "tarih": "2020-12-25T14:53:09.718067", "durum": "Başvuru yapıldı", "durumId": 1, "basvuruTuru": "ArastirmaCalis", "basvuruForm": { "baslik": "543", "arastirmaform": { "baslik": "", "statu": "", "diger": "" }, "arastirmaKapsam": { "amac": "32", "genelBilgi": "3213", "arastirmaTuru": "3213", "arYapilacagiYer": "3213", "arEvrenOrneklem": "", "hipotez": "3213", "veriToplamaYontemi": "3213", "arastirmaKisitlari": "", "arastirmaTarihAraligi": "", "invazivmi": "", "invazAcikla": "", "tibbiDurumVarmi": "", "tibbiDurumAcikla": "", "arastirmaRuhsalSoru": "Evet", "arastirmaRuhsalSoruAcikla": "3213123", "gonulluKatilimSoru": "", "gonulluKatilimSoruAcikla": "", "bireyselYarar": "", "kurumsalYarar": "312312", "toplumsalYarar": "", "bilimselYarar": "3123123", "destekleyicisiVarmi": "Hayır", "destekleyicisiAcikla": "", "bizdenTalepVarmi": "Hayır", "bizdenTalepAcikla": "" }, "arastirmacilarforms": [ { "arastirmaciTuru": "Yardımcı Araştırmacı", "ad": "534", "soyad": "", "unvan": "3213", "uzmanlikAlani": "", "isAdresi": "", "eposta": "", "faks": "" }, { "arastirmaciTuru": "Sorumlu Araştırmacı", "ad": "eqw", "soyad": "eqw", "unvan": "eqw", "uzmanlikAlani": "", "isAdresi": "", "eposta": "", "faks": "" }, { "arastirmaciTuru": "Yardımcı Araştırmacı", "ad": "rwe", "soyad": "rwe", "unvan": "", "uzmanlikAlani": "", "isAdresi": "", "eposta": "", "faks": "" } ], "arastirmaBelgelerForm": { "ozGecmisBelgesi": "cb3dd1cf-610e-45ae-9bfa-2ea045b81837.pdf", "etikKurulOnayBelgesi": "9c86d4eb-f5e9-40b1-a099-f94eaba33063.pdf", "anketOlcekFormu": "bd0da84a-5887-40ec-9ca8-54d32a748a4b.pdf", "uzmanlikvbTeziBelge": "cb730b6f-3519-477d-833f-827311496a3a.pdf", "ekBelge": "fe66a4ad-b287-45f5-9625-1f2c9b4656fb.pdf" } }, "id": 0, "creatorId": 0, "modifierId": 0, "createDate": "0001-01-01T00:00:00", "modifyDate": "0001-01-01T00:00:00", "hVersion": 0 } -->
+
+<nb-card accent="danger">
+    <nb-card-header style="text-align: center;">
+        T.C. <br>
+        SAĞLIK BAKANLIĞI <br>
+        Araştırma Taleplerini Değerlendirme Komisyonu <br>
+        BAŞVURU FORMU</nb-card-header>
+    <nb-card-body>
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="row show-grid">
+                        <div class="col-md-3">
+                            <div><code> Basvuru Başlığı:</code></div>
+                        </div>
+                        <div class="col-md-9">
+                            <div>{{this.basvuru.basvuruForm?.baslik}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row  show-grid">
+                <div class="col-2 col-md-2">
+                    <div><code>Başvuru no:</code></div>
+                </div>
+                <div class="col-5 col-md-4">
+                    <div>{{this.basvuru.basvuruNo}}</div>
+                </div>
+                <div class="col-2 col-md-2">
+                    <div><code>Başvuru tarihi:</code> </div>
+                </div>
+                <div class="col-5 col-md-4">
+                    <div>{{this.basvuru.tarih |date}}</div>
+                </div>
+            </div>
+
+            <div class="row  show-grid">
+                <div class="col-2 col-md-2">
+                    <div><code>Ad:</code></div>
+                </div>
+                <div class="col-5 col-md-4">
+                    <div>{{this.basvuru.firstname}}</div>
+                </div>
+                <div class="col-2 col-md-2">
+                    <div><code>Soyad:</code> </div>
+                </div>
+                <div class="col-5 col-md-4">
+                    <div>{{this.basvuru.lastname}}</div>
+                </div>
+            </div>
+
+            <!--         <nb-card accent="danger">
+                <nb-card-header style="text-align: center;">
+                    Araştırmacılar</nb-card-header>
+                <nb-card-body> -->
+            <!--         <nb-accordion>
+                        <nb-accordion-item>
+                          <nb-accordion-item-header>
+                            Product Details
+                          </nb-accordion-item-header>
+                          <nb-accordion-item-body>
+                            A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
+                            Originally, nebula was a name for any diffuse astronomical object,
+                            including galaxies beyond the Milky Way.
+                          </nb-accordion-item-body>
+                        </nb-accordion-item>
+                      
+                
+                      </nb-accordion> -->
+            <nb-accordion *ngFor="let item of this.basvuru.basvuruForm?.arastirmacilarforms">
+                <nb-accordion-item>
+                    <nb-accordion-item-header>
+
+
+                        <div>{{item.arastirmaciTuru}}</div>
+
+                    </nb-accordion-item-header>
+                    <nb-accordion-item-body>
+                        <div class="row show-grid ">
+                            <div class="col-2 col-md-2">
+                                <div><code>Arastirmaci Turu:</code></div>
+                            </div>
+                            <div class="col-5 col-md-4">
+                                <div>{{item.arastirmaciTuru}}</div>
+                            </div>
+                            <div class="col-2 col-md-2">
+                                <div><code>Ünvan:</code></div>
+                            </div>
+                            <div class="col-5 col-md-4">
+                                <div>{{item.unvan}}</div>
+                            </div>
+                            <div class="col-2 col-md-2">
+                                <div><code>Ad:</code></div>
+                            </div>
+                            <div class="col-5 col-md-4">
+                                <div>{{item.ad}}</div>
+                            </div>
+                            <div class="col-2 col-md-2">
+                                <div><code>SoyAd:</code></div>
+                            </div>
+                            <div class="col-5 col-md-4">
+                                <div>{{item.soyad}}</div>
+                            </div>
+                            <div class="col-2 col-md-2">
+                                <div><code>uzmanlikAlani:</code></div>
+                            </div>
+                            <div class="col-5 col-md-4">
+                                <div>{{item.uzmanlikAlani}}</div>
+                            </div>
+                            <div class="col-2 col-md-2">
+                                <div><code>isAdresi:</code></div>
+                            </div>
+                            <div class="col-5 col-md-4">
+                                <div>{{item.isAdresi}}</div>
+                            </div>
+
+                            <div class="col-2 col-md-2">
+                                <div><code>eposta:</code></div>
+                            </div>
+                            <div class="col-5 col-md-4">
+                                <div>{{item.eposta}}</div>
+                            </div>
+
+                            <div class="col-2 col-md-2">
+                                <div><code>faks:</code></div>
+                            </div>
+                            <div class="col-5 col-md-4">
+                                <div>{{item.faks}}</div>
+                            </div>
+
+
+
+                        </div>
+                    </nb-accordion-item-body>
+                </nb-accordion-item>
+            </nb-accordion>
+            <!-- 
+                </nb-card-body>
+            </nb-card>
+ -->
+
+        </div>
+
+
+
+
+
+
+
+
+    </nb-card-body>
+</nb-card>

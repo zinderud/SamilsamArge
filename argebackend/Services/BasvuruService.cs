@@ -231,7 +231,7 @@ namespace argebackend.Services
         }
         public async Task<ProcessResult<List<SelectedBasvuru>>> UseraddBassvuruListAsync(GetListViewModel<BaseFilter> getListModel)
         {
-            IQueryable<SelectedBasvuru> q = context.Basvurus.AsQueryable().Include(x => x.User)
+            IQueryable<SelectedBasvuru> q = context.Basvurus.Include(x => x.User)
             .Select(p => new SelectedBasvuru
             {
                 Firstname = p.User.Firstname,
@@ -256,10 +256,13 @@ namespace argebackend.Services
 
             Func<Task<List<SelectedBasvuru>>> action = async () =>
             {
+
+                //TODO BUG ÇÖZÜLECEK
                 var result = await q.ToListAsync();
+
                 return result;
             };
-
+            Console.WriteLine("qqqqqqqqqqqqqqqqqqq");
             return await Process.RunAsync(action, countItems);
         }
 
