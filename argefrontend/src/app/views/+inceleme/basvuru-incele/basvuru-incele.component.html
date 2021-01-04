@@ -550,13 +550,19 @@
                 </div>
             </div>
             <!-- bizdenTalepAcikla -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <ngx-extended-pdf-viewer
+                        [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ozGecmisBelgesi"
+                        useBrowserLocale="true" height="80vh"></ngx-extended-pdf-viewer>
 
-
+                </div>
+            </div>
         </div>
+        <!-- "this.env.serverUrl"+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ozGecmisBelgesi" -->
 
-
-
-
+        <!-- 
+        <ngx-extended-pdf-viewer [src]="src" useBrowserLocale="true" height="80vh"></ngx-extended-pdf-viewer> -->
 
 
 

@@ -25,6 +25,7 @@ using argebackend.Profiles;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using System.Linq;
 
 namespace argebackend
 {
@@ -143,21 +144,34 @@ namespace argebackend
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseRouting();
+
+
 
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseRouting();
+            app.UseCors(EnabledCORS);
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {
+                OnPrepareResponse = ctx =>
+                 {
+                     ctx.Context.Response.Headers.Append(new KeyValuePair<string, Microsoft.Extensions.Primitives.StringValues>("Access-Control-Allow-Origin", "*"));
+                     ctx.Context.Response.Headers.Append(new KeyValuePair<string, Microsoft.Extensions.Primitives.StringValues>("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"));
+
+
+                 },
+
                 FileProvider = new PhysicalFileProvider(
            Path.Combine(Directory.GetCurrentDirectory(), @"Uploads")),
                 RequestPath = new PathString("/Uploads")
             });
 
 
-            app.UseCors(EnabledCORS);
+
             /*       app.UseSwagger();
 
 

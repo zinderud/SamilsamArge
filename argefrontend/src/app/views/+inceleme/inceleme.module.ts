@@ -12,8 +12,8 @@ import { SharedDirectivesModule } from 'src/app/directives/shared-directives.mod
 import { BasvuruaddUserInceleResolver, BasvuruInceleResolver } from './resolver/basvuruIncele.resolver';
 import { ApiInterceptor } from '@app/core/interceptors/api.interceptor';
 import { BasvuruInceleComponent } from './basvuru-incele/basvuru-incele.component';
-
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 const routes: Routes = [
   {
     path: '',
@@ -42,6 +42,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    NgxExtendedPdfViewerModule,
+    PdfViewerModule,
     NgxExcelTemplateModule.forRoot(),
     EditorModule,
     RouterModule.forChild(routes),
