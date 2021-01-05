@@ -6,12 +6,13 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 
 import { environment as env } from '@env/environment';
 import { Basvuru } from '@app/core/models/basvuru/basvuru';
+
 @Component({
-  selector: 'app-basvuru-incele',
-  templateUrl: './basvuru-incele.component.html',
-  styleUrls: ['./basvuru-incele.component.scss']
+  selector: 'app-arge-form-onizleme',
+  templateUrl: './arge-form-onizleme.component.html',
+  styleUrls: ['./arge-form-onizleme.component.scss']
 })
-export class BasvuruInceleComponent implements OnInit {
+export class ArgeFormOnizlemeComponent implements OnInit {
   public src = {};
   itemId: string;
   loading = false;

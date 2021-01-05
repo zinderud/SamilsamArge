@@ -38,6 +38,8 @@ import { ArgeBirFormComponent } from './forms/arge-bir-form/arge-bir-form.compon
 import { UploadDownloadService } from '@app/core/services/upload-download.service';
 import { ArgeIkiFormComponent } from './forms/arge-iki-form/arge-iki-form.component';
 import { ArgeUcFormComponent } from './forms/arge-uc-form/arge-uc-form.component';
+import { ArgeFormOnizlemeComponent } from './forms/arge-form-onizleme/arge-form-onizleme.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 const routes: Routes = [
 
@@ -82,6 +84,12 @@ const routes: Routes = [
     component: ArgeUcFormComponent,
     data: { title: 'Donersermaye Arge Form Düzenle', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
+  },
+  {
+    path: 'onizleme/:id',
+    component: ArgeFormOnizlemeComponent,
+    data: { title: ' Arge Form onizleme', expectedRole: ['Admin'] },
+    canActivate: [RoleGuard],
   }
 
 ];
@@ -94,6 +102,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    PdfViewerModule,
     NgxExcelTemplateModule.forRoot(),
     EditorModule,
     RouterModule.forChild(routes),
@@ -111,7 +120,8 @@ const routes: Routes = [
     ArastirmaBelgelerFormComponent,
     ArgeBirFormComponent,
     ArgeIkiFormComponent,
-    ArgeUcFormComponent
+    ArgeUcFormComponent,
+    ArgeFormOnizlemeComponent
 
 
 

@@ -145,13 +145,13 @@ namespace argebackend
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-
+            app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseRouting();
-            app.UseCors(EnabledCORS);
+
+
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -169,7 +169,7 @@ namespace argebackend
            Path.Combine(Directory.GetCurrentDirectory(), @"Uploads")),
                 RequestPath = new PathString("/Uploads")
             });
-
+            app.UseCors(EnabledCORS);
 
 
             /*       app.UseSwagger();

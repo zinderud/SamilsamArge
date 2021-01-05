@@ -99,21 +99,20 @@
         <td mat-cell *matCellDef="let row">{{row.basvuruTuru}}</td>
       </ng-container>
 
+      <!-- Önizleme Column -->
 
-
-      <!-- edit Column -->
-      <!--       <ng-container matColumnDef="düzenle">
+      <ng-container matColumnDef="onizleme">
         <th mat-header-cell *matHeaderCellDef>
-          düzenle
+          Önizleme
         </th>
         <td mat-cell *matCellDef="let row">
-          <a mat-button color="accent" [routerLink]="['/basvuru', 'edit', row.id]">
-            <mat-icon>edit</mat-icon>
+          <a mat-button (click)="onOnizleme(row)" color="warn">
+            <mat-icon>link</mat-icon>
           </a>
         </td>
       </ng-container>
- -->
-      <!-- delete Column -->
+      <!-- Önizleme Column -->
+
       <ng-container matColumnDef="oluştur">
         <th mat-header-cell *matHeaderCellDef>
           oluştur

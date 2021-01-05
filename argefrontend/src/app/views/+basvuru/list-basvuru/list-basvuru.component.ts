@@ -24,8 +24,10 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
     'tarih',
     'durum',
     'basvuruTuru',
+    'onizleme',
     /* "düzenle", */
     'oluştur'
+
   ];
 
   data: any[] = [];
@@ -124,6 +126,14 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
     if (item.basvuruTuru === "DonerDestek") {
       this.router.navigate(['basvuru', 'argeucform', item.id]);
     }
+
+    console.log("sayfaya git");
+
+
+  }
+  onOnizleme(item: any): void {
+
+    this.router.navigate(['basvuru', 'onizleme', item.id]);
 
     console.log("sayfaya git");
 
