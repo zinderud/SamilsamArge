@@ -80,7 +80,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
                     tarih
                 </th>
-                <td mat-cell *matCellDef="let row">{{row.tarih}}</td>
+                <td mat-cell *matCellDef="let row">{{row.tarih|date}}</td>
             </ng-container>
 
             <!-- durum Column -->
