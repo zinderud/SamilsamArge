@@ -40,6 +40,8 @@ import {
   NbTooltipModule,
   NbCalendarKitModule,
   NbSidebarService,
+
+
 } from '@nebular/theme';
 const NB_MODULES = [
   NbCardModule,
@@ -123,6 +125,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioButton } from '@angular/material/radio';
 import { MatFileInputModule } from './components/mat-file-input/mat-file-input.module';
 import { MatFileUploadComponent } from './components/mat-file-upload/mat-file-upload.component';
+import { NgxVerticalTimelineModule } from './components/ngx-vertical-timeline/ngx-vertical-timeline.module';
 
 @NgModule({
   imports: [
@@ -162,7 +165,8 @@ import { MatFileUploadComponent } from './components/mat-file-upload/mat-file-up
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFileInputModule
+    MatFileInputModule,
+    NgxVerticalTimelineModule
   ],
   exports: [NB_MODULES,
     LayoutModule,
@@ -206,7 +210,8 @@ import { MatFileUploadComponent } from './components/mat-file-upload/mat-file-up
     ConfirmComponent,
     CallActionCardComponent,
     MatFileInputModule,
-    MatFileUploadComponent
+    MatFileUploadComponent,
+    NgxVerticalTimelineModule
   ],
   declarations: [
     CallActionCardComponent,

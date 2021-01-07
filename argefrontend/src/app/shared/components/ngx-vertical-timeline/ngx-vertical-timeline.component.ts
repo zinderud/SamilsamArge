@@ -3,7 +3,7 @@ import { TimelineItem } from './timeline-item';
 
 
 @Component({
-  selector: 'lib-ngx-vertical-timeline',
+  selector: 'ngx-vertical-timeline',
   templateUrl: './ngx-vertical-timeline.component.html',
   styleUrls: ['./ngx-vertical-timeline.component.css']
 })
