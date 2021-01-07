@@ -90,7 +90,7 @@ namespace argebackend.Services
                 Basvuru.User = user;
                 Basvuru.BasvuruNo = bsvno.Value.BasvuruNo + 1;
                 Basvuru.Tarih = DateTime.Now;
-                Basvuru.Durum = "Başvuru yapıldı";
+                Basvuru.Durum = "basvuru_yapildi";
                 Basvuru.DurumId = 1;
                 //  Basvuru.BasvuruTuruId = model.BasvuruTuruId;
                 Basvuru.BasvuruTuru = model.BasvuruTuru;

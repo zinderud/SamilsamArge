@@ -143,4 +143,29 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+
+  //basvuru_yapildi
+  //basvuru_inceleme
+  //basvuru_eksik_evrak
+  //basvuru_on_kabul
+  //basvuru_red
+  //basvuru_kabul
+  getColor(durum) {
+    (2)
+    switch (durum) {
+      case 'basvuru_yapildi':
+        return 'green';
+      case 'basvuru_inceleme':
+        return 'blue';
+      case 'basvuru_eksik_evrak':
+        return 'orange';
+      case 'basvuru_on_kabul':
+        return 'olive';
+      case 'basvuru_red':
+        return 'red';
+      case 'basvuru_kabul':
+        return 'teal';
+    }
+  }
 }

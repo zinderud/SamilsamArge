@@ -12,16 +12,22 @@ import { Basvuru } from '@app/core/models/basvuru/basvuru';
   styleUrls: ['./basvuru-incele.component.scss']
 })
 export class BasvuruInceleComponent implements OnInit {
+  durumForm: FormGroup;
+  editbasvuru: Basvuru = {};
   public src = {};
   itemId: string;
   loading = false;
   basvuru: any = {};
-  constructor(private formBuilder: FormBuilder,
+  constructor(private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
     private httpClient: HttpClient
-  ) { }
+  ) {
+    this.durumForm = this.fb.group({
+      durum: {}
+    });
+  }
 
   ngOnInit(): void {
     this.itemId = this.activatedRoute.snapshot.params.id;
@@ -29,9 +35,15 @@ export class BasvuruInceleComponent implements OnInit {
       this.loading = false;
       const basform = JSON.parse(data.value.basvuruForm);
       this.basvuru = { ...data.value }
+      this.editbasvuru = { ...data.value };
       this.basvuru.basvuruForm = basform;
+      this.durumForm.patchValue({
+        durum: this.editbasvuru.durum
+      }
+      );
 
     });
+
   }
 
 
@@ -40,5 +52,32 @@ export class BasvuruInceleComponent implements OnInit {
     // do anything
     console.log("hata pdf" + onErrorPdf);
   }
+  onDurumEdit(): void {
+    if (this.durumForm.valid) {
+      this.durumForm.disable();
 
+      this.editbasvuru.durum = this.durumForm.value.durum
+
+      const p = { ...this.editbasvuru };
+      this.httpClient.patch(`${env.serverUrl}/basvuru/${this.itemId}`, p
+      ).subscribe((data: any) => {
+
+        if (data.succeeded) {
+          this.snackBar.open(`basvuru  ${this.durumForm.value.durum} düzenlendi`, 'X', { duration: 3000 });
+          this.router.navigate(['inceleme']);
+        }
+        this.loading = false;
+
+      }, (error: HttpErrorResponse) => {
+        this.loading = false;
+        this.durumForm.enable();
+        this.snackBar.open(error.error, 'X', { duration: 3000 });
+      });
+
+    } else {
+      console.log('Form not valid');
+    }
+
+
+  }
 }
