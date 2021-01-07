@@ -49,13 +49,15 @@ export class BasvuruInceleComponent implements OnInit {
     this.items.push({
       label: 'Ahmet Bilir',
       icon: 'fa fa-plus',
+      durum: `Başvuru Yapildi.`,
       content: `Başvuru Yapildi.`,
-      title: '11  Kasım 2020',
+      title: '11  Kasım 2020 + Başvuru Yapildi',
 
     });
     this.items.push({
       label: 'Nihat Demre',
       icon: 'fa fa-plus',
+      durum: `Başvuru Yapildi.`,
       content: ` Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
       title: '12 aralık 2020',
 

@@ -17,10 +17,14 @@
       <nb-card class="timeline-content" [class.right]="i % 2 !== 0">
         <nb-card-header>
           <h2>{{item?.title}}</h2>
+          <br>
+
+          <button class="btndurum btndurum-durum ">
+            <i class="fa fa-search-plus"></i> Durum: {{item?.durum}}</button>
         </nb-card-header>
         <nb-card-body>
           <p>
-            {{item?.content}}
+            Not: {{item?.content}}
 
           </p>
 
@@ -28,7 +32,7 @@
 
           <nb-card-footer>
             <button class="btn bg-purple">
-              <i class="fa fa-search-plus"></i> {{item?.label}}
+              <i class="fa fa-search-plus"></i> Kullanıcı: {{item?.label}}
             </button>
           </nb-card-footer>
 
