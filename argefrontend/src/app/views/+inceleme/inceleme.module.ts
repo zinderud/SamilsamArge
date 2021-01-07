@@ -14,6 +14,7 @@ import { ApiInterceptor } from '@app/core/interceptors/api.interceptor';
 import { BasvuruInceleComponent } from './basvuru-incele/basvuru-incele.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { NgxVerticalTimelineModule } from '@app/shared/components/ngx-vertical-timeline/ngx-vertical-timeline.module';
 const routes: Routes = [
   {
     path: '',
@@ -44,6 +45,7 @@ const routes: Routes = [
     SharedModule,
     NgxExtendedPdfViewerModule,
     PdfViewerModule,
+    NgxVerticalTimelineModule,
     NgxExcelTemplateModule.forRoot(),
     EditorModule,
     RouterModule.forChild(routes),
