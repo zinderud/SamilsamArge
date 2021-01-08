@@ -1,687 +1,689 @@
-<nb-card accent="danger">
-    <nb-card-header style="text-align: center;">
-        T.C. <br>
-        SAĞLIK BAKANLIĞI <br>
-        Araştırma Taleplerini Değerlendirme Komisyonu <br>
-        BAŞVURU FORMU</nb-card-header>
-    <nb-card-body>
-        <div class="col-sm-12">
-            <div class="row">
-                <div class="col-sm-12">
+<nb-tabset fullWidth>
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code> Basvuru Başlığı:</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.baslik}}</div>
+    <nb-tab tabTitle="Başvuruları İncele">
+
+        <nb-card accent="danger">
+            <nb-card-header style="text-align: center;">
+                T.C. <br>
+                SAĞLIK BAKANLIĞI <br>
+                Araştırma Taleplerini Değerlendirme Komisyonu <br>
+                BAŞVURU FORMU</nb-card-header>
+            <nb-card-body>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code> Basvuru Başlığı:</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.baslik}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row  show-grid">
-                <div class="col-2 col-md-2">
-                    <div><code>Başvuru no:</code></div>
-                </div>
-                <div class="col-5 col-md-4">
-                    <div>{{this.basvuru.basvuruNo}}</div>
-                </div>
-                <div class="col-2 col-md-2">
-                    <div><code>Başvuru tarihi:</code> </div>
-                </div>
-                <div class="col-5 col-md-4">
-                    <div>{{this.basvuru.tarih |date}}</div>
-                </div>
-            </div>
+                    <div class="row  show-grid">
+                        <div class="col-2 col-md-2">
+                            <div><code>Başvuru no:</code></div>
+                        </div>
+                        <div class="col-5 col-md-4">
+                            <div>{{this.basvuru.basvuruNo}}</div>
+                        </div>
+                        <div class="col-2 col-md-2">
+                            <div><code>Başvuru tarihi:</code> </div>
+                        </div>
+                        <div class="col-5 col-md-4">
+                            <div>{{this.basvuru.tarih |date}}</div>
+                        </div>
+                    </div>
 
-            <div class="row  show-grid">
-                <div class="col-2 col-md-2">
-                    <div><code>Ad:</code></div>
-                </div>
-                <div class="col-5 col-md-4">
-                    <div>{{this.basvuru.firstname}}</div>
-                </div>
-                <div class="col-2 col-md-2">
-                    <div><code>Soyad:</code> </div>
-                </div>
-                <div class="col-5 col-md-4">
-                    <div>{{this.basvuru.lastname}}</div>
-                </div>
-            </div>
+                    <div class="row  show-grid">
+                        <div class="col-2 col-md-2">
+                            <div><code>Ad:</code></div>
+                        </div>
+                        <div class="col-5 col-md-4">
+                            <div>{{this.basvuru.firstname}}</div>
+                        </div>
+                        <div class="col-2 col-md-2">
+                            <div><code>Soyad:</code> </div>
+                        </div>
+                        <div class="col-5 col-md-4">
+                            <div>{{this.basvuru.lastname}}</div>
+                        </div>
+                    </div>
 
-            <!--         <nb-card accent="danger">
+                    <!--         <nb-card accent="danger">
                 <nb-card-header style="text-align: center;">
                     Araştırmacılar</nb-card-header>
                 <nb-card-body> -->
 
-            <nb-accordion *ngFor="let item of this.basvuru.basvuruForm?.arastirmacilarforms">
-                <nb-accordion-item>
-                    <nb-accordion-item-header>
+                    <nb-accordion *ngFor="let item of this.basvuru.basvuruForm?.arastirmacilarforms">
+                        <nb-accordion-item>
+                            <nb-accordion-item-header>
 
 
-                        <div>{{item.arastirmaciTuru}}</div>
-
-                    </nb-accordion-item-header>
-                    <nb-accordion-item-body>
-                        <div class="row show-grid ">
-                            <div class="col-2 col-md-2">
-                                <div><code>Arastirmaci Turu:</code></div>
-                            </div>
-                            <div class="col-5 col-md-4">
                                 <div>{{item.arastirmaciTuru}}</div>
-                            </div>
-                            <div class="col-2 col-md-2">
-                                <div><code>Ünvan:</code></div>
-                            </div>
-                            <div class="col-5 col-md-4">
-                                <div>{{item.unvan}}</div>
-                            </div>
-                            <div class="col-2 col-md-2">
-                                <div><code>Ad:</code></div>
-                            </div>
-                            <div class="col-5 col-md-4">
-                                <div>{{item.ad}}</div>
-                            </div>
-                            <div class="col-2 col-md-2">
-                                <div><code>SoyAd:</code></div>
-                            </div>
-                            <div class="col-5 col-md-4">
-                                <div>{{item.soyad}}</div>
-                            </div>
-                            <div class="col-2 col-md-2">
-                                <div><code>uzmanlikAlani:</code></div>
-                            </div>
-                            <div class="col-5 col-md-4">
-                                <div>{{item.uzmanlikAlani}}</div>
-                            </div>
-                            <div class="col-2 col-md-2">
-                                <div><code>isAdresi:</code></div>
-                            </div>
-                            <div class="col-5 col-md-4">
-                                <div>{{item.isAdresi}}</div>
-                            </div>
 
-                            <div class="col-2 col-md-2">
-                                <div><code>eposta:</code></div>
-                            </div>
-                            <div class="col-5 col-md-4">
-                                <div>{{item.eposta}}</div>
-                            </div>
+                            </nb-accordion-item-header>
+                            <nb-accordion-item-body>
+                                <div class="row show-grid ">
+                                    <div class="col-2 col-md-2">
+                                        <div><code>Arastirmaci Turu:</code></div>
+                                    </div>
+                                    <div class="col-5 col-md-4">
+                                        <div>{{item.arastirmaciTuru}}</div>
+                                    </div>
+                                    <div class="col-2 col-md-2">
+                                        <div><code>Ünvan:</code></div>
+                                    </div>
+                                    <div class="col-5 col-md-4">
+                                        <div>{{item.unvan}}</div>
+                                    </div>
+                                    <div class="col-2 col-md-2">
+                                        <div><code>Ad:</code></div>
+                                    </div>
+                                    <div class="col-5 col-md-4">
+                                        <div>{{item.ad}}</div>
+                                    </div>
+                                    <div class="col-2 col-md-2">
+                                        <div><code>SoyAd:</code></div>
+                                    </div>
+                                    <div class="col-5 col-md-4">
+                                        <div>{{item.soyad}}</div>
+                                    </div>
+                                    <div class="col-2 col-md-2">
+                                        <div><code>uzmanlikAlani:</code></div>
+                                    </div>
+                                    <div class="col-5 col-md-4">
+                                        <div>{{item.uzmanlikAlani}}</div>
+                                    </div>
+                                    <div class="col-2 col-md-2">
+                                        <div><code>isAdresi:</code></div>
+                                    </div>
+                                    <div class="col-5 col-md-4">
+                                        <div>{{item.isAdresi}}</div>
+                                    </div>
 
-                            <div class="col-2 col-md-2">
-                                <div><code>faks:</code></div>
-                            </div>
-                            <div class="col-5 col-md-4">
-                                <div>{{item.faks}}</div>
-                            </div>
+                                    <div class="col-2 col-md-2">
+                                        <div><code>eposta:</code></div>
+                                    </div>
+                                    <div class="col-5 col-md-4">
+                                        <div>{{item.eposta}}</div>
+                                    </div>
+
+                                    <div class="col-2 col-md-2">
+                                        <div><code>faks:</code></div>
+                                    </div>
+                                    <div class="col-5 col-md-4">
+                                        <div>{{item.faks}}</div>
+                                    </div>
 
 
 
-                        </div>
-                    </nb-accordion-item-body>
-                </nb-accordion-item>
-            </nb-accordion>
-            <!-- 
+                                </div>
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+                    </nb-accordion>
+                    <!-- 
                 </nb-card-body>
             </nb-card>
  -->
 
-            <!--  Amaç/Kapsam -->
-            <div class="row">
-                <div class="col-sm-12">
+                    <!--  Amaç/Kapsam -->
+                    <div class="row">
+                        <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code> Amaç/Kapsam:</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.amac}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--  Amaç/Kapsam -->
-            <!-- genelBilgi -->
-            <div class="row">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code> Genel bilgiler:</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.genelBilgi}}</div>
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code> Amaç/Kapsam:</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.amac}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- genelBilgi -->
-            <!-- arastirmaTuru -->
-            <div class="row">
-                <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmanın türü:</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaTuru}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- arastirmaTuru -->
-            <!-- arYapilacagiYer -->
-            <div class="row">
-                <div class="col-sm-12">
+                    <!--  Amaç/Kapsam -->
+                    <!-- genelBilgi -->
+                    <div class="row">
+                        <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmanın yapılacağı yer / yerler:</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arYapilacagiYer}}</div>
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code> Genel bilgiler:</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.genelBilgi}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- arYapilacagiYer -->
+                    <!-- genelBilgi -->
+                    <!-- arastirmaTuru -->
+                    <div class="row">
+                        <div class="col-sm-12">
 
-            <!-- arEvrenOrneklem -->
-            <div class="row">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmanın Evreni / Örneklemi :</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arEvrenOrneklem}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- arEvrenOrneklem -->
-            <!-- hipotez -->
-            <div class="row">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Hipotez(ler):</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.hipotez}}</div>
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmanın türü:</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaTuru}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- hipotez -->
-            <!-- veriToplamaYontemi -->
-            <div class="row">
-                <div class="col-sm-12">
+                    <!-- arastirmaTuru -->
+                    <!-- arYapilacagiYer -->
+                    <div class="row">
+                        <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Veri toplama yöntemi:</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.veriToplamaYontemi}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- veriToplamaYontemi -->
-            <!-- arastirmaKisitlari -->
-            <div class="row">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmanın kısıtlılıkları (Sınırlılıkları):</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaKisitlari}}</div>
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmanın yapılacağı yer / yerler:</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arYapilacagiYer}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- arastirmaKisitlari -->
-            <!-- arastirmaTarihAraligi -->
-            <div class="row">
-                <div class="col-sm-12">
+                    <!-- arYapilacagiYer -->
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmanın yapılacağı tarih aralığı:</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaTarihAraligi}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- arastirmaTarihAraligi -->
+                    <!-- arEvrenOrneklem -->
+                    <div class="row">
+                        <div class="col-sm-12">
 
-            <!-- invazivmi -->
-            <div class="row">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmada invaziv girişim yapılacak mı?</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.invazivmi}}</div>
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmanın Evreni / Örneklemi :</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arEvrenOrneklem}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- invazivmi -->
 
-            <!-- invazAcikla -->
-            <div class="row"
-                [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.invazivmi=== 'Evet') ? false : true ">
-                <div class="col-sm-12">
+                    <!-- arEvrenOrneklem -->
+                    <!-- hipotez -->
+                    <div class="row">
+                        <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>  İnvaziv girişim acıklama</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.invazAcikla}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- invazAcikla -->
-
-
-
-            <!-- tibbiDurumVarmi -->
-            <div class="row">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmada tıbbi bir durum veya hastalık araştırılacak mı?</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.tibbiDurumVarmi}}</div>
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Hipotez(ler):</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.hipotez}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- tibbiDurumVarmi -->
+                    <!-- hipotez -->
+                    <!-- veriToplamaYontemi -->
+                    <div class="row">
+                        <div class="col-sm-12">
 
-            <!-- tibbiDurumAcikla -->
-            <div class="row"
-                [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.tibbiDurumVarmi=== 'Evet') ? false : true ">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>  Tıbbi  durum  acıklama</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.tibbiDurumAcikla}}</div>
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Veri toplama yöntemi:</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.veriToplamaYontemi}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- tibbiDurumAcikla -->
+                    <!-- veriToplamaYontemi -->
+                    <!-- arastirmaKisitlari -->
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmanın kısıtlılıkları (Sınırlılıkları):</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaKisitlari}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- arastirmaKisitlari -->
+                    <!-- arastirmaTarihAraligi -->
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmanın yapılacağı tarih aralığı:</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaTarihAraligi}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- arastirmaTarihAraligi -->
+
+                    <!-- invazivmi -->
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmada invaziv girişim yapılacak mı?</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.invazivmi}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- invazivmi -->
+
+                    <!-- invazAcikla -->
+                    <div class="row"
+                        [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.invazivmi=== 'Evet') ? false : true ">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>  İnvaziv girişim acıklama</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.invazAcikla}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- invazAcikla -->
+
+
+
+                    <!-- tibbiDurumVarmi -->
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmada tıbbi bir durum veya hastalık araştırılacak mı?</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.tibbiDurumVarmi}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tibbiDurumVarmi -->
+
+                    <!-- tibbiDurumAcikla -->
+                    <div class="row"
+                        [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.tibbiDurumVarmi=== 'Evet') ? false : true ">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>  Tıbbi  durum  acıklama</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.tibbiDurumAcikla}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tibbiDurumAcikla -->
 
 
 
 
-            <!-- arastirmaRuhsalSoru -->
-            <div class="row">
-                <div class="col-sm-12">
+                    <!-- arastirmaRuhsalSoru -->
+                    <div class="row">
+                        <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırma katılımcıların fiziksel ve ruhsal sağlıklarını herhangi bir şekilde
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırma katılımcıların fiziksel ve ruhsal sağlıklarını herhangi bir şekilde
                                         sıkıntıya sokacak sorular içeriyor mu?</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaRuhsalSoru}}</div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaRuhsalSoru}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- arastirmaRuhsalSoru -->
+                    <!-- arastirmaRuhsalSoru -->
 
-            <!-- arastirmaRuhsalSoruAcikla -->
-            <div class="row"
-                [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaRuhsalSoru=== 'Evet') ? false : true ">
-                <div class="col-sm-12">
+                    <!-- arastirmaRuhsalSoruAcikla -->
+                    <div class="row"
+                        [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaRuhsalSoru=== 'Evet') ? false : true ">
+                        <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code> Fiziksel ve ruhsal sağlıklarını herhangi bir şekilde
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code> Fiziksel ve ruhsal sağlıklarını herhangi bir şekilde
                                         sıkıntıya sokacak soruları   acıklama</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaRuhsalSoruAcikla}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- arastirmaRuhsalSoruAcikla -->
-
-
-
-
-
-            <!-- gonulluKatilimSoru -->
-            <div class="row">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Gönüllü katılımını olumsuz yönde etkileyecek herhangi bir durum var mı?</code>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.arastirmaRuhsalSoruAcikla}}</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.gonulluKatilimSoru}}</div>
-                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- gonulluKatilimSoru -->
-
-            <!-- gonulluKatilimSoruAcikla -->
-            <div class="row"
-                [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.gonulluKatilimSoru=== 'Evet') ? false : true ">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code> Gönüllü katılımını olumsuz yönde etkileyecek   durumları   acıklama</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.gonulluKatilimSoruAcikla}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- gonulluKatilimSoruAcikla -->
+                    <!-- arastirmaRuhsalSoruAcikla -->
 
 
-            <!-- bireyselYarar -->
-            <div class="row">
-                <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmanın bireysel yararı:</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.bireyselYarar}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- bireyselYarar -->
 
-            <!-- kurumsalYarar -->
-            <div class="row">
-                <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmanın kurumsal yararı: (Araştırmanın yapıldığı kuruma yararı):</code>
+                    <!-- gonulluKatilimSoru -->
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div>
+                                        <code>Gönüllü katılımını olumsuz yönde etkileyecek herhangi bir durum var mı?</code>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.gonulluKatilimSoru}}</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.kurumsalYarar}}</div>
-                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- kurumsalYarar -->
+                    <!-- gonulluKatilimSoru -->
 
-            <!-- toplumsalYarar -->
-            <div class="row">
-                <div class="col-sm-12">
+                    <!-- gonulluKatilimSoruAcikla -->
+                    <div class="row"
+                        [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.gonulluKatilimSoru=== 'Evet') ? false : true ">
+                        <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmanın toplumsal yararı:(Lütfen açıklayınız ):</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.toplumsalYarar}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- toplumsalYarar -->
-
-            <!-- bilimselYarar -->
-            <div class="row">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmanın bilimsel yararı: </code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.bilimselYarar}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- bilimselYarar -->
-
-
-            <!-- destekleyicisiVarmi -->
-            <div class="row">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmanın destekleyicisi var mı?</code>
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div>
+                                        <code> Gönüllü katılımını olumsuz yönde etkileyecek   durumları   acıklama</code>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.gonulluKatilimSoruAcikla}}</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.destekleyicisiVarmi}}</div>
-                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- destekleyicisiVarmi -->
-
-            <!-- destekleyicisiAcikla -->
-            <div class="row"
-                [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.destekleyicisiVarmi=== 'Evet') ? false : true ">
-                <div class="col-sm-12">
-
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırmanın destekleyicisi    acıklama</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.destekleyicisiAcikla}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- destekleyicisiAcikla -->
+                    <!-- gonulluKatilimSoruAcikla -->
 
 
-            <!-- bizdenTalepVarmi -->
-            <div class="row">
-                <div class="col-sm-12">
+                    <!-- bireyselYarar -->
+                    <div class="row">
+                        <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırma kapsamında Genel Müdürlüğümüzden talebiniz var mı? </code>
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmanın bireysel yararı:</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.bireyselYarar}}</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.bizdenTalepVarmi}}</div>
+                    </div>
+                    <!-- bireyselYarar -->
+
+                    <!-- kurumsalYarar -->
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div>
+                                        <code>Araştırmanın kurumsal yararı: (Araştırmanın yapıldığı kuruma yararı):</code>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.kurumsalYarar}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- bizdenTalepVarmi -->
+                    <!-- kurumsalYarar -->
 
-            <!-- bizdenTalepAcikla -->
-            <div class="row"
-                [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.bizdenTalepVarmi=== 'Evet') ? false : true ">
-                <div class="col-sm-12">
+                    <!-- toplumsalYarar -->
+                    <div class="row">
+                        <div class="col-sm-12">
 
-                    <div class="row show-grid">
-                        <div class="col-md-3">
-                            <div><code>Araştırma kapsamında Genel Müdürlüğümüzden talebi    acıklama</code></div>
-                        </div>
-                        <div class="col-md-9">
-                            <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.bizdenTalepAcikla}}</div>
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmanın toplumsal yararı:(Lütfen açıklayınız ):</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.toplumsalYarar}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <!-- toplumsalYarar -->
+
+                    <!-- bilimselYarar -->
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmanın bilimsel yararı: </code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.bilimselYarar}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- bilimselYarar -->
+
+
+                    <!-- destekleyicisiVarmi -->
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmanın destekleyicisi var mı?</code>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.destekleyicisiVarmi}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- destekleyicisiVarmi -->
+
+                    <!-- destekleyicisiAcikla -->
+                    <div class="row"
+                        [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.destekleyicisiVarmi=== 'Evet') ? false : true ">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırmanın destekleyicisi    acıklama</code></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.destekleyicisiAcikla}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- destekleyicisiAcikla -->
+
+
+                    <!-- bizdenTalepVarmi -->
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırma kapsamında Genel Müdürlüğümüzden talebiniz var mı? </code>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.bizdenTalepVarmi}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- bizdenTalepVarmi -->
+
+                    <!-- bizdenTalepAcikla -->
+                    <div class="row"
+                        [hidden]="(this.basvuru.basvuruForm?.arastirmaKapsam?.bizdenTalepVarmi=== 'Evet') ? false : true ">
+                        <div class="col-sm-12">
+
+                            <div class="row show-grid">
+                                <div class="col-md-3">
+                                    <div><code>Araştırma kapsamında Genel Müdürlüğümüzden talebi    acıklama</code>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>{{this.basvuru.basvuruForm?.arastirmaKapsam?.bizdenTalepAcikla}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <nb-accordion>
+                        <nb-accordion-item>
+                            <nb-accordion-item-header>Öz geçmis Belgesi</nb-accordion-item-header>
+                            <nb-accordion-item-body>
+
+                                <pdf-viewer (error)="onErrorPdf($event)"
+                                    [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ozGecmisBelgesi"
+                                    [render-text]="true" style="display: block;"></pdf-viewer>
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+
+                        <nb-accordion-item>
+                            <nb-accordion-item-header>Etik Kurul Onay Belgesi</nb-accordion-item-header>
+                            <nb-accordion-item-body>
+
+                                <pdf-viewer (error)="onErrorPdf($event)"
+                                    [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.etikKurulOnayBelgesi"
+                                    [render-text]="true" style="display: block;"></pdf-viewer>
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+
+                        <nb-accordion-item>
+                            <nb-accordion-item-header>Anket Ölcek Belgesi</nb-accordion-item-header>
+                            <nb-accordion-item-body>
+
+                                <pdf-viewer (error)="onErrorPdf($event)"
+                                    [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.anketOlcekFormu"
+                                    [render-text]="true" style="display: block;"></pdf-viewer>
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+
+
+                        <nb-accordion-item>
+                            <nb-accordion-item-header>Uzmanlık vb Tez Belgesi</nb-accordion-item-header>
+                            <nb-accordion-item-body>
+
+                                <pdf-viewer (error)="onErrorPdf($event)"
+                                    [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.uzmanlikvbTeziBelge"
+                                    [render-text]="true" style="display: block;"></pdf-viewer>
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+
+
+                        <nb-accordion-item>
+                            <nb-accordion-item-header>Ek Belgeler</nb-accordion-item-header>
+                            <nb-accordion-item-body>
+
+                                <pdf-viewer (error)="onErrorPdf($event)"
+                                    [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ekBelge"
+                                    [render-text]="true" style="display: block;"></pdf-viewer>
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+
+
+
+                    </nb-accordion>
                 </div>
-            </div>
-
-
-            <nb-accordion>
-                <nb-accordion-item>
-                    <nb-accordion-item-header>Öz geçmis Belgesi</nb-accordion-item-header>
-                    <nb-accordion-item-body>
-
-                        <pdf-viewer (error)="onErrorPdf($event)"
-                            [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ozGecmisBelgesi"
-                            [render-text]="true" style="display: block;"></pdf-viewer>
-                    </nb-accordion-item-body>
-                </nb-accordion-item>
-
-                <nb-accordion-item>
-                    <nb-accordion-item-header>Etik Kurul Onay Belgesi</nb-accordion-item-header>
-                    <nb-accordion-item-body>
-
-                        <pdf-viewer (error)="onErrorPdf($event)"
-                            [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.etikKurulOnayBelgesi"
-                            [render-text]="true" style="display: block;"></pdf-viewer>
-                    </nb-accordion-item-body>
-                </nb-accordion-item>
-
-                <nb-accordion-item>
-                    <nb-accordion-item-header>Anket Ölcek Belgesi</nb-accordion-item-header>
-                    <nb-accordion-item-body>
-
-                        <pdf-viewer (error)="onErrorPdf($event)"
-                            [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.anketOlcekFormu"
-                            [render-text]="true" style="display: block;"></pdf-viewer>
-                    </nb-accordion-item-body>
-                </nb-accordion-item>
-
-
-                <nb-accordion-item>
-                    <nb-accordion-item-header>Uzmanlık vb Tez Belgesi</nb-accordion-item-header>
-                    <nb-accordion-item-body>
-
-                        <pdf-viewer (error)="onErrorPdf($event)"
-                            [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.uzmanlikvbTeziBelge"
-                            [render-text]="true" style="display: block;"></pdf-viewer>
-                    </nb-accordion-item-body>
-                </nb-accordion-item>
-
-
-                <nb-accordion-item>
-                    <nb-accordion-item-header>Ek Belgeler</nb-accordion-item-header>
-                    <nb-accordion-item-body>
-
-                        <pdf-viewer (error)="onErrorPdf($event)"
-                            [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ekBelge"
-                            [render-text]="true" style="display: block;"></pdf-viewer>
-                    </nb-accordion-item-body>
-                </nb-accordion-item>
-
-
-
-            </nb-accordion>
-        </div>
 
 
 
 
 
-    </nb-card-body>
-</nb-card>
+            </nb-card-body>
+        </nb-card>
+
+
+    </nb-tab>
+
+    <nb-tab tabTitle="Basvuru Zaman Çizelgesi">
+
+        <nb-card accent="danger">
+            <nb-card-header>Basvuru Durumunu Değiştir</nb-card-header>
+            <nb-card-body>
+                <ngx-vertical-timeline [(items)]="items"></ngx-vertical-timeline>
+
+            </nb-card-body>
+        </nb-card>
+    </nb-tab>
+    <nb-tab tabTitle="Basvuru Durumunu Değiştir">
+
+        <nb-card accent="danger">
+            <nb-card-header>Basvuru Durumunu Değiştir</nb-card-header>
+            <nb-card-body>
+                <form [formGroup]="durumForm" #f="ngForm" class="form">
 
 
 
 
+                    <!-- durum -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!--    <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>durum</mat-label>
+                                <input matInput required type="text" placeholder="durum" formControlName="durum" />
+                            </mat-form-field>
+         -->
+
+                            <mat-form-field class="full-width " appearance="outline">
+                                <mat-label>Başvuru Durumunu Değiştir.
+                                </mat-label>
+                                <!--           <input matInput  type="text" placeholder="Araştırmanın yapılacağı tarih aralığı:
+                                        " formControlName="arastirmaciTuru" />  -->
+                                <select matNativeControl formControlName="durum">
+
+                                    <option value="basvuru_yapildi">başvuru yapıldı</option>
+                                    <option value="basvuru_inceleme">başvuru incelemede</option>
+                                    <option value="basvuru_eksik_evrak"> başvuru eksik evrak</option>
+                                    <option value="basvuru_on_kabul"> başvuru ön kabul</option>
+                                    <option value="basvuru_red"> başvuru red</option>
+                                    <option value="basvuru_kabul"> başvuru kabul</option>
+
+                                </select>
+
+
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- durum -->
 
 
 
+                    <div class="row">
+                        <button type="submit" nbButton status="primary" [disabled]="!durumForm.valid"
+                            (click)="onDurumEdit()">Durum Değiştir.</button>
+                    </div>
 
+                </form>
 
+            </nb-card-body>
+        </nb-card>
 
-
-
-
-
-<nb-card accent="danger">
-    <nb-card-header>Basvuru Durumunu Değiştir</nb-card-header>
-    <nb-card-body>
-        <form [formGroup]="durumForm" #f="ngForm" class="form">
-
-
-
-
-            <!-- durum -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <!--    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>durum</mat-label>
-                        <input matInput required type="text" placeholder="durum" formControlName="durum" />
-                    </mat-form-field>
- -->
-
-                    <mat-form-field class="full-width " appearance="outline">
-                        <mat-label>Başvuru Durumunu Değiştir.
-                        </mat-label>
-                        <!--           <input matInput  type="text" placeholder="Araştırmanın yapılacağı tarih aralığı:
-                                " formControlName="arastirmaciTuru" />  -->
-                        <select matNativeControl formControlName="durum">
-
-                            <option value="basvuru_yapildi">başvuru yapıldı</option>
-                            <option value="basvuru_inceleme">başvuru incelemede</option>
-                            <option value="basvuru_eksik_evrak"> başvuru eksik evrak</option>
-                            <option value="basvuru_on_kabul"> başvuru ön kabul</option>
-                            <option value="basvuru_red"> başvuru red</option>
-                            <option value="basvuru_kabul"> başvuru kabul</option>
-
-                        </select>
-
-
-                    </mat-form-field>
-                </div>
-            </div>
-            <!-- durum -->
-
-
-
-            <div class="row">
-                <button type="submit" nbButton status="primary" [disabled]="!durumForm.valid"
-                    (click)="onDurumEdit()">Durum Değiştir.</button>
-            </div>
-
-        </form>
-
-    </nb-card-body>
-</nb-card>
-
-
-
-
-
-<nb-card accent="danger">
-    <nb-card-header>Basvuru Durumunu Değiştir</nb-card-header>
-    <nb-card-body>
-        <ngx-vertical-timeline [(items)]="items"></ngx-vertical-timeline>
-
-    </nb-card-body>
-</nb-card>
+    </nb-tab>
+</nb-tabset>
