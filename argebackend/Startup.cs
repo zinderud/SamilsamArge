@@ -209,6 +209,7 @@ namespace argebackend
             services.AddTransient<IOzgecmisService, OzgecmisService>();
             services.AddTransient<IBasvuruService, BasvuruService>();
             services.AddTransient<IBsvNoService, BsvNoService>();
+            services.AddTransient<ITimelineService, TimelineService>();
             services.AddSingleton<ITokenService, TokenService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddLogging(builder => builder.AddNLog());
