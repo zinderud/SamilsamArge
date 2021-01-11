@@ -11,6 +11,8 @@ import { ArastirmacilarForm } from '../model/arastirmacilar';
 
 import { environment as env } from '@env/environment';
 import { Basvuru } from '@app/core/models/basvuru/basvuru';
+import { TimelineService } from '@app/core/services/timeline.service';
+import { Timeline } from '@app/core/models/timeline';
 type FormGroupConfig<T> = {
   [P in keyof T]: [
     T[P] | { value: T[P]; disabled: boolean },
@@ -37,7 +39,8 @@ export class ArgeIkiFormComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private httpClient: HttpClient,) { }
+    private httpClient: HttpClient,
+    private timelineservice: TimelineService) { }
 
   ngOnInit() {
     this.aform = this.fb.group({
@@ -69,6 +72,16 @@ export class ArgeIkiFormComponent implements OnInit {
       ).subscribe((data: any) => {
 
         if (data.succeeded) {
+          // timeline add
+          let p: Timeline = {
+            userId: this.basvuru.userId,
+            basvuruId: this.basvuru.id,
+            durum: this.basvuru.durum,
+            not: "Başvuru Düzenlendi"
+          }
+          this.addTimeline(p);
+          // timeline add
+
           this.snackBar.open(`basvuru  ${this.aform.value.baslik} düzenlendi`, 'X', { duration: 3000 });
           this.router.navigate(['basvuru']);
         }
@@ -148,6 +161,21 @@ export class ArgeIkiFormComponent implements OnInit {
       //  this.arastirmacilarform.writeValue(basform.arastirmacilarforms);
 
     }
+  }
+
+  addTimeline(timeline: Timeline) {
+    const p: Timeline = {
+      userId: timeline.userId,
+      basvuruId: timeline.basvuruId,
+      tarih: new Date().toDateString(),
+      durum: timeline.durum,
+      not: timeline.not
+
+    }
+    console.log("timeline", p);
+    this.timelineservice.addTimeLine(p).subscribe((data: any) => {
+      console.log("timeline", data);
+    });
   }
 
 }

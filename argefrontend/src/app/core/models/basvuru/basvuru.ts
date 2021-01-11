@@ -2,12 +2,14 @@ import { HttpParams } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { TypeHelper } from '@app/shared/lib/helpers/typeHelper';
 import { BaseFilter, Paginator, OrderBy } from '../core';
- 
+
 
 
 export class Basvuru {
     // public OzgecmisId?: number;
+    public id?: number;
     public basvuruNo?: number;
+    public userId?: number;
     public tarih?: Date;
     public durum?: string;
     public durumId?: number;

@@ -18,13 +18,14 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { LayoutService } from './services/layout.service';
+import { TimelineService } from './services/timeline.service';
 
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-BrowserModule,
+    BrowserModule,
     BrowserAnimationsModule,
   ],
   providers: [
@@ -32,15 +33,16 @@ BrowserModule,
     RoleGuard,
     LocalStorageService,
     AuthService,
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
       multi: true
-    }, 
-     LayoutService
+    },
+    LayoutService, TimelineService
 
   ],
- 
+
 })
 export class CoreModule {
 
