@@ -15,5 +15,6 @@ export interface TimelineItem {
   styleClass?: string;
   title?: string;
   durum?: string;
+
   id?: string;
 }

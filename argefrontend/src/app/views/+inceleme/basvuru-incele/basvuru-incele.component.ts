@@ -7,6 +7,12 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { environment as env } from '@env/environment';
 import { Basvuru } from '@app/core/models/basvuru/basvuru';
 import { TimelineItem } from '@app/shared/components/ngx-vertical-timeline/timeline-item';
+import { Timeline } from '@app/core/models/timeline';
+import { TimelineService } from '@app/core/services/timeline.service';
+import { AuthService } from '@app/core/services/core';
+import { User } from '@app/core/models/core';
+import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
+
 @Component({
   selector: 'app-basvuru-incele',
   templateUrl: './basvuru-incele.component.html',
@@ -16,22 +22,31 @@ export class BasvuruInceleComponent implements OnInit {
   items: TimelineItem[] = [];
   durumForm: FormGroup;
   editbasvuru: Basvuru = {};
+  notform: FormGroup;
   public src = {};
   itemId: string;
   loading = false;
   basvuru: any = {};
+  userid = 0;
   constructor(private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private httpClient: HttpClient
-  ) {
+    private httpClient: HttpClient,
+    private authservice: AuthService,
+    private timelineservice: TimelineService) {
     this.durumForm = this.fb.group({
       durum: {}
     });
+    this.notform = this.fb.group({
+      not: ""
+    });
+
+    this.userid = parseInt(this.authservice.getUserid());
   }
 
   ngOnInit(): void {
+    this.items = [];
     this.itemId = this.activatedRoute.snapshot.params.id;
     this.httpClient.get(`${env.serverUrl}/basvuru/selected/${this.itemId}`).subscribe((data: any) => {
       this.loading = false;
@@ -46,22 +61,34 @@ export class BasvuruInceleComponent implements OnInit {
 
     });
 
-    this.items.push({
-      label: 'Ahmet Bilir',
-      icon: 'fa fa-plus',
-      durum: `Başvuru Yapildi.`,
-      content: `Başvuru Yapildi.`,
-      title: '11  Kasım 2020 + Başvuru Yapildi',
+
+    this.httpClient.get(`${env.serverUrl}/timeline/selected/${this.itemId}`).subscribe((data: any) => {
+
+      console.log("timeline", data);
+
+      /*  this.items = data.value
+        .forEach(element => {
+         
+       }); */
+
+      if (data.succeeded) {
+
+        data.value.forEach((e: Timeline) => {
+          const timline: TimelineItem = {
+            label: "" + e.user.firstname + e.user.lastname, icon: 'fa fa-plus',
+            content: e.not, title: new Date(e.tarih).toLocaleDateString() + " ", durum: e.durum
+          }
+          this.items.push(timline);
+
+        });
+
+      }
 
     });
-    this.items.push({
-      label: 'Nihat Demre',
-      icon: 'fa fa-plus',
-      durum: `Başvuru Yapildi.`,
-      content: ` Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-      title: '12 aralık 2020',
 
-    });
+
+
+
 
   }
 
@@ -82,6 +109,21 @@ export class BasvuruInceleComponent implements OnInit {
       ).subscribe((data: any) => {
 
         if (data.succeeded) {
+
+
+          // timeline add
+          let p: Timeline = {
+            userId: this.userid,
+            basvuruId: parseInt(this.itemId),
+            durum: this.durumForm.value.durum,
+            not: "Başvuru durum değişti"
+          }
+          this.addTimeline(p).subscribe((data: any) => {
+            if (data.succeeded) {
+              console.log("timeline suc", data);
+            }
+          });
+
           this.snackBar.open(`basvuru  ${this.durumForm.value.durum} düzenlendi`, 'X', { duration: 3000 });
           this.router.navigate(['inceleme']);
         }
@@ -98,5 +140,41 @@ export class BasvuruInceleComponent implements OnInit {
     }
 
 
+  }
+
+  addTimeline(timeline: Timeline) {
+    const p: Timeline = {
+      userId: timeline.userId,
+      basvuruId: timeline.basvuruId,
+      tarih: new Date().toDateString(),
+      durum: timeline.durum,
+      not: timeline.not
+
+    }
+    console.log("timeline", p);
+    return this.timelineservice.addTimeLine(p);
+  }
+  onNotCreate() {
+    if (this.notform.valid) {
+
+      this.notform.disable();
+      let notf = this.notform.value;
+
+
+
+      // timeline add
+      let p: Timeline = {
+        userId: this.userid,
+        basvuruId: parseInt(this.itemId),
+        durum: this.basvuru.durum,
+        not: this.notform.value.not
+      }
+      this.addTimeline(p).subscribe((data: any) => {
+        if (data.succeeded) {
+          console.log("timeline not", data);
+        }
+      });
+
+    }
   }
 }

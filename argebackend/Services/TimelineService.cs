@@ -193,7 +193,16 @@ namespace argebackend.Services
         }
 
 
+        public async Task<ProcessResult<List<Timeline>>> SelectedBasvuruIdAsnc(long id)
+        {
+            Func<Task<List<Timeline>>> action = async () =>
+            {
+                var result = await context.timelines.Where(x => x.BasvuruId == id).Include(x => x.user).ToListAsync();
+                return result;
+            };
 
+            return await Process.RunAsync(action);
+        }
 
     }
 }

@@ -127,6 +127,23 @@ namespace argebackend.Controllers
         }
 
 
+        [HttpGet("selected/{id}")]
+        [ProducesResponseType(typeof(List<Timeline>), 200)]
+        /*  [Authorize(Roles = "Admin")] */
+        [AllowAnonymous]
+        public async Task<IActionResult> selected([FromRoute] long id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _TimelineService.SelectedBasvuruIdAsnc(id);
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            return Ok(result);
+        }
+
+
 
     }
 }
