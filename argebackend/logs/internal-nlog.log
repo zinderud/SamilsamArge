@@ -13078,3 +13078,129 @@
    at Elasticsearch.Net.Transport`1.Ping(IRequestPipeline pipeline, Node node)
    at Elasticsearch.Net.Transport`1.Request[TResponse](HttpMethod method, String path, PostData data, IRequestParameters requestParameters)
    --- End of inner exception stack trace ---
+2021-01-11 15:22:14.9148 Info AppDomain Shutting down. Logger closing...
+2021-01-11 15:22:14.9232 Info Logger has been shut down.
+2021-01-11 15:22:21.1931 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Extensions.Logging.dll
+2021-01-11 15:22:21.1994 Info Loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Extensions.Logging.dll
+2021-01-11 15:22:21.2081 Info NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 1.6.0.1196. Product version: 1.6.0.
+2021-01-11 15:22:21.2081 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Extensions.Logging.dll succeeded!
+2021-01-11 15:22:21.2081 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Web.AspNetCore.dll
+2021-01-11 15:22:21.2081 Info Loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Web.AspNetCore.dll
+2021-01-11 15:22:21.2081 Info NLog.Web.AspNetCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.9.0.1511. Product version: 4.9.0.
+2021-01-11 15:22:21.2114 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Web.AspNetCore.dll succeeded!
+2021-01-11 15:22:21.2114 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Targets.ElasticSearch.dll
+2021-01-11 15:22:21.2114 Info Loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Targets.ElasticSearch.dll
+2021-01-11 15:22:21.2114 Info NLog.Targets.ElasticSearch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3eb62cd298662c6a. File version: 1.0.0.0. Product version: 1.0.0+8f57b85988d61e23db8c67da4a8e6f1a746bd05f.
+2021-01-11 15:22:21.2114 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Targets.ElasticSearch.dll succeeded!
+2021-01-11 15:22:21.2114 Info Message Template Auto Format enabled
+2021-01-11 15:22:21.2555 Info Adding target FileTarget(Name=allfile)
+2021-01-11 15:22:21.2555 Info Adding target FileTarget(Name=ownFile-web)
+2021-01-11 15:22:21.2598 Info Adding target BufferingTargetWrapper(Name=ElasticSearch)
+2021-01-11 15:22:21.2719 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: ownFile-web
+2021-01-11 15:22:21.2830 Info Found 58 configuration items
+2021-01-11 15:22:26.6418 Error ElasticSearch: Failed to send log messages. status= Exception: Elasticsearch.Net.ElasticsearchClientException: Failed to ping the specified node.. Call: Status code unknown from: HEAD /
+ ---> Elasticsearch.Net.PipelineException: Failed to ping the specified node.
+ ---> Elasticsearch.Net.PipelineException: An error occurred trying to write the request data to the specified node.
+ ---> System.Net.Http.HttpRequestException: Connection refused
+ ---> System.Net.Sockets.SocketException (111): Connection refused
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Elasticsearch.Net.HttpConnection.Request[TResponse](RequestData requestData)
+   --- End of inner exception stack trace ---
+   at Elasticsearch.Net.RequestPipeline.Ping(Node node)
+   --- End of inner exception stack trace ---
+   at Elasticsearch.Net.RequestPipeline.Ping(Node node)
+   at Elasticsearch.Net.Transport`1.Ping(IRequestPipeline pipeline, Node node)
+   at Elasticsearch.Net.Transport`1.Request[TResponse](HttpMethod method, String path, PostData data, IRequestParameters requestParameters)
+   --- End of inner exception stack trace ---
+2021-01-11 15:25:00.6284 Info AppDomain Shutting down. Logger closing...
+2021-01-11 15:25:00.6363 Info Logger has been shut down.
+2021-01-11 15:25:05.5030 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Extensions.Logging.dll
+2021-01-11 15:25:05.5089 Info Loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Extensions.Logging.dll
+2021-01-11 15:25:05.5179 Info NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 1.6.0.1196. Product version: 1.6.0.
+2021-01-11 15:25:05.5192 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Extensions.Logging.dll succeeded!
+2021-01-11 15:25:05.5192 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Web.AspNetCore.dll
+2021-01-11 15:25:05.5192 Info Loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Web.AspNetCore.dll
+2021-01-11 15:25:05.5192 Info NLog.Web.AspNetCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.9.0.1511. Product version: 4.9.0.
+2021-01-11 15:25:05.5192 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Web.AspNetCore.dll succeeded!
+2021-01-11 15:25:05.5192 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Targets.ElasticSearch.dll
+2021-01-11 15:25:05.5192 Info Loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Targets.ElasticSearch.dll
+2021-01-11 15:25:05.5192 Info NLog.Targets.ElasticSearch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3eb62cd298662c6a. File version: 1.0.0.0. Product version: 1.0.0+8f57b85988d61e23db8c67da4a8e6f1a746bd05f.
+2021-01-11 15:25:05.5192 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Targets.ElasticSearch.dll succeeded!
+2021-01-11 15:25:05.5233 Info Message Template Auto Format enabled
+2021-01-11 15:25:05.5658 Info Adding target FileTarget(Name=allfile)
+2021-01-11 15:25:05.5666 Info Adding target FileTarget(Name=ownFile-web)
+2021-01-11 15:25:05.5666 Info Adding target BufferingTargetWrapper(Name=ElasticSearch)
+2021-01-11 15:25:05.5821 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: ownFile-web
+2021-01-11 15:25:05.5938 Info Found 58 configuration items
+2021-01-11 15:25:10.9677 Error ElasticSearch: Failed to send log messages. status= Exception: Elasticsearch.Net.ElasticsearchClientException: Failed to ping the specified node.. Call: Status code unknown from: HEAD /
+ ---> Elasticsearch.Net.PipelineException: Failed to ping the specified node.
+ ---> Elasticsearch.Net.PipelineException: An error occurred trying to write the request data to the specified node.
+ ---> System.Net.Http.HttpRequestException: Connection refused
+ ---> System.Net.Sockets.SocketException (111): Connection refused
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Elasticsearch.Net.HttpConnection.Request[TResponse](RequestData requestData)
+   --- End of inner exception stack trace ---
+   at Elasticsearch.Net.RequestPipeline.Ping(Node node)
+   --- End of inner exception stack trace ---
+   at Elasticsearch.Net.RequestPipeline.Ping(Node node)
+   at Elasticsearch.Net.Transport`1.Ping(IRequestPipeline pipeline, Node node)
+   at Elasticsearch.Net.Transport`1.Request[TResponse](HttpMethod method, String path, PostData data, IRequestParameters requestParameters)
+   --- End of inner exception stack trace ---
+2021-01-11 15:25:58.9951 Info AppDomain Shutting down. Logger closing...
+2021-01-11 15:25:59.0051 Info Logger has been shut down.
+2021-01-11 15:26:04.3281 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Extensions.Logging.dll
+2021-01-11 15:26:04.3349 Info Loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Extensions.Logging.dll
+2021-01-11 15:26:04.3436 Info NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 1.6.0.1196. Product version: 1.6.0.
+2021-01-11 15:26:04.3436 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Extensions.Logging.dll succeeded!
+2021-01-11 15:26:04.3436 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Web.AspNetCore.dll
+2021-01-11 15:26:04.3436 Info Loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Web.AspNetCore.dll
+2021-01-11 15:26:04.3436 Info NLog.Web.AspNetCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.9.0.1511. Product version: 4.9.0.
+2021-01-11 15:26:04.3470 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Web.AspNetCore.dll succeeded!
+2021-01-11 15:26:04.3470 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Targets.ElasticSearch.dll
+2021-01-11 15:26:04.3470 Info Loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Targets.ElasticSearch.dll
+2021-01-11 15:26:04.3470 Info NLog.Targets.ElasticSearch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3eb62cd298662c6a. File version: 1.0.0.0. Product version: 1.0.0+8f57b85988d61e23db8c67da4a8e6f1a746bd05f.
+2021-01-11 15:26:04.3470 Info Auto loading assembly file: /media/ism-ubuntu-onur/sade/code/clone code/SamilsamArge/argebackend/bin/Debug/netcoreapp3.1/NLog.Targets.ElasticSearch.dll succeeded!
+2021-01-11 15:26:04.3470 Info Message Template Auto Format enabled
+2021-01-11 15:26:04.3937 Info Adding target FileTarget(Name=allfile)
+2021-01-11 15:26:04.3946 Info Adding target FileTarget(Name=ownFile-web)
+2021-01-11 15:26:04.3946 Info Adding target BufferingTargetWrapper(Name=ElasticSearch)
+2021-01-11 15:26:04.4103 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: ownFile-web
+2021-01-11 15:26:04.4220 Info Found 58 configuration items
+2021-01-11 15:26:09.9719 Error ElasticSearch: Failed to send log messages. status= Exception: Elasticsearch.Net.ElasticsearchClientException: Failed to ping the specified node.. Call: Status code unknown from: HEAD /
+ ---> Elasticsearch.Net.PipelineException: Failed to ping the specified node.
+ ---> Elasticsearch.Net.PipelineException: An error occurred trying to write the request data to the specified node.
+ ---> System.Net.Http.HttpRequestException: Connection refused
+ ---> System.Net.Sockets.SocketException (111): Connection refused
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Elasticsearch.Net.HttpConnection.Request[TResponse](RequestData requestData)
+   --- End of inner exception stack trace ---
+   at Elasticsearch.Net.RequestPipeline.Ping(Node node)
+   --- End of inner exception stack trace ---
+   at Elasticsearch.Net.RequestPipeline.Ping(Node node)
+   at Elasticsearch.Net.Transport`1.Ping(IRequestPipeline pipeline, Node node)
+   at Elasticsearch.Net.Transport`1.Request[TResponse](HttpMethod method, String path, PostData data, IRequestParameters requestParameters)
+   --- End of inner exception stack trace ---

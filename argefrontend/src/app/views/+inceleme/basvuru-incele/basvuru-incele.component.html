@@ -719,8 +719,9 @@
 
 
                     <div class="row">
-                        <button type="submit" nbButton status="primary" [disabled]="!durumForm.valid"
+                        <button type="submit" nbButton status="primary" [disabled]="!notform.valid"
                             (click)="onNotCreate()">Not ekle</button>
+                        <button type="submit" nbButton status="primary" (click)="onRefresh()">Yeni not ekle</button>
                     </div>
 
                 </form>

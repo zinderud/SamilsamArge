@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -16,7 +16,8 @@ import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-i
 @Component({
   selector: 'app-basvuru-incele',
   templateUrl: './basvuru-incele.component.html',
-  styleUrls: ['./basvuru-incele.component.scss']
+  styleUrls: ['./basvuru-incele.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasvuruInceleComponent implements OnInit {
   items: TimelineItem[] = [];
@@ -34,7 +35,8 @@ export class BasvuruInceleComponent implements OnInit {
     private snackBar: MatSnackBar,
     private httpClient: HttpClient,
     private authservice: AuthService,
-    private timelineservice: TimelineService) {
+    private timelineservice: TimelineService,
+    private cdr: ChangeDetectorRef) {
     this.durumForm = this.fb.group({
       durum: {}
     });
@@ -62,6 +64,18 @@ export class BasvuruInceleComponent implements OnInit {
     });
 
 
+    this.timelinelist();
+
+
+
+
+  }
+
+
+
+  timelinelist() {
+    this.items = [];
+
     this.httpClient.get(`${env.serverUrl}/timeline/selected/${this.itemId}`).subscribe((data: any) => {
 
       console.log("timeline", data);
@@ -81,19 +95,14 @@ export class BasvuruInceleComponent implements OnInit {
           this.items.push(timline);
 
         });
+        this.cdr.markForCheck();
 
       }
 
     });
 
 
-
-
-
   }
-
-
-
   onErrorPdf(onErrorPdf: any) {
     // do anything
     console.log("hata pdf" + onErrorPdf);
@@ -139,6 +148,8 @@ export class BasvuruInceleComponent implements OnInit {
       console.log('Form not valid');
     }
 
+    this.timelinelist();
+    this.cdr.markForCheck();
 
   }
 
@@ -176,5 +187,13 @@ export class BasvuruInceleComponent implements OnInit {
       });
 
     }
+
+    this.timelinelist();
+    this.cdr.markForCheck();
+  }
+  onRefresh() {
+
+    this.notform.reset();
+
   }
 }

@@ -197,7 +197,7 @@ namespace argebackend.Services
         {
             Func<Task<List<Timeline>>> action = async () =>
             {
-                var result = await context.timelines.Where(x => x.BasvuruId == id).Include(x => x.user).ToListAsync();
+                var result = await context.timelines.Where(x => x.BasvuruId == id).Include(x => x.user).OrderBy(x => x.Id).ToListAsync();
                 return result;
             };
 
