@@ -1,74 +1,86 @@
-<div class="container">
-    <div class="loading">
-        <mat-progress-bar value="indeterminate" *ngIf="loading" color="warn"></mat-progress-bar>
-    </div>
-</div>
-<br />
-<div class="container">
-    <div class="item">
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form [formGroup]="createForm" #f="ngForm" (ngSubmit)="onCreateUser()" class="login100-form validate-form">
+                <span class="login100-form-title  ">
+                    Kayıt Ol
+                </span>
 
-        <div class="mat-elevation-z8">
-            <form [formGroup]="createForm" #f="ngForm" (ngSubmit)="onCreateUser()" class="form">
-                <mat-card class="mes-card">
-                    <mat-toolbar>
-                        <mat-card-header>
-                            <h1 class="mat-h1">Kayıt Ol</h1>
-                        </mat-card-header>
-                    </mat-toolbar>
+                <div class="wrap-input100   validate-input m-b-20">
+                    <input class="input100 " required type="text" placeholder="İsim" formControlName="firstname" />
+                    <span class="focus-input100"></span>
+                </div>
 
-                    <br />
+                <div class="wrap-input100  validate-input m-b-20">
 
-                    <mat-card-content>
-
-                        <mat-form-field class="full-width">
-                            <input matInput required type="text" placeholder="İsim" formControlName="firstname" />
-                        </mat-form-field>
-
-                        <mat-form-field class="full-width">
-                            <input matInput required type="text" placeholder="Soyisim" formControlName="lastname" />
-                        </mat-form-field>
-                        <mat-form-field class="full-width">
-                            <input matInput required type="text" placeholder="Tc" formControlName="Tc" />
-                        </mat-form-field>
-
-                        <mat-form-field class="full-width">
-                            <input matInput required type="text" placeholder="email" formControlName="email" />
-                        </mat-form-field>
+                    <input class="input100 " required type="text" placeholder="Soyisim" formControlName="lastname" />
+                    <span class="focus-input100"></span>
+                </div>
 
 
+                <div class="wrap-input100  validate-input m-b-20">
 
-                        <mat-form-field class="full-width">
-                            <input matInput required #password type="password" placeholder="şifre"
-                                formControlName="password">
-                            <mat-hint align="end">6 / {{password.value.length}}</mat-hint>
-                        </mat-form-field>
+                    <input class="input100 " required type="text" placeholder="Tc" formControlName="Tc" />
+                    <span class="focus-input100"></span>
+                </div>
 
-                        <mat-form-field class="full-width">
-                            <input matInput required type="password" placeholder="Şifre tekrar et"
-                                formControlName="repeat_password" />
-                            <mat-hint *ngIf="(createForm.value.password != createForm.value.repeat_password)
-                    || (createForm.value.password.length <= 6 && createForm.value.password.length > 1)">
-                                <span class="mat-warn">Minumum altı karakterli olmalı</span>
-                            </mat-hint>
-                            <mat-hint *ngIf="(createForm.value.password == createForm.value.repeat_password)
-                   && (createForm.value.password.length > 6)">
-                                <span class="mat-accent">parala uyumlu</span>
-                            </mat-hint>
-                        </mat-form-field>
+                <div class="wrap-input100  validate-input m-b-20">
+                    <input class="input100 " required type="text" placeholder="email" formControlName="email" />
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-20">
+
+                    <input class="input100 " required #password type="password" placeholder="şifre"
+                        formControlName="password">
+                    <mat-hint align="end">7 / {{password.value.length}}</mat-hint>
+                    <span class="focus-input100"></span>
+                </div>
+
+
+                <div class="wrap-input100   validate-input m-b-20">
 
 
 
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-raised-button color="primary" type="submit" [disabled]="!createForm.valid ||
-                  (createForm.value.password != createForm.value.repeat_password)" aria-label="create">
-                            <mat-icon>add</mat-icon>
-                            <span>Kaydet</span>
-                        </button>
+                    <input class="input100 " required type="password" placeholder="Şifre tekrar et"
+                        formControlName="repeat_password" />
+                    <mat-hint *ngIf="(createForm.value.password != createForm.value.repeat_password)
+      || (createForm.value.password.length <= 6 && createForm.value.password.length > 1)">
+                        <span class="mat-warn">Minumum yedi karakterli olmalı</span>
+                    </mat-hint>
+                    <mat-hint *ngIf="(createForm.value.password == createForm.value.repeat_password)
+     && (createForm.value.password.length > 6)">
+                        <span class="mat-accent">parala uyumlu</span>
+                    </mat-hint>
+                    <span class="focus-input100"></span>
+                </div>
 
-                    </mat-card-actions>
-                </mat-card>
+
+                <div class="container-login100-form-btn">
+
+
+
+                    <button class="login100-form-btn" mat-raised-button color="primary" type="submit"
+                        [disabled]="!createForm.valid ||  (createForm.value.password != createForm.value.repeat_password)"
+                        aria-label="create">
+                        <mat-icon>add</mat-icon>
+                        <span>Kaydet</span>
+                    </button>
+                </div>
+
+
+
+                <div class="w-full text-center p-t-27 p-b-239">
+                    <a class="txt2" routerLink="/auth/login">
+                        giriş yap
+                    </a>
+                </div>
             </form>
+
+            <div class="login100-more"
+                style="background-image: url('https://images.pexels.com/photos/1591447/pexels-photo-1591447.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);">
+            </div>
         </div>
     </div>
 </div>
