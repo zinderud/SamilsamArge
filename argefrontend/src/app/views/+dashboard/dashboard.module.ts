@@ -6,6 +6,7 @@ import { SharedModule } from '@app/shared/shared.module';
 import { IndexComponent } from './index/index.component';
 import { AuthGuard } from '@app/core/guards/core';
 import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
  
 
 
@@ -25,6 +26,6 @@ const routes: Routes = [
      RouterModule.forChild(routes),
      SharedDirectivesModule
   ],
-  declarations: [IndexComponent  ]
+  declarations: [IndexComponent, UserDashboardComponent  ]
 })
 export class DashboardModule { }

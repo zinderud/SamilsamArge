@@ -13,19 +13,15 @@ import { ListUserComponent } from './user/list-user/list-user.component';
 import { UserAddRoleComponent } from './user/user-add-role/user-add-role.component';
 
 
-import {
-  Paginator
-} from '@app/core/models/core';
-
 import { NgxExcelTemplateModule } from 'ngx-excel-template';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from '@app/core/interceptors/api.interceptor';
 import { UserResolver } from './resolvers/user.resolver';
-import { CoreModule } from '@app/core/core.module';
 import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 
-import { EducationResolver } from './resolvers/educations.resolver';
+import { UserDetailModule } from './user-detail/user-detail.module';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 
 const routes: Routes = [
@@ -56,6 +52,12 @@ const routes: Routes = [
     component: EditUserComponent,
     data: { title: 'Kullanıcı Düzenle', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
+  },
+  {
+    path: 'user/detail',
+    component: UserDetailComponent,
+    data: { title: 'Kullanıcı e-Detay', expectedRole: ['Admin'] },
+    canActivate: [RoleGuard],
   }
 
 ];
@@ -70,7 +72,8 @@ const routes: Routes = [
     SharedModule,
     NgxExcelTemplateModule.forRoot(),
     RouterModule.forChild(routes),
-    SharedDirectivesModule
+    SharedDirectivesModule,
+    UserDetailModule
 
   ],
   declarations: [
