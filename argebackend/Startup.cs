@@ -152,7 +152,7 @@ namespace argebackend
 
 
 
-
+            app.UseCors(EnabledCORS);
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
@@ -169,7 +169,7 @@ namespace argebackend
            Path.Combine(Directory.GetCurrentDirectory(), @"Uploads")),
                 RequestPath = new PathString("/Uploads")
             });
-            app.UseCors(EnabledCORS);
+
 
 
             /*       app.UseSwagger();
