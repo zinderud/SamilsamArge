@@ -116,6 +116,8 @@
             <app-arastirma-form></app-arastirma-form>
             <app-arastirma-kapsam-form></app-arastirma-kapsam-form>
             <app-arastirma-belgeler-form></app-arastirma-belgeler-form>
+            <app-mat-ekler [labelname]="'deneme'"  (formReady)="formInitialized('belgesi', $event)"></app-mat-ekler>
+             
 
             <div class="row">
                 <button type="submit" nbButton status="primary" [disabled]="!aform.valid"

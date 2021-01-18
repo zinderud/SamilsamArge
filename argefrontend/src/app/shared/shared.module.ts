@@ -126,6 +126,7 @@ import { MatRadioButton } from '@angular/material/radio';
 import { MatFileInputModule } from './components/mat-file-input/mat-file-input.module';
 import { MatFileUploadComponent } from './components/mat-file-upload/mat-file-upload.component';
 import { NgxVerticalTimelineModule } from './components/ngx-vertical-timeline/ngx-vertical-timeline.module';
+import { MatEklerComponent } from './mat-ekler/mat-ekler.component';
 
 @NgModule({
   imports: [
@@ -211,7 +212,8 @@ import { NgxVerticalTimelineModule } from './components/ngx-vertical-timeline/ng
     CallActionCardComponent,
     MatFileInputModule,
     MatFileUploadComponent,
-    NgxVerticalTimelineModule
+    NgxVerticalTimelineModule,
+    MatEklerComponent
   ],
   declarations: [
     CallActionCardComponent,
@@ -221,6 +223,7 @@ import { NgxVerticalTimelineModule } from './components/ngx-vertical-timeline/ng
     MatTableLoadingComponent,
     MatTableNotFoundComponent,
     MatFileUploadComponent,
+    MatEklerComponent,
 
   ],
   providers: [
@@ -228,7 +231,8 @@ import { NgxVerticalTimelineModule } from './components/ngx-vertical-timeline/ng
     { provide: MAT_DATE_LOCALE, useValue: 'tr-TR' },
     { provide: LOCALE_ID, useValue: 'tr-TR' },
     AsyncPipe,
-    NbSidebarService
+    NbSidebarService,
+
   ],
   entryComponents: [
     ConfirmComponent,

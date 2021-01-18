@@ -13,6 +13,7 @@ import { environment as env } from '@env/environment';
 import { Basvuru } from '@app/core/models/basvuru/basvuru';
 import { Timeline } from '@app/core/models/timeline';
 import { TimelineService } from '@app/core/services/timeline.service';
+import { MatEklerComponent } from '@app/shared/mat-ekler/mat-ekler.component';
 type FormGroupConfig<T> = {
   [P in keyof T]: [
     T[P] | { value: T[P]; disabled: boolean },
@@ -34,7 +35,8 @@ export class ArgeBirFormComponent implements OnInit {
   @ViewChild(ArastirmaKapsamFormComponent, { static: true }) arastirmaKapsamForm: ArastirmaKapsamFormComponent;
   @ViewChild(ArastirmacilarFormComponent, { static: true }) arastirmacilarform: ArastirmacilarFormComponent;
   @ViewChild(ArastirmaBelgelerFormComponent, { static: true }) arastirmaBelgelerFormComponent: ArastirmaBelgelerFormComponent;
-  constructor(private fb: FormBuilder,
+/*   @ViewChild(MatEklerComponent, { static: true }) sadecomp: MatEklerComponent;
+ */  constructor(private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
@@ -47,7 +49,9 @@ export class ArgeBirFormComponent implements OnInit {
       arastirmaform: this.arastirmaform.createGroup(),
       arastirmaKapsam: this.arastirmaKapsamForm.createGroup(),
       arastirmacilarforms: this.fb.array([this.createArastirmacilarformGroupForm()]),
-      arastirmaBelgelerForm: this.arastirmaBelgelerFormComponent.createGroup()
+      arastirmaBelgelerForm: this.arastirmaBelgelerFormComponent.createGroup(),
+      belgesi: this.fb.group({ belge: "" })
+
 
     });
     this.itemId = this.activatedRoute.snapshot.params.id;
@@ -177,5 +181,9 @@ export class ArgeBirFormComponent implements OnInit {
     }
     console.log("timeline", p);
     this.timelineservice.addTimeLine(p);
+  }
+
+  formInitialized(name: string, form: FormGroup) {
+    this.aform.setControl(name, form);
   }
 }

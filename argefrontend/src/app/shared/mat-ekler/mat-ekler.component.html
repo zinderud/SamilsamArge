@@ -1,0 +1,28 @@
+<div [formGroup]="aform"  class="row">
+    <div class=" col-8 col-sm-6  col-md-8 centerq">
+        <div class="row">
+
+
+            <mat-form-field class="full-width " appearance="outline">
+                <mat-label>{{labelname}}</mat-label>
+                <mat-file-input formControlName="belge" placeholder="dosya yükle"
+                    [accept]="'.pdf'">
+
+                </mat-file-input>
+                <mat-hint [hidden]="!uploadingfile">
+                    {{this.aform_controls['belge'].value+ "
+                    Belgesi
+                    Olarak Yüklendi"}}
+                </mat-hint>
+            </mat-form-field>
+
+        </div>
+    </div>
+
+    <div class=" col-4   col-sm-6 col-md-4   center">
+
+        <button type="submit" [disabled]="uploadingfile" nbButton status="primary"
+            (click)="belgeYukle()">Yükle</button>
+
+    </div>
+</div>
