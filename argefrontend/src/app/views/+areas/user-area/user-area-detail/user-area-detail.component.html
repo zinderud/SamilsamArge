@@ -1,1 +1,26 @@
-<p>user-area-detail works!</p>
+ 
+
+<div class="row">
+    <div class="col-12 col-md-6">
+      <ngx-call-action-card title="Basvuru Listele" icon="brightness_5" link="/user/basvuru-list" linkTitle="Görüntüle">
+      </ngx-call-action-card>
+    </div>
+    <div class="col-12 col-md-6">
+      <ngx-call-action-card title="Basvuru ekle" icon="attach_file" link="/basvuru/add" linkTitle="Görüntüle">
+      </ngx-call-action-card>
+    </div>
+  </div>
+
+
+
+
+  <ng-template [appHasRole]="'Admin'">
+    <h3>Admin</h3>
+  </ng-template>  
+  <ng-template [appHasRole]="'Manager'">
+    <h3>Manager</h3>
+  </ng-template>
+  
+  <ng-template [appHasRole]="'User'">
+    <h3>User</h3>
+  </ng-template>
