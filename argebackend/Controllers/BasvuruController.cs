@@ -168,5 +168,25 @@ namespace argebackend.Controllers
 
 
 
+
+        [HttpGet("userbasvurulist")]
+        [ProducesResponseType(typeof(List<Basvuru>), 200)]
+        /*  [Authorize(Roles = "Admin")] */
+        [AllowAnonymous]
+        public async Task<IActionResult> UserBasvuruList([FromQuery] GetListViewModel<BaseFilter> listModel)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _BasvuruService.UserBasvuruListAsync(listModel);
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            return Ok(result);
+
+        }
+
+
+
     }
 }

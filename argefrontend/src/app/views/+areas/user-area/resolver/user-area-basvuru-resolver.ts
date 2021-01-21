@@ -12,6 +12,6 @@ export class UserAreaBasvuruResolver implements Resolve<any[]> {
 
     resolve(route: ActivatedRouteSnapshot): Observable<any[]> {
         return this.httpClient.get<any>(
-            `${env.serverUrl}/basvuru?filter.SearchString=&paginator.offset=0&paginator.limit=20&orderBy.by=name&orderBy.desc=false`);
+            `${env.serverUrl}/basvuru/userbasvurulist?filter.SearchString=&paginator.offset=0&paginator.limit=20&orderBy.by=name&orderBy.desc=false`);
     }
 }

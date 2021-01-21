@@ -229,6 +229,26 @@ namespace argebackend.Services
 
             return await Process.RunAsync(action, countItems);
         }
+
+        public async Task<ProcessResult<List<Basvuru>>> UserBasvuruListAsync(GetListViewModel<BaseFilter> getListModel)
+        {
+            IQueryable<Basvuru> q = context.Basvurus.Include(x => x.User).Where(x => x.User.Id == CurrentUser.Id);
+            q = SetIncludes(q);
+            q = SetFilter(q, getListModel.filter);
+
+            var countItems = await q.CountAsync();
+
+            q = SetPaginator(q, getListModel.paginator);
+            q = SetOrderBy(q, getListModel.orderBy);
+
+            Func<Task<List<Basvuru>>> action = async () =>
+            {
+                var result = await q.ToListAsync();
+                return result;
+            };
+
+            return await Process.RunAsync(action, countItems);
+        }
         public async Task<ProcessResult<List<SelectedBasvuru>>> UseraddBassvuruListAsync(GetListViewModel<BaseFilter> getListModel)
         {
             IQueryable<SelectedBasvuru> q = context.Basvurus.Include(x => x.User)

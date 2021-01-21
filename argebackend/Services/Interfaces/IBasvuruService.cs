@@ -10,5 +10,6 @@ namespace argebackend.Services.Interfaces
         Task<ProcessResult> CreateBasvuruTuruneAsync(BasvuruTuru model);
         Task<ProcessResult<SelectedBasvuru>> SelectedBasvuruAsnc(long id);
         Task<ProcessResult<List<SelectedBasvuru>>> UseraddBassvuruListAsync(GetListViewModel<BaseFilter> getListModel);
+        Task<ProcessResult<List<Basvuru>>> UserBasvuruListAsync(GetListViewModel<BaseFilter> getListModel);
     }
 }

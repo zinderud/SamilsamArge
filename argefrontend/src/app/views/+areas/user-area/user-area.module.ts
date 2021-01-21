@@ -13,7 +13,8 @@ import { ApiInterceptor } from '@app/core/interceptors/api.interceptor';
 import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 import { UserAreaDetailComponent } from './user-area-detail/user-area-detail.component';
 import { UserBasvuruListComponent } from './user-basvuru-list/user-basvuru-list.component';
-import { UserAreaBasvuruResolver } from './user-area-detail/user-area-basvuru-resolver';
+import { UserAreaBasvuruResolver } from './resolver/user-area-basvuru-resolver';
+
 
 
 const routes: Routes = [
