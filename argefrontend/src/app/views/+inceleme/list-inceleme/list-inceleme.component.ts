@@ -144,7 +144,7 @@ export class ListIncelemeComponent implements OnInit, OnDestroy {
   //basvuru_red
   //basvuru_kabul
   getColor(durum) {
-    (2)
+
     switch (durum) {
       case 'basvuru_yapildi':
         return 'green';
