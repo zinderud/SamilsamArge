@@ -18,7 +18,7 @@ const routes: Routes = [
 
 
   {
-    path: 'user-area',
+    path: '',
     component: UserAreaDetailComponent,
     data: { title: 'Kullanıcı  Alanı', expectedRole: ['Admin', 'Manager', 'User'] },
     canActivate: [RoleGuard],
@@ -37,7 +37,7 @@ const routes: Routes = [
     NgxExcelTemplateModule.forRoot(),
     RouterModule.forChild(routes),
     SharedDirectivesModule,
-    UserAreaDetailComponent
+
 
   ],
   declarations: [
