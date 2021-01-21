@@ -32,3 +32,15 @@
     </ngx-call-action-card>
   </div>
 </div>
+
+
+<ng-template [appHasRole]="'Admin'">
+  <h3>Admin</h3>
+</ng-template>  
+<ng-template [appHasRole]="'Manager'">
+  <h3>Manager</h3>
+</ng-template>
+
+<ng-template [appHasRole]="'User'">
+  <h3>User</h3>
+</ng-template>

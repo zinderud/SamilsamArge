@@ -60,6 +60,16 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'manager',
+    loadChildren: () => import('./views/+areas/manager-area/manager-area.module').then(m => m.ManagerAreaModule),
+    canLoad: [AuthGuard]
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./views/+areas/user-area/user-area.module').then(m => m.UserAreaModule),
+    canLoad: [AuthGuard]
+  },
+  {
     path: 'error',
     loadChildren: () => import('./views/+error/error.module').then(m => m.ErrorModule),
   },
