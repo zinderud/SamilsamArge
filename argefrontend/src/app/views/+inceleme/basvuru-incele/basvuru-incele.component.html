@@ -560,7 +560,7 @@
                             <nb-accordion-item-body>
 
                                 <pdf-viewer (error)="onErrorPdf($event)"
-                                    [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ozGecmisBelgesi"
+                                    [src]="this.fileUrl+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ozGecmisBelgesi"
                                     [render-text]="true" style="display: block;"></pdf-viewer>
                             </nb-accordion-item-body>
                         </nb-accordion-item>
@@ -570,7 +570,7 @@
                             <nb-accordion-item-body>
 
                                 <pdf-viewer (error)="onErrorPdf($event)"
-                                    [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.etikKurulOnayBelgesi"
+                                    [src]="this.fileUrl+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.etikKurulOnayBelgesi"
                                     [render-text]="true" style="display: block;"></pdf-viewer>
                             </nb-accordion-item-body>
                         </nb-accordion-item>
@@ -580,7 +580,7 @@
                             <nb-accordion-item-body>
 
                                 <pdf-viewer (error)="onErrorPdf($event)"
-                                    [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.anketOlcekFormu"
+                                    [src]="this.fileUrl+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.anketOlcekFormu"
                                     [render-text]="true" style="display: block;"></pdf-viewer>
                             </nb-accordion-item-body>
                         </nb-accordion-item>
@@ -591,7 +591,7 @@
                             <nb-accordion-item-body>
 
                                 <pdf-viewer (error)="onErrorPdf($event)"
-                                    [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.uzmanlikvbTeziBelge"
+                                    [src]="this.fileUrl+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.uzmanlikvbTeziBelge"
                                     [render-text]="true" style="display: block;"></pdf-viewer>
                             </nb-accordion-item-body>
                         </nb-accordion-item>
@@ -602,7 +602,7 @@
                             <nb-accordion-item-body>
 
                                 <pdf-viewer (error)="onErrorPdf($event)"
-                                    [src]="'http://localhost:5000/uploads/'+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ekBelge"
+                                    [src]="this.fileUrl+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ekBelge"
                                     [render-text]="true" style="display: block;"></pdf-viewer>
                             </nb-accordion-item-body>
                         </nb-accordion-item>

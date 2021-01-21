@@ -20,6 +20,7 @@ import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-i
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasvuruInceleComponent implements OnInit {
+  fileUrl = "";
   items: TimelineItem[] = [];
   durumForm: FormGroup;
   editbasvuru: Basvuru = {};
@@ -48,6 +49,7 @@ export class BasvuruInceleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fileUrl = env.fileUrl;
     this.items = [];
     this.itemId = this.activatedRoute.snapshot.params.id;
     this.httpClient.get(`${env.serverUrl}/basvuru/selected/${this.itemId}`).subscribe((data: any) => {

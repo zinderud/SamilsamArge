@@ -13,6 +13,7 @@ import { Basvuru } from '@app/core/models/basvuru/basvuru';
   styleUrls: ['./arge-form-onizleme.component.scss']
 })
 export class ArgeFormOnizlemeComponent implements OnInit {
+  fileUrl = "";
   public src = {};
   itemId: string;
   loading = false;
@@ -25,6 +26,7 @@ export class ArgeFormOnizlemeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.fileUrl = env.fileUrl;
     this.itemId = this.activatedRoute.snapshot.params.id;
     this.httpClient.get(`${env.serverUrl}/basvuru/selected/${this.itemId}`).subscribe((data: any) => {
       this.loading = false;

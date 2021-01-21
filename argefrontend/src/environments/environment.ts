@@ -8,6 +8,8 @@ export const environment = {
   envName: 'Development',
   appName: 'Arge Dev',
   snackBarDuration: 3700,
+
+  fileUrl: 'http://localhost:5000/uploads/'
 };
 
 
