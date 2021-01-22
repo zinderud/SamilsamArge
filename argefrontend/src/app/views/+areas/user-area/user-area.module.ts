@@ -18,6 +18,7 @@ import { UserTimelineComponent } from './user-timeline/user-timeline.component';
 import { UserBasvuruOnizlemeComponent } from './user-basvuru-onizleme/user-basvuru-onizleme.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { EditorModule } from 'primeng/editor';
+import { UserNotComponent } from './user-not/user-not.component';
 
 
 
@@ -75,7 +76,8 @@ const routes: Routes = [
     UserAreaDetailComponent,
     UserBasvuruListComponent,
     UserTimelineComponent,
-    UserBasvuruOnizlemeComponent
+    UserBasvuruOnizlemeComponent,
+    UserNotComponent
 
 
   ],
