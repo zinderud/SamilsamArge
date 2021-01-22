@@ -14,6 +14,7 @@ import { SharedDirectivesModule } from 'src/app/directives/shared-directives.mod
 import { UserAreaDetailComponent } from './user-area-detail/user-area-detail.component';
 import { UserBasvuruListComponent } from './user-basvuru-list/user-basvuru-list.component';
 import { UserAreaBasvuruResolver } from './resolver/user-area-basvuru-resolver';
+import { UserTimelineComponent } from './user-timeline/user-timeline.component';
 
 
 
@@ -35,7 +36,13 @@ const routes: Routes = [
     resolve: {
       data: UserAreaBasvuruResolver
     }
-  }
+  },
+  {
+    path: 'timeline',
+    component: UserTimelineComponent,
+    data: { title: 'Kullanıcı  Alanı', expectedRole: ['Admin', 'Manager', 'User'] },
+    canActivate: [RoleGuard],
+  },
 
 ];
 
@@ -55,7 +62,8 @@ const routes: Routes = [
   ],
   declarations: [
     UserAreaDetailComponent,
-    UserBasvuruListComponent
+    UserBasvuruListComponent,
+    UserTimelineComponent
 
 
   ],

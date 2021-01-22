@@ -47,7 +47,7 @@ const routes: Routes = [
   {
     path: '',
     component: ListBasvuruComponent,
-    data: { title: 'Basvuru Listele', expectedRole: ['Admin'] },
+    data: { title: 'Basvuru Listele', expectedRole: ['Admin', 'User', 'Manager'] },
     canActivate: [RoleGuard],
     resolve: {
       data: BasvuruResolver
@@ -56,39 +56,39 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddBasvuruComponent,
-    data: { title: 'Basvuru ekle', expectedRole: ['Admin'] },
+    data: { title: 'Basvuru ekle', expectedRole: ['Admin', 'User'] },
     canActivate: [RoleGuard],
   },
 
   {
     path: 'edit/:id',
     component: EditBasvuruComponent,
-    data: { title: 'Basvuru Düzenle', expectedRole: ['Admin'] },
+    data: { title: 'Basvuru Düzenle', expectedRole: ['Admin', 'User'] },
     canActivate: [RoleGuard],
   },
   {
     path: 'argebirform/:id',
     component: ArgeBirFormComponent,
-    data: { title: 'Arge Form Düzenle', expectedRole: ['Admin'] },
+    data: { title: 'Arge Form Düzenle', expectedRole: ['Admin', 'User'] },
     canActivate: [RoleGuard],
   }
   ,
   {
     path: 'argeikiform/:id',
     component: ArgeIkiFormComponent,
-    data: { title: 'Arge Form Düzenle', expectedRole: ['Admin'] },
+    data: { title: 'Arge Form Düzenle', expectedRole: ['Admin', 'User'] },
     canActivate: [RoleGuard],
   },
   {
     path: 'argeucform/:id',
     component: ArgeUcFormComponent,
-    data: { title: 'Donersermaye Arge Form Düzenle', expectedRole: ['Admin'] },
+    data: { title: 'Donersermaye Arge Form Düzenle', expectedRole: ['Admin', 'User'] },
     canActivate: [RoleGuard],
   },
   {
     path: 'onizleme/:id',
     component: ArgeFormOnizlemeComponent,
-    data: { title: ' Arge Form onizleme', expectedRole: ['Admin'] },
+    data: { title: ' Arge Form onizleme', expectedRole: ['Admin', 'User'] },
     canActivate: [RoleGuard],
   }
 
