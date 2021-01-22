@@ -20,13 +20,13 @@ import { MatSort } from '@angular/material/sort';
 })
 export class UserBasvuruListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [
-    'userId',
+    /*  'userId', */
     'basvuruNo',
     'tarih',
     'durum',
     'basvuruTuru',
     'onizleme',
-    /* "düzenle", */
+    "zamanCizelgesi",
     'oluştur'
 
   ];
@@ -135,6 +135,14 @@ export class UserBasvuruListComponent implements OnInit, OnDestroy {
   onOnizleme(item: any): void {
 
     this.router.navigate(['user', 'onizleme', item.id]);
+
+    console.log("sayfaya git");
+
+
+  }
+  onZamanCizelgesi(item: any): void {
+
+    this.router.navigate(['user', 'timeline', item.id]);
 
     console.log("sayfaya git");
 
