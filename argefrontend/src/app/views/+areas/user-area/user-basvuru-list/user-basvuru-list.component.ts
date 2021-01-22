@@ -134,7 +134,7 @@ export class UserBasvuruListComponent implements OnInit, OnDestroy {
   }
   onOnizleme(item: any): void {
 
-    this.router.navigate(['basvuru', 'onizleme', item.id]);
+    this.router.navigate(['user', 'onizleme', item.id]);
 
     console.log("sayfaya git");
 

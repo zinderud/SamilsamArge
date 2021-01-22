@@ -15,6 +15,9 @@ import { UserAreaDetailComponent } from './user-area-detail/user-area-detail.com
 import { UserBasvuruListComponent } from './user-basvuru-list/user-basvuru-list.component';
 import { UserAreaBasvuruResolver } from './resolver/user-area-basvuru-resolver';
 import { UserTimelineComponent } from './user-timeline/user-timeline.component';
+import { UserBasvuruOnizlemeComponent } from './user-basvuru-onizleme/user-basvuru-onizleme.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { EditorModule } from 'primeng/editor';
 
 
 
@@ -38,11 +41,17 @@ const routes: Routes = [
     }
   },
   {
-    path: 'timeline',
+    path: 'timeline/:id',
     component: UserTimelineComponent,
-    data: { title: 'Kullanıcı  Alanı', expectedRole: ['Admin', 'Manager', 'User'] },
+    data: { title: 'Zaman Çizelgesi', expectedRole: ['Admin', 'Manager', 'User'] },
     canActivate: [RoleGuard],
   },
+  {
+    path: 'onizleme/:id',
+    component: UserBasvuruOnizlemeComponent,
+    data: { title: 'Ön izleme', expectedRole: ['Admin', 'Manager', 'User'] },
+    canActivate: [RoleGuard],
+  }
 
 ];
 
@@ -54,16 +63,19 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    PdfViewerModule,
     NgxExcelTemplateModule.forRoot(),
+    EditorModule,
     RouterModule.forChild(routes),
-    SharedDirectivesModule,
+    SharedDirectivesModule
 
 
   ],
   declarations: [
     UserAreaDetailComponent,
     UserBasvuruListComponent,
-    UserTimelineComponent
+    UserTimelineComponent,
+    UserBasvuruOnizlemeComponent
 
 
   ],
