@@ -8,5 +8,6 @@ namespace argebackend.Services.Interfaces
     public interface ITimelineService : ICrudService<Timeline, BaseFilter>
     {
         Task<ProcessResult<List<Timeline>>> SelectedBasvuruIdAsnc(long id);
+        Task<ProcessResult<List<Timeline>>> SelectedselecttedPrivateBasvuruIdAsnc(long id);
     }
 }

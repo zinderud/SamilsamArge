@@ -42,7 +42,8 @@ export class BasvuruInceleComponent implements OnInit {
       durum: {}
     });
     this.notform = this.fb.group({
-      not: ""
+      not: "",
+      notType: 1
     });
 
     this.userid = parseInt(this.authservice.getUserid());
@@ -154,14 +155,15 @@ export class BasvuruInceleComponent implements OnInit {
     this.cdr.markForCheck();
 
   }
-
+  //// 1:public 2:private
   addTimeline(timeline: Timeline) {
     const p: Timeline = {
       userId: timeline.userId,
       basvuruId: timeline.basvuruId,
       tarih: new Date().toDateString(),
       durum: timeline.durum,
-      not: timeline.not
+      not: timeline.not,
+      notType: timeline.notType
 
     }
     console.log("timeline", p);
@@ -171,7 +173,7 @@ export class BasvuruInceleComponent implements OnInit {
     if (this.notform.valid) {
 
       this.notform.disable();
-      let notf = this.notform.value;
+
 
 
 
@@ -180,7 +182,9 @@ export class BasvuruInceleComponent implements OnInit {
         userId: this.userid,
         basvuruId: parseInt(this.itemId),
         durum: this.basvuru.durum,
-        not: this.notform.value.not
+        not: this.notform.value.not,
+        notType: this.notform.value.notType
+
       }
       this.addTimeline(p).subscribe((data: any) => {
         if (data.succeeded) {

@@ -14,6 +14,7 @@ namespace argebackend.Models
         public string durum { get; set; }
 
         public string not { get; set; }
+        public int notType { get; set; } // 1:public 2:private
 
 
 

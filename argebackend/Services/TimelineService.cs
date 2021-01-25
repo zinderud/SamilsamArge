@@ -38,6 +38,7 @@ namespace argebackend.Services
                 Timeline.tarih = model.tarih;
                 Timeline.durum = model.durum;
                 Timeline.not = model.not;
+                Timeline.notType = model.notType;
 
 
                 await context.SaveChangesAsync();
@@ -75,6 +76,7 @@ namespace argebackend.Services
                 Timeline.tarih = model.tarih;
                 Timeline.durum = model.durum;
                 Timeline.not = model.not;
+                Timeline.notType = model.notType;
 
                 var p = context.Update(Timeline);
 
@@ -178,7 +180,7 @@ namespace argebackend.Services
             }
             if (!String.IsNullOrEmpty(f.searchString))
             {
-                q = q.Where(s => s.Id.ToString().Contains(f.searchString));
+                q = q.Where(s => s.notType == Convert.ToInt32(f.searchString));
             }
             return q;
         }
@@ -203,6 +205,23 @@ namespace argebackend.Services
 
             return await Process.RunAsync(action);
         }
+
+
+
+
+
+
+        public async Task<ProcessResult<List<Timeline>>> SelectedselecttedPrivateBasvuruIdAsnc(long id)
+        {
+            Func<Task<List<Timeline>>> action = async () =>
+            {
+                var result = await context.timelines.Where(x => x.BasvuruId == id).Where(x => x.notType == 1).Include(x => x.user).OrderBy(x => x.Id).ToListAsync();
+                return result;
+            };
+
+            return await Process.RunAsync(action);
+        }
+
 
     }
 }

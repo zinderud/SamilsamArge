@@ -25,6 +25,7 @@ export class Timeline {
 
   public durum?: string;
   public not?: string;
+  public notType?: number; //1:public 2:private
 
 
 

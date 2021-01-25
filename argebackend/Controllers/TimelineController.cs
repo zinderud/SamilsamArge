@@ -144,6 +144,20 @@ namespace argebackend.Controllers
         }
 
 
+        [HttpGet("selecttedPrivate/{id}")]
+        [ProducesResponseType(typeof(List<Timeline>), 200)]
+        /*  [Authorize(Roles = "Admin")] */
+        [AllowAnonymous]
+        public async Task<IActionResult> selecselecttedPrivateed([FromRoute] long id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
+            var result = await _TimelineService.SelectedselecttedPrivateBasvuruIdAsnc(id);
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            return Ok(result);
+        }
     }
 }

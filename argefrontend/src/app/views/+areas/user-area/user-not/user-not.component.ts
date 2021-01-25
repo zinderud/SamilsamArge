@@ -75,13 +75,15 @@ export class UserNotComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
+  //// 1:public 2:private
   addTimeline(timeline: Timeline) {
     const p: Timeline = {
       userId: timeline.userId,
       basvuruId: timeline.basvuruId,
       tarih: new Date().toDateString(),
       durum: timeline.durum,
-      not: timeline.not
+      not: timeline.not,
+      notType: 1
 
     }
 

@@ -34,13 +34,15 @@ export class UserTimelineComponent implements OnInit {
   timelinelist() {
     this.items = [];
 
-    this.httpClient.get(`${env.serverUrl}/timeline/selected/${this.itemId}`).subscribe((data: any) => {
+    this.httpClient.get(`${env.serverUrl}/timeline/selecttedPrivate/${this.itemId}`).subscribe((data: any) => {
 
       console.log("timeline", data);
 
       if (data.succeeded) {
 
         data.value.forEach((e: Timeline) => {
+
+
           const timline: TimelineItem = {
             label: "" + e.user.firstname + e.user.lastname, icon: 'fa fa-plus',
             content: e.not, title: new Date(e.tarih).toLocaleDateString() + " ", durum: e.durum
