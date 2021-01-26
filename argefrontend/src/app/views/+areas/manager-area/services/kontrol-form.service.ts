@@ -9,21 +9,21 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { TypeHelper } from '@app/shared/lib/helpers/typeHelper';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+/* import { Unvan } from '@app/core/models/kontrol/unvan'; */
 
 @Injectable()
-export class OzgecmisFormService {
+export class KontrolFormService {
 
-    private ozgecmisForm: BehaviorSubject<FormGroup | null> = new BehaviorSubject(this.createOzgecmisForm());
-    ozgecmisForm$: Observable<FormGroup> = this.ozgecmisForm.asObservable();
+    private kontrolForm: BehaviorSubject<FormGroup | null> = new BehaviorSubject(this.createKontrolForm());
+    kontrolForm$: Observable<FormGroup> = this.kontrolForm.asObservable();
 
     constructor(private fb: FormBuilder, private httpClient: HttpClient, private dialog: MatDialog, private snackBar: MatSnackBar,) {
     }
 
 
-    createOzgecmisForm() {
+    createKontrolForm() {
         const ret = this.fb.group({
-            OzgecmisId: new FormControl(''),
+            KontrolId: new FormControl(''),
             sorumlu: new FormControl(''),
             tc: new FormControl(''),
             ad: new FormControl(''),
@@ -41,10 +41,10 @@ export class OzgecmisFormService {
         return ret;
 
     }
-    loaderOzgecmisForm(data) {
-        this.ozgecmisForm.next(
+    loaderKontrolForm(data) {
+        this.kontrolForm.next(
             this.fb.group({
-                OzgecmisId: new FormControl(data.value.OzgecmisId),
+                KontrolId: new FormControl(data.value.KontrolId),
                 sorumlu: new FormControl(data.value.sorumlu),
                 tc: new FormControl(data.value.tc),
                 ad: new FormControl(data.value.ad),

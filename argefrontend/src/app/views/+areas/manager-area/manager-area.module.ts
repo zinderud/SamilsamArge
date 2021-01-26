@@ -12,6 +12,8 @@ import { ApiInterceptor } from '@app/core/interceptors/api.interceptor';
 
 import { SharedDirectivesModule } from 'src/app/directives/shared-directives.module';
 import { ManagerAreaDetailComponent } from './manager-area-detail/manager-area-detail.component';
+import { KontrolFormComponent } from './kontrol-form/kontrol-form.component';
+import { EditorModule } from 'primeng/editor';
 
 
 const routes: Routes = [
@@ -20,6 +22,12 @@ const routes: Routes = [
   {
     path: '',
     component: ManagerAreaDetailComponent,
+    data: { title: 'Manager  Alanı', expectedRole: ['Admin', 'Manager'] },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: '',
+    component: KontrolFormComponent,
     data: { title: 'Manager  Alanı', expectedRole: ['Admin', 'Manager'] },
     canActivate: [RoleGuard],
   }
@@ -37,11 +45,13 @@ const routes: Routes = [
     NgxExcelTemplateModule.forRoot(),
     RouterModule.forChild(routes),
     SharedDirectivesModule,
+    EditorModule,
 
 
   ],
   declarations: [
-    ManagerAreaDetailComponent
+    ManagerAreaDetailComponent,
+    KontrolFormComponent
 
 
   ],
