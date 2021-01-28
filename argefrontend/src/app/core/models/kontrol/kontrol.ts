@@ -14,7 +14,7 @@ export class Kontrol {
     public atananUserId?: number;
     public atananUser?: User;
     public atamaTarih?: Date;
-    public kontrolDurum?: string;
+    public kontrolDurum?: string; // incelemede , tamamlandı
     public kurumUstYazi?: string;
     public dilekceBasvurusuUygunmu?: string;
     public arastirmaBaslik?: string;
@@ -41,25 +41,14 @@ export class Kontrol {
     public ozgecmisvarmi?: string;
     public kullanilacakevraklarvarmi?: string;
     public ucedetLitaratur?: string;
-    public Gorusler?: string;
+    public gorusler?: string;
     public kontrolTarih?: Date;
 
-    public sorumlu?: boolean;
-    public tc?: string;
-    public ad?: string;
-    public soyad?: string;
-    public dogumYeri?: string;
-    public dogumTarihi?: string;
-    public yabanciDil?: string;
-    public eposta?: string;
-    public unvans?: string;
-    public arastirmas?: string;
-    public deneyims?: string;
-    public egitims?: string;
+
 }
 
 export class KontrolFilter extends BaseFilter {
-    constructor(public searchString: string, public tc: string,
+    constructor(public searchString: string, public atananUserId: string,
         p: Paginator,
         ob: OrderBy) {
         super(p, ob);
@@ -71,8 +60,8 @@ export class KontrolFilter extends BaseFilter {
         if (!TypeHelper.isNullOrEmpty(this.searchString) && this.searchString !== '') {
             hp = hp.set('filter.searchString', this.searchString);
         }
-        if (!TypeHelper.isNullOrEmpty(this.tc) && this.tc !== '') {
-            hp = hp.set('filter.tc', this.tc);
+        if (!TypeHelper.isNullOrEmpty(this.atananUserId) && this.atananUserId !== '') {
+            hp = hp.set('filter.atananUserId', this.atananUserId);
         }
         return hp;
     }

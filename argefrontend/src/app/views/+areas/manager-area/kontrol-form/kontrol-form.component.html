@@ -8,166 +8,308 @@
     <nb-card-header>BİLİMSEL ARAŞTIRMA ÇALIŞMALARI KONTROL LİSTESİ</nb-card-header>
     <nb-card-body>
       <form [formGroup]="createForm" #f="ngForm" class="form">
-        <!--  sorumlu -->
-        <div class="row">
-          <div class="col-sm-12">
-            <mat-form-field style="width:100px" appearance="outline">
-              <mat-label>sorumlu</mat-label>
-              <select matNativeControl formControlName="sorumlu">
-  
-                <option value="true">Evet</option>
-                <option value="false">Hayır</option>
-              </select>
-            </mat-form-field>
-  
-            <!--   <mat-form-field class="full-width" appearance="outline">
-              <mat-label> sorumlu</mat-label>
-              <input matInput required type="text" placeholder="sorumlu" formControlName="sorumlu" />
-            </mat-form-field> -->
-          </div>
-        </div>
-        <!--  sorumlu -->
-        <!--  tc -->
-        <div class="row">
-          <div class="col-sm-12">
-  
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label> tc</mat-label>
-              <input matInput required type="text" placeholder=" tc" formControlName="tc" />
-            </mat-form-field>
-          </div>
-        </div>
-        <!--  tc -->
-        <!--  adı -->
-        <div class="row">
-          <div class="col-sm-12">
-  
-            <mat-form-field class="full-width " appearance="outline">
-              <mat-label> adı</mat-label>
-              <input matInput required type="text" placeholder=" adı" formControlName="ad" />
-            </mat-form-field>
-          </div>
-        </div>
-        <!--  adı -->
-  
-        <!--  Soyadı -->
-        <div class="row">
-          <div class="col-sm-12">
-  
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label> Soyadı</mat-label>
-              <input matInput required type="text" placeholder=" Soyadı" formControlName="soyad" />
-            </mat-form-field>
-          </div>
-        </div>
-        <!--  Soyadı -->
-  
-        <div class="row">
-          <div class="col-sm-6">
-            <!--  Dogum Yeri -->
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Dogum Yeri</mat-label>
-              <input matInput type="text" placeholder="Dogum Yeri" formControlName="dogumYeri" />
-            </mat-form-field>
-            <!--  Dogum Yeri -->
-  
-  
-  
-          </div>
-          <div class="col-sm-6">
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Dogum Tarihi</mat-label>
-              <input matInput [matDatepicker]="picker" placeholder="Dogum Tarihi" required formControlName="dogumTarihi">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-  
-  
-          </div>
-        </div>
-  
-  
-  
-        <!-- yabanciDil -->
+        
+             <!--  kontrolDurum -->
+             <div class="row">
+              <div class="col-sm-12">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label> kontrolDurum</mat-label>
+                  <input matInput required type="text" placeholder="kontrolDurum" formControlName="kontrolDurum" />
+                </mat-form-field>  
+              </div>
+            </div>
+            <!--  kontrolDurum -->
+            <!--  kurumUstYazi -->
+             <div class="row">
+              <div class="col-sm-12">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label> kurumUstYazi</mat-label>
+                  <input matInput required type="text" placeholder="kurumUstYazi" formControlName="kurumUstYazi" />
+                </mat-form-field>  
+              </div>
+            </div>
+            <!--  kurumUstYazi -->            
+            <!--  dilekceBasvurusuUygunmu -->
+             <div class="row">
+              <div class="col-sm-12">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label> dilekceBasvurusuUygunmu</mat-label>
+                  <input matInput required type="text" placeholder="dilekceBasvurusuUygunmu" formControlName="dilekceBasvurusuUygunmu" />
+                </mat-form-field>  
+              </div>
+            </div>
+            <!--  dilekceBasvurusuUygunmu -->
+
+        <!--  arastirmaBaslik -->
         <div class="row">
           <div class="col-sm-12">
             <mat-form-field class="full-width" appearance="outline">
-              <mat-label>yabanciDil</mat-label>
-              <input matInput required type="text" placeholder="yabanciDil" formControlName="yabanciDil" />
-            </mat-form-field>
+              <mat-label> arastirmaBaslik</mat-label>
+              <input matInput required type="text" placeholder="arastirmaBaslik" formControlName="arastirmaBaslik" />
+            </mat-form-field>  
           </div>
         </div>
-        <!-- yabanciDil -->
-  
-  
-  
-        <!-- eposta -->
+        <!--  arastirmaBaslik -->
+       <!--  arastirmaStatu -->
+       <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label> arastirmaStatu</mat-label>
+            <input matInput required type="text" placeholder="arastirmaStatu" formControlName="arastirmaStatu" />
+          </mat-form-field>  
+        </div>
+      </div>
+      <!--  arastirmaStatu -->
+        <!--  arastirmaci -->
         <div class="row">
           <div class="col-sm-12">
             <mat-form-field class="full-width" appearance="outline">
-              <mat-label>email</mat-label>
-              <input matInput required type="text" placeholder="eposta" formControlName="eposta" />
-            </mat-form-field>
+              <mat-label> arastirmaci</mat-label>
+              <input matInput required type="text" placeholder="arastirmaci" formControlName="arastirmaci" />
+            </mat-form-field>  
           </div>
         </div>
-        <!-- eposta -->
-  
-  
-  
-  
-        <!-- Ünvan -->
+        <!--  arastirmaci -->
+         <!--  danisman -->
+         <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> danisman</mat-label>
+              <input matInput required type="text" placeholder="danisman" formControlName="danisman" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  danisman -->
+     <!--  kurum -->
+     <div class="row">
+      <div class="col-sm-12">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label> kurum</mat-label>
+          <input matInput required type="text" placeholder="kurum" formControlName="kurum" />
+        </mat-form-field>  
+      </div>
+    </div>
+    <!--  kurum -->              
+       <!--  arastirmaAmac -->
+       <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label> arastirmaAmac</mat-label>
+            <input matInput required type="text" placeholder="arastirmaAmac" formControlName="arastirmaAmac" />
+          </mat-form-field>  
+        </div>
+      </div>
+      <!--  arastirmaAmac -->
+         <!--  arastirmaTuru -->
+         <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> arastirmaTuru</mat-label>
+              <input matInput required type="text" placeholder="arastirmaTuru" formControlName="arastirmaTuru" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  arastirmaTuru -->     
+         <!--  arastirmaYeri -->
+         <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> arastirmaYeri</mat-label>
+              <input matInput required type="text" placeholder="arastirmaYeri" formControlName="arastirmaYeri" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  arastirmaYeri -->
+      <!--  arastirmaEvreni -->
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label> arastirmaEvreni</mat-label>
+            <input matInput required type="text" placeholder="arastirmaEvreni" formControlName="arastirmaEvreni" />
+          </mat-form-field>  
+        </div>
+      </div>
+      <!--  arastirmaEvreni -->
+        <!--  arastirmaHipotez -->
         <div class="row">
           <div class="col-sm-12">
-            <!-- <mat-form-field class="full-width" appearance="outline">
-              <mat-label>unvans</mat-label>
-              <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
-            </mat-form-field>-->
-            <!--        <h3>Unvanlar</h3> -->
-            <mat-label>Ünvanlar</mat-label>
-            <p-editor formControlName="unvans" [style]="{'height':'100px'}"></p-editor>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> arastirmaHipotez</mat-label>
+              <input matInput required type="text" placeholder="arastirmaHipotez" formControlName="arastirmaHipotez" />
+            </mat-form-field>  
           </div>
         </div>
-        <!-- Ünvan -->
-        <!-- Arastirma -->
+        <!--  arastirmaHipotez -->
+                <!--  arastirmaYontem -->
+                <div class="row">
+                  <div class="col-sm-12">
+                    <mat-form-field class="full-width" appearance="outline">
+                      <mat-label> arastirmaYontem</mat-label>
+                      <input matInput required type="text" placeholder="arastirmaYontem" formControlName="arastirmaYontem" />
+                    </mat-form-field>  
+                  </div>
+                </div>
+                <!--  arastirmaYontem -->    
+        <!--  arastirmaZamanAralik -->
         <div class="row">
           <div class="col-sm-12">
-            <!-- <mat-form-field class="full-width" appearance="outline">
-                  <mat-label>unvans</mat-label>
-                  <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
-                </mat-form-field>-->
-            <!--        <h3>Unvanlar</h3> -->
-            <mat-label>Arastirma</mat-label>
-            <p-editor formControlName="arastirmas" [style]="{'height':'100px'}"></p-editor>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> arastirmaZamanAralik</mat-label>
+              <input matInput required type="text" placeholder="arastirmaZamanAralik" formControlName="arastirmaZamanAralik" />
+            </mat-form-field>  
           </div>
         </div>
-        <!-- Arastirma -->
-        <!-- deneyims -->
+        <!--  arastirmaZamanAralik -->
+        <!--  girisimselUygulama -->
         <div class="row">
           <div class="col-sm-12">
-            <!-- <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>unvans</mat-label>
-                        <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
-                      </mat-form-field>-->
-            <!--        <h3>Unvanlar</h3> -->
-            <mat-label>Deneyim</mat-label>
-            <p-editor formControlName="deneyims" [style]="{'height':'100px'}"></p-editor>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> girisimselUygulama</mat-label>
+              <input matInput required type="text" placeholder="girisimselUygulama" formControlName="girisimselUygulama" />
+            </mat-form-field>  
           </div>
         </div>
-        <!-- deneyims -->
-        <!-- egitims -->
+         <!--  girisimselUygulama -->
+        <!--  prospektifmi -->
         <div class="row">
           <div class="col-sm-12">
-            <!-- <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>unvans</mat-label>
-                            <input matInput required type="text" placeholder="unvans" formControlName="unvans" />
-                          </mat-form-field>-->
-            <!--        <h3>Unvanlar</h3> -->
-            <mat-label>Egitim</mat-label>
-            <p-editor formControlName="egitims" [style]="{'height':'100px'}"></p-editor>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> prospektifmi</mat-label>
+              <input matInput required type="text" placeholder="prospektifmi" formControlName="prospektifmi" />
+            </mat-form-field>  
           </div>
         </div>
-        <!-- egitims -->
-  
+        <!--  prospektifmi -->
+        <!--  arastirmaBilimselYararAciklanmismi -->
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> arastirmaBilimselYararAciklanmismi</mat-label>
+              <input matInput required type="text" placeholder="arastirmaBilimselYararAciklanmismi" formControlName="arastirmaBilimselYararAciklanmismi" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  arastirmaBilimselYararAciklanmismi -->
+        <!--  anketSorulariUygunmu -->
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> anketSorulariUygunmu</mat-label>
+              <input matInput required type="text" placeholder="anketSorulariUygunmu" formControlName="anketSorulariUygunmu" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  anketSorulariUygunmu -->
+        <!--  onizinformvarmi -->
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> onizinformvarmi</mat-label>
+              <input matInput required type="text" placeholder="onizinformvarmi" formControlName="onizinformvarmi" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  onizinformvarmi -->    
+
+         <!--  basvuruformvarmi -->
+         <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> basvuruformvarmi</mat-label>
+              <input matInput required type="text" placeholder="basvuruformvarmi" formControlName="basvuruformvarmi" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  basvuruformvarmi -->
+         <!--  etikkurulvarmi -->
+         <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> etikkurulvarmi</mat-label>
+              <input matInput required type="text" placeholder="etikkurulvarmi" formControlName="etikkurulvarmi" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  etikkurulvarmi -->           
+        <!--  bakanlikOnayvarmi -->
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> bakanlikOnayvarmi</mat-label>
+              <input matInput required type="text" placeholder="bakanlikOnayvarmi" formControlName="bakanlikOnayvarmi" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  bakanlikOnayvarmi -->     
+        <!--  butceFormvarmi -->
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> butceFormvarmi</mat-label>
+              <input matInput required type="text" placeholder="butceFormvarmi" formControlName="butceFormvarmi" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  butceFormvarmi -->
+        <!--  ozgecmisvarmi -->
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> ozgecmisvarmi</mat-label>
+              <input matInput required type="text" placeholder="ozgecmisvarmi" formControlName="ozgecmisvarmi" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  ozgecmisvarmi -->
+        <!--  kullanilacakevraklarvarmi -->
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> kullanilacakevraklarvarmi</mat-label>
+              <input matInput required type="text" placeholder="kullanilacakevraklarvarmi" formControlName="kullanilacakevraklarvarmi" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  kullanilacakevraklarvarmi -->        
+        <!--  ucedetLitaratur -->
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> ucedetLitaratur</mat-label>
+              <input matInput required type="text" placeholder="ucedetLitaratur" formControlName="ucedetLitaratur" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  ucedetLitaratur -->        
+        <!--  gorusler -->
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> gorusler</mat-label>
+              <input matInput required type="text" placeholder="gorusler" formControlName="gorusler" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  gorusler -->
+        <!--  kontrolTarih -->
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label> kontrolTarih</mat-label>
+              <input matInput required type="text" placeholder="kontrolTarih" formControlName="kontrolTarih" />
+            </mat-form-field>  
+          </div>
+        </div>
+        <!--  kontrolTarih -->
+
+
+
+
+
+
+
+     
+     
         <div class="row">
           <button type="submit" nbButton status="primary" [disabled]="!createForm.valid"
             (click)="onCreate()">Ekle</button>
