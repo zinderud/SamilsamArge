@@ -26,7 +26,7 @@ const routes: Routes = [
     canActivate: [RoleGuard],
   },
   {
-    path: '',
+    path: 'kontrol',
     component: KontrolFormComponent,
     data: { title: 'Manager  Alanı', expectedRole: ['Admin', 'Manager'] },
     canActivate: [RoleGuard],

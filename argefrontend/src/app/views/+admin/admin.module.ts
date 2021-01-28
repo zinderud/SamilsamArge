@@ -22,6 +22,7 @@ import { SharedDirectivesModule } from 'src/app/directives/shared-directives.mod
 
 import { UserDetailModule } from './user-detail/user-detail.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { KontrolAtamaComponent } from './kontrol/kontrol-atama/kontrol-atama.component';
 
 
 const routes: Routes = [
@@ -58,6 +59,12 @@ const routes: Routes = [
     component: UserDetailComponent,
     data: { title: 'Kullanıcı e-Detay', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
+  },
+  {
+    path: 'kontrol-atama',
+    component: KontrolAtamaComponent,
+    data: { title: 'Kullanıcı e-Detay', expectedRole: ['Admin'] },
+    canActivate: [RoleGuard],
   }
 
 ];
@@ -81,6 +88,7 @@ const routes: Routes = [
     AddUserComponent,
     EditUserComponent,
     UserAddRoleComponent,
+    KontrolAtamaComponent,
 
 
   ],

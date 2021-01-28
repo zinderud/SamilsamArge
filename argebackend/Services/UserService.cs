@@ -92,6 +92,28 @@ namespace argebackend.Services
             return await Process.RunAsync(action, countItems);
         }
 
+        public void denelpp()
+        {
+            var employees = (from bb in context.Users
+                             join roleIds in context.UserRoles on bb.Id equals roleIds.UserId
+                             join role in context.Roles on roleIds.RoleId equals role.Id into roles
+                             orderby bb.Lastname, bb.Firstname
+                             where roles != null && roles.Any(e => e.Name == "Manager")
+                             select new
+                             {
+                                 bb.Firstname,
+                                 bb.Lastname,
+                                 bb.Id,
+                                 roles
+                             }
+
+
+                             ).ToList();
+
+            //select ManageUserModel.FromInfo(bb, roles)).ToList();
+
+        }
+
         public async Task<ProcessResult<int>> CountAsync(string searchString = "")
         {
             var userIQ = from s in context.Users
