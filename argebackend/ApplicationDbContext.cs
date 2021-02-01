@@ -27,7 +27,7 @@ namespace argebackend
         public DbSet<Basvuru> Basvurus { get; set; }
         public DbSet<BsvNo> BsvNos { get; set; }
         public DbSet<Timeline> timelines { get; set; }
-
+        public DbSet<Kontrol> kontrols { get; set; }
 
 
 

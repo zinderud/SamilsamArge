@@ -205,7 +205,7 @@ namespace argebackend
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IPersonService, PersonService>();
-
+            services.AddTransient<IKontrolService, KontrolService>();
             services.AddTransient<IOzgecmisService, OzgecmisService>();
             services.AddTransient<IBasvuruService, BasvuruService>();
             services.AddTransient<IBsvNoService, BsvNoService>();
