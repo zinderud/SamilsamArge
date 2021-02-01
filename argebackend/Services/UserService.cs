@@ -92,12 +92,20 @@ namespace argebackend.Services
             return await Process.RunAsync(action, countItems);
         }
 
-        public void denelpp()
+        public async Task<ProcessResult<IList<ApplicationUser>>> UsersInRole()
         {
-            var result = userManager.GetUsersInRoleAsync("Admin").Result;
+            //  var result = userManager.GetUsersInRoleAsync("Admin").Result;
 
 
+            Func<Task<IList<ApplicationUser>>> action = async () =>
+       {
+           var result = await userManager.GetUsersInRoleAsync("Admin");
 
+           return result;
+       };
+
+
+            return await Process.RunAsync(action);
         }
 
 
