@@ -346,10 +346,14 @@ namespace argebackend.Services
             if (!String.IsNullOrEmpty(f.searchString))
             {
 
-                q = q.Where(x => x.BasvuruNo == (Convert.ToInt64(f.searchString)));
+                q = q.Where(x => x.Durum == f.searchString);
             }
             return q;
         }
+
+
+
+
 
 
 
