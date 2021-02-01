@@ -45,7 +45,7 @@ export class KontrolFormComponent implements OnInit {
 
         if (data.succeeded) {
           // tslint:disable-next-line:max-line-length
-          this.snackBar.open(`Ozgeçmis ${this.createForm.value.tc}   oluşturuldu`, 'X', { duration: 3000 });
+          this.snackBar.open(`Kontrol formu      oluşturuldu`, 'X', { duration: 3000 });
           this.router.navigate(['kontrol']);
         }
         this.loading = false;

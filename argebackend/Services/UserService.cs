@@ -92,14 +92,14 @@ namespace argebackend.Services
             return await Process.RunAsync(action, countItems);
         }
 
-        public async Task<ProcessResult<IList<ApplicationUser>>> UsersInRole()
+        public async Task<ProcessResult<IList<ApplicationUser>>> UsersInRole(string role)
         {
             //  var result = userManager.GetUsersInRoleAsync("Admin").Result;
 
 
             Func<Task<IList<ApplicationUser>>> action = async () =>
        {
-           var result = await userManager.GetUsersInRoleAsync("Admin");
+           var result = await userManager.GetUsersInRoleAsync(role);
 
            return result;
        };

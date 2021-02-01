@@ -343,12 +343,12 @@ namespace argebackend.Controllers
         [ProducesResponseType(typeof(IList<ApplicationUser>), 200)]
         /*  [Authorize(Roles = "Admin")] */
         [AllowAnonymous]
-        public async Task<IActionResult> Usersroles(RoleFilterViewModel model)
+        public async Task<IActionResult> Usersroles(string role = "Manager")
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = await _userService.UsersInRole();
+            var result = await _userService.UsersInRole(role);
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
 
