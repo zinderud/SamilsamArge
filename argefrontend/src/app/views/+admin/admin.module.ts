@@ -24,6 +24,7 @@ import { UserDetailModule } from './user-detail/user-detail.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { KontrolAtamaComponent } from './kontrol/kontrol-atama/kontrol-atama.component';
 import { BasvuruResolver } from '../+basvuru/resolver/basvuru.resolver';
+import { UserRoleResolver } from './resolvers/userrole.resolver';
 
 
 const routes: Routes = [
@@ -67,7 +68,8 @@ const routes: Routes = [
     data: { title: 'Kullanıcı e-Detay', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
     resolve: {
-      data: BasvuruResolver
+      data: BasvuruResolver,
+      usersrole: UserRoleResolver
     }
   }
 
@@ -103,7 +105,8 @@ const routes: Routes = [
       multi: true
     },
     UserResolver,
-    BasvuruResolver
+    BasvuruResolver,
+    UserRoleResolver
 
   ]
 })

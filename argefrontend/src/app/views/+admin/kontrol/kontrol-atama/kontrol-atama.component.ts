@@ -31,9 +31,10 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
 
 
   ];
-
+  secilenbasvuru = 0;
+  issecim = false;
   data: any[] = [];
-
+  usersrole: any[] = [];
   searchForm: FormGroup;
   load$ = new Subject<string | null>();
 
@@ -61,6 +62,7 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.getUserRole();
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
@@ -105,6 +107,27 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
       });
   }
 
+  getUserRole() {
+    this.usersrole = [];
+
+    this.httpClient.get(`${env.serverUrl}/user/usersroles `).subscribe((data: any) => {
+
+      console.log("getUserRole", data);
+
+      if (data.succeeded) {
+
+
+        this.usersrole = data.value
+
+
+
+
+      }
+
+    });
+
+
+  }
   onFilter(): void {
     if (this.searchForm.valid) {
       this.load$.next(this.searchForm.value.name);
@@ -171,9 +194,15 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
     }
   }
   updateCheckedList(event, index) {
+    this.issecim = true;
     this.selection.toggle(index)
+    this.secilenbasvuru = index.basvuruNo;
     console.log("index", index);
     console.log("event", event);
+  }
+  onUserRolechange($event) {
+    console.log("ce", $event.value)
+
   }
 
 }
