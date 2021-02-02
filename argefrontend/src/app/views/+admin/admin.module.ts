@@ -23,6 +23,7 @@ import { SharedDirectivesModule } from 'src/app/directives/shared-directives.mod
 import { UserDetailModule } from './user-detail/user-detail.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { KontrolAtamaComponent } from './kontrol/kontrol-atama/kontrol-atama.component';
+import { BasvuruResolver } from '../+basvuru/resolver/basvuru.resolver';
 
 
 const routes: Routes = [
@@ -65,6 +66,9 @@ const routes: Routes = [
     component: KontrolAtamaComponent,
     data: { title: 'Kullanıcı e-Detay', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
+    resolve: {
+      data: BasvuruResolver
+    }
   }
 
 ];
@@ -98,7 +102,8 @@ const routes: Routes = [
       useClass: ApiInterceptor,
       multi: true
     },
-    UserResolver
+    UserResolver,
+    BasvuruResolver
 
   ]
 })

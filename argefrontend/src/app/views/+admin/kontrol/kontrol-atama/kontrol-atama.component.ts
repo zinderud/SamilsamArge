@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
+import { SelectionModel } from '@angular/cdk/collections';
 @Component({
   selector: 'app-kontrol-atama',
   templateUrl: './kontrol-atama.component.html',
@@ -45,7 +46,7 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-
+  selection = new SelectionModel<any>(false, []);
   constructor(
     private httpClient: HttpClient,
     private formBuilder: FormBuilder,
@@ -60,9 +61,8 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
+    // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-    console.log("111dsadasdas");
 
     this.subscription = merge(this.sort.sortChange, this.paginator.page, this.load$)
       .pipe(
@@ -118,7 +118,21 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
     this.load$.next('');
   }
 
+  onOlustur(item: any): void {
+    if (item.basvuruTuru === "ArastirmaCalis") {
+      this.router.navigate(['basvuru', 'argebirform', item.id]);
+    }
+    if (item.basvuruTuru === "ArastirmaCalisKovid") {
+      this.router.navigate(['basvuru', 'argeikiform', item.id]);
+    }
+    if (item.basvuruTuru === "DonerDestek") {
+      this.router.navigate(['basvuru', 'argeucform', item.id]);
+    }
 
+    console.log("sayfaya git");
+
+
+  }
   onOnizleme(item: any): void {
 
     this.router.navigate(['basvuru', 'onizleme', item.id]);
@@ -156,4 +170,10 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
         return 'teal';
     }
   }
+  updateCheckedList(event, index) {
+    this.selection.toggle(index)
+    console.log("index", index);
+    console.log("event", event);
+  }
+
 }
