@@ -13,6 +13,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
+import { AuthService } from '@app/core/services/core';
+import { Kontrol } from '@app/core/models/kontrol/kontrol';
 @Component({
   selector: 'app-kontrol-atama',
   templateUrl: './kontrol-atama.component.html',
@@ -31,13 +33,15 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
 
 
   ];
-  secilenbasvuru = 0;
+  secilenbasvuruId = 0;
   issecim = false;
   data: any[] = [];
   usersrole: any[] = [];
   searchForm: FormGroup;
   load$ = new Subject<string | null>();
-
+  atananUserId = 0;
+  userid = 0;
+  addkontrolButton = false;
   resultsLength = 0;
   loading = true;
 
@@ -55,10 +59,12 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
     private router: Router,
+    private authservice: AuthService,
   ) {
     this.searchForm = this.formBuilder.group({
       durum: ['', Validators.required]
     });
+    this.userid = parseInt(this.authservice.getUserid());
   }
 
   ngOnInit(): void {
@@ -196,13 +202,48 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
   updateCheckedList(event, index) {
     this.issecim = true;
     this.selection.toggle(index)
-    this.secilenbasvuru = index.basvuruNo;
+    this.secilenbasvuruId = index.basvuruNo;
     console.log("index", index);
     console.log("event", event);
   }
   onUserRolechange($event) {
-    console.log("ce", $event.value)
+    console.log("atanan user", $event.value)
 
+    console.log("atayan", this.userid)
+    this.atananUserId = $event.value;
+
+
+  }
+  AddKontrolAtama(): void {
+    this.loading = true;
+
+    if (this.atananUserId !== 0 && this.secilenbasvuruId !== 0) {
+      this.addkontrolButton = false;
+      let k = new Kontrol();
+      k.basvuruId = this.secilenbasvuruId;
+      k.atananUserId = this.atananUserId;
+      k.atayanUserId = this.atananUserId;
+
+
+
+      this.httpClient.post(`${env.serverUrl}/kontrol`, k).subscribe((data: any) => {
+
+        if (data.succeeded) {
+          // tslint:disable-next-line:max-line-length
+          this.snackBar.open(`Atama Yapıldı`, 'X', { duration: 3000 });
+          this.router.navigate(['admin']);
+        }
+        this.loading = false;
+
+      }, (error: HttpErrorResponse) => {
+        this.loading = false;
+        this.addkontrolButton = true;
+        this.snackBar.open(error.error, 'X', { duration: 3000 });
+      });
+
+    } else {
+      console.log('Form not valid');
+    }
   }
 
 }

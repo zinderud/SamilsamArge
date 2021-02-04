@@ -128,7 +128,7 @@
     <div  class="col-sm-12">
      
         
-          <div [hidden]="!this.issecim">  {{this.secilenbasvuru}} nolu başvuru Secildi</div>
+          <div [hidden]="!this.issecim">  {{this.secilenbasvuruId}} nolu başvuru Secildi</div>
     
     </div>
       </nb-card-body></nb-card>
@@ -159,7 +159,7 @@
        
       </nb-card-body>
       <nb-card-footer>
-        <button type="submit" nbButton status="primary"    >Başvuruyu Ata</button>
+        <button type="submit" nbButton status="primary"  (click)="AddKontrolAtama()"  [disabled]="(this.atananUserId!== 0 && this.secilenbasvuruId!== 0) ? false : true " >Başvuruya Kontrol Atama</button>
       </nb-card-footer>
     </nb-card>
  
