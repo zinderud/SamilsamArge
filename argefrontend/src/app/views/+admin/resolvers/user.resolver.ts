@@ -8,9 +8,9 @@ import { environment as env } from '@env/environment';
 
 @Injectable()
 export class UserResolver implements Resolve<any[]> {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<any[]> {
-    return this.httpClient.get<any>(`${env.serverUrl}/user/list?searchString=&pageIndex=1&pageSize=20&sortOrder=firstname_asc`);
+    return this.httpClient.get<any>(`${env.serverUrl}/kontrol/list?searchString=&pageIndex=1&pageSize=20&sortOrder=firstname_asc`);
   }
 }

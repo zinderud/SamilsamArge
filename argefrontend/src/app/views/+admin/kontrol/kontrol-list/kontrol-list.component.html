@@ -1,0 +1,135 @@
+<div *ngIf="loading">
+    <mat-progress-bar color="warn"></mat-progress-bar>
+  </div>
+  
+  <form [formGroup]="searchForm" #f="ngForm" (ngSubmit)="onFilter()" class="form">
+  
+    <div class="container padding-15">
+  
+      <div class="item-70 container">
+  
+        <div class="item-40">
+          <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="kontrol Filtrele" formControlName="durum" />
+          </mat-form-field>
+        </div>
+  
+        <div class="item-25" style="margin-top: 10px;">
+  
+          <button mat-raised-button color="primary" type="submit" [disabled]="!searchForm.valid" aria-label="search">
+            <mat-icon>search</mat-icon>
+            <span>filtre</span>
+          </button>
+  
+          <button mat-raised-button color="accent" type="button" (click)="onClear()" aria-label="clear"
+            [disabled]="searchForm.valid || searchForm.value.durum === ''">
+            <mat-icon>clear</mat-icon>
+            <span>temizle</span>
+          </button>
+        </div>
+  
+      </div>
+  
+  
+      <div class="item-30" style="margin-top: 10px;">
+        <button mat-raised-button color="primary" type="button" routerLink="/basvuru/add" aria-label="add">
+          <mat-icon>add</mat-icon>
+          <span> ekle </span>
+        </button>
+  
+  
+      </div>
+  
+    </div>
+  
+  </form>
+  
+  <div *ngIf="data.length === 0" class="container">
+    <div class="item">
+      <h1 class="mat-h1">icerik yok</h1>
+    </div>
+  </div>
+  
+  <div [hidden]="data.length === 0" class="table mat-elevation-z8">
+    <div class="loading-shade" *ngIf="loading"></div>
+  
+    <div class="table-container">
+  
+      <table mat-table [dataSource]="data" class="table" matSort matSortActive="name" matSortDisableClear
+        matSortDirection="asc">
+  
+        <!-- basvuruId Column -->
+        <ng-container matColumnDef="basvuruId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            basvuruId
+          </th>
+          <td mat-cell *matCellDef="let row">{{row.basvuruId}}</td>
+  
+        </ng-container>
+  
+        <!-- atayanUserId Column -->
+        <ng-container matColumnDef="atayanUserId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            atayanUserId
+          </th>
+          <td mat-cell *matCellDef="let row">{{row.atayanUserId}}</td>
+        </ng-container>
+  
+          <!-- atananUserId Column -->
+          <ng-container matColumnDef="atananUserId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                atananUserId
+            </th>
+            <td mat-cell *matCellDef="let row">{{row.atananUserId}}</td>
+          </ng-container>
+
+        <!-- atamaTarih Column -->
+        <ng-container matColumnDef="atamaTarih">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            atamaTarih
+          </th>
+          <td mat-cell *matCellDef="let row">{{row.atamaTarih|date}}</td>
+        </ng-container>
+  
+        <!-- kontrolDurum Column -->
+        <ng-container matColumnDef="kontrolDurum">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            kontrolDurum
+          </th>
+          <td mat-cell [ngStyle]="{'color':getColor(row.kontrolDurum)}" *matCellDef="let row">{{row.kontrolDurum}}</td>
+        </ng-container>
+  
+      
+        <!-- Önizleme Column -->
+  
+        <ng-container matColumnDef="onizleme">
+          <th mat-header-cell *matHeaderCellDef>
+            Önizleme
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <a mat-button (click)="onOnizleme(row)" color="warn">
+              <mat-icon>link</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+        <!-- Önizleme Column -->
+  
+        <ng-container matColumnDef="düzenle">
+          <th mat-header-cell *matHeaderCellDef>
+            düzenle
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <a mat-button (click)="onDuzenle(row)" color="warn">
+              <mat-icon>link</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+  
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  
+    <mat-paginator [length]="resultsLength" [pageSize]="20"></mat-paginator>
+  </div>

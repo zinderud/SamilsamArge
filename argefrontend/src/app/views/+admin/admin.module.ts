@@ -25,6 +25,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { KontrolAtamaComponent } from './kontrol/kontrol-atama/kontrol-atama.component';
 import { BasvuruResolver } from '../+basvuru/resolver/basvuru.resolver';
 import { UserRoleResolver } from './resolvers/userrole.resolver';
+import { KontrolListComponent } from './kontrol/kontrol-list/kontrol-list.component';
+import { KontrolResolver } from './resolvers/kontrol.resolver';
 
 
 const routes: Routes = [
@@ -65,11 +67,20 @@ const routes: Routes = [
   {
     path: 'kontrol-atama',
     component: KontrolAtamaComponent,
-    data: { title: 'Kullanıcı e-Detay', expectedRole: ['Admin'] },
+    data: { title: 'Kontrol Atama', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
     resolve: {
       data: BasvuruResolver,
       usersrole: UserRoleResolver
+    }
+  },
+  {
+    path: 'kontrol-list',
+    component: KontrolListComponent,
+    data: { title: 'Kontrol List', expectedRole: ['Admin'] },
+    canActivate: [RoleGuard],
+    resolve: {
+      data: KontrolResolver
     }
   }
 
@@ -95,6 +106,7 @@ const routes: Routes = [
     EditUserComponent,
     UserAddRoleComponent,
     KontrolAtamaComponent,
+    KontrolListComponent,
 
 
   ],
@@ -106,7 +118,8 @@ const routes: Routes = [
     },
     UserResolver,
     BasvuruResolver,
-    UserRoleResolver
+    UserRoleResolver,
+    KontrolResolver
 
   ]
 })
