@@ -116,7 +116,7 @@
          
     
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"  ></tr>
         </table>
       </div>
     
@@ -149,7 +149,7 @@
 
        <div  class="col-sm-12">
         <div class="row">
-          <button type="submit" nbButton status="primary"    >Başvuruyu Ata</button>
+       
        <!--    [disabled]="!notform.valid"   (click)="onNotCreate()" -->
    
       </div>
@@ -158,6 +158,9 @@
       
        
       </nb-card-body>
+      <nb-card-footer>
+        <button type="submit" nbButton status="primary"    >Başvuruyu Ata</button>
+      </nb-card-footer>
     </nb-card>
  
    
