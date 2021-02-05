@@ -16732,3 +16732,5 @@
    at Elasticsearch.Net.Transport`1.Ping(IRequestPipeline pipeline, Node node)
    at Elasticsearch.Net.Transport`1.Request[TResponse](HttpMethod method, String path, PostData data, IRequestParameters requestParameters)
    --- End of inner exception stack trace ---
+2021-02-05 10:51:03.9514 Info AppDomain Shutting down. Logger closing...
+2021-02-05 10:51:03.9646 Info Logger has been shut down.

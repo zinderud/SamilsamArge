@@ -279,6 +279,16 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
     return this.timelineservice.addTimeLine(p);
   }
   changeBasvuruDurum() {
+    this.httpClient.patch(`${env.serverUrl}/basvuru/updatedurum/${this.secilenbasvuruId}`, "On_inceleme_atama"
+    ).subscribe((data: any) => {
+      if (data.succeeded) {
+        console.log("başvuru durumu değişti", data);
+
+      }
+
+
+    });
+
 
   }
 
