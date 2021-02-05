@@ -195,7 +195,7 @@ namespace argebackend.Services
             return await Process.RunAsync(action);
         }
 
-        public async Task<ProcessResult> UpdateDurumAsync(long id, string durum)
+        public async Task<ProcessResult> UpdateDurumAsync(long id, Basvuru model)
         {
 
 
@@ -208,7 +208,7 @@ namespace argebackend.Services
                 var BasvuruEntity = await GetOrCreateEntityAsync(context.Basvurus, x => x.Id == id);
                 var Basvuru = BasvuruEntity.result;
 
-                Basvuru.Durum = durum;
+                Basvuru.Durum = model.Durum;
 
                 var p = context.Update(Basvuru);
 

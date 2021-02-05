@@ -17,6 +17,7 @@ import { AuthService } from '@app/core/services/core';
 import { Kontrol } from '@app/core/models/kontrol/kontrol';
 import { TimelineService } from '@app/core/services/timeline.service';
 import { Timeline } from '@app/core/models/timeline';
+import { Basvuru } from '@app/core/models/basvuru/basvuru';
 @Component({
   selector: 'app-kontrol-atama',
   templateUrl: './kontrol-atama.component.html',
@@ -279,7 +280,10 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
     return this.timelineservice.addTimeLine(p);
   }
   changeBasvuruDurum() {
-    this.httpClient.patch(`${env.serverUrl}/basvuru/updatedurum/${this.secilenbasvuruId}`, "On_inceleme_atama"
+    const k = new Basvuru();
+    k.durum = "On_inceleme_atama";
+    const p = { ...k }
+    this.httpClient.patch(`${env.serverUrl}/basvuru/updatedurum/${this.secilenbasvuruId}`, p
     ).subscribe((data: any) => {
       if (data.succeeded) {
         console.log("başvuru durumu değişti", data);

@@ -191,7 +191,7 @@ namespace argebackend.Controllers
         [ProducesResponseType(typeof(string), 200)]
         /*   [Authorize(Roles = "Admin")] */
         [AllowAnonymous]
-        public async Task<IActionResult> UpdateDurum([FromRoute] long id, [FromBody] string durum)
+        public async Task<IActionResult> UpdateDurum([FromRoute] long id, [FromBody] Basvuru model)
         {
 
 
@@ -199,7 +199,7 @@ namespace argebackend.Controllers
 
                 return BadRequest(ModelState);
 
-            var result = await _BasvuruService.UpdateDurumAsync(id, durum);
+            var result = await _BasvuruService.UpdateDurumAsync(id, model);
 
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
