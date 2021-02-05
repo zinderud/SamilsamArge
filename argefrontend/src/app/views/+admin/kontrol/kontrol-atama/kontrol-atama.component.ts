@@ -15,6 +15,8 @@ import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
 import { AuthService } from '@app/core/services/core';
 import { Kontrol } from '@app/core/models/kontrol/kontrol';
+import { TimelineService } from '@app/core/services/timeline.service';
+import { Timeline } from '@app/core/models/timeline';
 @Component({
   selector: 'app-kontrol-atama',
   templateUrl: './kontrol-atama.component.html',
@@ -60,6 +62,7 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private router: Router,
     private authservice: AuthService,
+    private timelineservice: TimelineService,
   ) {
     this.searchForm = this.formBuilder.group({
       durum: ['', Validators.required]
@@ -229,9 +232,11 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
       this.httpClient.post(`${env.serverUrl}/kontrol`, k).subscribe((data: any) => {
 
         if (data.succeeded) {
+          this.timelineChange();
           // tslint:disable-next-line:max-line-length
-          this.snackBar.open(`Atama Yapıldı`, 'X', { duration: 3000 });
-          this.router.navigate(['admin']);
+          /*    this.snackBar.open(`Atama Yapıldı`, 'X', { duration: 3000 });
+             this.router.navigate(['admin']); */
+          this.changeBasvuruDurum();
         }
         this.loading = false;
 
@@ -244,6 +249,37 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
     } else {
       console.log('Form not valid');
     }
+  }
+
+  timelineChange() {
+    // timeline add
+    let p: Timeline = {
+      userId: this.userid,
+      basvuruId: this.secilenbasvuruId,
+      durum: "On_inceleme_atama",
+      not: "Ön inceleme Ataması Yapildi"
+    }
+    this.addTimeline(p).subscribe((data: any) => {
+      if (data.succeeded) {
+        console.log("timeline  add başarılı", data);
+      }
+    });
+  }
+  addTimeline(timeline: Timeline) {
+    const p: Timeline = {
+      userId: timeline.userId,
+      basvuruId: timeline.basvuruId,
+      tarih: new Date().toDateString(),
+      durum: timeline.durum,
+      not: timeline.not,
+      notType: timeline.notType
+
+    }
+    console.log("timeline", p);
+    return this.timelineservice.addTimeLine(p);
+  }
+  changeBasvuruDurum() {
+
   }
 
 }

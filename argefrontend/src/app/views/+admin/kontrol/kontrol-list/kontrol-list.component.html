@@ -70,17 +70,17 @@
         <!-- atayanUserId Column -->
         <ng-container matColumnDef="atayanUserId">
           <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-            atayanUserId
+            Atayan
           </th>
-          <td mat-cell *matCellDef="let row">{{row.atayanUserId}}</td>
+          <td mat-cell *matCellDef="let row">{{row.atayanUser.firstname+ " "+row.atayanUser.lastname}}</td>
         </ng-container>
   
           <!-- atananUserId Column -->
           <ng-container matColumnDef="atananUserId">
             <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-                atananUserId
+                Atanan
             </th>
-            <td mat-cell *matCellDef="let row">{{row.atananUserId}}</td>
+            <td mat-cell *matCellDef="let row">{{row.  atananUser.firstname+ " "+row.  atananUser.lastname}}</td>
           </ng-container>
 
         <!-- atamaTarih Column -->

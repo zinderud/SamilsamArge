@@ -187,6 +187,26 @@ namespace argebackend.Controllers
         }
 
 
+        [HttpPatch("updatedurum/{id}")]
+        [ProducesResponseType(typeof(string), 200)]
+        /*   [Authorize(Roles = "Admin")] */
+        [AllowAnonymous]
+        public async Task<IActionResult> UpdateDurum([FromRoute] long id, [FromBody] string durum)
+        {
+
+
+            if (!ModelState.IsValid)
+
+                return BadRequest(ModelState);
+
+            var result = await _BasvuruService.UpdateDurumAsync(id, durum);
+
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            return Ok(result);
+        }
+
 
     }
 }

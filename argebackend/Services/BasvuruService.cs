@@ -195,6 +195,28 @@ namespace argebackend.Services
             return await Process.RunAsync(action);
         }
 
+        public async Task<ProcessResult> UpdateDurumAsync(long id, string durum)
+        {
+
+
+            Func<Task> action = async () =>
+            {
+
+                var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
+
+
+                var BasvuruEntity = await GetOrCreateEntityAsync(context.Basvurus, x => x.Id == id);
+                var Basvuru = BasvuruEntity.result;
+
+                Basvuru.Durum = durum;
+
+                var p = context.Update(Basvuru);
+
+                await context.SaveChangesAsync();
+            };
+
+            return await Process.RunAsync(action);
+        }
 
 
         public async Task<ProcessResult> DeleteAsync(long id)

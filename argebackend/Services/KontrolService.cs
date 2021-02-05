@@ -34,16 +34,17 @@ namespace argebackend.Services
                 //{
                 //   throw new InvalidOperationException("Bu tc mevcut");
                 //}
-                var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
+                var atayanUser = await this.userManager.FindByIdAsync(model.atayanUserId.ToString());
+                var atananUser = await this.userManager.FindByIdAsync(model.atananUserId.ToString());
                 var KontrolEntity = await GetOrCreateEntityAsync(context.kontrols, x => x.Id == model.Id);
                 var Kontrol = KontrolEntity.result;
 
                 Kontrol.basvuruId = model.basvuruId;
                 Kontrol.basvuru = model.basvuru;
                 Kontrol.atayanUserId = model.atayanUserId;
-                // Kontrol.atayanUser = model.atayanUser;
+                Kontrol.atayanUser = atayanUser;
                 Kontrol.atananUserId = model.atananUserId;
-                //Kontrol.atananUser = model.atananUser;
+                Kontrol.atananUser = atananUser;
                 Kontrol.atamaTarih = model.atamaTarih;
                 Kontrol.kontrolDurum = model.kontrolDurum;
                 Kontrol.kurumUstYazi = model.kurumUstYazi;
@@ -103,16 +104,17 @@ namespace argebackend.Services
             {
 
                 var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
-
+                var atayanUser = await this.userManager.FindByIdAsync(model.atayanUserId.ToString());
+                var atananUser = await this.userManager.FindByIdAsync(model.atananUserId.ToString());
 
                 var KontrolEntity = await GetOrCreateEntityAsync(context.kontrols, x => x.Id == model.Id);
                 var Kontrol = KontrolEntity.result;
                 Kontrol.basvuruId = model.basvuruId;
                 Kontrol.basvuru = model.basvuru;
                 Kontrol.atayanUserId = model.atayanUserId;
-                // Kontrol.atayanUser = model.atayanUser;
+                Kontrol.atayanUser = atayanUser;
                 Kontrol.atananUserId = model.atananUserId;
-                //Kontrol.atananUser = model.atananUser;
+                Kontrol.atananUser = atananUser;
                 Kontrol.atamaTarih = model.atamaTarih;
                 Kontrol.kontrolDurum = model.kontrolDurum;
                 Kontrol.kurumUstYazi = model.kurumUstYazi;
@@ -169,7 +171,7 @@ namespace argebackend.Services
 
         public async Task<ProcessResult<List<Kontrol>>> ListAsync(GetListViewModel<BaseFilter> getListModel)
         {
-            IQueryable<Kontrol> q = context.kontrols;
+            IQueryable<Kontrol> q = context.kontrols.Include(z => z.atananUser).Include(c => c.atayanUser);
             q = SetIncludes(q);
             q = SetFilter(q, getListModel.filter);
 
