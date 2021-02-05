@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { environment as env } from '@env/environment';
@@ -19,9 +19,11 @@ export class KontrolFormComponent implements OnInit {
   loading = false;
   kontrol: Kontrol;
   prod: boolean = env.production;
+  itemId: string;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
     private httpClient: HttpClient,
     private kontrolFormService: KontrolFormService
@@ -32,6 +34,17 @@ export class KontrolFormComponent implements OnInit {
     this.kontrolFormService.kontrolForm$.subscribe(x => {
       this.createForm = x;
     });
+    this.itemId = this.activatedRoute.snapshot.params.id;
+
+    this.loading = true;
+
+    this.httpClient.get(`${env.serverUrl}/kontrol/${this.itemId}`).subscribe((data: any) => {
+      this.loading = false;
+
+      this.kontrolFormService.loaderKontrolForm(data);
+
+
+    });
   }
 
   onCreate(): void {
@@ -41,12 +54,12 @@ export class KontrolFormComponent implements OnInit {
       this.createForm.disable();
       const p = { ...this.kontrol, ...this.createForm.value };
 
-      this.httpClient.post(`${env.serverUrl}/kontrol`, p).subscribe((data: any) => {
+      this.httpClient.patch(`${env.serverUrl}/kontrol/${this.itemId}`, p).subscribe((data: any) => {
 
         if (data.succeeded) {
           // tslint:disable-next-line:max-line-length
           this.snackBar.open(`Kontrol formu      oluşturuldu`, 'X', { duration: 3000 });
-          this.router.navigate(['kontrol']);
+          this.router.navigate(['manager', 'kontrol-list']);
         }
         this.loading = false;
 
@@ -64,5 +77,8 @@ export class KontrolFormComponent implements OnInit {
   getUnvanControls() {
     return (this.createForm.get('unvans') as FormArray).controls;
   }
+  onBasvuruformLoad() {
+    this.kontrolFormService.onBasvuruformLoad(this.itemId)
 
+  }
 }

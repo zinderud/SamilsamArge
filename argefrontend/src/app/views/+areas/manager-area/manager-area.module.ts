@@ -14,6 +14,9 @@ import { SharedDirectivesModule } from 'src/app/directives/shared-directives.mod
 import { ManagerAreaDetailComponent } from './manager-area-detail/manager-area-detail.component';
 import { KontrolFormComponent } from './kontrol-form/kontrol-form.component';
 import { EditorModule } from 'primeng/editor';
+import { ManagerKontrolListComponent } from './manager-kontrol-list/manager-kontrol-list.component';
+import { KontrolResolver } from '../../+admin/resolvers/kontrol.resolver';
+import { KontrolFormService } from './services/kontrol-form.service';
 
 
 const routes: Routes = [
@@ -26,12 +29,21 @@ const routes: Routes = [
     canActivate: [RoleGuard],
   },
   {
-    path: 'kontrol',
+    path: 'kontrol/:id',
     component: KontrolFormComponent,
     data: { title: 'Manager  Alanı', expectedRole: ['Admin', 'Manager'] },
     canActivate: [RoleGuard],
   }
-
+  ,
+  {
+    path: 'kontrol-list',
+    component: ManagerKontrolListComponent,
+    data: { title: 'Kontrol List', expectedRole: ['Admin'] },
+    canActivate: [RoleGuard],
+    resolve: {
+      data: KontrolResolver
+    }
+  }
 ];
 
 @NgModule({
@@ -51,7 +63,8 @@ const routes: Routes = [
   ],
   declarations: [
     ManagerAreaDetailComponent,
-    KontrolFormComponent
+    KontrolFormComponent,
+    ManagerKontrolListComponent
 
 
   ],
@@ -60,7 +73,9 @@ const routes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
       multi: true
-    }
+    },
+    KontrolResolver,
+    KontrolFormService
 
 
   ]

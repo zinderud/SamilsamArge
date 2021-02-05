@@ -9,6 +9,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { TypeHelper } from '@app/shared/lib/helpers/typeHelper';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Basvuru } from '@app/core/models/basvuru/basvuru';
+import { Kontrol } from '@app/core/models/kontrol/kontrol';
 /* import { Unvan } from '@app/core/models/kontrol/unvan'; */
 
 @Injectable()
@@ -16,6 +18,7 @@ export class KontrolFormService {
 
     private kontrolForm: BehaviorSubject<FormGroup | null> = new BehaviorSubject(this.createKontrolForm());
     kontrolForm$: Observable<FormGroup> = this.kontrolForm.asObservable();
+    BasvuruId = 0;
 
     constructor(private fb: FormBuilder, private httpClient: HttpClient, private dialog: MatDialog, private snackBar: MatSnackBar,) {
     }
@@ -66,6 +69,8 @@ export class KontrolFormService {
 
     }
     loaderKontrolForm(data) {
+        this.BasvuruId = data.value.basvuruId;
+
         this.kontrolForm.next(
             this.fb.group({
 
@@ -112,6 +117,91 @@ export class KontrolFormService {
         );
     }
 
+    basvuru: Basvuru = {};
+    onBasvuruformLoad(id) {
+
+
+        this.httpClient.get(`${env.serverUrl}/kontrol/${id}`).subscribe((data: any) => {
+            if (data.succeeded) {
+                this.httpClient.get(`${env.serverUrl}/basvuru/${this.BasvuruId}`).subscribe((bb: any) => {
+
+                    console.log("dsa" + bb.value.tc);
+
+                    if (bb.value.basvuruForm === "") {
+                        this.basvuru = { ...bb.value }
+                        console.log(" gelen this.basvuru", this.basvuru)
+                    } else {
+
+                        this.basvuru = { ...bb.value }
+                        this.basvuru.basvuruForm = JSON.parse(bb.value.basvuruForm);
+
+
+                    }
+
+                    this.loaderKontrolwithBasvuruForm(data, this.basvuru);
+
+                });
+
+            }
+
+
+
+
+
+        });
+
+    }
+
+
+
+    loaderKontrolwithBasvuruForm(data, basvuru) {
+        this.BasvuruId = data.value.basvuruId;
+
+        this.kontrolForm.next(
+            this.fb.group({
+
+                kontrolId: new FormControl(data.value.kontrolId),
+                basvuruId: new FormControl(data.value.basvuruId),
+                basvuru: new FormControl(data.value.basvuru),
+                atayanUserId: new FormControl(data.value.atayanUserId),
+                atayanUser: new FormControl(data.value.atayanUser),
+                atananUserId: new FormControl(data.value.atananUserId),
+                atananUser: new FormControl(data.value.atananUser),
+                atamaTarih: new FormControl(data.value.atamaTarih),
+                kontrolDurum: new FormControl(data.value.kontrolDurum),
+                kurumUstYazi: new FormControl(data.value.kurumUstYazi),
+                dilekceBasvurusuUygunmu: new FormControl(data.value.dilekceBasvurusuUygunmu),
+                arastirmaBaslik: new FormControl(basvuru.basvuruForm?.baslik),
+                arastirmaStatu: new FormControl(basvuru.basvuruForm?.arastirmaform?.statu),
+                arastirmaci: new FormControl(data.value.arastirmaci),
+                danisman: new FormControl(data.value.danisman),
+                kurum: new FormControl(data.value.kurum),
+                arastirmaAmac: new FormControl(data.value.arastirmaAmac),
+                arastirmaTuru: new FormControl(basvuru.basvuruForm?.arastirmaform?.arastirmaTuru),
+                arastirmaYeri: new FormControl(basvuru.basvuruForm?.arastirmaform?.arYapilacagiYer),
+                arastirmaEvreni: new FormControl(data.value.arastirmaEvreni),
+                arastirmaHipotez: new FormControl(data.value.arastirmaHipotez),
+                arastirmaYontem: new FormControl(data.value.arastirmaYontem),
+                arastirmaZamanAralik: new FormControl(data.value.arastirmaZamanAralik),
+                girisimselUygulama: new FormControl(data.value.girisimselUygulama),
+                prospektifmi: new FormControl(data.value.prospektifmi),
+                arastirmaBilimselYararAciklanmismi: new FormControl(data.value.arastirmaBilimselYararAciklanmismi),
+                anketSorulariUygunmu: new FormControl(data.value.anketSorulariUygunmu),
+                onizinformvarmi: new FormControl(data.value.onizinformvarmi),
+                basvuruformvarmi: new FormControl(data.value.basvuruformvarmi),
+                etikkurulvarmi: new FormControl(data.value.etikkurulvarmi),
+                bakanlikOnayvarmi: new FormControl(data.value.bakanlikOnayvarmi),
+                butceFormvarmi: new FormControl(data.value.butceFormvarmi),
+                ozgecmisvarmi: new FormControl(data.value.ozgecmisvarmi),
+                kullanilacakevraklarvarmi: new FormControl(data.value.kullanilacakevraklarvarmi),
+                ucedetLitaratur: new FormControl(data.value.ucedetLitaratur),
+                gorusler: new FormControl(data.value.gorusler),
+                kontrolTarih: new FormControl(data.value.kontrolTarih),
+
+
+            })
+        );
+    }
 
 
 }
