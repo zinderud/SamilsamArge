@@ -33,7 +33,18 @@ export const aMenu: NbMenuItem[] = [
         title: 'Başvuru İnceleme',
         link: '/inceleme/',
         icon: 'eye-outline'
+    },
+    {
+        title: 'Kontrol List',
+        link: '/admin/kontrol-list',
+        icon: 'eye-outline'
+    },
+    {
+        title: 'Kontrol Atama',
+        link: '/admin/kontrol-atama',
+        icon: 'eye-outline'
     }
+
 
 
 

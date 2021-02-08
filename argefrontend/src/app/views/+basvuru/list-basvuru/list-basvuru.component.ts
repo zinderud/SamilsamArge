@@ -155,7 +155,7 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
     (2)
     switch (durum) {
       case 'basvuru_yapildi':
-        return 'green';
+        return 'DeepPink';
       case 'basvuru_inceleme':
         return 'blue';
       case 'basvuru_eksik_evrak':
@@ -166,6 +166,10 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
         return 'red';
       case 'basvuru_kabul':
         return 'teal';
+      case 'On_inceleme_atama':
+        return 'BlueViolet';
+      case 'On_inceleme_tamam':
+        return 'Coral';
     }
   }
 }

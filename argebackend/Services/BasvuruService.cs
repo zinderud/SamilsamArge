@@ -49,7 +49,7 @@ namespace argebackend.Services
 
                 Basvuru.BasvuruNo = bsvno.BasvuruNo + 1;
                 Basvuru.Tarih = DateTime.Now;
-                Basvuru.Durum = "Başvuru yapıldı";
+                Basvuru.Durum = "basvuru_yapildi";
                 Basvuru.DurumId = 1;
                 Console.WriteLine("9999999999999999999999999999999" + model.basvuruTuru);
                 //  Basvuru.BasvuruTuruId = model.BasvuruTuruId;
@@ -429,7 +429,7 @@ namespace argebackend.Services
             if (!String.IsNullOrEmpty(f.searchString))
             {
 
-                q = q.Where(x => x.BasvuruNo == (Convert.ToInt64(f.searchString)));
+                q = q.Where(x => x.Durum == (f.searchString));
             }
             return q;
         }

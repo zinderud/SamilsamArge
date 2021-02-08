@@ -26,7 +26,6 @@ export class ManagerKontrolListComponent implements OnInit, OnDestroy {
     'atamaTarih',
     'kontrolDurum',
     'onizleme',
-    "düzenle",
 
 
   ];

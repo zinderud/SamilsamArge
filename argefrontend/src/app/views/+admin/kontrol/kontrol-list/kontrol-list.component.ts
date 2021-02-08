@@ -25,7 +25,6 @@ export class KontrolListComponent implements OnInit, OnDestroy {
     'atamaTarih',
     'kontrolDurum',
     'onizleme',
-    "düzenle",
 
 
   ];
@@ -116,16 +115,10 @@ export class KontrolListComponent implements OnInit, OnDestroy {
     this.load$.next('');
   }
 
-  onDuzenle(item: any): void {
 
-
-    console.log("sayfaya git");
-
-
-  }
   onOnizleme(item: any): void {
 
-    this.router.navigate(['kontrol', 'onizleme', item.id]);
+    this.router.navigate(['manager', 'kontrol', item.id]);
 
     console.log("sayfaya git");
 
