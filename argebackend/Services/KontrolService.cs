@@ -246,10 +246,10 @@ namespace argebackend.Services
             {
                 return q;
             }
-            /*   if (!String.IsNullOrEmpty(f.searchString))
-              {
-                  q = q.Where(s => s.tc.Contains(f.searchString));
-              } */
+            if (!String.IsNullOrEmpty(f.searchString))
+            {
+                q = q.Where(s => s.basvuruId.ToString().Contains(f.searchString));
+            }
             return q;
         }
 

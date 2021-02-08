@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Component, ViewChild, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnDestroy, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { merge, of as observableOf, Subject, Subscription } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
@@ -18,6 +18,9 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./kontrol-list.component.scss']
 })
 export class KontrolListComponent implements OnInit, OnDestroy {
+
+
+
   displayedColumns: string[] = [
     'basvuruId',
     'atayanUserId',
@@ -29,7 +32,7 @@ export class KontrolListComponent implements OnInit, OnDestroy {
 
   ];
 
-  data: any[] = [];
+  kontrol: any[] = [];
 
   searchForm: FormGroup;
   load$ = new Subject<string | null>();
@@ -70,7 +73,7 @@ export class KontrolListComponent implements OnInit, OnDestroy {
           if (!this.preloading) {
             this.preloading = true;
             return this.activatedRoute.data.pipe(
-              map((resolve: any) => resolve.data)
+              map((resolve: any) => resolve.kontrol)
             );
 
           } else {
@@ -84,19 +87,19 @@ export class KontrolListComponent implements OnInit, OnDestroy {
             return this.httpClient.get<any>(`${env.serverUrl}/kontrol`, { params });
           }
         }),
-        map(data => {
+        map(kontrol => {
           // Flip flag to show that loading has finished.
           this.loading = false;
-          this.resultsLength = data.countItems;
+          this.resultsLength = kontrol.countItems;
 
-          return data.value;
+          return kontrol.value;
         }),
         catchError(() => {
           this.loading = false;
           return observableOf([]);
         })
-      ).subscribe((data: any) => {
-        this.data = data;
+      ).subscribe((kontrol: any) => {
+        this.kontrol = kontrol;
       }, (error: HttpErrorResponse) => {
         this.snackBar.open(error.error, 'X', { duration: 3000 });
       });
@@ -153,4 +156,50 @@ export class KontrolListComponent implements OnInit, OnDestroy {
         return 'teal';
     }
   }
+
+  getList(basvuruId) {
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
+    this.subscription = merge(this.sort.sortChange, this.paginator.page, this.load$)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          this.loading = true;
+
+          if (!this.preloading) {
+            this.preloading = true;
+            return this.activatedRoute.data.pipe(
+              map((resolve: any) => resolve.kontrol)
+            );
+
+          } else {
+            const params = new HttpParams()
+              .set('filter.searchString', basvuruId)
+              .set('paginator.offset', (this.paginator.pageIndex * this.paginator.pageSize).toString())
+              .set('paginator.limit', this.paginator.pageSize.toString())
+              .set('orderBy.by', this.sort.active)
+              .set('orderBy.desc', (this.sort.direction === 'desc').toString());
+
+            return this.httpClient.get<any>(`${env.serverUrl}/kontrol`, { params });
+          }
+        }),
+        map(kontrol => {
+          // Flip flag to show that loading has finished.
+          this.loading = false;
+          this.resultsLength = kontrol.countItems;
+
+          return kontrol.value;
+        }),
+        catchError(() => {
+          this.loading = false;
+          return observableOf([]);
+        })
+      ).subscribe((kontrol: any) => {
+        this.kontrol = kontrol;
+      }, (error: HttpErrorResponse) => {
+        this.snackBar.open(error.error, 'X', { duration: 3000 });
+      });
+
+  }
+
 }

@@ -71,7 +71,9 @@ const routes: Routes = [
     canActivate: [RoleGuard],
     resolve: {
       data: BasvuruResolver,
-      usersrole: UserRoleResolver
+      usersrole: UserRoleResolver,
+      kontrol: KontrolResolver
+
     }
   },
   {
@@ -80,7 +82,7 @@ const routes: Routes = [
     data: { title: 'Kontrol List', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
     resolve: {
-      data: KontrolResolver
+      kontrol: KontrolResolver
     }
   }
 

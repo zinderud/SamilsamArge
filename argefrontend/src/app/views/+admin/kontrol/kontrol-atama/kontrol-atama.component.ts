@@ -18,12 +18,14 @@ import { Kontrol } from '@app/core/models/kontrol/kontrol';
 import { TimelineService } from '@app/core/services/timeline.service';
 import { Timeline } from '@app/core/models/timeline';
 import { Basvuru } from '@app/core/models/basvuru/basvuru';
+import { KontrolListComponent } from '../kontrol-list/kontrol-list.component';
 @Component({
   selector: 'app-kontrol-atama',
   templateUrl: './kontrol-atama.component.html',
   styleUrls: ['./kontrol-atama.component.scss']
 })
 export class KontrolAtamaComponent implements OnInit, OnDestroy {
+  @ViewChild(KontrolListComponent, { static: true }) kontrollist: KontrolListComponent;
   displayedColumns: string[] = [
     'checked',
     'userId',
@@ -212,6 +214,7 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
     this.secilenbasvuruId = index.basvuruNo;
     console.log("index", index);
     console.log("event", event);
+    this.kontrollist.getList(this.secilenbasvuruId);
   }
   onUserRolechange($event) {
     console.log("atanan user", $event.value)

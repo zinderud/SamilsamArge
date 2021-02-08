@@ -44,18 +44,18 @@
   
   </form>
   
-  <div *ngIf="data.length === 0" class="container">
+  <div *ngIf="kontrol.length === 0" class="container">
     <div class="item">
       <h1 class="mat-h1">icerik yok</h1>
     </div>
   </div>
   
-  <div [hidden]="data.length === 0" class="table mat-elevation-z8">
+  <div [hidden]="kontrol.length === 0" class="table mat-elevation-z8">
     <div class="loading-shade" *ngIf="loading"></div>
   
     <div class="table-container">
   
-      <table mat-table [dataSource]="data" class="table" matSort matSortActive="name" matSortDisableClear
+      <table mat-table [dataSource]="kontrol" class="table" matSort matSortActive="name" matSortDisableClear
         matSortDirection="asc">
   
         <!-- basvuruId Column -->
