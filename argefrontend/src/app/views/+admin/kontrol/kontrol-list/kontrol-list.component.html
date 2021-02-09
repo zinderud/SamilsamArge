@@ -31,14 +31,14 @@
       </div>
   
   
-      <div class="item-30" style="margin-top: 10px;">
+<!--       <div class="item-30" style="margin-top: 10px;">
         <button mat-raised-button color="primary" type="button" routerLink="/basvuru/add" aria-label="add">
           <mat-icon>add</mat-icon>
           <span> ekle </span>
         </button>
   
   
-      </div>
+      </div> -->
   
     </div>
   
@@ -98,7 +98,18 @@
           </th>
           <td mat-cell [ngStyle]="{'color':getColor(row.kontrolDurum)}" *matCellDef="let row">{{row.kontrolDurum}}</td>
         </ng-container>
+      <!-- basvuru Column -->
   
+      <ng-container matColumnDef="basvuruOnizle">
+        <th mat-header-cell *matHeaderCellDef>
+          Basvuru Görüntüle
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <a mat-button (click)="onBasvuruOnizle(row.basvuruId)" color="warn">
+            <mat-icon>link</mat-icon>
+          </a>
+        </td>
+      </ng-container>
       
         <!-- Önizleme Column -->
   
@@ -113,7 +124,17 @@
           </td>
         </ng-container>
    
-      
+       <!-- delete Column -->
+       <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>
+          Kaldır
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <a mat-button (click)="onDelete(row)" color="warn">
+            <mat-icon>delete_forever</mat-icon>
+          </a>
+        </td>
+      </ng-container>
   
   
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

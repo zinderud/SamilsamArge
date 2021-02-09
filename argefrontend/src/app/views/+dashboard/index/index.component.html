@@ -14,33 +14,61 @@
 
 </div>
  -->
-<div class="row">
-  <div class="col-12 col-md-6">
-    <ngx-call-action-card title="Basvuru Listele" icon="brightness_5" link="/basvuru" linkTitle="Görüntüle">
-    </ngx-call-action-card>
+ <ng-template [appHasRole]="'User' && 'Manager' &&'Admin'">
+  <h3>User</h3>
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <ngx-call-action-card title="Basvuru Listele" icon="brightness_5" link="/basvuru" linkTitle="Görüntüle">
+      </ngx-call-action-card>
+    </div>
+    <div class="col-12 col-md-4">
+      <ngx-call-action-card title="Basvuru ekle" icon="attach_file" link="/basvuru/add" linkTitle="Görüntüle">
+      </ngx-call-action-card>
+    </div>
+    <div class="col-12 col-md-4">
+      <ngx-call-action-card title="Ozgecmis ekle" icon="attach_file" link="/ozgecmis/add" linkTitle="Görüntüle">
+      </ngx-call-action-card>
+    </div>
   </div>
-  <div class="col-12 col-md-6">
-    <ngx-call-action-card title="Basvuru ekle" icon="attach_file" link="/basvuru/add" linkTitle="Görüntüle">
-    </ngx-call-action-card>
-  </div>
-</div>
+</ng-template>
 
-<div class="row">
-  <div class="col-12 col-md-6">
-    <ngx-call-action-card title="Başvuru  İnceleme Listesi" icon="wc" type="pantone" link="/inceleme"
-      linkTitle="Görüntüle">
-    </ngx-call-action-card>
+<ng-template [appHasRole]="'Manager' &&'Admin' ">
+  <h3>Manager</h3>
+
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <ngx-call-action-card title="Kontrol list" icon="brightness_5" type="pantone" link="/manager/kontrol-list"
+        linkTitle="Görüntüle">
+      </ngx-call-action-card>
+    </div>
   </div>
-</div>
+</ng-template>
+
+
 
 
 <ng-template [appHasRole]="'Admin'">
   <h3>Admin</h3>
-</ng-template>  
-<ng-template [appHasRole]="'Manager'">
-  <h3>Manager</h3>
-</ng-template>
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <ngx-call-action-card title="Kontrol Atama" icon="brightness_5" type="pantone" link="/admin/kontrol-atama"
+        linkTitle="Görüntüle">
+      </ngx-call-action-card>
+    </div>
+  
+    <div class="col-12 col-md-4">
+      <ngx-call-action-card title="Kontrol list" icon="brightness_5" type="pantone" link="/admin/kontrol-list"
+        linkTitle="Görüntüle">
+      </ngx-call-action-card>
+    </div>
+   
+    <div class="col-12 col-md-4">
+      <ngx-call-action-card title="Başvuru  İnceleme Listesi" icon="wc" type="pantone" link="/inceleme"
+        linkTitle="Görüntüle">
+      </ngx-call-action-card>
+    </div>
+  </div>
+  
 
-<ng-template [appHasRole]="'User'">
-  <h3>User</h3>
-</ng-template>
+</ng-template>  
+

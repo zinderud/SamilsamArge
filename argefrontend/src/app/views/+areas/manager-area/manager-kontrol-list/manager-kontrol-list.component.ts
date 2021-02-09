@@ -25,6 +25,7 @@ export class ManagerKontrolListComponent implements OnInit, OnDestroy {
     'atananUserId',
     'atamaTarih',
     'kontrolDurum',
+    'basvuruOnizle',
     'onizleme',
 
 
@@ -159,5 +160,11 @@ export class ManagerKontrolListComponent implements OnInit, OnDestroy {
       case 'kontrol_kabul':
         return 'teal';
     }
+  }
+  onBasvuruOnizle(id) {
+    this.router.navigate(['basvuru', 'onizleme', id]);
+
+    console.log("sayfaya git");
+
   }
 }

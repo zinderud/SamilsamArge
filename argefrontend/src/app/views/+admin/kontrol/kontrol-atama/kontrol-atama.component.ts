@@ -241,9 +241,10 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
         if (data.succeeded) {
           this.timelineChange();
           // tslint:disable-next-line:max-line-length
-          /*    this.snackBar.open(`Atama Yapıldı`, 'X', { duration: 3000 });
-             this.router.navigate(['admin']); */
+          this.snackBar.open(`Atama Yapıldı`, 'X', { duration: 3000 });
+          /*     this.router.navigate(['admin']); */
           this.changeBasvuruDurum();
+
         }
         this.loading = false;
 
@@ -299,7 +300,9 @@ export class KontrolAtamaComponent implements OnInit, OnDestroy {
 
     });
 
-
+    this.refresh();
   }
-
+  refresh(): void {
+    window.location.reload();
+  }
 }

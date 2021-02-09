@@ -27,8 +27,9 @@ export class KontrolListComponent implements OnInit, OnDestroy {
     'atananUserId',
     'atamaTarih',
     'kontrolDurum',
+    'basvuruOnizle',
     'onizleme',
-
+    'delete'
 
   ];
 
@@ -199,6 +200,31 @@ export class KontrolListComponent implements OnInit, OnDestroy {
       }, (error: HttpErrorResponse) => {
         this.snackBar.open(error.error, 'X', { duration: 3000 });
       });
+
+  }
+  onDelete(item: any): void {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      data: {
+        message: `"${item.name
+          }" silinecektir. Onaylıyormusunuz?`
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loading = true;
+        this.httpClient.delete(`${env.serverUrl}/kontrol/${item.id}`).subscribe(data => {
+
+          this.load$.next('');
+
+        });
+      }
+    });
+  }
+  onBasvuruOnizle(id) {
+    this.router.navigate(['basvuru', 'onizleme', id]);
+
+    console.log("sayfaya git");
 
   }
 
