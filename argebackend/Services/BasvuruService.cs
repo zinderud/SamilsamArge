@@ -30,7 +30,7 @@ namespace argebackend.Services
             Func<Task> action = async () =>
             {
 
-                Console.WriteLine("55555555555555" + model.basvuruTuru);
+
                 //   var BasvuruExist = await context.Basvurus.Where(x => x.tc != model.tc).CountAsync();
 
 
@@ -51,11 +51,11 @@ namespace argebackend.Services
                 Basvuru.Tarih = DateTime.Now;
                 Basvuru.Durum = "basvuru_yapildi";
                 Basvuru.DurumId = 1;
-                Console.WriteLine("9999999999999999999999999999999" + model.basvuruTuru);
-                //  Basvuru.BasvuruTuruId = model.BasvuruTuruId;
-                Console.WriteLine("9999999999999999999999999999999" + model.basvuruTuru);
+
                 Basvuru.BasvuruTuru = model.basvuruTuru;
                 Basvuru.BasvuruForm = "";
+
+
 
 
                 BsvNo bsvNo = new BsvNo();
@@ -95,6 +95,8 @@ namespace argebackend.Services
                 //  Basvuru.BasvuruTuruId = model.BasvuruTuruId;
                 Basvuru.BasvuruTuru = model.BasvuruTuru;
                 Basvuru.BasvuruForm = "";
+                Basvuru.basvuruBaslangicTarih = model.basvuruBaslangicTarih;
+                Basvuru.basvuruBitisTarih = model.basvuruBitisTarih;
 
 
                 // oluştururken otomatik olarak false yaptık */
@@ -187,6 +189,8 @@ namespace argebackend.Services
                 // Basvuru.BasvuruTuruId = model.BasvuruTuruId;
                 Basvuru.BasvuruTuru = model.BasvuruTuru;
                 Basvuru.BasvuruForm = model.BasvuruForm;
+                Basvuru.basvuruBaslangicTarih = model.basvuruBaslangicTarih;
+                Basvuru.basvuruBitisTarih = model.basvuruBitisTarih;
                 var p = context.Update(Basvuru);
 
                 await context.SaveChangesAsync();

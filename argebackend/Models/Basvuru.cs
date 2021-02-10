@@ -15,6 +15,9 @@ namespace argebackend.Models
         // public int BasvuruTuruId { get; set; }
         public string BasvuruTuru { get; set; }
         public string BasvuruForm { get; set; }
+        public DateTime basvuruBaslangicTarih { get; set; }
+        public DateTime basvuruBitisTarih { get; set; }
+
 
 
 
