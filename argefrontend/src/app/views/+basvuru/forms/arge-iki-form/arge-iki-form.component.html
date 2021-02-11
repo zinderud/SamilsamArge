@@ -81,6 +81,26 @@
             </div>
             <!-- baslik -->
             <div class="row">
+                <div class="col-sm-12">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Proje Başlangıc Tarihi</mat-label>
+                    <input matInput [matDatepicker]="picker" placeholder="Başlangıc Tarihi" required formControlName="basvuruBaslangicTarih">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+        
+                <div class="col-sm-12">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label> Proje Bitiş Tarihi</mat-label>
+                    <input matInput [matDatepicker]="picker1" placeholder="Bitiş Tarihi" required formControlName="basvuruBitisTarih">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                 </div>
+                 
+            <div class="row">
 
                 <button type="submit" nbButton status="primary" (click)="addArastirmacilarforms()">Arastirmaci
                     Ekle</button>

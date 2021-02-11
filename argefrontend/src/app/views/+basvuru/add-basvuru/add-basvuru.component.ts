@@ -32,9 +32,8 @@ export class AddBasvuruComponent implements OnInit {
     this.createForm = this.formBuilder.group({
 
 
-      basvuruTuru: new FormControl(''),
-      basvuruBaslangicTarih: new FormControl(''),
-      basvuruBitisTarih: new FormControl(''),
+      basvuruTuru: new FormControl('')
+
     });
 
   }

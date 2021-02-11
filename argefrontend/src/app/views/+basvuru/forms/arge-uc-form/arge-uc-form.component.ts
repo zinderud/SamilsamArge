@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, AbstractControlOptions, ValidatorFn } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, AbstractControlOptions, ValidatorFn, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArastirmaBelgelerFormComponent } from '../arastirma-belgeler-form/arastirma-belgeler-form.component';
@@ -45,6 +45,8 @@ export class ArgeUcFormComponent implements OnInit {
   ngOnInit() {
     this.aform = this.fb.group({
       baslik: [''],
+      basvuruBaslangicTarih: new FormControl(''),
+      basvuruBitisTarih: new FormControl(''),
       arastirmaform: this.arastirmaform.createGroup(),
       arastirmaKapsam: this.arastirmaKapsamForm.createGroup(),
       arastirmacilarforms: this.fb.array([this.createArastirmacilarformGroupForm()]),
@@ -149,6 +151,8 @@ export class ArgeUcFormComponent implements OnInit {
 
       this.aform.patchValue({
         baslik: basform.baslik,
+        basvuruBaslangicTarih: this.basvuru.basvuruBaslangicTarih,
+        basvuruBitisTarih: this.basvuru.basvuruBitisTarih,
         arastirmaform: basform.arastirmaform,
         arastirmaKapsam: basform.arastirmaKapsam,
         arastirmacilarforms: basform.arastirmacilarforms,
