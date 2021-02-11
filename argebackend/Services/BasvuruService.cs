@@ -54,6 +54,8 @@ namespace argebackend.Services
 
                 Basvuru.BasvuruTuru = model.basvuruTuru;
                 Basvuru.BasvuruForm = "";
+                Basvuru.basvuruBaslangicTarih = model.basvuruBaslangicTarih;
+                Basvuru.basvuruBitisTarih = model.basvuruBitisTarih;
 
 
 
@@ -144,6 +146,8 @@ namespace argebackend.Services
                     DurumId = p.DurumId,
                     BasvuruTuru = p.BasvuruTuru,
                     BasvuruForm = p.BasvuruForm,
+                    BasvuruBaslangicTarih = p.basvuruBaslangicTarih,
+                    BasvuruBitisTarih = p.basvuruBitisTarih
                 }
 
                 )
@@ -189,6 +193,8 @@ namespace argebackend.Services
                 // Basvuru.BasvuruTuruId = model.BasvuruTuruId;
                 Basvuru.BasvuruTuru = model.BasvuruTuru;
                 Basvuru.BasvuruForm = model.BasvuruForm;
+                Basvuru.basvuruBaslangicTarih = model.basvuruBaslangicTarih;
+                Basvuru.basvuruBitisTarih = model.basvuruBitisTarih;
                 Basvuru.basvuruBaslangicTarih = model.basvuruBaslangicTarih;
                 Basvuru.basvuruBitisTarih = model.basvuruBitisTarih;
                 var p = context.Update(Basvuru);
@@ -289,6 +295,8 @@ namespace argebackend.Services
                 DurumId = p.DurumId,
                 BasvuruTuru = p.BasvuruTuru,
                 BasvuruForm = p.BasvuruForm,
+                BasvuruBaslangicTarih = p.basvuruBaslangicTarih,
+                BasvuruBitisTarih = p.basvuruBitisTarih
             }
 
                 );

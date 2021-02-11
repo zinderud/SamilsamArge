@@ -33,6 +33,8 @@ export class AddBasvuruComponent implements OnInit {
 
 
       basvuruTuru: new FormControl(''),
+      basvuruBaslangicTarih: new FormControl(''),
+      basvuruBitisTarih: new FormControl(''),
     });
 
   }

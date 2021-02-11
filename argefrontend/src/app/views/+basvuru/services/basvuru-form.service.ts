@@ -43,6 +43,8 @@ export class BasvuruFormService {
                durumId: new FormControl(''),
                basvuruTuruId: new FormControl(''), */
             basvuruTuru: new FormControl(''),
+            basvuruBaslangicTarih: new FormControl(''),
+            basvuruBitisTarih: new FormControl(''),
             /*    basvuruForm: new FormGroup(this.argeBirFormFormService.addArgeBirForm().controls) */
 
         });
@@ -59,6 +61,8 @@ export class BasvuruFormService {
                 basvuruTuruId: new FormControl(data.value.basvuruTuruId),
                 basvuruTuru: new FormControl(data.value.basvuruTuru),
                 addBasvuruForm: new FormControl(data.value.addBasvuruForm),
+                basvuruBaslangicTarih: new FormControl(data.value.basvuruBaslangicTarih),
+                basvuruBitisTarih: new FormControl(data.value.basvuruBaslangicTarih),
 
 
             })

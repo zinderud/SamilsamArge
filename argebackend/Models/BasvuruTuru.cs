@@ -9,6 +9,8 @@ namespace argebackend.Models
     {
 
         public string basvuruTuru { get; set; }
+        public DateTime basvuruBaslangicTarih { get; set; }
+        public DateTime basvuruBitisTarih { get; set; }
 
 
 
