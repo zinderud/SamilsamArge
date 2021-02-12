@@ -386,14 +386,20 @@ namespace argebackend.Services
             {
                 q = q.Where(c => (c.BasvuruTuru == f.BasvuruTuru));
             }
-            if (!String.IsNullOrEmpty(f.UserId.ToString()))
-            {
-                q = q.Where(c => (c.UserId == f.UserId));
-            }
-            if (!String.IsNullOrEmpty(f.basvuruBitisTarih.ToString()))
-            {
-                q = q.Where(s => (s.basvuruBitisTarih <= DateTime.Today));
-            }
+            /*  
+               if (!String.IsNullOrEmpty(f.basvuruBitisTarih.ToString()))
+                {
+
+                      q = q.Where(s => (Convert.ToDateTime(s.basvuruBitisTarih) <= DateTime.Today));  
+                } 
+
+            */
+            /*
+           if (!String.IsNullOrEmpty(f.UserId.ToString()))
+           {
+               q = q.Where(c => (c.UserId.ToString() == f.UserId));
+           }
+           */
 
             return q;
         }
@@ -454,8 +460,9 @@ namespace argebackend.Services
             if (!String.IsNullOrEmpty(f.searchString))
             {
 
-                q = q.Where(x => x.Durum == (f.searchString));
+                q = q.Where(x => x.Durum == f.searchString);
             }
+
             return q;
         }
 
