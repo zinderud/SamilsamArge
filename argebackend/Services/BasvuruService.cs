@@ -242,7 +242,7 @@ namespace argebackend.Services
         }
 
 
-        public async Task<ProcessResult<List<Basvuru>>> ListAsync(GetListViewModel<BaseFilter> getListModel)
+        public async Task<ProcessResult<List<Basvuru>>> ListAsync(GetListViewModel<BasvuruFilter> getListModel)
         {
             IQueryable<Basvuru> q = context.Basvurus.Include(x => x.User);
             q = SetIncludes(q);
@@ -262,7 +262,7 @@ namespace argebackend.Services
             return await Process.RunAsync(action, countItems);
         }
 
-        public async Task<ProcessResult<List<Basvuru>>> UserBasvuruListAsync(GetListViewModel<BaseFilter> getListModel)
+        public async Task<ProcessResult<List<Basvuru>>> UserBasvuruListAsync(GetListViewModel<BasvuruFilter> getListModel)
         {
             IQueryable<Basvuru> q = context.Basvurus.Include(x => x.User).Where(x => x.User.Id == CurrentUser.Id);
             q = SetIncludes(q);
@@ -281,7 +281,7 @@ namespace argebackend.Services
 
             return await Process.RunAsync(action, countItems);
         }
-        public async Task<ProcessResult<List<SelectedBasvuru>>> UseraddBassvuruListAsync(GetListViewModel<BaseFilter> getListModel)
+        public async Task<ProcessResult<List<SelectedBasvuru>>> UseraddBassvuruListAsync(GetListViewModel<BasvuruFilter> getListModel)
         {
             IQueryable<SelectedBasvuru> q = context.Basvurus.Include(x => x.User)
             .Select(p => new SelectedBasvuru
@@ -320,7 +320,7 @@ namespace argebackend.Services
             return await Process.RunAsync(action, countItems);
         }
 
-        public async Task<ProcessResult<int>> CountAsync(BaseFilter filter)
+        public async Task<ProcessResult<int>> CountAsync(BasvuruFilter filter)
         {
             IQueryable<Basvuru> q = context.Basvurus;
             q = SetFilter(q, filter);
@@ -371,7 +371,7 @@ namespace argebackend.Services
             return q;
         }
 
-        private IQueryable<Basvuru> SetFilter(IQueryable<Basvuru> q, BaseFilter f)
+        private IQueryable<Basvuru> SetFilter(IQueryable<Basvuru> q, BasvuruFilter f)
         {
             if (f == null)
             {
@@ -382,6 +382,19 @@ namespace argebackend.Services
 
                 q = q.Where(x => x.Durum == f.searchString);
             }
+            if (!String.IsNullOrEmpty(f.BasvuruTuru))
+            {
+                q = q.Where(c => (c.BasvuruTuru == f.BasvuruTuru));
+            }
+            if (!String.IsNullOrEmpty(f.UserId.ToString()))
+            {
+                q = q.Where(c => (c.UserId == f.UserId));
+            }
+            if (!String.IsNullOrEmpty(f.basvuruBitisTarih.ToString()))
+            {
+                q = q.Where(s => (s.basvuruBitisTarih <= DateTime.Today));
+            }
+
             return q;
         }
 
@@ -432,7 +445,7 @@ namespace argebackend.Services
             return q.Skip(p.offset).Take(p.limit);
         }
 
-        private IQueryable<SelectedBasvuru> SetaddUserFilter(IQueryable<SelectedBasvuru> q, BaseFilter f)
+        private IQueryable<SelectedBasvuru> SetaddUserFilter(IQueryable<SelectedBasvuru> q, BasvuruFilter f)
         {
             if (f == null)
             {

@@ -119,7 +119,7 @@ namespace argebackend.Controllers
         [ProducesResponseType(typeof(List<Basvuru>), 200)]
         /*  [Authorize(Roles = "Admin")] */
         [AllowAnonymous]
-        public async Task<IActionResult> List([FromQuery] GetListViewModel<BaseFilter> listModel)
+        public async Task<IActionResult> List([FromQuery] GetListViewModel<BasvuruFilter> listModel)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -136,7 +136,7 @@ namespace argebackend.Controllers
         [ProducesResponseType(typeof(List<Basvuru>), 200)]
         /*  [Authorize(Roles = "Admin")] */
         [AllowAnonymous]
-        public async Task<IActionResult> UseraddBasvuruList([FromQuery] GetListViewModel<BaseFilter> listModel)
+        public async Task<IActionResult> UseraddBasvuruList([FromQuery] GetListViewModel<BasvuruFilter> listModel)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -153,7 +153,7 @@ namespace argebackend.Controllers
         [ProducesResponseType(typeof(int), 200)]
         [Authorize(Roles = "Admin")]
         [AllowAnonymous]
-        public async Task<IActionResult> Count(BaseFilter filter)
+        public async Task<IActionResult> Count(BasvuruFilter filter)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -173,7 +173,7 @@ namespace argebackend.Controllers
         [ProducesResponseType(typeof(List<Basvuru>), 200)]
         /*  [Authorize(Roles = "Admin")] */
         [AllowAnonymous]
-        public async Task<IActionResult> UserBasvuruList([FromQuery] GetListViewModel<BaseFilter> listModel)
+        public async Task<IActionResult> UserBasvuruList([FromQuery] GetListViewModel<BasvuruFilter> listModel)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

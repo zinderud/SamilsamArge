@@ -22,8 +22,8 @@ export class Basvuru {
 }
 
 
-export class OzgecmisFilter extends BaseFilter {
-    constructor(public searchString: string, public userId: number,
+export class BasvuruFilter extends BaseFilter {
+    constructor(public searchString: string, public userId: number, public BasvuruTuru: string, public basvuruBitisTarih: Date,
         p: Paginator,
         ob: OrderBy) {
         super(p, ob);
@@ -36,7 +36,13 @@ export class OzgecmisFilter extends BaseFilter {
             hp = hp.set('filter.searchString', this.searchString);
         }
         if (!TypeHelper.isNullOrEmpty(this.userId) && this.userId !== 0) {
-            hp = hp.set('filter.tc', this.userId.toString());
+            hp = hp.set('filter.userId', this.userId.toString());
+        }
+        if (!TypeHelper.isNullOrEmpty(this.BasvuruTuru) && this.userId !== 0) {
+            hp = hp.set('filter.BasvuruTuru', this.BasvuruTuru.toString());
+        }
+        if (!TypeHelper.isNullOrEmpty(this.basvuruBitisTarih) && this.userId !== 0) {
+            hp = hp.set('filter.basvuruBitisTarih', this.basvuruBitisTarih.toString());
         }
         return hp;
     }
