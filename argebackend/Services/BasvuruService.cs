@@ -373,6 +373,8 @@ namespace argebackend.Services
 
         private IQueryable<Basvuru> SetFilter(IQueryable<Basvuru> q, BasvuruFilter f)
         {
+            DateTime? dt = string.IsNullOrEmpty(f.basvuruBitisTarih) ? (DateTime?)null : DateTime.Parse(f.basvuruBitisTarih);
+            Console.WriteLine("ddsad das 1" + dt.ToString());
             if (f == null)
             {
                 return q;
@@ -385,15 +387,17 @@ namespace argebackend.Services
             if (!String.IsNullOrEmpty(f.BasvuruTuru))
             {
                 q = q.Where(c => (c.BasvuruTuru == f.BasvuruTuru));
+
             }
-            /*  
-               if (!String.IsNullOrEmpty(f.basvuruBitisTarih.ToString()))
-                {
 
-                      q = q.Where(s => (Convert.ToDateTime(s.basvuruBitisTarih) <= DateTime.Today));  
-                } 
+            if (!String.IsNullOrEmpty(dt.ToString()))
+            {
+                Console.WriteLine("ddsad das" + dt.ToString());
+                q = q.Where(x => x.basvuruBitisTarih > dt.Value);
+                //q = q.Where(c => c.basvuruBitisTarih >= dt);
+                //q = q.Where(s => (Convert.ToDateTime(s.basvuruBitisTarih) <= dt));
+            }
 
-            */
             /*
            if (!String.IsNullOrEmpty(f.UserId.ToString()))
            {

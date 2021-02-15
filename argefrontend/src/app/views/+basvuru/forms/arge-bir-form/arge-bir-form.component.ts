@@ -68,6 +68,8 @@ export class ArgeBirFormComponent implements OnInit {
     if (this.aform.valid) {
       this.aform.disable();
       const d = JSON.stringify(this.aform.value);
+      this.basvuru.basvuruBaslangicTarih = this.aform.value.basvuruBaslangicTarih;
+      this.basvuru.basvuruBitisTarih = this.aform.value.basvuruBitisTarih;
       /*   console.log("json", d) */
       this.basvuru.basvuruForm = JSON.stringify(this.aform.value);
 

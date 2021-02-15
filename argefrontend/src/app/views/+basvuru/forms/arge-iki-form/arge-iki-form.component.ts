@@ -66,6 +66,8 @@ export class ArgeIkiFormComponent implements OnInit {
       this.aform.disable();
       const d = JSON.stringify(this.aform.value);
       /*   console.log("json", d) */
+      this.basvuru.basvuruBaslangicTarih = this.aform.value.basvuruBaslangicTarih;
+      this.basvuru.basvuruBitisTarih = this.aform.value.basvuruBitisTarih;
       this.basvuru.basvuruForm = JSON.stringify(this.aform.value);
 
       const p = { ...this.basvuru };

@@ -79,11 +79,13 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
             );
 
           } else {
+
+            //this.searchForm.value.basvuruBitisTarih
             const params = new HttpParams()
               .set('filter.searchString', this.searchForm.value.durum || '')
               .set('filter.userId', "")
               .set('filter.BasvuruTuru', this.searchForm.value.BasvuruTuru)
-              .set('filter.basvuruBitisTarih', this.searchForm.value.basvuruBitisTarih)
+              .set('filter.basvuruBitisTarih', new Date().toDateString())
               .set('paginator.offset', (this.paginator.pageIndex * this.paginator.pageSize).toString())
               .set('paginator.limit', this.paginator.pageSize.toString())
               .set('orderBy.by', this.sort.active)
