@@ -6,32 +6,29 @@
 
   <div class="container padding-15">
 
-    <div class="item-70 container">
+    <div class=" container">
 
-      <div class="item-40">
-        <mat-form-field class="full-width">
+      <div class="item-30">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Durum</mat-label>
           <input matInput type="text" placeholder="Başvuru Filtrele" formControlName="durum" />
         </mat-form-field>
       </div>
-      <div class="item-40">
-        <mat-form-field class="full-width">
+      <div class="item-30">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>UserId</mat-label>
           <input matInput type="text" placeholder="UserId Filtrele" formControlName="userId" />
         </mat-form-field>
       </div>
-      <div class="item-40">
-        <mat-form-field class="full-width">
-          <input matInput type="text" placeholder="UserId Filtrele" formControlName="userId" />
-        </mat-form-field>
-      </div>
-      <div class="item-40">
-        <mat-form-field class="full-width">
+    
+      <div class="item-30">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>BasvuruTuru</mat-label>
           <input matInput type="text" placeholder="BasvuruTuru Filtrele" formControlName="BasvuruTuru" />
         </mat-form-field>
       </div>
-      <div class="item-40">
-       <!--  <mat-form-field class="full-width">
-          <input matInput type="text" placeholder="basvuruBitisTarih Filtrele" formControlName="basvuruBitisTarih" />
-        </mat-form-field> -->
+      <div class="item-30">
+ 
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Tarih</mat-label>
           <input matInput [matDatepicker]="picker" placeholder="basvuruBitisTarih"   formControlName="basvuruBitisTarih">
@@ -40,19 +37,7 @@
         </mat-form-field>
       </div>
 
-
-           <!-- tarih -->
-<!--          <div class="col-sm-6">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Tarih</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="basvuruBitisTarih" required formControlName="basvuruBitisTarih">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-
-      </div>   -->
-      <!-- tarih -->
+ 
 
       <div class="item-25" style="margin-top: 10px;">
 
@@ -62,7 +47,7 @@
         </button>
 
         <button mat-raised-button color="accent" type="button" (click)="onClear()" aria-label="clear"
-          [disabled]="searchForm.valid || searchForm.value.durum === ''">
+          [disabled]="searchForm.valid  ">
           <mat-icon>clear</mat-icon>
           <span>temizle</span>
         </button>

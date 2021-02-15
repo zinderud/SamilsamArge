@@ -398,12 +398,12 @@ namespace argebackend.Services
                 //q = q.Where(s => (Convert.ToDateTime(s.basvuruBitisTarih) <= dt));
             }
 
-            /*
-           if (!String.IsNullOrEmpty(f.UserId.ToString()))
-           {
-               q = q.Where(c => (c.UserId.ToString() == f.UserId));
-           }
-           */
+
+            if (!String.IsNullOrEmpty(f.UserId))
+            {
+                q = q.Where(c => c.UserId == Convert.ToInt32(f.UserId));
+            }
+
 
             return q;
         }

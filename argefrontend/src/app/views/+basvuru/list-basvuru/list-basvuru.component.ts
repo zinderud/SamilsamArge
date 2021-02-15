@@ -12,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
+import { TypeHelper } from '@app/shared/lib/helpers/typeHelper';
+import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
 @Component({
   selector: 'app-list-basvuru',
   templateUrl: './list-basvuru.component.html',
@@ -80,12 +82,17 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
 
           } else {
 
-            //this.searchForm.value.basvuruBitisTarih
+            let kdate = "";
+            if (!TypeHelper.isNullOrEmpty(this.searchForm.value.basvuruBitisTarih)) {
+              kdate = new Date(this.searchForm.value.basvuruBitisTarih).toLocaleDateString()
+            }
+
+            /*  let  let= this.searchForm.value.basvuruBitisTarih ? 12 : (int?)null;  */
             const params = new HttpParams()
               .set('filter.searchString', this.searchForm.value.durum || '')
-              .set('filter.userId', "")
-              .set('filter.BasvuruTuru', this.searchForm.value.BasvuruTuru)
-              .set('filter.basvuruBitisTarih', new Date().toDateString())
+              .set('filter.userId', this.searchForm.value.userId || '')
+              .set('filter.BasvuruTuru', this.searchForm.value.BasvuruTuru || '')
+              .set('filter.basvuruBitisTarih', kdate)
               .set('paginator.offset', (this.paginator.pageIndex * this.paginator.pageSize).toString())
               .set('paginator.limit', this.paginator.pageSize.toString())
               .set('orderBy.by', this.sort.active)
@@ -114,7 +121,7 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
 
   onFilter(): void {
     if (this.searchForm.valid) {
-      this.load$.next(this.searchForm.value.name);
+      this.load$.next(this.searchForm.value.durum);
       this.searchForm.disable();
     }
   }
