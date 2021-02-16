@@ -9,10 +9,31 @@
     <div class=" container">
 
       <div class="item-30">
-        <mat-form-field class="full-width" appearance="outline">
+       <!--  <mat-form-field class="full-width" appearance="outline">
           <mat-label>Durum</mat-label>
           <input matInput type="text" placeholder="Başvuru Filtrele" formControlName="durum" />
-        </mat-form-field>
+        </mat-form-field> -->
+        <mat-form-field class="full-width " appearance="outline">
+          <mat-label>Başvuru Durumunu 
+          </mat-label>
+        
+          <select matNativeControl formControlName="durum">
+
+              <option value="basvuru_yapildi">Başvuru yapıldı</option>
+              <option value="basvuru_evrak_inceleme">Başvuru Evrak incelemede</option>
+              <option value="basvuru_eksik_evrak"> Başvuru eksik evrak</option>
+              <option value="basvuru_on_kabul"> Başvuru ön kabul</option>
+              <option value="On_inceleme_atama"> Ön inceleme Atama</option>
+              <option value="On_inceleme_tamam"> Ön inceleme Tamam</option>
+              <option value="basvuru_on_kabul"> Başvuru ön kabul</option>
+              <option value="basvuru_red"> Başvuru Red</option>
+              <option value="basvuru_kabul"> Başvuru Kabul</option>
+              <option value="basvuru_duzeltme"> Başvuru Düzeltme</option>
+
+          </select>
+
+
+      </mat-form-field>
       </div>
       <div class="item-30">
         <mat-form-field class="full-width" appearance="outline">
@@ -22,12 +43,24 @@
       </div>
     
       <div class="item-30">
-        <mat-form-field class="full-width" appearance="outline">
+        <!-- <mat-form-field class="full-width" appearance="outline">
           <mat-label>BasvuruTuru</mat-label>
           <input matInput type="text" placeholder="BasvuruTuru Filtrele" formControlName="BasvuruTuru" />
+        </mat-form-field> -->
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>basvuruTuru</mat-label>
+
+          <select matNativeControl formControlName="basvuruTuru">
+            <option value="ArastirmaCalis">Araştırma Çalışmaları Kurum İzni Başvuru Formları</option>
+            <option value="ArastirmaCalisKovid">(Covid-19 İle İlgili Çalışmalar İçin) Araştırma Çalışmaları Kurum İzni
+              Başvuru Formları </option>
+            <option value="DonerDestek">Döner Sermaye İşletmesi Kapsamında Destekleyici Talebi İle Yürütülecek Çalışma
+              Başvuruları </option>
+            <option value="SosyalProje"> Sosyal Proje Başvuru Formları</option>
+          </select>
         </mat-form-field>
       </div>
-      <div class="item-30">
+<!--       <div class="item-30">
  
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Tarih</mat-label>
@@ -36,7 +69,7 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
-
+ -->
  
 
       <div class="item-25" style="margin-top: 10px;">

@@ -56,10 +56,10 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
     private router: Router,
   ) {
     this.searchForm = this.formBuilder.group({
-      durum: [''],
-      userId: [''],
-      BasvuruTuru: [''],
-      basvuruBitisTarih: ['']
+      durum: "",
+      userId: "",
+      basvuruTuru: "",
+      /*  basvuruBitisTarih: "" */
 
     });
   }
@@ -82,17 +82,18 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
 
           } else {
 
-            let kdate = "";
-            if (!TypeHelper.isNullOrEmpty(this.searchForm.value.basvuruBitisTarih)) {
-              kdate = new Date(this.searchForm.value.basvuruBitisTarih).toLocaleDateString()
-            }
-
+            /*        let kdate = "";
+                   console.log("bu ne ", this.searchForm.value.basvuruBitisTarih);
+                   if (!TypeHelper.isNullOrEmpty(this.searchForm.value.basvuruBitisTarih)) {
+                     kdate = new Date(this.searchForm.value.basvuruBitisTarih).toLocaleDateString()
+                   }
+        */
             /*  let  let= this.searchForm.value.basvuruBitisTarih ? 12 : (int?)null;  */
             const params = new HttpParams()
               .set('filter.searchString', this.searchForm.value.durum || '')
               .set('filter.userId', this.searchForm.value.userId || '')
-              .set('filter.BasvuruTuru', this.searchForm.value.BasvuruTuru || '')
-              .set('filter.basvuruBitisTarih', kdate)
+              .set('filter.BasvuruTuru', this.searchForm.value.basvuruTuru || '')
+              /*    .set('filter.basvuruBitisTarih', kdate) */
               .set('paginator.offset', (this.paginator.pageIndex * this.paginator.pageSize).toString())
               .set('paginator.limit', this.paginator.pageSize.toString())
               .set('orderBy.by', this.sort.active)
@@ -120,15 +121,30 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
   }
 
   onFilter(): void {
+
     if (this.searchForm.valid) {
       this.load$.next(this.searchForm.value.durum);
-      this.searchForm.disable();
+      /*    this.searchForm.disable(); */
     }
+    this.searchForm = this.formBuilder.group({
+      durum: [''],
+      userId: [''],
+      basvuruTuru: [''],
+      /*  basvuruBitisTarih: "" */
+
+    });
   }
 
   onClear(): void {
-    this.searchForm.reset();
-    this.searchForm.enable();
+    /*  this.searchForm.reset() */
+    this.searchForm = this.formBuilder.group({
+      durum: [''],
+      userId: [''],
+      BasvuruTuru: [''],
+      /*    basvuruBitisTarih: "" */
+
+    });
+    /*     this.searchForm.enable(); */
     this.load$.next('');
   }
 

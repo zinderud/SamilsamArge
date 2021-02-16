@@ -127,6 +127,7 @@ import { MatFileInputModule } from './components/mat-file-input/mat-file-input.m
 import { MatFileUploadComponent } from './components/mat-file-upload/mat-file-upload.component';
 import { NgxVerticalTimelineModule } from './components/ngx-vertical-timeline/ngx-vertical-timeline.module';
 import { MatEklerComponent } from './mat-ekler/mat-ekler.component';
+import { BasvuruCountStatsComponent } from './components/basvuru-count-stats/basvuru-count-stats.component';
 
 @NgModule({
   imports: [
@@ -213,7 +214,8 @@ import { MatEklerComponent } from './mat-ekler/mat-ekler.component';
     MatFileInputModule,
     MatFileUploadComponent,
     NgxVerticalTimelineModule,
-    MatEklerComponent
+    MatEklerComponent,
+    BasvuruCountStatsComponent
   ],
   declarations: [
     CallActionCardComponent,
@@ -224,6 +226,7 @@ import { MatEklerComponent } from './mat-ekler/mat-ekler.component';
     MatTableNotFoundComponent,
     MatFileUploadComponent,
     MatEklerComponent,
+    BasvuruCountStatsComponent,
 
   ],
   providers: [
