@@ -25,9 +25,9 @@ namespace argebackend.Services
         public async Task<CountStats> BasvuruCountStats()
         {
 
-            int toplamBasvuruSayisi, basvuru_kabul, basvuru_red, basvuru_yapildi, basvuru_on_kabul, On_inceleme_atama, basvuru_duzeltme;
+            int toplamBasvuruSayisi, basvuru_kabul, basvuru_red, basvuru_yapildi, basvuru_on_kabul, On_inceleme_atama, basvuru_duzeltme, On_inceleme_tamam;
 
-            basvuru_on_kabul = On_inceleme_atama = basvuru_duzeltme = toplamBasvuruSayisi = basvuru_kabul = basvuru_red = basvuru_yapildi = 0;
+            On_inceleme_tamam = basvuru_on_kabul = On_inceleme_atama = basvuru_duzeltme = toplamBasvuruSayisi = basvuru_kabul = basvuru_red = basvuru_yapildi = 0;
 
             CountStats csys = new CountStats();
             IQueryable<Basvuru> q = context.Basvurus;
@@ -43,7 +43,7 @@ namespace argebackend.Services
 
                 if (x.Durum == "On_inceleme_atama") { ++On_inceleme_atama; };
                 if (x.Durum == "basvuru_on_kabul") { ++basvuru_on_kabul; };
-
+                if (x.Durum == "On_inceleme_tamam") { ++On_inceleme_tamam; };
                 if (x.Durum == "basvuru_duzeltme") { ++basvuru_duzeltme; };
 
             });
@@ -54,6 +54,7 @@ namespace argebackend.Services
             csys.kabuledilenBasvuruSayisi = basvuru_kabul;
             csys.onIncelemeAtamaBasvuruSayisi = On_inceleme_atama;
             csys.duzeltmeAtamaBasvuruSayisi = basvuru_duzeltme;
+            csys.yeniKontrolSayisi = On_inceleme_tamam; // todo burda  tamamlananla  yeniKontrolSayisi aynı düzlem  yaptık düzenlenecek
             return csys;
 
 
