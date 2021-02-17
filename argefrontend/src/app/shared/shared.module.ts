@@ -128,6 +128,7 @@ import { MatFileUploadComponent } from './components/mat-file-upload/mat-file-up
 import { NgxVerticalTimelineModule } from './components/ngx-vertical-timeline/ngx-vertical-timeline.module';
 import { MatEklerComponent } from './mat-ekler/mat-ekler.component';
 import { BasvuruCountStatsComponent } from './components/basvuru-count-stats/basvuru-count-stats.component';
+import { StatsBadgeComponent } from './components/stats-badge/stats-badge.component';
 
 @NgModule({
   imports: [
@@ -215,7 +216,8 @@ import { BasvuruCountStatsComponent } from './components/basvuru-count-stats/bas
     MatFileUploadComponent,
     NgxVerticalTimelineModule,
     MatEklerComponent,
-    BasvuruCountStatsComponent
+    BasvuruCountStatsComponent,
+    StatsBadgeComponent
   ],
   declarations: [
     CallActionCardComponent,
@@ -227,6 +229,7 @@ import { BasvuruCountStatsComponent } from './components/basvuru-count-stats/bas
     MatFileUploadComponent,
     MatEklerComponent,
     BasvuruCountStatsComponent,
+    StatsBadgeComponent,
 
   ],
   providers: [

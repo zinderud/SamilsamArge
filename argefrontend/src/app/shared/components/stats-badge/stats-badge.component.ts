@@ -2,41 +2,37 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NbComponentSize, NbComponentStatus, NbMediaBreakpointsService, NbThemeService } from '@nebular/theme';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-
 @Component({
-  selector: 'ngx-call-action-card',
-  styleUrls: ['./call-action-card.component.scss'],
+  selector: 'app-stats-badge',
+
+  styleUrls: ['./stats-badge.component.scss'],
   template: `
-    <nb-card>
-      <div class="icon-container">
-        <div class="icon">
-      
-          <i class="material-icons">
-                   {{icon}}
-                  </i>
-        </div>
+  <nb-card>
+    <div class="icon-container">
+      <div class="icon h4">
+   
+                 {{icon}}
+             
       </div>
+    </div>
 
-      <div class="details">
-        <div class="title h6">{{ title }}</div>
-      </div>
+    <div class="details">
+      <div class="title h6">{{ title }}</div>
+    </div>
 
-      <div class="actions">
-        <a nbButton [size]="buttonSize" [status]="getButtonStatus()" hero routerLink={{link}}>
-          {{ linkTitle }}
-        </a>
-      </div>
-    </nb-card>
-  `,
+  
+  </nb-card>
+`,
 })
-export class CallActionCardComponent implements OnInit, OnDestroy {
+
+export class StatsBadgeComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
   @Input() title: string;
-  @Input() link: string;
+
   @Input() icon: string;
-  @Input() linkTitle: string;
+
 
   currentTheme: string;
   buttonSize: NbComponentSize;
@@ -71,11 +67,5 @@ export class CallActionCardComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  getButtonStatus(): NbComponentStatus {
-    switch (this.currentTheme) {
-      case 'cosmic': return 'primary';
-      case 'corporate': return 'warning';
-      default: return 'danger';
-    }
-  }
+
 }
