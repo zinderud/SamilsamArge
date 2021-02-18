@@ -45,6 +45,24 @@ namespace argebackend.Controllers
         }
 
 
+        [HttpGet("projebitis")]
+        [ProducesResponseType(typeof(List<Basvuru>), 200)]
+        /*  [Authorize(Roles = "Admin")] */
+        [AllowAnonymous]
+        public async Task<IActionResult> projebitis([FromQuery] string time)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _StatsService.BasvuruSearchTimeAsync(time);
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            return Ok(result);
+
+        }
+
+
 
 
     }

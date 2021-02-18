@@ -15,11 +15,11 @@ import { MatSort } from '@angular/material/sort';
 import { TypeHelper } from '@app/shared/lib/helpers/typeHelper';
 
 @Component({
-  selector: 'app-list-basvuru',
-  templateUrl: './list-basvuru.component.html',
-  styleUrls: ['./list-basvuru.component.css']
+  selector: 'app-proje-bitis',
+  templateUrl: './proje-bitis.component.html',
+  styleUrls: ['./proje-bitis.component.scss']
 })
-export class ListBasvuruComponent implements OnInit, OnDestroy {
+export class ProjeBitisComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [
     'userId',
     'basvuruNo',
@@ -56,81 +56,40 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
     private router: Router,
   ) {
     this.searchForm = this.formBuilder.group({
-      durum: "",
-      userId: "",
-      basvuruTuru: "",
-      /*  basvuruBitisTarih: "" */
+      basvuruBitisTarih: ""
 
     });
   }
 
   ngOnInit(): void {
-    // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
-    this.subscription = merge(this.sort.sortChange, this.paginator.page, this.load$)
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.loading = true;
 
-          if (!this.preloading) {
-            this.preloading = true;
-            return this.activatedRoute.data.pipe(
-              map((resolve: any) => resolve.data)
-            );
 
-          } else {
-
-            /*        let kdate = "";
-                   console.log("bu ne ", this.searchForm.value.basvuruBitisTarih);
-                   if (!TypeHelper.isNullOrEmpty(this.searchForm.value.basvuruBitisTarih)) {
-                     kdate = new Date(this.searchForm.value.basvuruBitisTarih).toLocaleDateString()
-                   }
-        */
-            /*  let  let= this.searchForm.value.basvuruBitisTarih ? 12 : (int?)null;  */
-            const params = new HttpParams()
-              .set('filter.searchString', this.searchForm.value.durum || '')
-              .set('filter.userId', this.searchForm.value.userId || '')
-              .set('filter.BasvuruTuru', this.searchForm.value.basvuruTuru || '')
-              /*    .set('filter.basvuruBitisTarih', kdate) */
-              .set('paginator.offset', (this.paginator.pageIndex * this.paginator.pageSize).toString())
-              .set('paginator.limit', this.paginator.pageSize.toString())
-              .set('orderBy.by', this.sort.active)
-              .set('orderBy.desc', (this.sort.direction === 'desc').toString());
-
-            return this.httpClient.get<any>(`${env.serverUrl}/basvuru/userbasvurulist`, { params });
-          }
-        }),
-        map(data => {
-          // Flip flag to show that loading has finished.
-          this.loading = false;
-          this.resultsLength = data.countItems;
-
-          return data.value;
-        }),
-        catchError(() => {
-          this.loading = false;
-          return observableOf([]);
-        })
-      ).subscribe((data: any) => {
-        this.data = data;
-      }, (error: HttpErrorResponse) => {
-        this.snackBar.open(error.error, 'X', { duration: 3000 });
-      });
+    /*     let k = { ...this.searchForm.value.basvuruBitisTarih }
+    
+        this.httpClient.get<any>(`${env.serverUrl}/stats/projebitis`, k)
+          .subscribe((data: any) => {
+            this.data = data.value;
+          }, (error: HttpErrorResponse) => {
+            this.snackBar.open(error.error, 'X', { duration: 3000 });
+          }); */
   }
 
   onFilter(): void {
 
     if (this.searchForm.valid) {
-      this.load$.next(this.searchForm.value.durum);
-      /*    this.searchForm.disable(); */
+
+      let k = { ...this.searchForm.value.basvuruBitisTarih }
+
+      this.httpClient.get<any>(`${env.serverUrl}/stats/projebitis`, { k })
+        .subscribe((data: any) => {
+          this.data = data.value;
+        }, (error: HttpErrorResponse) => {
+          this.snackBar.open(error.error, 'X', { duration: 3000 });
+        });
     }
     this.searchForm = this.formBuilder.group({
-      durum: [''],
-      userId: [''],
-      basvuruTuru: [''],
-      /*  basvuruBitisTarih: "" */
+      basvuruBitisTarih: ""
 
     });
   }
@@ -138,10 +97,7 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
   onClear(): void {
     /*  this.searchForm.reset() */
     this.searchForm = this.formBuilder.group({
-      durum: [''],
-      userId: [''],
-      BasvuruTuru: [''],
-      /*    basvuruBitisTarih: "" */
+      basvuruBitisTarih: ""
 
     });
     /*     this.searchForm.enable(); */
@@ -177,12 +133,7 @@ export class ListBasvuruComponent implements OnInit, OnDestroy {
   }
 
 
-  //basvuru_yapildi
-  //basvuru_inceleme
-  //basvuru_eksik_evrak
-  //basvuru_on_kabul
-  //basvuru_red
-  //basvuru_kabul
+
   getColor(durum) {
     (2)
     switch (durum) {
