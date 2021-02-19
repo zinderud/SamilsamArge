@@ -79,11 +79,17 @@ export class ProjeBitisComponent implements OnInit, OnDestroy {
 
     if (this.searchForm.valid) {
 
-      let k = { ...this.searchForm.value.basvuruBitisTarih }
+      let k = new Date(this.searchForm.value.basvuruBitisTarih).toDateString();
 
-      this.httpClient.get<any>(`${env.serverUrl}/stats/projebitis`, { k })
+      const params = new HttpParams()
+        .set('basvuruBitisTarih', k || '');
+
+
+      this.httpClient.get<any>(`${env.serverUrl}/stats/projebitis`, { params })
         .subscribe((data: any) => {
           this.data = data.value;
+          this.loading = false;
+          this.resultsLength = data.countItems;
         }, (error: HttpErrorResponse) => {
           this.snackBar.open(error.error, 'X', { duration: 3000 });
         });
@@ -129,7 +135,7 @@ export class ProjeBitisComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    /*    this.subscription.unsubscribe(); */
   }
 
 

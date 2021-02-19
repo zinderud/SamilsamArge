@@ -49,12 +49,12 @@ namespace argebackend.Controllers
         [ProducesResponseType(typeof(List<Basvuru>), 200)]
         /*  [Authorize(Roles = "Admin")] */
         [AllowAnonymous]
-        public async Task<IActionResult> projebitis([FromQuery] string time)
+        public async Task<IActionResult> projebitis([FromQuery] StatsTime stats)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = await _StatsService.BasvuruSearchTimeAsync(time);
+            var result = await _StatsService.BasvuruSearchTimeAsync(stats.basvuruBitisTarih);
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
 

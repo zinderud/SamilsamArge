@@ -28,6 +28,7 @@ import { UserRoleResolver } from './resolvers/userrole.resolver';
 import { KontrolListComponent } from './kontrol/kontrol-list/kontrol-list.component';
 import { KontrolResolver } from './resolvers/kontrol.resolver';
 import { ProjeBitisComponent } from './stats/proje-bitis/proje-bitis.component';
+import { StatsTimeResolver } from './resolvers/statsTime.resolver';
 
 
 const routes: Routes = [
@@ -91,6 +92,9 @@ const routes: Routes = [
     component: ProjeBitisComponent,
     data: { title: 'proje bitiş tarihi', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
+    resolve: {
+      data: StatsTimeResolver
+    }
   }
 
 ];
@@ -129,7 +133,8 @@ const routes: Routes = [
     UserResolver,
     BasvuruResolver,
     UserRoleResolver,
-    KontrolResolver
+    KontrolResolver,
+    StatsTimeResolver
 
   ]
 })
