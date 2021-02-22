@@ -34,13 +34,15 @@ import { ArastirmaFormComponent } from './forms/arastirma-form/arastirma-form.co
 import { ArastirmacilarFormComponent } from './forms/arastirmacilar-form/arastirmacilar-form.component';
 import { ArastirmaKapsamFormComponent } from './forms/arastirma-kapsam-form/arastirma-kapsam-form.component';
 import { ArastirmaBelgelerFormComponent } from './forms/arastirma-belgeler-form/arastirma-belgeler-form.component';
-import { ArgeBirFormComponent } from './forms/arge-bir-form/arge-bir-form.component';
 import { UploadDownloadService } from '@app/core/services/upload-download.service';
-import { ArgeIkiFormComponent } from './forms/arge-iki-form/arge-iki-form.component';
-import { ArgeUcFormComponent } from './forms/arge-uc-form/arge-uc-form.component';
 import { ArgeFormOnizlemeComponent } from './forms/arge-form-onizleme/arge-form-onizleme.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { ArgeDortFormComponent } from './forms/arge-dort-form/arge-dort-form.component';
+import { ArgeDortFormComponent } from './forms/SosyalProje/arge-dort-form/arge-dort-form.component';
+import { ArgeUcFormComponent } from './forms/DonerDestek/arge-uc-form/arge-uc-form.component';
+import { ArgeIkiFormComponent } from './forms/ArastirmaCalisKovid/arge-iki-form/arge-iki-form.component';
+import { ArgeBirFormComponent } from './forms/ArastirmaCalis/arge-bir-form/arge-bir-form.component';
+
+
 
 const routes: Routes = [
 

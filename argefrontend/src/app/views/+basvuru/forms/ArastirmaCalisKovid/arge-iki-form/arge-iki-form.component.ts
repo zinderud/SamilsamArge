@@ -3,29 +3,30 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, AbstractControlOptions, ValidatorFn, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ArastirmaBelgelerFormComponent } from '../arastirma-belgeler-form/arastirma-belgeler-form.component';
-import { ArastirmaFormComponent } from '../arastirma-form/arastirma-form.component';
-import { ArastirmaKapsamFormComponent } from '../arastirma-kapsam-form/arastirma-kapsam-form.component';
-import { ArastirmacilarFormComponent } from '../arastirmacilar-form/arastirmacilar-form.component';
-import { ArastirmacilarForm } from '../model/arastirmacilar';
+
 
 import { environment as env } from '@env/environment';
 import { Basvuru } from '@app/core/models/basvuru/basvuru';
-import { Timeline } from '@app/core/models/timeline';
 import { TimelineService } from '@app/core/services/timeline.service';
-import { MatEklerComponent } from '@app/shared/mat-ekler/mat-ekler.component';
+import { Timeline } from '@app/core/models/timeline';
+import { ArastirmaBelgelerFormComponent } from '../../arastirma-belgeler-form/arastirma-belgeler-form.component';
+import { ArastirmaFormComponent } from '../../arastirma-form/arastirma-form.component';
+import { ArastirmaKapsamFormComponent } from '../../arastirma-kapsam-form/arastirma-kapsam-form.component';
+import { ArastirmacilarFormComponent } from '../../arastirmacilar-form/arastirmacilar-form.component';
+import { ArastirmacilarForm } from '../../model/arastirmacilar';
 type FormGroupConfig<T> = {
   [P in keyof T]: [
     T[P] | { value: T[P]; disabled: boolean },
     (AbstractControlOptions | ValidatorFn | ValidatorFn[])?
   ]
 };
+
 @Component({
-  selector: 'app-arge-bir-form',
-  templateUrl: './arge-bir-form.component.html',
-  styleUrls: ['./arge-bir-form.component.scss']
+  selector: 'app-arge-iki-form',
+  templateUrl: './arge-iki-form.component.html',
+  styleUrls: ['./arge-iki-form.component.scss']
 })
-export class ArgeBirFormComponent implements OnInit {
+export class ArgeIkiFormComponent implements OnInit {
   itemId: string;
   arastirmacilarformGroup: FormGroup;
   aform: FormGroup;
@@ -35,8 +36,7 @@ export class ArgeBirFormComponent implements OnInit {
   @ViewChild(ArastirmaKapsamFormComponent, { static: true }) arastirmaKapsamForm: ArastirmaKapsamFormComponent;
   @ViewChild(ArastirmacilarFormComponent, { static: true }) arastirmacilarform: ArastirmacilarFormComponent;
   @ViewChild(ArastirmaBelgelerFormComponent, { static: true }) arastirmaBelgelerFormComponent: ArastirmaBelgelerFormComponent;
-/*   @ViewChild(MatEklerComponent, { static: true }) sadecomp: MatEklerComponent;
- */  constructor(private fb: FormBuilder,
+  constructor(private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
@@ -45,15 +45,13 @@ export class ArgeBirFormComponent implements OnInit {
 
   ngOnInit() {
     this.aform = this.fb.group({
-      basvuruBaslangicTarih: "",
-      basvuruBitisTarih: "",
       baslik: [''],
+      basvuruBaslangicTarih: new FormControl(''),
+      basvuruBitisTarih: new FormControl(''),
       arastirmaform: this.arastirmaform.createGroup(),
       arastirmaKapsam: this.arastirmaKapsamForm.createGroup(),
       arastirmacilarforms: this.fb.array([this.createArastirmacilarformGroupForm()]),
-      arastirmaBelgelerForm: this.arastirmaBelgelerFormComponent.createGroup(),
-      belgesi: this.fb.group({ belge: "" })
-
+      arastirmaBelgelerForm: this.arastirmaBelgelerFormComponent.createGroup()
 
     });
     this.itemId = this.activatedRoute.snapshot.params.id;
@@ -68,16 +66,15 @@ export class ArgeBirFormComponent implements OnInit {
     if (this.aform.valid) {
       this.aform.disable();
       const d = JSON.stringify(this.aform.value);
+      /*   console.log("json", d) */
       this.basvuru.basvuruBaslangicTarih = this.aform.value.basvuruBaslangicTarih;
       this.basvuru.basvuruBitisTarih = this.aform.value.basvuruBitisTarih;
-      /*   console.log("json", d) */
       this.basvuru.basvuruForm = JSON.stringify(this.aform.value);
 
       const p = { ...this.basvuru };
       /*       console.log('save  this.basvuru', p); */
       this.httpClient.patch(`${env.serverUrl}/basvuru/${this.itemId}`, p
       ).subscribe((data: any) => {
-
 
         if (data.succeeded) {
           // timeline add
@@ -107,7 +104,6 @@ export class ArgeBirFormComponent implements OnInit {
 
 
   }
-
 
   get arastirmacilarforms(): FormArray {
     return this.aform.get("arastirmacilarforms") as FormArray
@@ -174,8 +170,6 @@ export class ArgeBirFormComponent implements OnInit {
     }
   }
 
-
-
   addTimeline(timeline: Timeline) {
     const p: Timeline = {
       userId: timeline.userId,
@@ -186,10 +180,9 @@ export class ArgeBirFormComponent implements OnInit {
 
     }
     console.log("timeline", p);
-    this.timelineservice.addTimeLine(p);
+    this.timelineservice.addTimeLine(p).subscribe((data: any) => {
+      console.log("timeline", data);
+    });
   }
 
-  formInitialized(name: string, form: FormGroup) {
-    this.aform.setControl(name, form);
-  }
 }

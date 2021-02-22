@@ -3,17 +3,18 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, AbstractControlOptions, ValidatorFn, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ArastirmaBelgelerFormComponent } from '../arastirma-belgeler-form/arastirma-belgeler-form.component';
-import { ArastirmaFormComponent } from '../arastirma-form/arastirma-form.component';
-import { ArastirmaKapsamFormComponent } from '../arastirma-kapsam-form/arastirma-kapsam-form.component';
-import { ArastirmacilarFormComponent } from '../arastirmacilar-form/arastirmacilar-form.component';
-import { ArastirmacilarForm } from '../model/arastirmacilar';
+
 
 import { environment as env } from '@env/environment';
 import { Basvuru } from '@app/core/models/basvuru/basvuru';
 import { Timeline } from '@app/core/models/timeline';
 import { TimelineService } from '@app/core/services/timeline.service';
 import { MatEklerComponent } from '@app/shared/mat-ekler/mat-ekler.component';
+import { ArastirmaBelgelerFormComponent } from '../../arastirma-belgeler-form/arastirma-belgeler-form.component';
+import { ArastirmaFormComponent } from '../../arastirma-form/arastirma-form.component';
+import { ArastirmaKapsamFormComponent } from '../../arastirma-kapsam-form/arastirma-kapsam-form.component';
+import { ArastirmacilarFormComponent } from '../../arastirmacilar-form/arastirmacilar-form.component';
+import { ArastirmacilarForm } from '../../model/arastirmacilar';
 type FormGroupConfig<T> = {
   [P in keyof T]: [
     T[P] | { value: T[P]; disabled: boolean },

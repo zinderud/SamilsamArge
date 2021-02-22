@@ -3,16 +3,16 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, AbstractControlOptions, ValidatorFn, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ArastirmaBelgelerFormComponent } from '../arastirma-belgeler-form/arastirma-belgeler-form.component';
-import { ArastirmaFormComponent } from '../arastirma-form/arastirma-form.component';
-import { ArastirmaKapsamFormComponent } from '../arastirma-kapsam-form/arastirma-kapsam-form.component';
-import { ArastirmacilarFormComponent } from '../arastirmacilar-form/arastirmacilar-form.component';
-import { ArastirmacilarForm } from '../model/arastirmacilar';
 
 import { environment as env } from '@env/environment';
 import { Basvuru } from '@app/core/models/basvuru/basvuru';
 import { TimelineService } from '@app/core/services/timeline.service';
 import { Timeline } from '@app/core/models/timeline';
+import { ArastirmaBelgelerFormComponent } from '../../arastirma-belgeler-form/arastirma-belgeler-form.component';
+import { ArastirmaFormComponent } from '../../arastirma-form/arastirma-form.component';
+import { ArastirmaKapsamFormComponent } from '../../arastirma-kapsam-form/arastirma-kapsam-form.component';
+import { ArastirmacilarFormComponent } from '../../arastirmacilar-form/arastirmacilar-form.component';
+import { ArastirmacilarForm } from '../../model/arastirmacilar';
 type FormGroupConfig<T> = {
   [P in keyof T]: [
     T[P] | { value: T[P]; disabled: boolean },
@@ -21,11 +21,11 @@ type FormGroupConfig<T> = {
 };
 
 @Component({
-  selector: 'app-arge-iki-form',
-  templateUrl: './arge-iki-form.component.html',
-  styleUrls: ['./arge-iki-form.component.scss']
+  selector: 'app-arge-uc-form',
+  templateUrl: './arge-uc-form.component.html',
+  styleUrls: ['./arge-uc-form.component.scss']
 })
-export class ArgeIkiFormComponent implements OnInit {
+export class ArgeUcFormComponent implements OnInit {
   itemId: string;
   arastirmacilarformGroup: FormGroup;
   aform: FormGroup;
@@ -65,9 +65,10 @@ export class ArgeIkiFormComponent implements OnInit {
     if (this.aform.valid) {
       this.aform.disable();
       const d = JSON.stringify(this.aform.value);
-      /*   console.log("json", d) */
+
       this.basvuru.basvuruBaslangicTarih = this.aform.value.basvuruBaslangicTarih;
       this.basvuru.basvuruBitisTarih = this.aform.value.basvuruBitisTarih;
+      /*   console.log("json", d) */
       this.basvuru.basvuruForm = JSON.stringify(this.aform.value);
 
       const p = { ...this.basvuru };
@@ -85,7 +86,6 @@ export class ArgeIkiFormComponent implements OnInit {
           }
           this.addTimeline(p);
           // timeline add
-
           this.snackBar.open(`basvuru  ${this.aform.value.baslik} düzenlendi`, 'X', { duration: 3000 });
           this.router.navigate(['basvuru']);
         }
@@ -169,6 +169,7 @@ export class ArgeIkiFormComponent implements OnInit {
     }
   }
 
+
   addTimeline(timeline: Timeline) {
     const p: Timeline = {
       userId: timeline.userId,
@@ -179,9 +180,7 @@ export class ArgeIkiFormComponent implements OnInit {
 
     }
     console.log("timeline", p);
-    this.timelineservice.addTimeLine(p).subscribe((data: any) => {
-      console.log("timeline", data);
-    });
+    this.timelineservice.addTimeLine(p);
   }
 
 }

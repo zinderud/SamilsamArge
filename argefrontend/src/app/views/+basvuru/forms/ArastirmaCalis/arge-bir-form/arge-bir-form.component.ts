@@ -3,29 +3,29 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, AbstractControlOptions, ValidatorFn, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ArastirmaBelgelerFormComponent } from '../arastirma-belgeler-form/arastirma-belgeler-form.component';
-import { ArastirmaFormComponent } from '../arastirma-form/arastirma-form.component';
-import { ArastirmaKapsamFormComponent } from '../arastirma-kapsam-form/arastirma-kapsam-form.component';
-import { ArastirmacilarFormComponent } from '../arastirmacilar-form/arastirmacilar-form.component';
-import { ArastirmacilarForm } from '../model/arastirmacilar';
+import { ArastirmaBelgelerFormComponent } from '../../arastirma-belgeler-form/arastirma-belgeler-form.component';
+import { ArastirmaFormComponent } from '../../arastirma-form/arastirma-form.component';
+import { ArastirmaKapsamFormComponent } from '../../arastirma-kapsam-form/arastirma-kapsam-form.component';
+import { ArastirmacilarFormComponent } from '../../arastirmacilar-form/arastirmacilar-form.component';
+import { ArastirmacilarForm } from '../../model/arastirmacilar';
 
 import { environment as env } from '@env/environment';
 import { Basvuru } from '@app/core/models/basvuru/basvuru';
-import { TimelineService } from '@app/core/services/timeline.service';
 import { Timeline } from '@app/core/models/timeline';
+import { TimelineService } from '@app/core/services/timeline.service';
+import { MatEklerComponent } from '@app/shared/mat-ekler/mat-ekler.component';
 type FormGroupConfig<T> = {
   [P in keyof T]: [
     T[P] | { value: T[P]; disabled: boolean },
     (AbstractControlOptions | ValidatorFn | ValidatorFn[])?
   ]
 };
-
 @Component({
-  selector: 'app-arge-uc-form',
-  templateUrl: './arge-uc-form.component.html',
-  styleUrls: ['./arge-uc-form.component.scss']
+  selector: 'app-arge-bir-form',
+  templateUrl: './arge-bir-form.component.html',
+  styleUrls: ['./arge-bir-form.component.scss']
 })
-export class ArgeUcFormComponent implements OnInit {
+export class ArgeBirFormComponent implements OnInit {
   itemId: string;
   arastirmacilarformGroup: FormGroup;
   aform: FormGroup;
@@ -44,13 +44,16 @@ export class ArgeUcFormComponent implements OnInit {
 
   ngOnInit() {
     this.aform = this.fb.group({
+      basvuruBaslangicTarih: "",
+      basvuruBitisTarih: "",
       baslik: [''],
-      basvuruBaslangicTarih: new FormControl(''),
-      basvuruBitisTarih: new FormControl(''),
       arastirmaform: this.arastirmaform.createGroup(),
       arastirmaKapsam: this.arastirmaKapsamForm.createGroup(),
       arastirmacilarforms: this.fb.array([this.createArastirmacilarformGroupForm()]),
-      arastirmaBelgelerForm: this.arastirmaBelgelerFormComponent.createGroup()
+      arastirmaBelgelerForm: this.arastirmaBelgelerFormComponent.createGroup(),
+      belgesi: this.fb.group({ belge: "" }),
+
+
 
     });
     this.itemId = this.activatedRoute.snapshot.params.id;
@@ -65,7 +68,6 @@ export class ArgeUcFormComponent implements OnInit {
     if (this.aform.valid) {
       this.aform.disable();
       const d = JSON.stringify(this.aform.value);
-
       this.basvuru.basvuruBaslangicTarih = this.aform.value.basvuruBaslangicTarih;
       this.basvuru.basvuruBitisTarih = this.aform.value.basvuruBitisTarih;
       /*   console.log("json", d) */
@@ -75,6 +77,7 @@ export class ArgeUcFormComponent implements OnInit {
       /*       console.log('save  this.basvuru', p); */
       this.httpClient.patch(`${env.serverUrl}/basvuru/${this.itemId}`, p
       ).subscribe((data: any) => {
+
 
         if (data.succeeded) {
           // timeline add
@@ -86,6 +89,7 @@ export class ArgeUcFormComponent implements OnInit {
           }
           this.addTimeline(p);
           // timeline add
+
           this.snackBar.open(`basvuru  ${this.aform.value.baslik} düzenlendi`, 'X', { duration: 3000 });
           this.router.navigate(['basvuru']);
         }
@@ -103,6 +107,7 @@ export class ArgeUcFormComponent implements OnInit {
 
 
   }
+
 
   get arastirmacilarforms(): FormArray {
     return this.aform.get("arastirmacilarforms") as FormArray
@@ -170,6 +175,7 @@ export class ArgeUcFormComponent implements OnInit {
   }
 
 
+
   addTimeline(timeline: Timeline) {
     const p: Timeline = {
       userId: timeline.userId,
@@ -183,4 +189,7 @@ export class ArgeUcFormComponent implements OnInit {
     this.timelineservice.addTimeLine(p);
   }
 
+  formInitialized(name: string, form: FormGroup) {
+    this.aform.setControl(name, form);
+  }
 }
