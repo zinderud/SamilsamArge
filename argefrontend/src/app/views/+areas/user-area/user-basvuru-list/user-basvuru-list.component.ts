@@ -127,7 +127,9 @@ export class UserBasvuruListComponent implements OnInit, OnDestroy {
     if (item.basvuruTuru === "DonerDestek") {
       this.router.navigate(['basvuru', 'argeucform', item.id]);
     }
-
+    if (item.basvuruTuru === "SosyalProje") {
+      this.router.navigate(['basvuru', 'argedortform', item.id]);
+    }
     console.log("sayfaya git");
 
 

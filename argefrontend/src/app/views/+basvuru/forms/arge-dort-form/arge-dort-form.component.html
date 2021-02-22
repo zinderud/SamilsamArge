@@ -1,0 +1,157 @@
+<nb-card accent="danger">
+    <nb-card-header style="text-align: center;">
+        T.C. <br>
+        SAĞLIK BAKANLIĞI <br>
+        Araştırma Taleplerini Değerlendirme Komisyonu <br>
+        BAŞVURU FORMU</nb-card-header>
+    <nb-card-body>
+
+        <p class="western" style="margin-left: -1cm; text-indent: 1.27cm; margin-bottom: 0cm; line-height: 100%;"
+            align="center"><strong> BAŞVURU FORMUNUN DOLDURULMASI ESNASINDA DİKKAT EDİLECEK HUSUSLAR </strong></p>
+
+        <br> 1-Bu formun, üniversiteler, diğer özel ve/veya kamu kuruluşları veya şahıslar tarafından; birinci basamak
+        sağlık hizmetleri alanında, toplumun herhangi bir kesimini, hasta ve/veya çalışanları kapsayacak şekilde
+        yapılması planlanan ödev, tez çalışması, anket uygulaması, proje, bilgi talebi, sağlık taraması ve halkı
+        bilinçlendirme gibi konularda yapılmak istenen çalışmaların değerlendirilebilmesi için aşağıda yer alan
+        kriterlere göre doldurulması zorunludur.
+        <br>
+        <br> 2- Başvuru Formu doldurulduktan sonra iki nüsha çıktısı alınarak bir nüshası değerlendirilmek üzere,
+        araştırmanın yapılacağı ilin, çok merkezli araştırmalarda ise her bir ilin il sağlık müdürlüğüne iletilecek ve
+        müdürlüğün ön değerlendirmesi sonucunda komisyonca görüşülmek üzere Genel Müdürlüğümüze gönderilecektir.
+        Doğrudan Genel Müdürlüğümüze gönderilen talepler değerlendirilmeyecektir.
+        <br>
+
+        <br> 3-Başvurunun yapılmış olması, araştırmaya başlamak için yeterli değildir. Araştırmaya başlayabilmek için
+        ilgili başvurunun komisyon tarafından onaylanması gerekmektedir.
+        <br>
+
+
+        <br>4-Araştırmaya onay verilmesi durumunda verilen onay sadece ilgili talep için geçerlidir. Bu sebeple
+        araştırmada elde edilen veriler başka bir çalışma için kullanılamaz, kullanılmak istenmesi durumunda tekrar izin
+        onayı için başvuru yapılması gerekmektedir.
+        <br>
+
+        <br>5-Araştırma için verilen onay, araştırmanın başka bir dönemde tekrarlanması için geçerli değildir.
+        Araştırmanın tekrarlanmak istenmesi durumunda, izin onayı için yeniden başvuru yapılması gerekmektedir.
+        <br>
+
+
+        <br>6-Başvuru formunun elektronik ortamda doldurulması ve sorumlu araştırmacı yada yardımcı araştırmacılar
+        tarafından şahsen yada posta aracılığı ile il sağlık müdürlüğüne ulaştırılması gerekmektedir. Faks yada e-mail
+        ile gönderilecek talepler dikkate alınmayacaktır.
+
+        <br>
+
+        <br>7-Araştırmanın başlığı ile içeriği uyumlu olmalıdır. Türkçe karşılığı olduğu halde yabancı kelime kullanılan
+        başlıklardan kaçınılmalıdır.
+        <br>
+
+
+        <br>8-Değerlendirilmiş ve hakkında düzeltme önerisi yapılmış araştırmalar için araştırmacılar düzeltme raporu ve
+        düzeltilmiş başvuru formunu birlikte sunmalıdır.
+        <br>
+
+
+        <br>9-Başvuru formunun ayrıntılı ve eksiksiz doldurulması ve ilgili belgelerin eklenmesi başvuru talebinin
+        değerlendirilmesinde büyük önem arz etmektedir.
+
+
+
+        <br>10-Komisyon, her ayın ilk Perşembe günü toplanır.
+
+        <br>
+        <br> <br>
+
+
+
+
+        <form [formGroup]="aform" #f="ngForm" class="form">
+            <!-- baslik -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>baslik</mat-label>
+                        <input matInput type="text" placeholder="baslik" formControlName="baslik" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- baslik -->
+            <div class="row">
+                <div class="col-sm-12">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Proje Başlangıc Tarihi</mat-label>
+                    <input matInput [matDatepicker]="picker" placeholder="Başlangıc Tarihi"   formControlName="basvuruBaslangicTarih">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+        
+                <div class="col-sm-12">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label> Proje Bitiş Tarihi</mat-label>
+                    <input matInput [matDatepicker]="picker1" placeholder="Bitiş Tarihi"   formControlName="basvuruBitisTarih">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                 </div>
+
+            <div class="row">
+
+                <button type="submit" nbButton status="primary" (click)="addArastirmacilarforms()">Arastirmaci
+                    Ekle</button>
+            </div>
+            <br>
+            <div formArrayName="arastirmacilarforms">
+
+
+
+
+
+                <nb-tabset>
+                    <nb-tab tabTitle="Arastirmaci {{i}}"
+                        *ngFor="let arastirmacilar of arastirmacilarforms.controls; let i=index">
+                        <app-arastirmacilar-form [index]="i" [aform]="arastirmacilar"></app-arastirmacilar-form>
+                        <!--               <button nbButton status="danger" (click)="deleteIlness(i)"> Form {{ill.value.kknId}} sil</button> -->
+                    </nb-tab>
+
+                </nb-tabset>
+            </div>
+
+            <!--       <div formArrayName="arastirmacilarforms">
+
+                <div *ngFor="let arastirmacilar of arastirmacilarforms.controls; let i=index">
+
+ 
+                    <app-arastirmacilar-form [aform]="arastirmacilar"></app-arastirmacilar-form>
+
+                </div>
+
+
+            </div> -->
+
+
+            <!--     <app-arastirmacilar-form></app-arastirmacilar-form> -->
+            <app-arastirma-form></app-arastirma-form>
+            <app-arastirma-kapsam-form></app-arastirma-kapsam-form>
+            <app-arastirma-belgeler-form></app-arastirma-belgeler-form>
+            <app-mat-ekler [labelname]="'deneme'"  (formReady)="formInitialized('belgesi', $event)"></app-mat-ekler>
+             
+
+            <div class="row">
+                <button type="submit" nbButton status="primary" [disabled]="!aform.valid"
+                    (click)="onCreate()">Düzenle</button>
+            </div>
+
+
+        </form>
+
+    </nb-card-body>
+</nb-card>
+
+<div class="row"> {{this.aform.value| json}}</div>
+
+<!-- <div class="row">
+    <button type="submit" nbButton status="primary" (click)="arastirmaBelgelerFormComponent.dene()">dene</button>
+</div> -->

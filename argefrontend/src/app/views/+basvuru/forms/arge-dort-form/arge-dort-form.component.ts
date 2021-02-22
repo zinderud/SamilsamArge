@@ -1,0 +1,195 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, FormArray, AbstractControlOptions, ValidatorFn, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ArastirmaBelgelerFormComponent } from '../arastirma-belgeler-form/arastirma-belgeler-form.component';
+import { ArastirmaFormComponent } from '../arastirma-form/arastirma-form.component';
+import { ArastirmaKapsamFormComponent } from '../arastirma-kapsam-form/arastirma-kapsam-form.component';
+import { ArastirmacilarFormComponent } from '../arastirmacilar-form/arastirmacilar-form.component';
+import { ArastirmacilarForm } from '../model/arastirmacilar';
+
+import { environment as env } from '@env/environment';
+import { Basvuru } from '@app/core/models/basvuru/basvuru';
+import { Timeline } from '@app/core/models/timeline';
+import { TimelineService } from '@app/core/services/timeline.service';
+import { MatEklerComponent } from '@app/shared/mat-ekler/mat-ekler.component';
+type FormGroupConfig<T> = {
+  [P in keyof T]: [
+    T[P] | { value: T[P]; disabled: boolean },
+    (AbstractControlOptions | ValidatorFn | ValidatorFn[])?
+  ]
+};
+@Component({
+  selector: 'app-arge-dort-form',
+  templateUrl: './arge-dort-form.component.html',
+  styleUrls: ['./arge-dort-form.component.scss']
+})
+export class ArgeDortFormComponent implements OnInit {
+  itemId: string;
+  arastirmacilarformGroup: FormGroup;
+  aform: FormGroup;
+  basvuru: Basvuru
+  loading = false;
+  @ViewChild(ArastirmaFormComponent, { static: true }) arastirmaform: ArastirmaFormComponent;
+  @ViewChild(ArastirmaKapsamFormComponent, { static: true }) arastirmaKapsamForm: ArastirmaKapsamFormComponent;
+  @ViewChild(ArastirmacilarFormComponent, { static: true }) arastirmacilarform: ArastirmacilarFormComponent;
+  @ViewChild(ArastirmaBelgelerFormComponent, { static: true }) arastirmaBelgelerFormComponent: ArastirmaBelgelerFormComponent;
+/*   @ViewChild(MatEklerComponent, { static: true }) sadecomp: MatEklerComponent;
+ */  constructor(private fb: FormBuilder,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private httpClient: HttpClient,
+    private timelineservice: TimelineService) { }
+
+  ngOnInit() {
+    this.aform = this.fb.group({
+      basvuruBaslangicTarih: "",
+      basvuruBitisTarih: "",
+      baslik: [''],
+      arastirmaform: this.arastirmaform.createGroup(),
+      arastirmaKapsam: this.arastirmaKapsamForm.createGroup(),
+      arastirmacilarforms: this.fb.array([this.createArastirmacilarformGroupForm()]),
+      arastirmaBelgelerForm: this.arastirmaBelgelerFormComponent.createGroup(),
+      belgesi: this.fb.group({ belge: "" })
+
+
+    });
+    this.itemId = this.activatedRoute.snapshot.params.id;
+    this.httpClient.get(`${env.serverUrl}/basvuru/${this.itemId}`).subscribe((data: any) => {
+
+      this.loaderForm(data);
+
+
+    });
+  }
+  onCreate(): void {
+    if (this.aform.valid) {
+      this.aform.disable();
+      const d = JSON.stringify(this.aform.value);
+      this.basvuru.basvuruBaslangicTarih = this.aform.value.basvuruBaslangicTarih;
+      this.basvuru.basvuruBitisTarih = this.aform.value.basvuruBitisTarih;
+      /*   console.log("json", d) */
+      this.basvuru.basvuruForm = JSON.stringify(this.aform.value);
+
+      const p = { ...this.basvuru };
+      /*       console.log('save  this.basvuru', p); */
+      this.httpClient.patch(`${env.serverUrl}/basvuru/${this.itemId}`, p
+      ).subscribe((data: any) => {
+
+
+        if (data.succeeded) {
+          // timeline add
+          let p: Timeline = {
+            userId: this.basvuru.userId,
+            basvuruId: this.basvuru.id,
+            durum: this.basvuru.durum,
+            not: "Başvuru Düzenlendi"
+          }
+          this.addTimeline(p);
+          // timeline add
+
+          this.snackBar.open(`basvuru  ${this.aform.value.baslik} düzenlendi`, 'X', { duration: 3000 });
+          this.router.navigate(['basvuru']);
+        }
+        this.loading = false;
+
+      }, (error: HttpErrorResponse) => {
+        this.loading = false;
+        this.aform.enable();
+        this.snackBar.open(error.error, 'X', { duration: 3000 });
+      });
+
+    } else {
+      console.log('Form not valid');
+    }
+
+
+  }
+
+
+  get arastirmacilarforms(): FormArray {
+    return this.aform.get("arastirmacilarforms") as FormArray
+  }
+  /*  set arastirmacilarforms(){
+     this.aform.setValue['arastirmacilarforms']="";
+   } */
+  addArastirmacilarforms() {
+    this.arastirmacilarforms.push(this.createArastirmacilarformGroupForm());
+  }
+
+
+  public createArastirmacilarformGroupForm() {
+    const config: FormGroupConfig<ArastirmacilarForm> = {
+      arastirmaciTuru: [''],
+      ad: [''],
+      soyad: [''],
+      unvan: [''],
+      uzmanlikAlani: [''],
+      isAdresi: [''],
+      eposta: [''],
+      faks: [''],
+    };
+
+
+    this.arastirmacilarformGroup = this.fb.group(config);
+    return this.arastirmacilarformGroup;
+
+  }
+
+  loaderForm(data) {
+
+
+    console.log(" gelen data", data)
+    if (data.value.basvuruForm === "") {
+      this.basvuru = { ...data.value }
+      console.log(" gelen this.basvuru", this.basvuru)
+    } else {
+
+      this.basvuru = { ...data.value }
+      const basform = JSON.parse(data.value.basvuruForm);
+      let k: any[] = basform.arastirmacilarforms
+      console.log("da", k.length);
+
+      for (let index = 1; index < k.length; index++) {
+        this.addArastirmacilarforms()
+
+      }
+
+      this.aform.patchValue({
+        baslik: basform.baslik,
+        basvuruBaslangicTarih: this.basvuru.basvuruBaslangicTarih,
+        basvuruBitisTarih: this.basvuru.basvuruBitisTarih,
+        arastirmaform: basform.arastirmaform,
+        arastirmaKapsam: basform.arastirmaKapsam,
+        arastirmacilarforms: basform.arastirmacilarforms,
+        arastirmaBelgelerForm: basform.arastirmaBelgelerForm,
+
+      });
+
+      //   this.aform.setValue['arastirmacilarforms'] = basform.arastirmacilarforms;
+      //  this.arastirmacilarform.writeValue(basform.arastirmacilarforms);
+
+    }
+  }
+
+
+
+  addTimeline(timeline: Timeline) {
+    const p: Timeline = {
+      userId: timeline.userId,
+      basvuruId: timeline.basvuruId,
+      tarih: new Date().toDateString(),
+      durum: timeline.durum,
+      not: timeline.not
+
+    }
+    console.log("timeline", p);
+    this.timelineservice.addTimeLine(p);
+  }
+
+  formInitialized(name: string, form: FormGroup) {
+    this.aform.setControl(name, form);
+  }
+}

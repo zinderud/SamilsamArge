@@ -40,6 +40,7 @@ import { ArgeIkiFormComponent } from './forms/arge-iki-form/arge-iki-form.compon
 import { ArgeUcFormComponent } from './forms/arge-uc-form/arge-uc-form.component';
 import { ArgeFormOnizlemeComponent } from './forms/arge-form-onizleme/arge-form-onizleme.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ArgeDortFormComponent } from './forms/arge-dort-form/arge-dort-form.component';
 
 const routes: Routes = [
 
@@ -90,6 +91,12 @@ const routes: Routes = [
     component: ArgeFormOnizlemeComponent,
     data: { title: ' Arge Form onizleme', expectedRole: ['Admin', 'User'] },
     canActivate: [RoleGuard],
+  },
+  {
+    path: 'argedortform/:id',
+    component: ArgeUcFormComponent,
+    data: { title: 'Sosyal Arge Form Düzenle', expectedRole: ['Admin', 'User'] },
+    canActivate: [RoleGuard],
   }
 
 ];
@@ -121,7 +128,8 @@ const routes: Routes = [
     ArgeBirFormComponent,
     ArgeIkiFormComponent,
     ArgeUcFormComponent,
-    ArgeFormOnizlemeComponent
+    ArgeFormOnizlemeComponent,
+    ArgeDortFormComponent
 
 
 
