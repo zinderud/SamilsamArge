@@ -68,7 +68,7 @@ namespace argebackend.Services
             if (!String.IsNullOrEmpty(dt.ToString()))
             {
 
-                q = q.Where(x => x.basvuruBitisTarih > dt.Value);
+                q = q.Where(x => x.basvuruBitisTarih < dt.Value);
 
             }
             var countItems = await q.CountAsync();
