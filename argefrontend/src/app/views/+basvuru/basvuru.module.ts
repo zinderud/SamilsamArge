@@ -41,6 +41,8 @@ import { ArgeDortFormComponent } from './forms/SosyalProje/arge-dort-form/arge-d
 import { ArgeUcFormComponent } from './forms/DonerDestek/arge-uc-form/arge-uc-form.component';
 import { ArgeIkiFormComponent } from './forms/ArastirmaCalisKovid/arge-iki-form/arge-iki-form.component';
 import { ArgeBirFormComponent } from './forms/ArastirmaCalis/arge-bir-form/arge-bir-form.component';
+import { GonulluPopilasyonComponent } from './forms/ArastirmaCalisKovid/gonullu-popilasyon/gonullu-popilasyon.component';
+
 
 
 
@@ -131,7 +133,8 @@ const routes: Routes = [
     ArgeIkiFormComponent,
     ArgeUcFormComponent,
     ArgeFormOnizlemeComponent,
-    ArgeDortFormComponent
+    ArgeDortFormComponent,
+    GonulluPopilasyonComponent
 
 
 

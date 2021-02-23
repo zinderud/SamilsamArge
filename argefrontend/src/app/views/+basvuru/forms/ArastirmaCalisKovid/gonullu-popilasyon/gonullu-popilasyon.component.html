@@ -1,0 +1,143 @@
+<nb-card accent="danger">
+    <nb-card-header>ARAŞTIRMADAKİ GÖNÜLLÜ POPÜLASYONU</nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="aform" #f="ngForm" class="form">
+
+               <!-- saglikliGonulluler -->
+               <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Sağlıklı gönüllüler</mat-label>
+                      
+                        <select matNativeControl formControlName="saglikliGonulluler">
+
+                            <option value="Evet">Evet</option>
+                            <option value="Hayır">Hayır</option>
+
+                        </select>
+                    </mat-form-field>
+                </div>
+            </div>
+    <!-- saglikliGonulluler -->
+   <!-- Hastalar -->
+   <div class="row">
+    <div class="col-sm-12">
+
+        <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Hastalar</mat-label>
+          
+            <select matNativeControl formControlName="Hastalar">
+
+                <option value="Evet">Evet</option>
+                <option value="Hayır">Hayır</option>
+
+            </select>
+        </mat-form-field>
+    </div>
+</div>
+<!-- Hastalar -->
+
+   <!-- OzelHassasPopilasyonlar -->
+   <div class="row">
+    <div class="col-sm-12">
+
+        <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Ozel Hassas Popilasyonlar</mat-label>
+            
+            <select matNativeControl formControlName="OzelHassasPopilasyonlar">
+
+                <option value="Evet">Evet</option>
+                <option value="Hayır">Hayır</option>
+
+            </select>
+        </mat-form-field>
+    </div>
+</div>
+<!-- OzelHassasPopilasyonlar -->
+   <!-- GebeKadinlar -->
+   <div class="row">
+    <div class="col-sm-12">
+
+        <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Gebe Kadinlar</mat-label>
+            
+            <select matNativeControl formControlName="GebeKadinlar">
+
+                <option value="Evet">Evet</option>
+                <option value="Hayır">Hayır</option>
+
+            </select>
+        </mat-form-field>
+    </div>
+</div>
+<!-- GebeKadinlar -->
+   <!-- EmzirenKadinlar -->
+   <div class="row">
+    <div class="col-sm-12">
+
+        <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Emziren kadınlar</mat-label>
+         
+            <select matNativeControl formControlName="EmzirenKadinlar">
+
+                <option value="Evet">Evet</option>
+                <option value="Hayır">Hayır</option>
+
+            </select>
+        </mat-form-field>
+    </div>
+</div>
+<!-- EmzirenKadinlar -->
+   <!-- AcilOlgular -->
+   <div class="row">
+    <div class="col-sm-12">
+
+        <mat-form-field class="full-width " appearance="outline">
+            <mat-label> Acil olgular</mat-label>
+         
+            <select matNativeControl formControlName="AcilOlgular">
+
+                <option value="Evet">Evet</option>
+                <option value="Hayır">Hayır</option>
+
+            </select>
+        </mat-form-field>
+    </div>
+</div>
+<!-- AcilOlgular -->
+   <!-- SahsenOlurVeremiyecekler -->
+   <div class="row">
+    <div class="col-sm-12">
+
+        <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Şahsen olur veremeyecek gönüllüler</mat-label>
+          
+            <select matNativeControl formControlName="SahsenOlurVeremiyecekler">
+
+                <option value="Evet">Evet</option>
+                <option value="Hayır">Hayır</option>
+
+            </select>
+        </mat-form-field>
+    </div>
+</div>
+<!-- SahsenOlurVeremiyecekler -->
+
+            <!-- Aciklama -->
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <mat-form-field class="full-width " appearance="outline">
+                        <mat-label>Aciklama: </mat-label>
+                        <input matInput type="text" placeholder="Aciklama: " formControlName="Aciklama" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- Aciklama -->
+ 
+
+        </form>
+
+    </nb-card-body>
+</nb-card>

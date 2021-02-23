@@ -3,7 +3,7 @@ import { FormBuilder, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ControlValueAccessor } from '@angular/forms';
 import { AbstractControlOptions, FormGroup, ValidatorFn } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ArastirmaForm } from '../model/arastirma-form';
+
 import { ArastirmaKapsam } from '../model/arastirma-kapsam-model';
 type FormGroupConfig<T> = {
   [P in keyof T]: [

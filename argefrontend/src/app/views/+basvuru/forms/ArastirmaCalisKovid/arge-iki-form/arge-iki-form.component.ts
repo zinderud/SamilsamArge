@@ -14,6 +14,7 @@ import { ArastirmaFormComponent } from '../../arastirma-form/arastirma-form.comp
 import { ArastirmaKapsamFormComponent } from '../../arastirma-kapsam-form/arastirma-kapsam-form.component';
 import { ArastirmacilarFormComponent } from '../../arastirmacilar-form/arastirmacilar-form.component';
 import { ArastirmacilarForm } from '../../model/arastirmacilar';
+import { GonulluPopilasyonComponent } from '../gonullu-popilasyon/gonullu-popilasyon.component';
 type FormGroupConfig<T> = {
   [P in keyof T]: [
     T[P] | { value: T[P]; disabled: boolean },
@@ -36,6 +37,7 @@ export class ArgeIkiFormComponent implements OnInit {
   @ViewChild(ArastirmaKapsamFormComponent, { static: true }) arastirmaKapsamForm: ArastirmaKapsamFormComponent;
   @ViewChild(ArastirmacilarFormComponent, { static: true }) arastirmacilarform: ArastirmacilarFormComponent;
   @ViewChild(ArastirmaBelgelerFormComponent, { static: true }) arastirmaBelgelerFormComponent: ArastirmaBelgelerFormComponent;
+  @ViewChild(GonulluPopilasyonComponent, { static: true }) gonulluPopilasyonComponent: GonulluPopilasyonComponent;
   constructor(private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -51,7 +53,8 @@ export class ArgeIkiFormComponent implements OnInit {
       arastirmaform: this.arastirmaform.createGroup(),
       arastirmaKapsam: this.arastirmaKapsamForm.createGroup(),
       arastirmacilarforms: this.fb.array([this.createArastirmacilarformGroupForm()]),
-      arastirmaBelgelerForm: this.arastirmaBelgelerFormComponent.createGroup()
+      arastirmaBelgelerForm: this.arastirmaBelgelerFormComponent.createGroup(),
+      gonulluPopilasyonComponent: this.gonulluPopilasyonComponent.createGroup(),
 
     });
     this.itemId = this.activatedRoute.snapshot.params.id;
@@ -161,6 +164,7 @@ export class ArgeIkiFormComponent implements OnInit {
         arastirmaKapsam: basform.arastirmaKapsam,
         arastirmacilarforms: basform.arastirmacilarforms,
         arastirmaBelgelerForm: basform.arastirmaBelgelerForm,
+        gonulluPopilasyonComponent: basform.gonulluPopilasyonComponent,
 
       });
 
