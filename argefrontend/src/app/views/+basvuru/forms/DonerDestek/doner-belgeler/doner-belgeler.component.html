@@ -1,0 +1,476 @@
+<div class="loading">
+    <mat-progress-bar value="indeterminate" *ngIf="uploading" color="warn"></mat-progress-bar>
+
+</div>
+<nb-card accent="danger">
+    <nb-card-header>İLGİLİ BELGELER</nb-card-header>
+    <nb-card-body>
+        <p>Gerekli Tüm Belgeleri Secin Sonra Yükle Butonuna Basınız.</p>
+
+        <form [formGroup]="aform" #f="ngForm" class="form">
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <!-- ozGecmisBelgesi -->
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>ozGecmisBelgesi</mat-label>
+
+                            <mat-file-input  formControlName="ozGecmisBelgesi" placeholder="dosya yükle"
+                                [accept]="'.pdf'">
+
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadingozGecmisBelgesi">
+                                {{this.aform_controls['ozGecmisBelgesi'].value + " Belgesi
+                                Olarak Yüklendi"}}
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+                    <!-- ozGecmisBelgesi -->
+
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadingozGecmisBelgesi" nbButton status="primary"
+                        (click)="ozGecmisBelgesiYukle()">Yükle</button>
+
+                </div>
+            </div>
+
+
+            <!-- etikKurulOnayBelgesi -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>etikKurulOnayBelgesi</mat-label>
+                            <mat-file-input formControlName="etikKurulOnayBelgesi" placeholder="dosya yükle"
+                                [accept]="'.pdf'">
+
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadingetikKurulOnayBelgesi">
+                                {{this.aform_controls['etikKurulOnayBelgesi'].value+ "
+                                Belgesi
+                                Olarak Yüklendi"}}
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadingetikKurulOnayBelgesi" nbButton status="primary"
+                        (click)="etikKurulOnayBelgesiYukle()">Yükle</button>
+
+                </div>
+            </div>
+
+
+            <!-- etikKurulOnayBelgesi -->
+
+
+            <!-- anketOlcekFormu -->
+
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>anketOlcekFormu</mat-label>
+                            <mat-file-input formControlName="anketOlcekFormu" placeholder="dosya yükle"
+                                [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadinganketOlcekFormu">
+                                {{this.aform_controls['anketOlcekFormu'].value+ "
+                                Belgesi
+                                Olarak Yüklendi"}}</mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadinganketOlcekFormu" nbButton status="primary"
+                        (click)="anketOlcekFormuYukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- anketOlcekFormu -->
+            <!-- uzmanlikvbTeziBelge -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>uzmanlikvbTeziBelge</mat-label>
+                            <mat-file-input formControlName="uzmanlikvbTeziBelge" placeholder="dosya yükle"
+                                [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadinguzmanlikvbTeziBelge">
+                                {{this.aform_controls['uzmanlikvbTeziBelge'].value+ "
+                                Belgesi
+                                Olarak Yüklendi"}}</mat-hint>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadinguzmanlikvbTeziBelge" nbButton status="primary"
+                        (click)="uzmanlikvbTeziBelgeYukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- uzmanlikvbTeziBelge -->
+
+
+            <!-- ekBelge -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>ekBelge</mat-label>
+
+                            <mat-file-input formControlName="ekBelge" placeholder="dosya yükle" [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadingekBelge" [style]="{'text-color':'red'}">
+                                {{this.aform_controls['ekBelge'].value+
+                                " Belgesi Olarak Yüklendi"}}
+
+                            </mat-hint>
+
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadingekBelge" nbButton status="primary"
+                        (click)="ekBelgeYukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- ekBelge -->
+
+
+
+            <!-- BakanlikOnayi -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>BakanlikOnayi</mat-label>
+
+                            <mat-file-input formControlName="BakanlikOnayi" placeholder="dosya yükle" [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadingBakanlikOnayi" [style]="{'text-color':'red'}">
+                                {{this.aform_controls['BakanlikOnayi'].value+
+                                " Belgesi Olarak Yüklendi"}}
+
+                            </mat-hint>
+
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadingBakanlikOnayi" nbButton status="primary"
+                        (click)="BakanlikOnayiYukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- BakanlikOnayi -->
+
+
+
+
+       <!-- ProtokolOzeti -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>ProtokolOzeti</mat-label>
+
+                            <mat-file-input formControlName="ProtokolOzeti" placeholder="dosya yükle" [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadingProtokolOzeti" [style]="{'text-color':'red'}">
+                                {{this.aform_controls['ProtokolOzeti'].value+
+                                " Belgesi Olarak Yüklendi"}}
+
+                            </mat-hint>
+
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadingProtokolOzeti" nbButton status="primary"
+                        (click)="ProtokolOzetiYukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- ProtokolOzeti -->
+
+
+
+            <!-- GonulluOlur -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>GonulluOlur</mat-label>
+
+                            <mat-file-input formControlName="GonulluOlur" placeholder="dosya yükle" [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadingGonulluOlur" [style]="{'text-color':'red'}">
+                                {{this.aform_controls['GonulluOlur'].value+
+                                " Belgesi Olarak Yüklendi"}}
+
+                            </mat-hint>
+
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadingGonulluOlur" nbButton status="primary"
+                        (click)="GonulluOlurYukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- GonulluOlur -->
+
+
+
+
+
+
+
+            <!-- olguRapor -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>olguRapor</mat-label>
+
+                            <mat-file-input formControlName="olguRapor" placeholder="dosya yükle" [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadingolguRapor" [style]="{'text-color':'red'}">
+                                {{this.aform_controls['olguRapor'].value+
+                                " Belgesi Olarak Yüklendi"}}
+
+                            </mat-hint>
+
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadingolguRapor" nbButton status="primary"
+                        (click)="olguRaporYukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- olguRapor -->
+
+
+
+
+            <!-- butce -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>butce</mat-label>
+
+                            <mat-file-input formControlName="butce" placeholder="dosya yükle" [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadingbutce" [style]="{'text-color':'red'}">
+                                {{this.aform_controls['butce'].value+
+                                " Belgesi Olarak Yüklendi"}}
+
+                            </mat-hint>
+
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadingbutce" nbButton status="primary"
+                        (click)="butceYukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- butce -->
+
+
+
+
+            <!-- calismayaKatilanMerkezler -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>calismayaKatilanMerkezler</mat-label>
+
+                            <mat-file-input formControlName="calismayaKatilanMerkezler" placeholder="dosya yükle" [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadingcalismayaKatilanMerkezler" [style]="{'text-color':'red'}">
+                                {{this.aform_controls['calismayaKatilanMerkezler'].value+
+                                " Belgesi Olarak Yüklendi"}}
+
+                            </mat-hint>
+
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadingcalismayaKatilanMerkezler" nbButton status="primary"
+                        (click)="calismayaKatilanMerkezlerYukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- calismayaKatilanMerkezler -->
+
+            <!-- akisSemasi -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>akisSemasi</mat-label>
+
+                            <mat-file-input formControlName="akisSemasi" placeholder="dosya yükle" [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadingakisSemasi" [style]="{'text-color':'red'}">
+                                {{this.aform_controls['akisSemasi'].value+
+                                " Belgesi Olarak Yüklendi"}}
+
+                            </mat-hint>
+
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadingakisSemasi" nbButton status="primary"
+                        (click)="akisSemasiYukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- akisSemasi -->
+
+
+            <!-- litaratur1 -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>litaratur1</mat-label>
+
+                            <mat-file-input formControlName="litaratur1" placeholder="dosya yükle" [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadinglitaratur1" [style]="{'text-color':'red'}">
+                                {{this.aform_controls['litaratur1'].value+
+                                " Belgesi Olarak Yüklendi"}}
+
+                            </mat-hint>
+
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadinglitaratur1" nbButton status="primary"
+                        (click)="litaratur1Yukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- litaratur1 -->
+
+            <!-- litaratur2 -->
+            <div class="row">
+                <div class=" col-8 col-sm-6  col-md-8 centerq">
+                    <div class="row">
+
+
+                        <mat-form-field class="full-width " appearance="outline">
+                            <mat-label>litaratur2</mat-label>
+
+                            <mat-file-input formControlName="litaratur2" placeholder="dosya yükle" [accept]="'.pdf'">
+                            </mat-file-input>
+                            <mat-hint [hidden]="!uploadinglitaratur2" [style]="{'text-color':'red'}">
+                                {{this.aform_controls['litaratur2'].value+
+                                " Belgesi Olarak Yüklendi"}}
+
+                            </mat-hint>
+
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class=" col-4   col-sm-6 col-md-4   center">
+
+                    <button type="submit" [disabled]="uploadinglitaratur2" nbButton status="primary"
+                        (click)="litaratur2Yukle()">Yükle</button>
+
+                </div>
+            </div>
+            <!-- litaratur2 -->
+
+            
+
+
+
+        </form>
+
+    </nb-card-body>
+</nb-card>
+<div class="row"> {{this.aform.value| json}}</div>
