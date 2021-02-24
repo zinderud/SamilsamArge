@@ -13,6 +13,7 @@ import { ArastirmaFormComponent } from '../../arastirma-form/arastirma-form.comp
 import { ArastirmaKapsamFormComponent } from '../../arastirma-kapsam-form/arastirma-kapsam-form.component';
 import { ArastirmacilarFormComponent } from '../../arastirmacilar-form/arastirmacilar-form.component';
 import { ArastirmacilarForm } from '../../model/arastirmacilar';
+import { DonerBelgelerComponent } from '../doner-belgeler/doner-belgeler.component';
 type FormGroupConfig<T> = {
   [P in keyof T]: [
     T[P] | { value: T[P]; disabled: boolean },
@@ -34,7 +35,7 @@ export class ArgeUcFormComponent implements OnInit {
   @ViewChild(ArastirmaFormComponent, { static: true }) arastirmaform: ArastirmaFormComponent;
   @ViewChild(ArastirmaKapsamFormComponent, { static: true }) arastirmaKapsamForm: ArastirmaKapsamFormComponent;
   @ViewChild(ArastirmacilarFormComponent, { static: true }) arastirmacilarform: ArastirmacilarFormComponent;
-  @ViewChild(ArastirmaBelgelerFormComponent, { static: true }) arastirmaBelgelerFormComponent: ArastirmaBelgelerFormComponent;
+  @ViewChild(DonerBelgelerComponent, { static: true }) donerBelgelerComponent: DonerBelgelerComponent;
   constructor(private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -50,7 +51,7 @@ export class ArgeUcFormComponent implements OnInit {
       arastirmaform: this.arastirmaform.createGroup(),
       arastirmaKapsam: this.arastirmaKapsamForm.createGroup(),
       arastirmacilarforms: this.fb.array([this.createArastirmacilarformGroupForm()]),
-      arastirmaBelgelerForm: this.arastirmaBelgelerFormComponent.createGroup()
+      donerBelgelerComponent: this.donerBelgelerComponent.createGroup()
 
     });
     this.itemId = this.activatedRoute.snapshot.params.id;
@@ -159,7 +160,7 @@ export class ArgeUcFormComponent implements OnInit {
         arastirmaform: basform.arastirmaform,
         arastirmaKapsam: basform.arastirmaKapsam,
         arastirmacilarforms: basform.arastirmacilarforms,
-        arastirmaBelgelerForm: basform.arastirmaBelgelerForm,
+        donerBelgelerComponent: basform.donerBelgelerComponent,
 
       });
 
