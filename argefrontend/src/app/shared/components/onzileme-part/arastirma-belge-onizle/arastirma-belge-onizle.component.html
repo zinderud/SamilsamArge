@@ -1,0 +1,57 @@
+<nb-accordion  *ngIf=" !(this.basvuru.basvuruForm?.arastirmaBelgelerForm=== undefined || this.basvuru.basvuruForm?.arastirmaBelgelerForm=== null  ) ? true : false  ">
+    <nb-accordion-item>
+        <nb-accordion-item-header>Öz geçmis Belgesi</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ozGecmisBelgesi"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Etik Kurul Onay Belgesi</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.etikKurulOnayBelgesi"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Anket Ölcek Belgesi</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.anketOlcekFormu"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Uzmanlık vb Tez Belgesi</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.uzmanlikvbTeziBelge"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Ek Belgeler</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.arastirmaBelgelerForm?.ekBelge"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+    
+
+
+</nb-accordion>

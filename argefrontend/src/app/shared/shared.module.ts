@@ -129,6 +129,10 @@ import { NgxVerticalTimelineModule } from './components/ngx-vertical-timeline/ng
 import { MatEklerComponent } from './mat-ekler/mat-ekler.component';
 import { BasvuruCountStatsComponent } from './components/basvuru-count-stats/basvuru-count-stats.component';
 import { StatsBadgeComponent } from './components/stats-badge/stats-badge.component';
+import { ArastirmaBelgeOnizleComponent } from './components/onzileme-part/arastirma-belge-onizle/arastirma-belge-onizle.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { DonerDestekBelgeComponent } from './components/onzileme-part/doner-destek-belge/doner-destek-belge.component';
+import { GonulluPopOnizleComponent } from './components/onzileme-part/gonullu-pop-onizle/gonullu-pop-onizle.component';
 
 @NgModule({
   imports: [
@@ -169,7 +173,8 @@ import { StatsBadgeComponent } from './components/stats-badge/stats-badge.compon
     FormsModule,
     ReactiveFormsModule,
     MatFileInputModule,
-    NgxVerticalTimelineModule
+    NgxVerticalTimelineModule,
+    PdfViewerModule
   ],
   exports: [NB_MODULES,
     LayoutModule,
@@ -217,7 +222,10 @@ import { StatsBadgeComponent } from './components/stats-badge/stats-badge.compon
     NgxVerticalTimelineModule,
     MatEklerComponent,
     BasvuruCountStatsComponent,
-    StatsBadgeComponent
+    StatsBadgeComponent,
+    ArastirmaBelgeOnizleComponent,
+    DonerDestekBelgeComponent,
+    GonulluPopOnizleComponent
   ],
   declarations: [
     CallActionCardComponent,
@@ -230,6 +238,9 @@ import { StatsBadgeComponent } from './components/stats-badge/stats-badge.compon
     MatEklerComponent,
     BasvuruCountStatsComponent,
     StatsBadgeComponent,
+    ArastirmaBelgeOnizleComponent,
+    DonerDestekBelgeComponent,
+    GonulluPopOnizleComponent,
 
   ],
   providers: [

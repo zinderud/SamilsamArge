@@ -1,0 +1,162 @@
+<nb-accordion  *ngIf=" !(this.basvuru.basvuruForm?.donerBelgelerComponent=== undefined || this.basvuru.basvuruForm?.donerBelgelerComponent=== null  ) ? true : false  ">
+    <nb-accordion-item>
+        <nb-accordion-item-header>Öz geçmis Belgesi</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.ozGecmisBelgesi"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Etik Kurul Onay Belgesi</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.etikKurulOnayBelgesi"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Anket Ölcek Belgesi</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.anketOlcekFormu"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Uzmanlık vb Tez Belgesi</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.uzmanlikvbTeziBelge"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Ek Belgeler</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.ekBelge"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+    <nb-accordion-item>
+        <nb-accordion-item-header>Bakanlık Onayı</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.BakanlikOnayi"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Protokol Özeti</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.ProtokolOzeti"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Gönüllü Olur</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.GonulluOlur"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Olgu Rapor</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.olguRapor"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Bütce</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.butce"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Çalışmaya Katılan Merkezler</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.calismayaKatilanMerkezler"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>Akış Şeması</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.akisSemasi"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>litaratur1</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.litaratur1"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>litaratur2</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.litaratur2"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+    <nb-accordion-item>
+        <nb-accordion-item-header>litaratur3</nb-accordion-item-header>
+        <nb-accordion-item-body>
+
+            <pdf-viewer (error)="onErrorPdf($event)"
+                [src]="this.fileUrl+this.basvuru.basvuruForm?.donerBelgelerComponent?.litaratur3"
+                [render-text]="true" style="display: block;"></pdf-viewer>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+
+
+
+
+</nb-accordion>
