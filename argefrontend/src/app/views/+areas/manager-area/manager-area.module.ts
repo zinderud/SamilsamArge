@@ -38,7 +38,7 @@ const routes: Routes = [
   {
     path: 'kontrol-list',
     component: ManagerKontrolListComponent,
-    data: { title: 'Kontrol List', expectedRole: ['Admin'] },
+    data: { title: 'Kontrol List', expectedRole: ['Admin', 'Manager'] },
     canActivate: [RoleGuard],
     resolve: {
       data: KontrolResolver

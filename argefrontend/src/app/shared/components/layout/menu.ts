@@ -63,11 +63,17 @@ export const mMenu: NbMenuItem[] = [
 
 export const uMenu: NbMenuItem[] = [
 
+
     {
-        title: 'user gör',
-        link: '/admin/user/',
+        title: 'Başvuru Yönetimi',
+        link: '/user/basvuru-list/',
         icon: 'eye-outline'
-    }
+    },
+    {
+        title: 'Başvuru Ekleme',
+        link: '/basvuru/add/',
+        icon: 'eye-outline'
+    },
 
 ];
 

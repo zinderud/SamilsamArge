@@ -62,7 +62,7 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddBasvuruComponent,
-    data: { title: 'Basvuru ekle', expectedRole: ['Admin', 'User'] },
+    data: { title: 'Basvuru ekle', expectedRole: ['Admin', 'User', 'Manager'] },
     canActivate: [RoleGuard],
   },
 
@@ -94,7 +94,7 @@ const routes: Routes = [
   {
     path: 'onizleme/:id',
     component: ArgeFormOnizlemeComponent,
-    data: { title: ' Arge Form onizleme', expectedRole: ['Admin', 'User'] },
+    data: { title: ' Arge Form onizleme', expectedRole: ['Admin', 'User', 'Manager'] },
     canActivate: [RoleGuard],
   },
   {

@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
 
         if (data.succeeded) {
           this.snackBar.open(`Kullanıcı   ${this.createForm.value.firstname} oluşturuldu`, 'X', { duration: 3000 });
-          this.router.navigate(['admin']);
+          this.router.navigate(['dashboard']);
         }
         this.loading = false;
 
