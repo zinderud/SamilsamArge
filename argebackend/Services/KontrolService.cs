@@ -34,16 +34,16 @@ namespace argebackend.Services
                 //{
                 //   throw new InvalidOperationException("Bu tc mevcut");
                 //}
-                var atayanUser = await this.userManager.FindByIdAsync(model.atayanUserId.ToString());
+                var atayanUser = this.CurrentUser;
                 var atananUser = await this.userManager.FindByIdAsync(model.atananUserId.ToString());
                 var KontrolEntity = await GetOrCreateEntityAsync(context.kontrols, x => x.Id == model.Id);
                 var Kontrol = KontrolEntity.result;
 
                 Kontrol.basvuruId = model.basvuruId;
                 Kontrol.basvuru = model.basvuru;
-                Kontrol.atayanUserId = model.atayanUserId;
+                Kontrol.atayanUserId = this.CurrentUser.Id;
                 Kontrol.atayanUser = atayanUser;
-                Kontrol.atananUserId = model.atananUserId;
+                Kontrol.atananUserId = atananUser.Id;
                 Kontrol.atananUser = atananUser;
                 Kontrol.atamaTarih = model.atamaTarih;
                 Kontrol.kontrolDurum = model.kontrolDurum;
