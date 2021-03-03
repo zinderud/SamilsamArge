@@ -1,18 +1,10 @@
-<div id="timeline">
+<!-- <div id="timeline">
   <div *ngFor="let item of list; let i = index" class="timeline-item">
     <div [class]="item.styleClass? item.styleClass: ''">
       <div class="timeline-icon">
         <span class="item-icon {{item?.icon}}"></span>
       </div>
-      <!--  <div class="timeline-content" [class.right]="i % 2 !== 0">
-        <h2>{{item?.title}}</h2>
-        <p>
-          {{item?.content}}
-        </p> -->
-      <!--    <button class="btn bg-purple" (click)="action(item)">
-          <i class="fa fa-search-plus"></i> {{item?.label}}
-        </button> -->
-
+     
 
       <nb-card class="timeline-content" [class.right]="i % 2 !== 0">
         <nb-card-header>
@@ -24,7 +16,7 @@
         </nb-card-header>
         <nb-card-body>
           <p>
-            Not: {{item?.content}}
+            Not : {{item?.content}}
 
           </p>
 
@@ -40,7 +32,30 @@
       </nb-card>
 
 
-      <!-- </div> -->
+    
     </div>
   </div>
-</div>
+</div> -->
+
+
+
+
+
+<div class="timeline">
+  <div class="timeline__event  animated fadeInUp delay-3s timeline__event--type1" *ngFor="let item of list; let i = index" >
+    <div class="timeline__event__icon ">
+      <p>{{i}}</p>
+      <div class="timeline__event__date">
+        {{item?.title}}
+      </div>
+    </div>
+    <div class="timeline__event__content ">
+      <div class="timeline__event__title">
+         Kullanıcı: {{item?.label}}  **   Durum: {{item?.durum}}
+      </div>
+      <div class="timeline__event__description">
+        <p> Not : {{item?.content}}</p>
+      </div>
+    </div>
+  </div>
+  

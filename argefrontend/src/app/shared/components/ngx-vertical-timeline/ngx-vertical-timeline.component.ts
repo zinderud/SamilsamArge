@@ -5,7 +5,7 @@ import { TimelineItem } from './timeline-item';
 @Component({
   selector: 'ngx-vertical-timeline',
   templateUrl: './ngx-vertical-timeline.component.html',
-  styleUrls: ['./ngx-vertical-timeline.component.css']
+  styleUrls: ['./ngx-vertical-timeline.component.scss']
 })
 export class NgxVerticalTimelineComponent implements OnInit {
 
