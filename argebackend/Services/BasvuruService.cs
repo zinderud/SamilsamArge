@@ -85,11 +85,11 @@ namespace argebackend.Services
                 //}
                 var bsvno = await _bsvNoService.lastAsync();
 
-                var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
+                // var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
                 var BasvuruEntity = await GetOrCreateEntityAsync(context.Basvurus, x => x.Id == model.Id);
                 var Basvuru = BasvuruEntity.result;
-                Basvuru.UserId = user.Id;
-                Basvuru.User = user;
+                Basvuru.UserId = CurrentUser.Id;
+                Basvuru.User = CurrentUser;
                 Basvuru.BasvuruNo = bsvno.Value.BasvuruNo + 1;
                 Basvuru.Tarih = DateTime.Now;
                 Basvuru.Durum = "basvuru_yapildi";
@@ -175,13 +175,13 @@ namespace argebackend.Services
             Func<Task> action = async () =>
             {
 
-                var user = await this.userManager.FindByIdAsync(CurrentUser.Id.ToString());
+                var user = await this.userManager.FindByIdAsync(model.User.Id.ToString());
 
 
                 var BasvuruEntity = await GetOrCreateEntityAsync(context.Basvurus, x => x.Id == model.Id);
                 var Basvuru = BasvuruEntity.result;
-                Basvuru.UserId = user.Id;
-                Basvuru.User = user;
+                /*   Basvuru.UserId = user.Id;
+                  Basvuru.User = user; */
 
                 Basvuru.UserId = user.Id;
                 Basvuru.User = user;
