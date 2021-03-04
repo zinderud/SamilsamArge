@@ -5,7 +5,7 @@ namespace argebackend.Models
 {
     public class SelectedBasvuru : BaseModel
     {
-
+        public long UserId { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Tc { get; set; }

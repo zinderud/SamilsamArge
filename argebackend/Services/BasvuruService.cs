@@ -137,6 +137,7 @@ namespace argebackend.Services
                 var result = await context.Basvurus.Where(x => x.Id == id).Include(x => x.User)
                 .Select(p => new SelectedBasvuru
                 {
+                    UserId = p.User.Id,
                     Firstname = p.User.Firstname,
                     Lastname = p.User.Lastname,
                     Tc = p.User.Tc,
@@ -175,13 +176,16 @@ namespace argebackend.Services
             Func<Task> action = async () =>
             {
 
-                var user = await this.userManager.FindByIdAsync(model.User.Id.ToString());
+
+
+
+                var user = await this.userManager.FindByIdAsync(model.UserId.ToString());
 
 
                 var BasvuruEntity = await GetOrCreateEntityAsync(context.Basvurus, x => x.Id == model.Id);
                 var Basvuru = BasvuruEntity.result;
-                /*   Basvuru.UserId = user.Id;
-                  Basvuru.User = user; */
+                Basvuru.UserId = model.UserId;
+                /*   Basvuru.User = user; */
 
                 Basvuru.UserId = user.Id;
                 Basvuru.User = user;
