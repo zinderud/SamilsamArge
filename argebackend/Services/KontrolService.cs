@@ -45,7 +45,7 @@ namespace argebackend.Services
                 Kontrol.atayanUser = atayanUser;
                 Kontrol.atananUserId = atananUser.Id;
                 Kontrol.atananUser = atananUser;
-                Kontrol.atamaTarih = model.atamaTarih;
+                Kontrol.atamaTarih = DateTime.Now;
                 Kontrol.kontrolDurum = model.kontrolDurum;
                 Kontrol.kurumUstYazi = model.kurumUstYazi;
                 Kontrol.dilekceBasvurusuUygunmu = model.dilekceBasvurusuUygunmu;
