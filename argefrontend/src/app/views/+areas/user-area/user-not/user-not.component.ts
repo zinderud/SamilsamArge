@@ -33,6 +33,7 @@ export class UserNotComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.itemId = this.activatedRoute.snapshot.params.id;
 
 
     this.httpClient.get(`${env.serverUrl}/basvuru/selected/${this.itemId}`).subscribe((data: any) => {
@@ -60,7 +61,8 @@ export class UserNotComponent implements OnInit {
         userId: this.userid,
         basvuruId: parseInt(this.itemId),
         durum: this.basvuru.durum,
-        not: this.notform.value.not
+        not: this.notform.value.not,
+        notType: parseInt(this.notform.value.notType)
       }
       this.addTimeline(p).subscribe((data: any) => {
         if (data.succeeded) {
@@ -70,7 +72,7 @@ export class UserNotComponent implements OnInit {
 
 
     }
-
+    this.notform.reset();
 
     this.cdr.markForCheck();
   }

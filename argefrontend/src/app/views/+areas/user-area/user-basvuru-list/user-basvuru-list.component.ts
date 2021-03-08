@@ -27,6 +27,7 @@ export class UserBasvuruListComponent implements OnInit, OnDestroy {
     'basvuruTuru',
     'onizleme',
     "zamanCizelgesi",
+    'NotEkle',
     'oluştur'
 
   ];
@@ -145,6 +146,14 @@ export class UserBasvuruListComponent implements OnInit, OnDestroy {
   onZamanCizelgesi(item: any): void {
 
     this.router.navigate(['user', 'timeline', item.id]);
+
+    console.log("sayfaya git");
+
+
+  }
+  NotEkle(item: any): void {
+
+    this.router.navigate(['user', 'not', item.id]);
 
     console.log("sayfaya git");
 

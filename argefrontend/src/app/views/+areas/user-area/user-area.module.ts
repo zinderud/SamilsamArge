@@ -52,7 +52,13 @@ const routes: Routes = [
     component: UserBasvuruOnizlemeComponent,
     data: { title: 'Ön izleme', expectedRole: ['Admin', 'Manager', 'User'] },
     canActivate: [RoleGuard],
-  }
+  },
+  {
+    path: 'not/:id',
+    component: UserNotComponent,
+    data: { title: 'Not ekle', expectedRole: ['Admin', 'Manager', 'User'] },
+    canActivate: [RoleGuard],
+  },
 
 ];
 

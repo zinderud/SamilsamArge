@@ -45,7 +45,7 @@ export class UserTimelineComponent implements OnInit {
 
           const timline: TimelineItem = {
             label: "" + e.user.firstname + e.user.lastname, icon: 'fa fa-plus',
-            content: e.not, title: new Date(e.tarih).toLocaleDateString() + " ", durum: e.durum
+            content: e.not, title: new Date(e.tarih).toLocaleDateString() + " ", durum: e.durum,
           }
           this.items.push(timline);
 

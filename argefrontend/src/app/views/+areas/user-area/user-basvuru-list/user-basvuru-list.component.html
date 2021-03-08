@@ -127,6 +127,19 @@
             </ng-container>
             <!-- zaman cizelgesi Column -->
   
+                    <!-- zaman cizelgesi Column -->
+  
+                    <ng-container matColumnDef="NotEkle">
+                      <th mat-header-cell *matHeaderCellDef>
+                        Not Ekle
+                      </th>
+                      <td mat-cell *matCellDef="let row">
+                        <a mat-button (click)="NotEkle(row)" color="warn">
+                          <mat-icon>link</mat-icon>
+                        </a>
+                      </td>
+                    </ng-container>
+                    <!-- zaman cizelgesi Column -->
         <ng-container matColumnDef="oluştur">
           <th mat-header-cell *matHeaderCellDef>
             oluştur
