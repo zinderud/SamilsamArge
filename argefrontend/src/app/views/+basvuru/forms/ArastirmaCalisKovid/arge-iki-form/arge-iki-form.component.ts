@@ -180,7 +180,8 @@ export class ArgeIkiFormComponent implements OnInit {
       basvuruId: timeline.basvuruId,
       tarih: new Date().toDateString(),
       durum: timeline.durum,
-      not: timeline.not
+      not: timeline.not,
+      notType: 1 //1:public 2:private
 
     }
     console.log("timeline", p);

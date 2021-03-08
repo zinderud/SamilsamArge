@@ -127,6 +127,7 @@ export class BasvuruInceleComponent implements OnInit {
             userId: this.userid,
             basvuruId: parseInt(this.itemId),
             durum: this.durumForm.value.durum,
+            notType: 1,
             not: "Başvuru durum değişti"
           }
           this.addTimeline(p).subscribe((data: any) => {
@@ -171,7 +172,7 @@ export class BasvuruInceleComponent implements OnInit {
   onNotCreate() {
     if (this.notform.valid) {
 
-      this.notform.disable();
+
 
 
 
@@ -182,17 +183,18 @@ export class BasvuruInceleComponent implements OnInit {
         basvuruId: parseInt(this.itemId),
         durum: this.basvuru.durum,
         not: this.notform.value.not,
-        notType: this.notform.value.notType
+        notType: parseInt(this.notform.value.notType)
 
       }
       this.addTimeline(p).subscribe((data: any) => {
         if (data.succeeded) {
           console.log("timeline not", data);
+          this.snackBar.open(`Not eklendi`, 'X', { duration: 3000 });
         }
       });
 
     }
-
+    this.notform.reset();
     this.timelinelist();
     this.cdr.markForCheck();
   }

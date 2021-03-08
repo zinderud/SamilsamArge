@@ -690,8 +690,8 @@
             <mat-label>Not Tipi</mat-label>
             <select matNativeControl formControlName="notType">
 
-              <option value="1">Genel</option>
-              <option value="2">Gizli</option>
+              <option value=1>Genel</option>
+              <option value=2>Gizli</option>
             </select>
           </mat-form-field>
  
@@ -704,7 +704,7 @@
                     <div class="row">
                         <button type="submit" nbButton status="primary" [disabled]="!notform.valid"
                             (click)="onNotCreate()">Not ekle</button>
-                        <button type="submit" nbButton status="primary" (click)="onRefresh()">Yeni not ekle</button>
+                       <!--  <button type="submit" nbButton status="primary" (click)="onRefresh()">Yeni not ekle</button> -->
                     </div>
 
                 </form>
