@@ -109,6 +109,23 @@ namespace argebackend.Controllers
 
         }
 
+        [HttpGet("listOnlyManager")]
+        [ProducesResponseType(typeof(List<Kontrol>), 200)]
+        /*  [Authorize(Roles = "Admin")] */
+        [AllowAnonymous]
+        public async Task<IActionResult> listOnlyManager([FromQuery] GetListViewModel<BaseFilter> listModel)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _KontrolService.ListOnlyManagerAsync(listModel);
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            return Ok(result);
+
+        }
+
         [HttpGet("count")]
         [ProducesResponseType(typeof(int), 200)]
         [Authorize(Roles = "Admin")]

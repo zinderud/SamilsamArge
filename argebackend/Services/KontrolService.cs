@@ -171,6 +171,7 @@ namespace argebackend.Services
 
         public async Task<ProcessResult<List<Kontrol>>> ListAsync(GetListViewModel<BaseFilter> getListModel)
         {
+
             IQueryable<Kontrol> q = context.kontrols.Include(z => z.atananUser).Include(c => c.atayanUser);
             q = SetIncludes(q);
             q = SetFilter(q, getListModel.filter);
@@ -189,6 +190,26 @@ namespace argebackend.Services
             return await Process.RunAsync(action, countItems);
         }
 
+        public async Task<ProcessResult<List<Kontrol>>> ListOnlyManagerAsync(GetListViewModel<BaseFilter> getListModel)
+        {
+            var atananUserId = this.CurrentUser.Id;
+            IQueryable<Kontrol> q = context.kontrols.Include(z => z.atananUser).Include(c => c.atayanUser).Where(x => x.atananUserId == atananUserId);
+            q = SetIncludes(q);
+            q = SetFilter(q, getListModel.filter);
+
+            var countItems = await q.CountAsync();
+
+            q = SetPaginator(q, getListModel.paginator);
+            q = SetOrderBy(q, getListModel.orderBy);
+
+            Func<Task<List<Kontrol>>> action = async () =>
+            {
+                var result = await q.ToListAsync();
+                return result;
+            };
+
+            return await Process.RunAsync(action, countItems);
+        }
         public async Task<ProcessResult<int>> CountAsync(BaseFilter filter)
         {
             IQueryable<Kontrol> q = context.kontrols;

@@ -17,6 +17,7 @@ import { EditorModule } from 'primeng/editor';
 import { ManagerKontrolListComponent } from './manager-kontrol-list/manager-kontrol-list.component';
 import { KontrolResolver } from '../../+admin/resolvers/kontrol.resolver';
 import { KontrolFormService } from './services/kontrol-form.service';
+import { KontrolManagerResolver } from './resolver/kontrol.resolver';
 
 
 const routes: Routes = [
@@ -41,7 +42,7 @@ const routes: Routes = [
     data: { title: 'Kontrol List', expectedRole: ['Admin', 'Manager'] },
     canActivate: [RoleGuard],
     resolve: {
-      data: KontrolResolver
+      data: KontrolManagerResolver
     }
   }
 ];
@@ -74,7 +75,7 @@ const routes: Routes = [
       useClass: ApiInterceptor,
       multi: true
     },
-    KontrolResolver,
+    KontrolManagerResolver,
     KontrolFormService
 
 

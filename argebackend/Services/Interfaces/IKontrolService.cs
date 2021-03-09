@@ -8,5 +8,6 @@ namespace argebackend.Services.Interfaces
     public interface IKontrolService : ICrudService<Kontrol, BaseFilter>
     {
 
+        Task<ProcessResult<List<Kontrol>>> ListOnlyManagerAsync(GetListViewModel<BaseFilter> getListModel);
     }
 }
