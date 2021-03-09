@@ -54,8 +54,19 @@ export const aMenu: NbMenuItem[] = [
 export const mMenu: NbMenuItem[] = [
 
     {
-        title: 'manager gör',
-        link: '/admin/user/',
+        title: 'Kontrol Listesi',
+        link: '/manager/kontrol-list/',
+        icon: 'eye-outline'
+    },
+
+    {
+        title: 'Başvuru Yönetimi',
+        link: '/user/basvuru-list/',
+        icon: 'eye-outline'
+    },
+    {
+        title: 'Başvuru Ekleme',
+        link: '/basvuru/add/',
         icon: 'eye-outline'
     }
 
