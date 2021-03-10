@@ -10,6 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start-serv": "ng serve --host 10.55.25.199 --port 80 --prod",
+    "start-serv1": "ng serve  --port 80 --prod",
     "start-desk": "ng serve --host 10.55.25.197 --port 80 --configuration=ip"
   },
   "private": true,
