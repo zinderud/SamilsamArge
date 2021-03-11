@@ -1,10 +1,10 @@
-FROM node:13.6-alpine as node
+FROM node:14.7.0-alpine as node
 LABEL author="zinderud"
 WORKDIR /app
 COPY package.json package.json
 RUN npm install
 COPY . .
-RUN npm run start-serv1
+RUN npm run build -- --prod 
 
 ##### Stage 2
 FROM nginx:alpine
@@ -16,3 +16,4 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # docker build -t nginx-angular -f nginx.prod.dockerfile .
 # docker run -p 8080:80 nginx-angular
 # docker run --rm -d -p 80:80/tcp nginx-angular:latest
+
