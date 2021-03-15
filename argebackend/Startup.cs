@@ -153,10 +153,12 @@ namespace argebackend
 
 
             app.UseCors(EnabledCORS);
-            app.UseDefaultFiles();
+
             app.UseStaticFiles();
+            app.UseFileServer(enableDirectoryBrowsing: true);
             app.UseStaticFiles(new StaticFileOptions()
             {
+
                 OnPrepareResponse = ctx =>
                  {
                      ctx.Context.Response.Headers.Append(new KeyValuePair<string, Microsoft.Extensions.Primitives.StringValues>("Access-Control-Allow-Origin", "*"));
@@ -166,6 +168,7 @@ namespace argebackend
                  },
 
                 FileProvider = new PhysicalFileProvider(
+
            Path.Combine(Directory.GetCurrentDirectory(), @"Uploads")),
                 RequestPath = new PathString("/Uploads")
             });

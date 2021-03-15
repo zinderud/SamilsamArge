@@ -10,8 +10,11 @@ RUN dotnet publish -c Release -o /app
 # Stage 2
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS final
 WORKDIR /app
+RUN mkdir -p /Uploads
 EXPOSE 5000
 COPY --from=build /app .
+RUN mkdir -p ./Uploads
+RUN touch ./Uploads/file-created-at-build-time
 ENTRYPOINT ["dotnet", "argebackend.dll"]
 
 
