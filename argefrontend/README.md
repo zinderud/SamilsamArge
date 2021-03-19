@@ -22,17 +22,23 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
- 
-
 ## environment help
+
 // farklı bir environment dosyasıyla calışmak için
 ng serve --host 10.55.25.184 --configuration ip
 ng build --configuration ip
 
 export const environment = {
-    production: false,
-    serverUrl: 'http://10.55.25.184:5000/api',
-    envName: 'Development',
-    appName: 'Kanka Dev'
-  };
-  
+production: false,
+serverUrl: 'http://10.55.25.184:5000/api',
+envName: 'Development',
+appName: 'Kanka Dev'
+};
+
+    sudo apt-get install ca-certificates -y
+
+bash generate.sh
+bash install-cert.sh
+bash docker.sh
+
+docker run --name fc -v "$PWD/ssl/n:/etc/nginx/certs" -v $PWD/ssl/nginx-default.conf:/etc/nginx/conf.d/default.conf:ro" -v $PWD/dist/argefrontend:/usr/share/nginx/html:ro -p 8080:443 -d nginx
