@@ -14,7 +14,7 @@ services:
       - ./argebackend:/var/www/argebackend
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://*:5000
+      - ASPNETCORE_URLS=http://10.55.25.197:5000
     ports:
       - "5000:5000"
     depends_on:

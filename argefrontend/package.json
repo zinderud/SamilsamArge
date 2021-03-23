@@ -9,9 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start-serv": "ng serve --host 10.55.25.199 --port 80 --prod",
+    "start-serv": "ng serve --host 10.55.25.197 --port 80 --prod",
     "start-serv1": "ng serve  --port 80 --prod",
     "start-desk": "ng serve --host 10.55.25.197 --port 80 --configuration=ip",
+    "start-build": "ng build --prod ",
     "start:dev": "ng serve --ssl true --ssl-cert ssl/server.crt --ssl-key ssl/server.key"
   },
   "private": true,
@@ -68,7 +69,7 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
     "ts-node": "~9.0.0",
-    "tslint": "~6.1.0",
+    "tslint": "~6.1.3",
     "typescript": "^4.0.3"
   }
 }

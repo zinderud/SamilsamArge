@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  serverUrl: 'http://localhost:5000/api',
+  serverUrl: 'http://10.55.25.197:5000/api',
   envName: 'Production',
   appName: 'Arge pr',
   snackBarDuration: 3700,
