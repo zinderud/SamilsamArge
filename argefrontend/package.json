@@ -10,9 +10,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start-serv": "ng serve --host 10.55.25.197 --port 80 --prod",
-    "start-serv1": "ng serve  --port 80 --prod",
+    "start-serv1": "ng serve   --base-href --port 80 --prod",
     "start-desk": "ng serve --host 10.55.25.197 --port 80 --configuration=ip",
-    "start-build": "ng build --prod ",
+    "start-build": "ng build  --prod ",
     "start:dev": "ng serve --ssl true --ssl-cert ssl/server.crt --ssl-key ssl/server.key"
   },
   "private": true,
