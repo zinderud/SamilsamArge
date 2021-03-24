@@ -109,24 +109,24 @@ namespace argebackend
                         services.AddHangfire(config =>
                                     config.UsePostgreSqlStorage(Configuration["Data:DbContext:ConnectionString"])); */
 
-            /*            services.AddSwaggerGen(c =>
-                       {
-                           c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                           {
-                               Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                               Name = "Authorization",
+            services.AddSwaggerGen(c =>
+            {
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
 
-                           });
+                });
 
 
-                           c.SwaggerDoc("v1", new OpenApiInfo
-                           {
-                               Title = "RestFull API",
-                               Version = "v1",
-                               Contact = new OpenApiContact { Name = "zinderud", Email = "mokosam@gmail.com" }
-                           });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "RestFull API",
+                    Version = "v1",
+                    Contact = new OpenApiContact { Name = "zinderud", Email = "mokosam@gmail.com" }
+                });
 
-                       }); */
+            });
 
             services.Configure<KestrelServerOptions>(options =>
 {
@@ -137,7 +137,11 @@ namespace argebackend
                 options.MaxRequestBodySize = int.MaxValue;
             });
 
-
+            services.AddHttpsRedirection(options =>
+             {
+                 options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+                 options.HttpsPort = 5001;
+             });
 
 
         }
@@ -146,7 +150,7 @@ namespace argebackend
         {
 
             app.UseRouting();
-
+            app.UseHsts();
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -175,14 +179,14 @@ namespace argebackend
 
 
 
-            /*       app.UseSwagger();
+            app.UseSwagger();
 
 
-                  app.UseSwaggerUI(c =>
-                  {
-                      c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                  });
-       */
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
 
             app.UseEndpoints(endpoints =>
            {

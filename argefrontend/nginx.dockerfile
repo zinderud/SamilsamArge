@@ -1,11 +1,11 @@
 
-# FROM node:14.7.0-alpine as node
-# LABEL author="zinderud"
-# WORKDIR /app
-# COPY package.json package.json
-# RUN npm install
-# COPY . .
-# RUN npm run start-build
+FROM node:14.7.0-alpine as node
+LABEL author="zinderud"
+WORKDIR /app
+COPY package.json package.json
+RUN npm install
+COPY . .
+RUN npm run start-build
 ##### Stage 2
 FROM nginx:alpine
 WORKDIR /app

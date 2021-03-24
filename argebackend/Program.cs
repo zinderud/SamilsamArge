@@ -57,8 +57,18 @@ namespace argebackend
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                 .UseUrls("http://*:5000")
-                .UseStartup<Startup>()
+                 .UseUrls("https://*:5000")
+                .UseStartup<Startup>().UseKestrel()
                 .Build();
     }
 }
+
+/* 
+       .UseStartup<Startup>()
+                .UseUrls(YourWebAppUrls)
+                .UseKestrel()
+                .ConfigureKestrel(options =>
+                {
+                    options.ListenAnyIP(51934);  // whatever your port
+                })
+                .UseIIS() */

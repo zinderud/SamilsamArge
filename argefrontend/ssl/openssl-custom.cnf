@@ -7,16 +7,16 @@ distinguished_name = dn
 
 [dn]
 C = tr
-ST = KS
-L = Olathe
+ST = Samsun
+L = merk
 O = IT
 OU = IT Department
 emailAddress = muratonurkaradeniz@gmail.com
-CN = localhost
+CN = 10.55.25.197
 
 [v3_req]
 subjectAltName = @alt_names
 
 [alt_names]
-DNS.1 = *.localhost
-DNS.2 = localhost
+DNS.1 = *.10.55.25.197
+DNS.2 = 10.55.25.197
