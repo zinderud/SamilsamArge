@@ -14,4 +14,5 @@ docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=password postgre
 
 #docker aspnet core  
 dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p { password }
+dotnet dev-certs https -ep ./conf.d/https/dev_cert.pfx -p password
 dotnet dev-certs https --trust

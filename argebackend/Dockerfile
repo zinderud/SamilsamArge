@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 LABEL author="zinderud"
 ENV DOTNET_USE_POLLING_FILE_WATCHER=1
-ENV ASPNETCORE_URLS=http://*:5000
+ENV ASPNETCORE_URLS=https://*:5000
 WORKDIR /build
 COPY . .
 RUN dotnet restore

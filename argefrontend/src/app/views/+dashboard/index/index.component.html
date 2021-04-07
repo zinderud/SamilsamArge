@@ -15,8 +15,13 @@
 </div>
  -->
  <ng-template [appHasRole]="'User' || 'Manager' ||'Admin'">
-  <h3>User</h3>
+
+
+  
+  <p class="ort">Kullanıcı Giriş Ekranı </p>
+    
   <div class="row">
+
     <div class="col-12 col-md-4">
       <ngx-call-action-card title="Basvuru Listele" icon="brightness_5" link="/user/basvuru-list" linkTitle="Görüntüle">
       </ngx-call-action-card>
@@ -33,7 +38,9 @@
 </ng-template>
 
 <ng-template [appHasRole]="'Manager' ||'Admin' ">
-  <h3>Manager</h3>
+  
+    
+  <p class="ort"> Giriş Ekranı </p>
 
   <div class="row">
     <div class="col-12 col-md-4">
@@ -53,7 +60,8 @@
 
 
 <ng-template [appHasRole]="'Admin'">
-  <h3>Admin</h3>
+ 
+  <p class="ort"> Admin Giriş Ekranı </p>
 
   <app-basvuru-count-stats></app-basvuru-count-stats>
   <div class="row">

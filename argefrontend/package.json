@@ -48,7 +48,8 @@
     "tslib": "^2.0.0",
     "typeface-exo": "1.1.13",
     "xlsx": "^0.16.8",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "twit":"2.2.11"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.7",
