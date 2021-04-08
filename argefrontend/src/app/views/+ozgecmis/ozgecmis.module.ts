@@ -53,7 +53,8 @@ const routes: Routes = [
     component: EditOzgecmisComponent,
     data: { title: 'Ozgecmis Düzenle', expectedRole: ['Admin'] },
     canActivate: [RoleGuard],
-  }
+  },
+
 
 
 ];

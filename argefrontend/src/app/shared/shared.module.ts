@@ -133,6 +133,8 @@ import { ArastirmaBelgeOnizleComponent } from './components/onzileme-part/arasti
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DonerDestekBelgeComponent } from './components/onzileme-part/doner-destek-belge/doner-destek-belge.component';
 import { GonulluPopOnizleComponent } from './components/onzileme-part/gonullu-pop-onizle/gonullu-pop-onizle.component';
+import { PrintService } from './services/print.service';
+import { PrintLayoutComponent } from './components/print-layout/print-layout.component';
 
 @NgModule({
   imports: [
@@ -225,7 +227,8 @@ import { GonulluPopOnizleComponent } from './components/onzileme-part/gonullu-po
     StatsBadgeComponent,
     ArastirmaBelgeOnizleComponent,
     DonerDestekBelgeComponent,
-    GonulluPopOnizleComponent
+    GonulluPopOnizleComponent,
+    PrintLayoutComponent
   ],
   declarations: [
     CallActionCardComponent,
@@ -241,6 +244,7 @@ import { GonulluPopOnizleComponent } from './components/onzileme-part/gonullu-po
     ArastirmaBelgeOnizleComponent,
     DonerDestekBelgeComponent,
     GonulluPopOnizleComponent,
+    PrintLayoutComponent,
 
   ],
   providers: [
@@ -249,7 +253,7 @@ import { GonulluPopOnizleComponent } from './components/onzileme-part/gonullu-po
     { provide: LOCALE_ID, useValue: 'tr-TR' },
     AsyncPipe,
     NbSidebarService,
-
+    PrintService
   ],
   entryComponents: [
     ConfirmComponent,

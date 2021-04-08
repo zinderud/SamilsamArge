@@ -6,6 +6,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 
 import { environment as env } from '@env/environment';
 import { OzgecmisFormService } from '../services/ozgecmis-form.service';
+import { PrintService } from '@app/shared/services/print.service';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class EditOzgecmisComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
     private httpClient: HttpClient,
-    private ozgecmisFormService: OzgecmisFormService
+    private ozgecmisFormService: OzgecmisFormService,
+    public printService: PrintService
   ) { }
 
   ngOnInit() {
@@ -49,6 +51,14 @@ export class EditOzgecmisComponent implements OnInit {
     });
 
   }
+
+  onPrint() {
+    const id = [];
+    this.printService
+      .printDocument('form', id);
+  }
+
+
 
   onEdit(): void {
     if (this.editForm.valid) {
